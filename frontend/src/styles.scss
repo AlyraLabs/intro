@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100..900&display=swap');
+
+:root {
+}
+
+html {
+  background-color: black;
+}
+
+html.intro-page::after {
+  display: block;
+  content: '';
+  position: fixed;
+  top: -300px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  height: 110%;
+  background: url(/img/intro/bg.png);
+  background-size: cover;
+  z-index: -1;
+  animation: floatBg 20s ease-in-out infinite, fadeInBg 2s ease-out forwards;
+  opacity: 0;
+}
+
+
+@keyframes fadeInBg {
+  0% {
+    opacity: 0;
+    filter: blur(100px) brightness(0.5);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(40px) brightness(1);
+  }
+}
+
+@keyframes floatBg {
+  0% {
+    transform: translateX(-50%) scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+  50% {
+    transform: translateX(-45%) scale(1.08) rotate(2deg);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: translateX(-50%) scale(1) rotate(0deg);
+    filter: brightness(1);
+  }
+}

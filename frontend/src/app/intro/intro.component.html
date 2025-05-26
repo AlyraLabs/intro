@@ -1,4 +1,278 @@
-<div class="intro-container">
-  <h1>Добро пожаловать!</h1>
-  <p>Это ваша первая страница в Angular приложении.</p>
+<div class="tokens-container">
+	<div class="token token-1">
+		<div class="token-img solana" #tokenImg></div>
+		<div class="token-info">
+			<div>SOL</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('SOL')">
+				{{getPriceChangeText('SOL')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-2">
+		<div class="token-img optimism" #tokenImg></div>
+		<div class="token-info">
+			<div>OP</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('OP')">
+				{{getPriceChangeText('OP')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-3">
+		<div class="token-img arb" #tokenImg></div>
+		<div class="token-info">
+			<div>ARB</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('ARB')">
+				{{getPriceChangeText('ARB')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-4">
+		<div class="token-img mew" #tokenImg></div>
+		<div class="token-info">
+			<div>MEW</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('MEW')">
+				{{getPriceChangeText('MEW')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-5">
+		<div class="token-img orca" #tokenImg></div>
+		<div class="token-info">
+			<div>ORCA</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('ORCA')">
+				{{getPriceChangeText('ORCA')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-6">
+		<div class="token-img jup" #tokenImg></div>
+		<div class="token-info">
+			<div>JUP</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('JUP')">
+				{{getPriceChangeText('JUP')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-7">
+		<div class="token-img jito" #tokenImg></div>
+		<div class="token-info">
+			<div>JTO</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('JTO')">
+				{{getPriceChangeText('JTO')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-8">
+		<div class="token-img helium" #tokenImg></div>
+		<div class="token-info">
+			<div>HNT</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('HNT')">
+				{{getPriceChangeText('HNT')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-9">
+		<div class="token-img render" #tokenImg></div>
+		<div class="token-info">
+			<div>RNDR</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('RNDR')">
+				{{getPriceChangeText('RNDR')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-10">
+		<div class="token-img raydium" #tokenImg></div>
+		<div class="token-info">
+			<div>RAY</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('RAY')">
+				{{getPriceChangeText('RAY')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-11">
+		<div class="token-img pyth" #tokenImg></div>
+		<div class="token-info">
+			<div>PYTH</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('PYTH')">
+				{{getPriceChangeText('PYTH')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-12">
+		<div class="token-img saros" #tokenImg></div>
+		<div class="token-info">
+			<div>SAROS</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('SAROS')">
+				{{getPriceChangeText('SAROS')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-13">
+		<div class="token-img msol" #tokenImg></div>
+		<div class="token-info">
+			<div>mSOL</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('mSOL')">
+				{{getPriceChangeText('mSOL')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-14">
+		<div class="token-img avax-token" #tokenImg></div>
+		<div class="token-info">
+			<div>AVAX</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('AVAX')">
+				{{getPriceChangeText('AVAX')}}
+			</div>
+		</div>
+	</div>
+	<div class="token token-15">
+		<div class="token-img bnb" #tokenImg></div>
+		<div class="token-info">
+			<div>BNB</div>
+			<div class="token-change" [ngClass]="getPriceChangeClass('BNB')">
+				{{getPriceChangeText('BNB')}}
+			</div>
+		</div>
+	</div>
 </div>
+
+<div class="intro-container">
+	<div class="header">
+		<div class="logo" (click)="reloadPage()">
+			<div class="logo-img"></div>
+			<p>Blackhole Labs</p>
+		</div>
+
+		<div class="links">
+			<a href="https://x.com/blackhole_labs" target="_blank" class="link"
+				(mousemove)="onMouseMove($event, $event.currentTarget)"
+				(mouseleave)="onMouseLeave($event.currentTarget)">
+				<div class="img twitter"></div>
+			</a>
+			<a href="https://blackholelabs.gitbook.io/blackholelabs" target="_blank" class="link"
+				(mousemove)="onMouseMove($event, $event.currentTarget)"
+				(mouseleave)="onMouseLeave($event.currentTarget)">
+				<div class="img gitbook"></div>
+			</a>
+		</div>
+
+		<div class="launch" (click)="launchApp()">
+			<p>Launch App</p>
+		</div>
+	</div>
+
+	<div class="info">
+		<div class="title">
+			<h1>
+				<span class="line1">The <span class="pink">AI-Powered</span> Execution Layer</span>
+				<span class="line2">for Cross-Chain DeFi</span>
+			</h1>
+			<h3>
+				<span #subtitleLine1 class="line1"></span>
+			</h3>
+		</div>
+
+		<div class="statistics">
+			<div class="statistic" 
+				(mousemove)="onMouseMove($event, $event.currentTarget)"
+				(mouseleave)="onMouseLeave($event.currentTarget)"
+				(click)="launchApp()">
+				<h1>{{chainsCount}}</h1>
+				<h3>Chains</h3>
+				<div class="icons icons0">
+					<div class="icon eth"></div>
+					<div class="icon arb"></div>
+					<div class="icon op"></div>
+					<div class="icon sol"></div>
+				</div>
+				<div class="icons icons1">
+					<div class="icon base"></div>
+					<div class="icon abs"></div>
+					<div class="icon bsc"></div>
+					<div class="icon linea"></div>
+				</div>
+				<div class="icons icons2">
+					<div class="icon mantle"></div>
+					<div class="icon blast"></div>
+					<div class="icon scroll"></div>
+					<div class="icon pol"></div>
+				</div>
+				<div class="icons icons3">
+					<div class="icon sei"></div>
+					<div class="icon zk"></div>
+					<div class="icon fantom"></div>
+					<div class="icon avax"></div>
+				</div>
+			</div>
+			<div class="statistic"
+				(mousemove)="onMouseMove($event, $event.currentTarget)"
+				(mouseleave)="onMouseLeave($event.currentTarget)"
+				(click)="launchApp()">
+				<h1>{{bridgesCount}}</h1>
+				<h3>Bridges</h3>
+				<div class="icons icons0">
+					<div class="icon stargate"></div>
+					<div class="icon mayan"></div>
+					<div class="icon across"></div>
+					<div class="icon hop"></div>
+				</div>
+				<div class="icons icons1">
+					<div class="icon squid"></div>
+					<div class="icon thor"></div>
+					<div class="icon symbiosis"></div>
+					<div class="icon allbridge"></div>
+				</div>
+				<div class="icons icons2">
+					<div class="icon celer"></div>
+					<div class="icon arbitrum-bridge"></div>
+					<div class="icon omni-bridge"></div>
+					<div class="icon optimism-bridge"></div>
+				</div>
+			</div>
+			<div class="statistic"
+				(mousemove)="onMouseMove($event, $event.currentTarget)"
+				(mouseleave)="onMouseLeave($event.currentTarget)"
+				(click)="launchApp()">
+				<h1>{{dexsCount}}</h1>
+				<h3>DEXs</h3>
+				<div class="icons icons0">
+					<div class="icon lifi"></div>
+					<div class="icon bebop"></div>
+					<div class="icon kyber"></div>
+					<div class="icon jup"></div>
+				</div>
+				<div class="icons icons1">
+					<div class="icon inch"></div>
+					<div class="icon para"></div>
+					<div class="icon open"></div>
+					<div class="icon dodo"></div>
+				</div>
+				<div class="icons icons2">
+					<div class="icon odos"></div>
+					<div class="icon x"></div>
+					<div class="icon sushi"></div>
+					<div class="icon okx"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<h3>Supported by:</h3>
+		<div class="supporters">
+			<a href="https://x.com/SuperteamPOL" target="_blank" class="supporter"
+				(mousemove)="onMouseMove($event, $event.currentTarget)"
+				(mouseleave)="onMouseLeave($event.currentTarget)">
+				<div class="sup-logo superteam"></div>
+				<h3>Superteam Poland</h3>
+			</a>
+			<a href="https://x.com/BFG_VC_Main" target="_blank" class="supporter"
+				(mousemove)="onMouseMove($event, $event.currentTarget)"
+				(mouseleave)="onMouseLeave($event.currentTarget)">
+				<div class="sup-logo bfg"></div>
+				<h3>Blockchain Founders Group</h3>
+			</a>
+		</div>
+	</div>
+</div>
+
