@@ -138,7 +138,7 @@ export class IntroComponent implements OnInit, AfterViewInit, OnDestroy {
       }
 
       const imageUrl = `/img/intro/${imgClass}.png`;
-      console.log(`Processing token ${index} with image: ${imageUrl}`);
+      // console.log(`Processing token ${index} with image: ${imageUrl}`);
 
       const tempImg = new Image();
       tempImg.crossOrigin = 'anonymous';
@@ -185,7 +185,7 @@ export class IntroComponent implements OnInit, AfterViewInit, OnDestroy {
             borderColor = `rgb(${r}, ${g}, ${b})`;
           }
           
-          console.log(`Token ${index} (${imgClass}): Original color: rgb(${r}, ${g}, ${b}), Brightness: ${brightness}, Border color: ${borderColor}`);
+          // console.log(`Token ${index} (${imgClass}): Original color: rgb(${r}, ${g}, ${b}), Brightness: ${brightness}, Border color: ${borderColor}`);
           (token as HTMLElement).style.setProperty('--token-border-color', borderColor);
         }
       };
@@ -218,7 +218,7 @@ export class IntroComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   launchApp() {
-    window.open('https://app.blackhole.exchange', '_blank');
+    window.open('https://app.blackhole.exchange', '_self');
   }
 
   reloadPage() {
