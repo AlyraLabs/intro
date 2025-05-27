@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, catchError, of } from 'rxjs';
 
-type TokenTicker = 'SOL' | 'OP' | 'ARB' | 'MEW' | 'ORCA' | 'JUP' | 'JTO' | 'HNT' | 'RNDR' | 'RAY' | 'PYTH' | 'SAROS' | 'mSOL' | 'AVAX' | 'BNB';
+type TokenTicker = 'SOL' | 'OP' | 'ARB' | 'ETH' | 'ORCA' | 'JUP' | 'JTO' | 'HNT' | 'RNDR' | 'RAY' | 'PYTH' | 'SAROS' | 'mSOL' | 'AVAX' | 'BNB';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +14,10 @@ export class CryptoPriceService {
     'SOL': 'solana',
     'OP': 'optimism',
     'ARB': 'arbitrum',
-    'MEW': 'cat-in-a-dogs-world',
+    'ETH': 'ethereum',
     'ORCA': 'orca',
-    'JUP': 'jupiter',
-    'JTO': 'jito-staked-sol',
+    'JUP': 'jupiter-exchange-solana',
+    'JTO': 'jito-governance-token',
     'HNT': 'helium',
     'RNDR': 'render-token',
     'RAY': 'raydium',

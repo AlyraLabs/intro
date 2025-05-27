@@ -65,7 +65,13 @@ export class IntroComponent implements OnInit, AfterViewInit, OnDestroy {
   private async startTypingAnimation() {
     if (!this.subtitleLine1?.nativeElement) return;
 
-    if (this.subtitleLine1.nativeElement.textContent.trim() === '') {
+
+    const isMobile = window.innerWidth <= 970;
+    
+    if (isMobile) {
+      this.subtitleLine1.nativeElement.textContent = this.SUBTITLE_TEXT;
+      this.subtitleAnimationComplete = true;
+    } else if (this.subtitleLine1.nativeElement.textContent.trim() === '') {
       await this.typingAnimationService.typeText(
         this.subtitleLine1.nativeElement,
         this.SUBTITLE_TEXT,
@@ -212,7 +218,7 @@ export class IntroComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   launchApp() {
-    this.router.navigate(['/trade']);
+    window.open('https://app.blackhole.exchange', '_blank');
   }
 
   reloadPage() {

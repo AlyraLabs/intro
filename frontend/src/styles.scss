@@ -12,11 +12,11 @@ html.intro-page::after {
   display: block;
   content: '';
   position: fixed;
-  top: -300px;
+  top: -400px;
   left: 50%;
   transform: translateX(-50%);
-  width: 110%;
-  height: 110%;
+  width: 120%;
+  height: 120%;
   background: url(/img/intro/bg.png);
   background-size: cover;
   z-index: -1;

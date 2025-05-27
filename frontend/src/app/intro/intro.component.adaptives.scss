@@ -178,7 +178,7 @@
 	.token-10 {
 		width: 65px;
 		height: 65px;
-		top: 300px;
+		top: 180px;
 		right: 500px;
 	}
 	
@@ -1089,10 +1089,54 @@
 		top: 100px;
 		left: 40px;
 	}
+	.token-13 {
+		width: 50px;
+		height: 50px;
+		top: 180px;
+		left: 20px;
+	}
+	
 }
 
 @media screen and (max-height: 736px) {
 	.footer {
+		display: none;
+	}
+}
+
+@media screen and (orientation: landscape) and (max-height: 736px) {
+	.header {
+		padding: 10px 20px;
+	}
+	.links {
+		top: 70px;
+		gap: 10px;
+	}
+	h1{
+		font-size: 22px;
+	}
+	.info {
+		top: 60%;
+		transform: translate(-50%, -50%);
+		bottom: auto;
+	}
+	
+	.statistics {
+		flex-direction: row;
+		gap: 20px;
+	}
+	
+	.statistic {
+		width: 100px;
+		padding: 15px 20px 40px 20px;
+	}
+	
+	.footer {
+		bottom: 10px;
+		left: 20px;
+	}
+	
+	.tokens-container {
 		display: none;
 	}
 }

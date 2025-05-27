@@ -716,7 +716,6 @@ h3 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 10px;
 	border: 1px solid transparent;
 	transition: all 0.3s ease;
 	transform-origin: center center;
@@ -932,7 +931,7 @@ h3 {
 	content: '';
 	position: absolute;
 	inset: 0;
-	border-radius: 10px;
+	border-radius: 20px;
 	border: 1px solid transparent;
 	transition: all 0.3s ease;
 	transform: scale(0.85);
@@ -952,7 +951,7 @@ h3 {
 .token-img {
 	width: 85%;
 	height: 85%;
-	border-radius: 5px;
+	border-radius: 15px;
 	background: url(/img/intro/arb-token.png);
 	background-size: cover;
 	filter: blur(3px);
@@ -964,7 +963,7 @@ h3 {
 
 .solana { background: url(/img/intro/solana.png); background-size: cover; }
 .optimism { background: url(/img/intro/optimism.png); background-size: cover; }
-.mew { background: url(/img/intro/mew.png); background-size: cover; }
+.eth-token { background: url(/img/intro/eth-token.png); background-size: cover; }
 .orca { background: url(/img/intro/orca.png); background-size: cover; }
 .jup { background: url(/img/intro/jup-token.png); background-size: cover; }
 .render { background: url(/img/intro/render.png); background-size: cover; }
