@@ -44,7 +44,6 @@ export class IntroComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.titleService.setTitle('Blackhole Labs');
     document.documentElement.classList.add('intro-page');
     setTimeout(() => this.startCountAnimation(), 500);
     this.startPriceUpdates();

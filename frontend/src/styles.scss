@@ -8,6 +8,10 @@ html {
   background-color: black;
 }
 
+html.intro-page {
+  overflow: hidden;
+}
+
 html.intro-page::after {
   display: block;
   content: '';
