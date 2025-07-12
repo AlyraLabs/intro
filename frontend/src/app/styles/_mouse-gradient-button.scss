@@ -1,0 +1,178 @@
+@mixin mouse-gradient-button(
+  $padding: 10px 20px,
+  $height: 58px,
+  $border-radius: 13px,
+  $background: rgba(255, 255, 255, 0.05),
+  $backdrop-blur: 10px,
+  $include-responsive: true
+) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $padding;
+  box-sizing: border-box;
+  height: $height;
+  border-radius: $border-radius;
+  background: $background;
+  backdrop-filter: blur($backdrop-blur);
+  -webkit-backdrop-filter: blur($backdrop-blur);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: $border-radius;
+    padding: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: $border-radius;
+    padding: 1px;
+    background: radial-gradient(
+      circle at var(--gradient-x, 50%) var(--gradient-y, 50%), 
+      rgba(255, 255, 255, 1) 0%, 
+      rgba(255, 255, 255, 0.8) 20%, 
+      rgba(255, 255, 255, 0.4) 40%, 
+      rgba(255, 255, 255, 0.2) 60%, 
+      transparent 80%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    filter: blur(1.5px);
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background: radial-gradient(
+      circle at var(--gradient-x, 50%) var(--gradient-y, 50%), 
+      rgba(255, 255, 255, 0.15) 0%, 
+      rgba(255, 255, 255, 0.05) 50%, 
+      transparent 100%
+    );
+
+    &::after {
+      opacity: 1;
+    }
+
+    &::before {
+      background: radial-gradient(
+        circle at var(--gradient-x, 50%) var(--gradient-y, 50%), 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        transparent 100%
+      );
+      filter: blur(30px);
+      -webkit-mask: none;
+      mask: none;
+      z-index: -1;
+    }
+  }
+
+  // Адаптивы
+  @if $include-responsive {
+    @media screen and (min-width: 1601px) and (max-width: 1920px) {
+      padding: 10px 13px;
+      border-radius: 10px;
+
+      &::before {
+        border-radius: 10px;
+      }
+
+      &::after {
+        border-radius: 10px;
+      }
+    }
+
+    @media screen and (min-width: 1171px) and (max-width: 1600px) {
+      padding: 10px 13px;
+      border-radius: 10px;
+
+      &::before {
+        border-radius: 10px;
+      }
+
+      &::after {
+        border-radius: 10px;
+      }
+    }
+
+    @media screen and (min-width: 971px) and (max-width: 1170px) {
+      padding: 7px 10px;
+      border-radius: 7px;
+
+      &::before {
+        border-radius: 7px;
+      }
+
+      &::after {
+        border-radius: 7px;
+      }
+    }
+
+    @media screen and (min-width: 480px) and (max-width: 970px) {
+      padding: 10px 13px;
+      border-radius: 10px;
+
+      &::before {
+        border-radius: 10px;
+      }
+
+      &::after {
+        border-radius: 10px;
+      }
+    }
+
+    @media screen and (min-width: 360px) and (max-width: 479px) {
+      padding: 10px 13px;
+      border-radius: 10px;
+
+      &::before {
+        border-radius: 10px;
+      }
+
+      &::after {
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+// Готовый класс для использования
+.mouse-gradient-button {
+  @include mouse-gradient-button();
+}
+
+// Вариации с разными параметрами
+.mouse-gradient-button-small {
+  @include mouse-gradient-button(
+    $padding: 8px 16px,
+    $height: 40px,
+    $border-radius: 10px
+  );
+}
+
+.mouse-gradient-button-large {
+  @include mouse-gradient-button(
+    $padding: 16px 24px,
+    $height: 64px,
+    $border-radius: 16px
+  );
+} 
