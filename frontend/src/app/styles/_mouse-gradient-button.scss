@@ -16,7 +16,7 @@
   background: $background;
   backdrop-filter: blur($backdrop-blur);
   -webkit-backdrop-filter: blur($backdrop-blur);
-  transition: all 0.2s ease-in-out;
+  transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -33,6 +33,7 @@
     mask-composite: exclude;
     pointer-events: none;
     z-index: -1;
+    transition: all 1.0s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 
   &::after {
@@ -53,10 +54,23 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 1.0s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                background 1.0s cubic-bezier(0.25, 0.8, 0.25, 1);
     pointer-events: none;
     filter: blur(1.5px);
     z-index: -1;
+  }
+
+  // Состояние при покидании курсора
+  &:not(:hover) {
+    &::after {
+      background: radial-gradient(
+        circle 200% at 50% 50%, 
+        rgba(255, 255, 255, 0.3) 0%, 
+        rgba(255, 255, 255, 0.1) 30%, 
+        transparent 70%
+      );
+    }
   }
 
   &:hover {
@@ -67,9 +81,11 @@
       rgba(255, 255, 255, 0.05) 50%, 
       transparent 100%
     );
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &::after {
       opacity: 1;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     &::before {
@@ -83,6 +99,7 @@
       -webkit-mask: none;
       mask: none;
       z-index: -1;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 
