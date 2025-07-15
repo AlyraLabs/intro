@@ -1,255 +1,272 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { TypingAnimationService } from '../services/typing-animation.service';
-import { CryptoPriceService } from '../services/crypto-price.service';
-import { HttpClientModule } from '@angular/common/http';
+import { MouseGradientService } from '../services/mouse-gradient.service';
+import { StarAnimationService, Star } from '../services/star-animation.service';
+import { NebulaAnimationService, Nebula } from '../services/nebula-animation.service';
+import { Observable } from 'rxjs';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-intro',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterModule,
-    HttpClientModule
+    CommonModule
   ],
   templateUrl: './intro.component.html',
   styleUrls: ['./intro.component.scss',
 		'./intro.component.adaptives.scss'
-	]
+	],
+  animations: [
+    trigger('buttonExpand', [
+      state('collapsed', style({
+        paddingRight: '15px'
+      })),
+      state('expanded', style({
+        paddingRight: 'var(--button-expand-padding)'
+      })),
+      transition('collapsed <=> expanded', [
+        animate('0.4s cubic-bezier(0.4, 0, 0.2, 1)')
+      ])
+    ]),
+    trigger('textFade', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'translateY(-50%) translateX(-15px)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateY(-50%) translateX(0)'
+      })),
+      transition('hidden <=> visible', [
+        animate('0.4s cubic-bezier(0.4, 0, 0.2, 1)')
+      ])
+    ]),
+    trigger('navSlideUp', [
+      state('hidden', style({
+        transform: 'translateX(-50%) translateY(80px)',
+        opacity: 0,
+        filter: 'blur(10px)'
+      })),
+      state('visible', style({
+        transform: 'translateX(-50%) translateY(0)',
+        opacity: 1,
+        filter: 'blur(0px)'
+      })),
+      transition('hidden => visible', [
+        animate('1.2s cubic-bezier(0.23, 1, 0.32, 1)')
+      ])
+    ]),
+    trigger('headerSlideDown', [
+      state('hidden', style({
+        transform: 'translateY(-80px)',
+        opacity: 0,
+        filter: 'blur(10px)'
+      })),
+      state('visible', style({
+        transform: 'translateY(0)',
+        opacity: 1,
+        filter: 'blur(0px)'
+      })),
+      transition('hidden => visible', [
+        animate('1.2s cubic-bezier(0.23, 1, 0.32, 1)')
+      ])
+    ]),
+    trigger('premiumTitleAppear', [
+      state('hidden', style({
+        opacity: 0
+      })),
+      state('visible', style({
+        opacity: 1
+      })),
+      transition('hidden => visible', [
+        animate('0.1s ease-out')
+      ])
+    ]),
+    trigger('premiumSubtitleAppear', [
+      state('hidden', style({
+        opacity: 0
+      })),
+      state('visible', style({
+        opacity: 1
+      })),
+      transition('hidden => visible', [
+        animate('0.1s ease-out')
+      ])
+    ]),
+
+    trigger('mobileMenuSlide', [
+      state('closed', style({
+        transform: 'translateX(100%)',
+        opacity: 0
+      })),
+      state('open', style({
+        transform: 'translateX(0)',
+        opacity: 1
+      })),
+      transition('closed => open', [
+        animate('0.3s cubic-bezier(0.23, 1, 0.32, 1)')
+      ]),
+      transition('open => closed', [
+        animate('0.3s cubic-bezier(0.23, 1, 0.32, 1)')
+      ])
+    ]),
+
+  ]
 })
-export class IntroComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('subtitleLine1') subtitleLine1!: ElementRef;
-  @ViewChild('tokenImg') tokenImg!: ElementRef;
+export class IntroComponent implements OnInit, OnDestroy {
+
   
-  chainsCount = 0;
-  bridgesCount = 0;
-  dexsCount = 0;
-  priceChanges: Record<string, number> = {};
+  private starAnimationService = inject(StarAnimationService);
+  private nebulaAnimationService = inject(NebulaAnimationService);
+  stars$: Observable<Star[]>;
+  nebulas$: Observable<Nebula[]>;
   
-  private readonly BRIDGES_TARGET = 17;
-  private readonly DEXS_TARGET = 12;
-  private readonly ANIMATION_DURATION = 2000;
-  private readonly DELAY_BETWEEN = 200;
-  private readonly SUBTITLE_TEXT = 'Smarter routing. Safer transactions. Unified experience.';
-  private subtitleAnimationComplete = false;
-  private updateInterval: any;
+  isButtonHovered = false;
+  navAnimationState = 'hidden';
+  headerAnimationState = 'hidden';
+  titleAnimationState = 'hidden';
+  subtitleAnimationState = 'hidden';
+
+  isNavExpanded = false;
+  isEcosystemExpanded = false;
+  
+  // Мобильное меню
+  isMobileMenuOpen = false;
+  
+  // Текст для анимации
+
 
   constructor(
-    private router: Router,
-    private titleService: Title,
-    private typingAnimationService: TypingAnimationService,
-    private cryptoPriceService: CryptoPriceService
-  ) {}
+    private mouseGradientService: MouseGradientService
+  ) {
+    this.stars$ = this.starAnimationService.stars;
+    this.nebulas$ = this.nebulaAnimationService.nebulas;
+  }
 
   ngOnInit() {
-    document.documentElement.classList.add('intro-page');
-    setTimeout(() => this.startCountAnimation(), 500);
-    this.startPriceUpdates();
-  }
-
-  ngAfterViewInit() {
-    this.startTypingAnimation();
-    this.setTokenBorderColors();
-  }
-
-  ngOnDestroy() {
-    document.documentElement.classList.remove('intro-page');
-    if (this.updateInterval) {
-      clearInterval(this.updateInterval);
-    }
-  }
-
-  private async startTypingAnimation() {
-    if (!this.subtitleLine1?.nativeElement) return;
-
-
-    const isMobile = window.innerWidth <= 970;
+    // Запускаем анимацию хедера с небольшой задержкой
+    setTimeout(() => {
+      this.headerAnimationState = 'visible';
+    }, 400);
     
-    if (isMobile) {
-      this.subtitleLine1.nativeElement.textContent = this.SUBTITLE_TEXT;
-      this.subtitleAnimationComplete = true;
-    } else if (this.subtitleLine1.nativeElement.textContent.trim() === '') {
-      await this.typingAnimationService.typeText(
-        this.subtitleLine1.nativeElement,
-        this.SUBTITLE_TEXT,
-        {
-          delay: 35,
-          cursor: true,
-          cursorChar: '|',
-          onComplete: () => {
-            this.subtitleAnimationComplete = true;
-          }
-        }
-      );
-    } else if (!this.subtitleAnimationComplete) {
-      this.subtitleLine1.nativeElement.textContent = this.SUBTITLE_TEXT;
-      this.subtitleAnimationComplete = true;
-    }
-  }
-
-  private easeOutQuad(x: number): number {
-    return 1 - (1 - x) * (1 - x);
-  }
-
-  private startCountAnimation() {
-    const startTime = performance.now();
-    const chainsTarget = 32;
+    // Запускаем анимацию заголовка
+    setTimeout(() => {
+      this.titleAnimationState = 'visible';
+    }, 1200);
     
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      
-      const chainsProgress = Math.min((elapsed) / this.ANIMATION_DURATION, 1);
-      const chainsEase = this.easeOutQuad(chainsProgress);
-      this.chainsCount = Math.floor(chainsTarget * chainsEase);
-      
-      const bridgesProgress = Math.min((elapsed - this.DELAY_BETWEEN) / this.ANIMATION_DURATION, 1);
-      const bridgesEase = this.easeOutQuad(Math.max(0, bridgesProgress));
-      this.bridgesCount = Math.floor(this.BRIDGES_TARGET * bridgesEase);
-      
-      const dexsProgress = Math.min((elapsed - this.DELAY_BETWEEN * 2) / this.ANIMATION_DURATION, 1);
-      const dexsEase = this.easeOutQuad(Math.max(0, dexsProgress));
-      this.dexsCount = Math.floor(this.DEXS_TARGET * dexsEase);
-      
-      if (chainsProgress < 1 || bridgesProgress < 1 || dexsProgress < 1) {
-        requestAnimationFrame(animate);
-      }
+    // Запускаем анимацию подзаголовка
+    setTimeout(() => {
+      this.subtitleAnimationState = 'visible';
+    }, 2800);
+    
+    // Запускаем анимацию навигации с задержкой для более драматического эффекта
+    setTimeout(() => {
+      this.navAnimationState = 'visible';
+    }, 800);
+    
+    // Инициализация звездной анимации
+    this.starAnimationService.initializeStars();
+    
+    // Инициализация туманностей
+    this.nebulaAnimationService.initializeNebulas();
+    
+    // Опционально - глобальные методы для управления анимацией:
+    (window as any).setStarAnimation = (mode: 'high' | 'medium' | 'low' | 'disabled') => {
+      this.starAnimationService.setPerformanceMode(mode);
     };
     
-    requestAnimationFrame(animate);
-  }
-
-  private async setTokenBorderColors() {
-    const tokens = document.querySelectorAll('.token');
+    (window as any).getStarAnimation = () => {
+      return this.starAnimationService.getPerformanceMode();
+    };
     
-    tokens.forEach((token, index) => {
-      const img = token.querySelector('.token-img') as HTMLElement;
-      if (!img) return;
-
-      const imgClass = Array.from(img.classList).find(cls => 
-        cls !== 'token-img' && !cls.startsWith('token-')
-      );
-      
-      if (!imgClass) {
-        console.error(`No image class found for token ${index}`);
-        return;
-      }
-
-      const imageUrl = `/img/intro/${imgClass}.png`;
-      // console.log(`Processing token ${index} with image: ${imageUrl}`);
-
-      const tempImg = new Image();
-      tempImg.crossOrigin = 'anonymous';
-      
-      tempImg.onload = () => {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        
-        if (!ctx) return;
-
-        canvas.width = tempImg.width;
-        canvas.height = tempImg.height;
-        ctx.drawImage(tempImg, 0, 0);
-        
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const data = imageData.data;
-        
-        let r = 0, g = 0, b = 0;
-        let count = 0;
-        
-        for (let i = 0; i < data.length; i += 4) {
-          if (data[i + 3] > 0) {
-            r += data[i];
-            g += data[i + 1];
-            b += data[i + 2];
-            count++;
-          }
-        }
-        
-        if (count > 0) {
-          r = Math.round(r / count);
-          g = Math.round(g / count);
-          b = Math.round(b / count);
-          
-          const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-          
-          let borderColor;
-          if (brightness < 0.5) {
-            const lightenAmount = 0.3;
-            borderColor = `rgb(${Math.min(255, r + (255 - r) * lightenAmount)}, 
-                             ${Math.min(255, g + (255 - g) * lightenAmount)}, 
-                             ${Math.min(255, b + (255 - b) * lightenAmount)})`;
-          } else {
-            borderColor = `rgb(${r}, ${g}, ${b})`;
-          }
-          
-          // console.log(`Token ${index} (${imgClass}): Original color: rgb(${r}, ${g}, ${b}), Brightness: ${brightness}, Border color: ${borderColor}`);
-          (token as HTMLElement).style.setProperty('--token-border-color', borderColor);
-        }
-      };
-
-      tempImg.onerror = (error) => {
-        console.error(`Error loading image for token ${index} (${imgClass}):`, error);
-      };
-      
-      tempImg.src = imageUrl;
-    });
+    (window as any).regenerateNebulas = () => {
+      this.nebulaAnimationService.regenerateNebulas();
+    };
   }
 
-  onMouseMove(event: MouseEvent, element: EventTarget | null) {
-    if (!element) return;
-    const rect = (element as HTMLElement).getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    
-    const gradientX = (x / rect.width) * 100;
-    const gradientY = (y / rect.height) * 100;
-    
-    (element as HTMLElement).style.setProperty('--gradient-x', `${gradientX}%`);
-    (element as HTMLElement).style.setProperty('--gradient-y', `${gradientY}%`);
+
+
+  onMouseMove(event: MouseEvent) {
+    this.mouseGradientService.onMouseMove(event);
   }
 
-  onMouseLeave(element: EventTarget | null) {
-    if (!element) return;
-    (element as HTMLElement).style.removeProperty('--gradient-x');
-    (element as HTMLElement).style.removeProperty('--gradient-y');
+  onMouseLeave(event: MouseEvent) {
+    const element = event.currentTarget as HTMLElement;
+    this.mouseGradientService.resetGradientPosition(element);
   }
 
-  launchApp() {
-    window.open('https://app.blackhole.exchange', '_self');
+  onButtonMouseEnter() {
+    this.isButtonHovered = true;
+  }
+
+  onButtonMouseLeave() {
+    this.isButtonHovered = false;
   }
 
   reloadPage() {
     window.location.reload();
   }
 
-  private startPriceUpdates() {
-    this.updatePrices();
-    
-    this.updateInterval = setInterval(() => {
-      this.updatePrices();
-    }, 5 * 60 * 1000);
+  onCommunityMouseEnter() {
+    this.isNavExpanded = true;
+    this.isEcosystemExpanded = false;
   }
 
-  private updatePrices() {
-    this.cryptoPriceService.getAllTokenPriceChanges().subscribe(
-      changes => {
-        this.priceChanges = changes;
-      },
-      error => {
-        console.error('Error fetching price changes:', error);
-      }
-    );
+  onEcosystemMouseEnter() {
+    this.isEcosystemExpanded = true;
+    this.isNavExpanded = false;
   }
 
-  getPriceChangeClass(ticker: string): string {
-    const change = this.priceChanges[ticker] || 0;
-    return change < 0 ? 'negative' : 'positive';
+  onCommunityMouseLeave() {
+    // Убираем этот метод - будем управлять через nav
   }
 
-  getPriceChangeText(ticker: string): string {
-    const change = this.priceChanges[ticker] || 0;
-    return `${change >= 0 ? '+' : ''}${change.toFixed(2)}%`;
+  onNavMouseLeave(event: MouseEvent) {
+    this.mouseGradientService.resetGradientPosition(event.currentTarget as HTMLElement);
+    this.isNavExpanded = false;
+    this.isEcosystemExpanded = false;
+  }
+
+  onOtherNavItemEnter() {
+    this.isNavExpanded = false;
+    this.isEcosystemExpanded = false;
+  }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
+  }
+
+  scrollToDevbridge() {
+    const element = document.getElementById('devbridge-block');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+  }
+
+  ngOnDestroy() {
+    delete (window as any).setStarAnimation;
+    delete (window as any).getStarAnimation;
+    delete (window as any).regenerateNebulas;
+  }
+
+  // Методы для обработки движения мыши:
+  @HostListener('mousemove', ['$event'])
+  onMouseMoveGlobal(event: MouseEvent) {
+    this.starAnimationService.onMouseMove(event);
+  }
+
+  trackByStar(index: number, star: Star): number {
+    return star.id;
+  }
+
+  trackByNebula(index: number, nebula: Nebula): number {
+    return nebula.id;
   }
 } 

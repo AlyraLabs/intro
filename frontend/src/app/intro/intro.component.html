@@ -1,283 +1,388 @@
-<div class="tokens-container">
-	<div class="token token-1">
-		<div class="token-img solana" #tokenImg></div>
-		<div class="token-info">
-			<div>SOL</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('SOL')">
-				{{getPriceChangeText('SOL')}}
-			</div>
-		</div>
+<div class="cosmic-background">
+  <div class="nebulas-container">
+    <div *ngFor="let nebula of nebulas$ | async; trackBy: trackByNebula" 
+         class="nebula {{nebula.animationClass}}" 
+         [style.left.%]="nebula.initialX" 
+         [style.top.%]="nebula.initialY"
+         [style.width.rem]="nebula.width"
+         [style.height.rem]="nebula.height">
+    </div>
+  </div>
+  
+  <div class="stars-container">
+    <div *ngFor="let star of stars$ | async; trackBy: trackByStar" class="star" 
+      [style.left.%]="star.initialX" 
+      [style.top.%]="star.initialY"
+      [style.--offset-x1]="star.offsetX1"
+      [style.--offset-y1]="star.offsetY1"
+      [style.--offset-x2]="star.offsetX2"
+      [style.--offset-y2]="star.offsetY2"
+      [style.--offset-x3]="star.offsetX3"
+      [style.--offset-y3]="star.offsetY3"
+      [style.--duration]="star.duration"
+      [style.--delay]="star.delay"
+      [style.--weight]="star.weight"
+      [style.--target-opacity]="star.opacity"
+      [style.--appear-delay]="star.appearDelay">
+      <img src="/img/header/star.png" alt="star">
+    </div>
+  </div>
+</div>
+
+<div class="header" 
+     [@headerSlideDown]="headerAnimationState">
+	<div class="logo" (click)="reloadPage()">
+		<div class="logo-img"></div>
+		<p>Blackhole Labs</p>
 	</div>
-	<div class="token token-2">
-		<div class="token-img optimism" #tokenImg></div>
-		<div class="token-info">
-			<div>OP</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('OP')">
-				{{getPriceChangeText('OP')}}
-			</div>
-		</div>
+	<div class="header-btn" 
+		 [@buttonExpand]="isButtonHovered ? 'expanded' : 'collapsed'"
+		 (mouseenter)="onButtonMouseEnter()"
+		 (mouseleave)="onButtonMouseLeave()"
+		 (mousemove)="onMouseMove($event)"
+		 (click)="scrollToDevbridge()">
+		<div class="icon"></div>
+		<p [@textFade]="isButtonHovered ? 'visible' : 'hidden'">Build on Blackhole</p>
 	</div>
-	<div class="token token-3">
-		<div class="token-img arb" #tokenImg></div>
-		<div class="token-info">
-			<div>ARB</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('ARB')">
-				{{getPriceChangeText('ARB')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-4">
-		<div class="token-img eth-token" #tokenImg></div>
-		<div class="token-info">
-			<div>ETH</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('ETH')">
-				{{getPriceChangeText('ETH')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-5">
-		<div class="token-img orca" #tokenImg></div>
-		<div class="token-info">
-			<div>ORCA</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('ORCA')">
-				{{getPriceChangeText('ORCA')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-6">
-		<div class="token-img jup-token" #tokenImg></div>
-		<div class="token-info">
-			<div>JUP</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('JUP')">
-				{{getPriceChangeText('JUP')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-7">
-		<div class="token-img jito" #tokenImg></div>
-		<div class="token-info">
-			<div>JTO</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('JTO')">
-				{{getPriceChangeText('JTO')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-8">
-		<div class="token-img helium" #tokenImg></div>
-		<div class="token-info">
-			<div>HNT</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('HNT')">
-				{{getPriceChangeText('HNT')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-9">
-		<div class="token-img render" #tokenImg></div>
-		<div class="token-info">
-			<div>RNDR</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('RNDR')">
-				{{getPriceChangeText('RNDR')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-10">
-		<div class="token-img raydium" #tokenImg></div>
-		<div class="token-info">
-			<div>RAY</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('RAY')">
-				{{getPriceChangeText('RAY')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-11">
-		<div class="token-img pyth" #tokenImg></div>
-		<div class="token-info">
-			<div>PYTH</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('PYTH')">
-				{{getPriceChangeText('PYTH')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-12">
-		<div class="token-img saros" #tokenImg></div>
-		<div class="token-info">
-			<div>SAROS</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('SAROS')">
-				{{getPriceChangeText('SAROS')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-13">
-		<div class="token-img msol" #tokenImg></div>
-		<div class="token-info">
-			<div>mSOL</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('mSOL')">
-				{{getPriceChangeText('mSOL')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-14">
-		<div class="token-img avax-token" #tokenImg></div>
-		<div class="token-info">
-			<div>AVAX</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('AVAX')">
-				{{getPriceChangeText('AVAX')}}
-			</div>
-		</div>
-	</div>
-	<div class="token token-15">
-		<div class="token-img bnb" #tokenImg></div>
-		<div class="token-info">
-			<div>BNB</div>
-			<div class="token-change" [ngClass]="getPriceChangeClass('BNB')">
-				{{getPriceChangeText('BNB')}}
-			</div>
-		</div>
+	
+	<div class="mobile-menu-btn" 
+		 [class.active]="isMobileMenuOpen"
+		 (click)="toggleMobileMenu()">
+		<span></span>
+		<span></span>
+		<span></span>
 	</div>
 </div>
 
-<div class="intro-container">
-	<div class="header">
-		<div class="logo" (click)="reloadPage()">
+<div class="nav" 
+      [class.community-expanded]="isNavExpanded"
+      [class.ecosystem-expanded]="isEcosystemExpanded"
+      [@navSlideUp]="navAnimationState"
+      (mousemove)="onMouseMove($event)" 
+      (mouseleave)="onNavMouseLeave($event)">
+	<div class="nav-content">
+		<a class="nav-item" href="#"
+				(mouseenter)="onCommunityMouseEnter()">
+			<div class="icon community"></div>
+			<p>Community</p>
+		</a>
+		<a class="nav-item" href="#"
+				(mouseenter)="onEcosystemMouseEnter()">
+			<div class="icon ecosystem"></div>
+			<p>Ecosystem</p>
+		</a>
+		<a class="nav-item pytho-item" href="#"
+				(mouseenter)="onOtherNavItemEnter()">
+			<div class="icon pytho"></div>
+			<p>Pytho</p>
+		</a>
+		<a class="nav-item launch-app" href="https://app.blackhole.exchange/"
+				(mouseenter)="onOtherNavItemEnter()">
+			<div class="icon launch"></div>
+			<p>Launch App</p>
+		</a>
+	</div>
+		<div class="community-content" 
+	     *ngIf="isNavExpanded">
+		<a class="community-item" href="https://x.com/Blackhole_Labs" target="_blank">
+			<div class="icon twitter"></div>
+			<p>Twitter</p>
+		</a>
+		<a class="community-item" href="#" target="_blank">
+			<div class="icon medium"></div>
+			<p>Medium</p>
+		</a>
+		<a class="community-item" href="https://t.me/blackholelabs" target="_blank">
+			<div class="icon telegram"></div>
+			<p>Telegram</p>
+		</a>
+		<a class="community-item" href="https://www.linkedin.com/company/blackholelabs/" target="_blank">
+			<div class="icon linkedin"></div>
+			<p>LinkedIn</p>
+		</a>
+		<a class="community-item" href="https://linktr.ee/blackholelabs" target="_blank">
+			<div class="icon linktree"></div>
+			<p>LinkTree</p>
+		</a>
+	</div>
+	<div class="ecosystem-content" 
+	     *ngIf="isEcosystemExpanded">
+		<a class="ecosystem-item" href="https://blackholelabs.gitbook.io/docs/" target="_blank">
+			<div class="icon docs"></div>
+			<p>Docs</p>
+		</a>
+		<a class="ecosystem-item" href="#devbridge-block">
+			<div class="icon devbridge"></div>
+			<p>DevBridge</p>
+		</a>
+		<a class="ecosystem-item" href="#" target="_blank">
+			<div class="icon grants"></div>
+			<p>Grants</p>
+		</a>
+	</div>
+</div>
+
+<div class="mobile-menu-overlay" 
+     [class.open]="isMobileMenuOpen"
+     (click)="closeMobileMenu()">
+</div>
+
+<div class="mobile-menu" 
+     [@mobileMenuSlide]="isMobileMenuOpen ? 'open' : 'closed'">
+	<div class="mobile-menu-header">
+		<div class="logo">
 			<div class="logo-img"></div>
 			<p>Blackhole Labs</p>
 		</div>
-
-		<div class="links">
-			<a href="https://x.com/blackhole_labs" target="_blank" class="link"
-				(mousemove)="onMouseMove($event, $event.currentTarget)"
-				(mouseleave)="onMouseLeave($event.currentTarget)">
-				<div class="img twitter"></div>
-			</a>
-			<a href="https://blackholelabs.gitbook.io/blackholelabs" target="_blank" class="link"
-				(mousemove)="onMouseMove($event, $event.currentTarget)"
-				(mouseleave)="onMouseLeave($event.currentTarget)">
-				<div class="img gitbook"></div>
-			</a>
-			<a href="https://linktr.ee/blackholelabs" target="_blank" class="link"
-				(mousemove)="onMouseMove($event, $event.currentTarget)"
-				(mouseleave)="onMouseLeave($event.currentTarget)">
-				<div class="img linktree"></div>
-			</a>
+		<div class="close-btn" (click)="closeMobileMenu()">×</div>
+	</div>
+	
+	<div class="mobile-menu-content">
+		<div class="mobile-nav-section">
+			<h3>Community</h3>
+			<div class="mobile-nav-items">
+				<a href="https://x.com/Blackhole_Labs" target="_blank" (click)="closeMobileMenu()">
+					<div class="icon twitter"></div>
+					<p>Twitter</p>
+				</a>
+				<a href="#" target="_blank" (click)="closeMobileMenu()">
+					<div class="icon medium"></div>
+					<p>Medium</p>
+				</a>
+				<a href="https://t.me/blackholelabs" target="_blank" (click)="closeMobileMenu()">
+					<div class="icon telegram"></div>
+					<p>Telegram</p>
+				</a>
+				<a href="https://www.linkedin.com/company/blackholelabs/" target="_blank" (click)="closeMobileMenu()">
+					<div class="icon linkedin"></div>
+					<p>LinkedIn</p>
+				</a>
+				<a href="https://linktr.ee/blackholelabs" target="_blank" (click)="closeMobileMenu()">
+					<div class="icon linktree"></div>
+					<p>LinkTree</p>
+				</a>
+			</div>
 		</div>
-
-		<div class="launch" (click)="launchApp()">
-			<p>Launch App</p>
+		
+		<div class="mobile-nav-section">
+			<h3>Ecosystem</h3>
+			<div class="mobile-nav-items">
+				<a href="https://blackholelabs.gitbook.io/docs/" target="_blank" (click)="closeMobileMenu()">
+					<div class="icon docs"></div>
+					<p>Docs</p>
+				</a>
+				<a href="#devbridge-block" (click)="closeMobileMenu()">
+					<div class="icon devbridge"></div>
+					<p>DevBridge</p>
+				</a>
+				<a href="" target="_blank" (click)="closeMobileMenu()">
+					<div class="icon grants"></div>
+					<p>Grants</p>
+				</a>
+			</div>
+		</div>
+		
+		<div class="mobile-menu-footer">
+			<!-- <a href="#" class="mobile-menu-btn" (click)="closeMobileMenu()">
+				<div class="icon pytho"></div>
+				<p>Pytho</p>
+			</a> -->
+			<a href="https://app.blackhole.exchange/" class="mobile-menu-btn main-btn" (click)="closeMobileMenu()">
+				<div class="icon launch"></div>
+				<p>Launch App</p>
+			</a>
 		</div>
 	</div>
-
-	<div class="info">
-		<div class="title">
-			<h1>
-				<span class="line1">The <span class="pink">AI-Powered</span> Execution Layer</span>
-				<span class="line2">for Cross-Chain DeFi</span>
-			</h1>
-			<h3>
-				<span #subtitleLine1 class="line1"></span>
-			</h3>
-		</div>
-
-		<div class="statistics">
-			<div class="statistic" 
-				(mousemove)="onMouseMove($event, $event.currentTarget)"
-				(mouseleave)="onMouseLeave($event.currentTarget)"
-				(click)="launchApp()">
-				<h1>{{chainsCount}}</h1>
-				<h3>Chains</h3>
-				<div class="icons icons0">
-					<div class="icon eth"></div>
-					<div class="icon arb"></div>
-					<div class="icon op"></div>
-					<div class="icon sol"></div>
-				</div>
-				<div class="icons icons1">
-					<div class="icon base"></div>
-					<div class="icon abs"></div>
-					<div class="icon bsc"></div>
-					<div class="icon linea"></div>
-				</div>
-				<div class="icons icons2">
-					<div class="icon mantle"></div>
-					<div class="icon blast"></div>
-					<div class="icon scroll"></div>
-					<div class="icon pol"></div>
-				</div>
-				<div class="icons icons3">
-					<div class="icon sei"></div>
-					<div class="icon zk"></div>
-					<div class="icon fantom"></div>
-					<div class="icon avax"></div>
-				</div>
-			</div>
-			<div class="statistic"
-				(mousemove)="onMouseMove($event, $event.currentTarget)"
-				(mouseleave)="onMouseLeave($event.currentTarget)"
-				(click)="launchApp()">
-				<h1>{{bridgesCount}}</h1>
-				<h3>Bridges</h3>
-				<div class="icons icons0">
-					<div class="icon stargate"></div>
-					<div class="icon mayan"></div>
-					<div class="icon across"></div>
-					<div class="icon hop"></div>
-				</div>
-				<div class="icons icons1">
-					<div class="icon squid"></div>
-					<div class="icon thor"></div>
-					<div class="icon symbiosis"></div>
-					<div class="icon allbridge"></div>
-				</div>
-				<div class="icons icons2">
-					<div class="icon celer"></div>
-					<div class="icon arbitrum-bridge"></div>
-					<div class="icon omni-bridge"></div>
-					<div class="icon optimism-bridge"></div>
-				</div>
-			</div>
-			<div class="statistic"
-				(mousemove)="onMouseMove($event, $event.currentTarget)"
-				(mouseleave)="onMouseLeave($event.currentTarget)"
-				(click)="launchApp()">
-				<h1>{{dexsCount}}</h1>
-				<h3>DEXs</h3>
-				<div class="icons icons0">
-					<div class="icon lifi"></div>
-					<div class="icon bebop"></div>
-					<div class="icon kyber"></div>
-					<div class="icon jup"></div>
-				</div>
-				<div class="icons icons1">
-					<div class="icon inch"></div>
-					<div class="icon para"></div>
-					<div class="icon open"></div>
-					<div class="icon dodo"></div>
-				</div>
-				<div class="icons icons2">
-					<div class="icon odos"></div>
-					<div class="icon x"></div>
-					<div class="icon sushi"></div>
-					<div class="icon okx"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- <div class="footer">
-		<h3>Supported by:</h3>
-		<div class="supporters">
-			<a href="https://x.com/SuperteamPOL" target="_blank" class="supporter"
-				(mousemove)="onMouseMove($event, $event.currentTarget)"
-				(mouseleave)="onMouseLeave($event.currentTarget)">
-				<div class="sup-logo superteam"></div>
-				<h3>Superteam Poland</h3>
-			</a>
-			<a href="https://x.com/BFG_VC_Main" target="_blank" class="supporter"
-				(mousemove)="onMouseMove($event, $event.currentTarget)"
-				(mouseleave)="onMouseLeave($event.currentTarget)">
-				<div class="sup-logo bfg"></div>
-				<h3>Blockchain Founders Group</h3>
-			</a>
-		</div>
-	</div> -->
 </div>
 
+<div class="main-block">
+	<div class="heading">
+		<h1 class="premium-title" [@premiumTitleAppear]="titleAnimationState">
+			<span class="word" style="--delay: 0s">The</span>
+			<span class="word highlight" style="--delay: 0.2s">Modular Execution</span>
+			<span class="word" style="--delay: 0.4s">safety</span>
+			<br>
+			<span class="word" style="--delay: 0.6s">layer</span>
+			<span class="word" style="--delay: 0.8s">for</span>
+			<span class="word" style="--delay: 1s">DeFi</span>
+		</h1>
+		<p class="premium-subtitle" [@premiumSubtitleAppear]="subtitleAnimationState">
+			<span class="word" style="--delay: 0s">Most</span>
+			<span class="word" style="--delay: 0.1s">DeFi</span>
+			<span class="word" style="--delay: 0.2s">hacks</span>
+			<span class="word" style="--delay: 0.3s">end</span>
+			<span class="word" style="--delay: 0.4s">with</span>
+			<span class="word" style="--delay: 0.5s">a</span>
+			<span class="word" style="--delay: 0.6s">transaction.</span>
+			<span class="word" style="--delay: 0.8s">We</span>
+			<span class="word" style="--delay: 0.9s">stop</span>
+			<span class="word" style="--delay: 1s">it</span>
+			<span class="word" style="--delay: 1.1s">before</span>
+			<span class="word" style="--delay: 1.2s">it</span>
+			<span class="word" style="--delay: 1.3s">happens.</span>
+		</p>
+	</div>
+	<div class="button" (click)="scrollToDevbridge()">
+		<div class="icon"></div>
+		<p>Build on Blackhole</p>
+	</div>
+</div>
+
+<div class="info-block">
+	<div class="buit-on">
+		<h6>Built on:</h6>
+		<div class="networks">
+			<div class="network ethereum"></div>
+			<div class="network solana"></div>
+			<div class="network base"></div>
+			<div class="network arbitrum"></div>
+			<div class="network bsc"></div>
+			<div class="network polygon"></div>
+			<div class="network mantle"></div>
+			<div class="network sui"></div>
+		</div>
+	</div>
+
+	<p class="info-text">
+		<span>Blackhole</span> is the <span>modular execution safety layer</span> for DeFi, ensuring that 
+		<span>every transaction</span> is <span>secure</span> — before it’s signed. Unlike traditional SDKs or routers, 
+		<span>Blackhole</span> provides deterministic execution, runtime validation, and automatic fallback logic to 
+		<span>protect users</span> and <span>developers by default</span>.
+	</p>
+
+	<div class="buttons">
+		<a class="button" href="https://blackholelabs.gitbook.io/docs" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<div class="icon learn"></div>
+			<p>Learn More</p>
+		</a>
+		<a class="button" href="https://t.me/whoiscapella" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<div class="icon contact"></div>
+			<p>Contact Us</p>
+		</a>
+	</div>
+
+</div>
+
+<div class="principles-block">
+	<h1>Execution Principles</h1>
+	<div class="principles">
+		<div class="principle" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<div class="title">
+				<p>User-Friendly</p>
+			</div>
+			<p>
+				Blackhole is designed for a smooth, intuitive experience with no complexity for the end user.
+			</p>
+			<div class="background">
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+			</div>
+		</div>
+		<div class="principle" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<div class="title">
+				<p>Developer-First</p>
+			</div>
+			<p>
+				Our SDK is easy to integrate and lets developers add secure cross-chain execution in minutes.
+			</p>
+			<div class="background">
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+			</div>
+		</div>
+		<div class="principle" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<div class="title">
+				<p>Secure</p>
+			</div>
+			<p>
+				The execution stack is built for security — with contract checks, fallback logic, and controlled onchain flow.
+			</p>
+			<div class="background">
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+			</div>
+		</div>
+		<div class="principle" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<div class="title">
+				<p>Scalability</p>
+			</div>
+			<p>
+				Blackhole works across 30+ chains and fits into any existing wallet, dApp, or protocol stack.
+			</p>
+			<div class="background">
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+				<div class="line line-left"></div>
+				<div class="line line-right"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="how-block">
+	<div class="title">
+		<h3>How Does</h3>
+		<h1>Security Stack <span>Works</span></h1>
+	</div>
+	<a class="button" href="https://blackholelabs.gitbook.io/docs/blackhole/security-stack" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+		<p>Learn More</p>
+	</a>
+</div>
+
+<div id="devbridge-block" class="devbridge-block" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+	<div class="dev-bridge-header">
+		<div class="title">
+			<h3>DevBridge</h3>
+			<h1>Launch your secure dApp</h1>
+		</div>
+		<a class="learn" href="https://blackholelabs.gitbook.io/docs/build-on-blackhole/what-is-devbridge" target="_blank">
+			<div class="icon docs"></div>
+			<p>Learn More</p>
+		</a>
+	</div>
+	<p>
+		DevBridge is Blackhole’s <span>developer track</span> — built to 
+		<span>help engineers transition</span> from traditional backends to 
+		<span>secure, intent-aware execution onchain</span>.
+	</p>
+	<div class="buttons">
+		<a class="button apply-btn" href="https://form.typeform.com/to/QTolFTK8" target="_blank">
+			<div class="icon apply"></div>
+			<p>Apply for Early Access</p>
+		</a>
+		<a class="button" href="https://t.me/whoiscapella" target="_blank">
+			<div class="icon contact-ask"></div>
+			<p>Contact Us</p>
+		</a>
+	</div>
+</div>
+
+<div class="footer">
+	<div class="logo-img"></div>
+	<div class="info">
+		<a class="button" href="https://app.blackhole.exchange/documentation/termsofuse" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<p>Terms of Use</p>
+		</a>
+		<a class="button" href="https://app.blackhole.exchange/documentation/privacypolicy" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<p>Privacy Policy</p>
+		</a>
+	</div>
+</div>
