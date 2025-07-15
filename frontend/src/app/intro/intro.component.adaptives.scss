@@ -1476,6 +1476,7 @@
 			gap: 10px;
 			background-color: rgba(var(--white), 0.05);
 			border: 1px solid rgba(var(--white), 0.1);
+			z-index: 1000;
 			p {
 				font-size: 16px;
 				color: rgba(var(--white), 1);
@@ -2009,6 +2010,7 @@
 			gap: 10px;
 			background-color: rgba(var(--white), 0.05);
 			border: 1px solid rgba(var(--white), 0.1);
+			z-index: 1000;
 			p {
 				font-size: 14px;
 				color: rgba(var(--white), 1);
