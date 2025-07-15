@@ -1281,6 +1281,21 @@
 		transform: translateX(100%);
 		overflow-y: auto;
 		
+		a {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			border: none;
+			outline: none;
+			-webkit-tap-highlight-color: transparent;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		
 		.mobile-menu-header {
 			display: flex;
 			justify-content: space-between;
@@ -1397,6 +1412,13 @@
 					cursor: pointer;
 					text-decoration: none;
 					
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+					border: none;
+					outline: none;
+					background-color: rgba(255, 255, 255, 0.05) !important;
+					
 					.icon {
 						width: 20px;
 						height: 20px;
@@ -1412,11 +1434,11 @@
 					}
 					
 					&.main-btn {
-						background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+						background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
 						border: 2px solid #007bff;
 						
 						&:hover {
-							background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+							background: linear-gradient(135deg, #0056b3 0%, #004085 100%) !important;
 							border-color: #0056b3;
 						}
 					}
@@ -1774,6 +1796,21 @@
 		background-color: rgba(var(--white), 0.01);
 		backdrop-filter: blur(20px);
 		-webkit-backdrop-filter: blur(20px);
+		
+		a {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			border: none;
+			outline: none;
+			-webkit-tap-highlight-color: transparent;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
 		z-index: 10000;
 		display: flex;
 		flex-direction: column;
@@ -1898,6 +1935,12 @@
 					cursor: pointer;
 					text-decoration: none;
 					
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+					outline: none;
+					background-color: rgba(255, 255, 255, 0.05) !important;
+					
 					.icon {
 						width: 18px;
 						height: 18px;
@@ -1913,11 +1956,11 @@
 					}
 					
 					&.main-btn {
-						background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+						background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
 						border: 2px solid #007bff;
 						
 						&:hover {
-							background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+							background: linear-gradient(135deg, #0056b3 0%, #004085 100%) !important;
 							border-color: #0056b3;
 						}
 					}
