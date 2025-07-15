@@ -37,6 +37,7 @@
 html {
   background-color: rgba(var(--black), 1);
 	overflow-x: hidden;
+	scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {

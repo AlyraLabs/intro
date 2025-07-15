@@ -22,7 +22,7 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
         paddingRight: '15px'
       })),
       state('expanded', style({
-        paddingRight: '280px'
+        paddingRight: 'var(--button-expand-padding)'
       })),
       transition('collapsed <=> expanded', [
         animate('0.4s cubic-bezier(0.4, 0, 0.2, 1)')
@@ -94,6 +94,23 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
       ])
     ]),
 
+    trigger('mobileMenuSlide', [
+      state('closed', style({
+        transform: 'translateX(100%)',
+        opacity: 0
+      })),
+      state('open', style({
+        transform: 'translateX(0)',
+        opacity: 1
+      })),
+      transition('closed => open', [
+        animate('0.3s cubic-bezier(0.23, 1, 0.32, 1)')
+      ]),
+      transition('open => closed', [
+        animate('0.3s cubic-bezier(0.23, 1, 0.32, 1)')
+      ])
+    ]),
+
   ]
 })
 export class IntroComponent implements OnInit, OnDestroy {
@@ -112,6 +129,9 @@ export class IntroComponent implements OnInit, OnDestroy {
 
   isNavExpanded = false;
   isEcosystemExpanded = false;
+  
+  // Мобильное меню
+  isMobileMenuOpen = false;
   
   // Текст для анимации
 
@@ -210,6 +230,24 @@ export class IntroComponent implements OnInit, OnDestroy {
   onOtherNavItemEnter() {
     this.isNavExpanded = false;
     this.isEcosystemExpanded = false;
+  }
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
+  }
+
+  scrollToDevbridge() {
+    const element = document.getElementById('devbridge-block');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
   }
 
   ngOnDestroy() {

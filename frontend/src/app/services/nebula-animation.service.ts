@@ -23,8 +23,7 @@ export class NebulaAnimationService {
 
   initializeNebulas() {
     const nebulas: Nebula[] = [];
-    
-    // Генерируем 2 случайные туманности
+
     for (let i = 0; i < 2; i++) {
       nebulas.push(this.generateNebula(i));
     }
@@ -33,21 +32,20 @@ export class NebulaAnimationService {
   }
 
   private generateNebula(id: number): Nebula {
-    // Первая туманность (id = 0) - слева вверху, вторая (id = 1) - справа вверху
-    const initialX = id === 0 ? -5 : 85; // -5% слева (за экраном), 85% справа (за экраном)
-    const initialY = id === 0 ? 10 : 50; // 10% сверху для левого, 30% для правого
+    const initialX = id === 0 ? -5 : 85;
+    const initialY = id === 0 ? 10 : 50;
     const animationClass = id === 0 ? 'nebula-left' : 'nebula-right';
     
     return {
       id,
       initialX,
       initialY,
-      width: 600, // базовый размер
-      height: 600, // базовый размер
-      shape: 'circle', // всегда круг
-      ellipseX: 50, // не используется для кругов
-      ellipseY: 50, // не используется для кругов
-      opacity: 0.6, // нормальная прозрачность
+      width: 40, // 40rem вместо 600px
+      height: 40, // 40rem вместо 600px
+      shape: 'circle',
+      ellipseX: 50, 
+      ellipseY: 50, 
+      opacity: 0.6, 
       animationClass
     };
   }
