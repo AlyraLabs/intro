@@ -88,7 +88,7 @@
 			<div class="icon twitter"></div>
 			<p>Twitter</p>
 		</a>
-		<a class="community-item" href="#" target="_blank">
+		<a class="community-item" href="https://medium.com/@blackholelabs" target="_blank">
 			<div class="icon medium"></div>
 			<p>Medium</p>
 		</a>
@@ -145,7 +145,7 @@
 					<div class="icon twitter"></div>
 					<p>Twitter</p>
 				</a>
-				<a href="#" target="_blank" (click)="closeMobileMenu()">
+				<a href="https://medium.com/@blackholelabs" target="_blank" (click)="closeMobileMenu()">
 					<div class="icon medium"></div>
 					<p>Medium</p>
 				</a>
@@ -207,19 +207,17 @@
 			<span class="word" style="--delay: 1s">DeFi</span>
 		</h1>
 		<p class="premium-subtitle" [@premiumSubtitleAppear]="subtitleAnimationState">
-			<span class="word" style="--delay: 0s">Most</span>
-			<span class="word" style="--delay: 0.1s">DeFi</span>
-			<span class="word" style="--delay: 0.2s">hacks</span>
-			<span class="word" style="--delay: 0.3s">end</span>
-			<span class="word" style="--delay: 0.4s">with</span>
-			<span class="word" style="--delay: 0.5s">a</span>
-			<span class="word" style="--delay: 0.6s">transaction.</span>
-			<span class="word" style="--delay: 0.8s">We</span>
-			<span class="word" style="--delay: 0.9s">stop</span>
-			<span class="word" style="--delay: 1s">it</span>
-			<span class="word" style="--delay: 1.1s">before</span>
-			<span class="word" style="--delay: 1.2s">it</span>
-			<span class="word" style="--delay: 1.3s">happens.</span>
+			<span class="word" style="--delay: 0s">Plug-and-play</span>
+			<span class="word" style="--delay: 0.1s">Execution</span>
+			<span class="word" style="--delay: 0.2s">Layer</span>
+			<span class="word" style="--delay: 0.3s">with</span>
+			<span class="word" style="--delay: 0.4s">pre-signature</span>
+			<span class="word" style="--delay: 0.5s">firewall,</span>
+			<span class="word" style="--delay: 0.6s">fallback</span>
+			<span class="word" style="--delay: 0.7s">routing,</span>
+			<span class="word" style="--delay: 0.8s">and</span>
+			<span class="word" style="--delay: 0.9s">deterministic</span>
+			<span class="word" style="--delay: 1s">execution.</span>
 		</p>
 	</div>
 	<div class="button" (click)="scrollToDevbridge()">
@@ -228,7 +226,7 @@
 	</div>
 </div>
 
-<div class="info-block">
+<div class="info-block" #infoBlock>
 	<div class="buit-on">
 		<h6>Built on:</h6>
 		<div class="networks">
@@ -244,10 +242,40 @@
 	</div>
 
 	<p class="info-text">
-		<span>Blackhole</span> is the <span>modular execution safety layer</span> for DeFi, ensuring that 
-		<span>every transaction</span> is <span>secure</span> — before it’s signed. Unlike traditional SDKs or routers, 
-		<span>Blackhole</span> provides deterministic execution, runtime validation, and automatic fallback logic to 
-		<span>protect users</span> and <span>developers by default</span>.
+		<span class="word" style="--delay: 0s"><span>Blackhole</span></span>
+		<span class="word" style="--delay: 0.1s">is</span>
+		<span class="word" style="--delay: 0.2s">the</span>
+		<span class="word" style="--delay: 0.3s"><span>modular execution safety layer</span></span>
+		<span class="word" style="--delay: 0.4s">for</span>
+		<span class="word" style="--delay: 0.5s">DeFi,</span>
+		<span class="word" style="--delay: 0.6s">ensuring</span>
+		<span class="word" style="--delay: 0.7s">that</span>
+		<span class="word" style="--delay: 0.8s"><span>every transaction</span></span>
+		<span class="word" style="--delay: 0.9s">is</span>
+		<span class="word" style="--delay: 1s"><span>secure</span></span>
+		<span class="word" style="--delay: 1.1s">—</span>
+		<span class="word" style="--delay: 1.2s">before</span>
+		<span class="word" style="--delay: 1.3s">it's</span>
+		<span class="word" style="--delay: 1.4s">signed.</span>
+		<span class="word" style="--delay: 1.5s">Unlike</span>
+		<span class="word" style="--delay: 1.6s">traditional</span>
+		<span class="word" style="--delay: 1.7s">SDKs</span>
+		<span class="word" style="--delay: 1.8s">or</span>
+		<span class="word" style="--delay: 1.9s">routers,</span>
+		<span class="word" style="--delay: 2s"><span>Blackhole</span></span>
+		<span class="word" style="--delay: 2.1s">provides</span>
+		<span class="word" style="--delay: 2.2s">deterministic</span>
+		<span class="word" style="--delay: 2.3s">execution,</span>
+		<span class="word" style="--delay: 2.4s">runtime</span>
+		<span class="word" style="--delay: 2.5s">validation,</span>
+		<span class="word" style="--delay: 2.6s">and</span>
+		<span class="word" style="--delay: 2.7s">automatic</span>
+		<span class="word" style="--delay: 2.8s">fallback</span>
+		<span class="word" style="--delay: 2.9s">logic</span>
+		<span class="word" style="--delay: 3s">to</span>
+		<span class="word" style="--delay: 3.1s"><span>protect users</span></span>
+		<span class="word" style="--delay: 3.2s">and</span>
+		<span class="word" style="--delay: 3.3s"><span>developers by default</span></span>.
 	</p>
 
 	<div class="buttons">
@@ -378,11 +406,11 @@
 <div class="footer">
 	<div class="logo-img"></div>
 	<div class="info">
-		<a class="button" href="https://app.blackhole.exchange/documentation/termsofuse" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
-			<p>Terms of Use</p>
+		<a href="https://app.blackhole.exchange/documentation/termsofuse" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			Terms of Use
 		</a>
-		<a class="button" href="https://app.blackhole.exchange/documentation/privacypolicy" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
-			<p>Privacy Policy</p>
+		<a href="https://app.blackhole.exchange/documentation/privacypolicy" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			Privacy Policy
 		</a>
 	</div>
 </div>

@@ -26,6 +26,11 @@
 			position: relative;
 			overflow: hidden;
 			
+			// Исключаем padding из CSS transition чтобы избежать конфликта с Angular анимацией
+			transition: background 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+						transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
+						backdrop-filter 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+			
 			.icon {
 				width: 25px;
 				height: 25px;
@@ -208,6 +213,12 @@
 				flex-direction: column;
 				align-items: center;
 				justify-content: space-between;
+				
+				// 3D эффект
+				transform-style: preserve-3d;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+				will-change: transform, box-shadow;
+				
 				.title {
 					padding: 8px 15px;
 					border-radius: 13px;
@@ -328,17 +339,9 @@
 			height: 35px;
 		}
 		.info {
-			gap: 10px;
-			.button {
-				@include mouse-gradient-button(
-					$padding: 10px 15px,
-					$height: auto,
-					$border-radius: 10px,
-					$include-responsive: false
-				);
-				p {
-					font-size: 10px;
-				}
+			gap: 20px;
+			a {
+				font-size: 14px;
 			}
 		}
 	}
@@ -446,6 +449,11 @@
 			gap: 15px;
 			position: relative;
 			overflow: hidden;
+			
+			// Исключаем padding из CSS transition чтобы избежать конфликта с Angular анимацией
+			transition: background 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+						transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
+						backdrop-filter 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 			
 			.icon {
 				width: 25px;
@@ -629,6 +637,12 @@
 				flex-direction: column;
 				align-items: center;
 				justify-content: space-between;
+				
+				// 3D эффект
+				transform-style: preserve-3d;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+				will-change: transform, box-shadow;
+				
 				.title {
 					padding: 8px 15px;
 					border-radius: 13px;
@@ -749,17 +763,9 @@
 			height: 35px;
 		}
 		.info {
-			gap: 10px;
-			.button {
-				@include mouse-gradient-button(
-					$padding: 10px 15px,
-					$height: auto,
-					$border-radius: 10px,
-					$include-responsive: false
-				);
-				p {
-					font-size: 10px;
-				}
+			gap: 20px;
+			a {
+				font-size: 14px;
 			}
 		}
 	}
@@ -867,6 +873,11 @@
 			gap: 15px;
 			position: relative;
 			overflow: hidden;
+			
+			// Исключаем padding из CSS transition чтобы избежать конфликта с Angular анимацией
+			transition: background 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+						transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
+						backdrop-filter 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 			
 			.icon {
 				width: 25px;
@@ -1048,6 +1059,12 @@
 				flex-direction: column;
 				align-items: center;
 				justify-content: space-between;
+				
+				// 3D эффект
+				transform-style: preserve-3d;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+				will-change: transform, box-shadow;
+				
 				.title {
 					padding: 8px 15px;
 					border-radius: 13px;
@@ -1169,17 +1186,85 @@
 		}
 		.info {
 			gap: 10px;
-			.button {
-				@include mouse-gradient-button(
-					$padding: 10px 15px,
-					$height: auto,
-					$border-radius: 10px,
-					$include-responsive: false
-				);
-				p {
-					font-size: 10px;
-				}
+			a {
+				font-size: 12px;
 			}
+		}
+	}
+
+	@keyframes slideInItems {
+		0% {
+			opacity: 0;
+			transform: translateX(-20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes communitySlideIn {
+		0% {
+			opacity: 0;
+			transform: translateY(-30px);
+			filter: blur(8px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+			filter: blur(0px);
+		}
+	}
+
+	@keyframes ecosystemSlideIn {
+		0% {
+			opacity: 0;
+			transform: translateY(-30px);
+			filter: blur(8px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+			filter: blur(0px);
+		}
+	}
+
+
+	@keyframes float {
+		0% {
+			transform: translate3d(
+				calc(0px + var(--push-x, 0px) * var(--weight, 1)), 
+				calc(0px + var(--push-y, 0px) * var(--weight, 1)), 
+				0
+			);
+		}
+		25% {
+			transform: translate3d(
+				calc(var(--offset-x1) + var(--push-x, 0px) * var(--weight, 1)), 
+				calc(var(--offset-y1) + var(--push-y, 0px) * var(--weight, 1)), 
+				0
+			);
+		}
+		50% {
+			transform: translate3d(
+				calc(var(--offset-x2) + var(--push-x, 0px) * var(--weight, 1)), 
+				calc(var(--offset-y2) + var(--push-y, 0px) * var(--weight, 1)), 
+				0
+			);
+		}
+		75% {
+			transform: translate3d(
+				calc(var(--offset-x3) + var(--push-x, 0px) * var(--weight, 1)), 
+				calc(var(--offset-y3) + var(--push-y, 0px) * var(--weight, 1)), 
+				0
+			);
+		}
+		100% {
+			transform: translate3d(
+				calc(0px + var(--push-x, 0px) * var(--weight, 1)), 
+				calc(0px + var(--push-y, 0px) * var(--weight, 1)), 
+				0
+			);
 		}
 	}
 }
@@ -1556,6 +1641,12 @@
 				flex-direction: column;
 				align-items: center;
 				justify-content: space-between;
+				
+				// 3D эффект
+				transform-style: preserve-3d;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+				will-change: transform, box-shadow;
+				
 				.title {
 					padding: 8px 15px;
 					border-radius: 13px;
@@ -1692,17 +1783,9 @@
 			height: 25px;
 		}
 		.info {
-			gap: 10px;
-			.button {
-				@include mouse-gradient-button(
-					$padding: 10px 15px,
-					$height: auto,
-					$border-radius: 10px,
-					$include-responsive: false
-				);
-				p {
-					font-size: 12px;
-				}
+			gap: 20px;
+			a {
+				font-size: 14px;
 			}
 		}
 	}
@@ -2095,6 +2178,12 @@
 				flex-direction: column;
 				align-items: center;
 				justify-content: space-between;
+				
+				// 3D эффект
+				transform-style: preserve-3d;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+				will-change: transform, box-shadow;
+				
 				.title {
 					padding: 8px 15px;
 					border-radius: 13px;
@@ -2235,17 +2324,9 @@
 			height: 25px;
 		}
 		.info {
-			gap: 10px;
-			.button {
-				@include mouse-gradient-button(
-					$padding: 10px 15px,
-					$height: auto,
-					$border-radius: 10px,
-					$include-responsive: false
-				);
-				p {
-					font-size: 12px;
-				}
+			gap: 20px;
+			a {
+				font-size: 14px;
 			}
 		}
 	}
