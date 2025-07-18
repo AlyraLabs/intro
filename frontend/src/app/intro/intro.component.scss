@@ -807,15 +807,15 @@
 			align-items: center;
 			justify-content: space-between;
 			
-			// 3D эффект
 			transform-style: preserve-3d;
 			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 			will-change: transform, box-shadow;
 			&:hover {
 				background: radial-gradient(
-					circle 200px at var(--gradient-x, 50%) var(--gradient-y, 50%), 
-					rgba(255, 255, 255, 0.001) 0%, 
-					rgba(255, 255, 255, 0.0001) 50%, 
+					circle 250px at var(--gradient-x, 50%) var(--gradient-y, 50%), 
+					rgba(255, 255, 255, 0.0001) 0%, 
+					rgba(255, 255, 255, 0.0005) 30%, 
+					rgba(255, 255, 255, 0.0002) 60%, 
 					transparent 100%
 				);
 				
