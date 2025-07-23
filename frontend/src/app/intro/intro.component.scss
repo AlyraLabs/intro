@@ -1,6 +1,5 @@
 @import '../styles/mouse-gradient-button';
 
-.principles-block,
 .how-block,
 .devbridge-block {
 	opacity: 0.001;
@@ -15,11 +14,6 @@
 		filter: blur(0px);
 		animation: slideUpFromBottom 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 	}
-}
-
-
-.principles-block.animate-in {
-	animation: slideUpFromBottomSlow 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 .how-block.animate-in {
@@ -778,230 +772,7 @@
 	}
 }
 
-.principles-block {
-	margin-top: 200px;
-	width: 1600px;
-	display: flex;
-	flex-direction: column;
-	gap: 40px;
-	h1 {
-		font-size: 62px;
-		font-weight: 700;
-		color: rgba(var(--white), 1);
-	}
-	.principles {
-		position: relative;
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		gap: 15px;
-		.principle {
-			@include mouse-gradient-button(
-				$padding: 30px,
-				$height: 480px,
-				$border-radius: 13px
-			);
-			flex: 1;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: space-between;
-			
-			transform-style: preserve-3d;
-			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-			will-change: transform, box-shadow;
-			&:hover {
-				background: radial-gradient(
-					circle 250px at var(--gradient-x, 50%) var(--gradient-y, 50%), 
-					rgba(255, 255, 255, 0.0001) 0%, 
-					rgba(255, 255, 255, 0.0005) 30%, 
-					rgba(255, 255, 255, 0.0002) 60%, 
-					transparent 100%
-				);
-				
-				.background .line {
-					&.line-right {
-						&:nth-child(1), &:nth-child(3), &:nth-child(5), &:nth-child(7) { 
-							&::before, &::after { 
-								animation-play-state: running;
-							}
-						}
-					}
-					
-					&.line-left {
-						&:nth-child(2), &:nth-child(4), &:nth-child(6) { 
-							&::before, &::after { 
-								animation-play-state: running;
-							}
-						}
-					}
-				}
-			}
-			.title {
-				padding: 10px 25px;
-				background-color: rgba(var(--dark-bg), 0.9);
-				border: 1px solid rgba(var(--white), 0.1);
-				backdrop-filter: blur(10px);
-				-webkit-backdrop-filter: blur(10px);
-				border-radius: 13px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				position: relative;
-				z-index: 2;
-				p{
-					font-size: 24px;
-					font-weight: 400;
-					color: rgba(var(--white), 1);
-				}
-			}
-			p {
-				font-size: 16px;
-				color: rgba(var(--white), 0.4);
-			}
-			.background {
-				position: absolute;
-				top: -60px;
-				left: -50px;
-				width: 200%;
-				height: 80%;
-				rotate: -13deg;
-				mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 10%, rgba(255, 255, 255, 0) 87%);
-				-webkit-mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 10%, rgba(255, 255, 255, 0) 87%);
-				
-				.line {
-					width: 200%;
-					height: 39px;
-					position: relative;
-					margin-bottom: 10px;
-					overflow: hidden;
-					
-					&:nth-child(even) {
-						margin-left: 30px;
-					}
-					
-					&::before,
-					&::after {
-						content: '';
-						position: absolute;
-						top: 0;
-						width: 100%;
-						height: 100%;
-						background-repeat: repeat-x;
-						background-size: 39px 39px;
-						will-change: transform;
-					}
-					
-					&.line-right {
-						&::before {
-							left: -100%;
-						}
-						
-						&::after {
-							left: 0;
-						}
-						
-						&:nth-child(1) { 
-							&::before, &::after { 
-								animation: slideInfiniteRight 12s linear infinite;
-								animation-delay: 0s;
-								animation-play-state: paused;
-							}
-						}
-						&:nth-child(3) { 
-							&::before, &::after { 
-								animation: slideInfiniteRight 18s linear infinite;
-								animation-delay: -4s;
-								animation-play-state: paused;
-							}
-						}
-						&:nth-child(5) { 
-							&::before, &::after { 
-								animation: slideInfiniteRight 14s linear infinite;
-								animation-delay: -8s;
-								animation-play-state: paused;
-							}
-						}
-						&:nth-child(7) { 
-							&::before, &::after { 
-								animation: slideInfiniteRight 16s linear infinite;
-								animation-delay: -2s;
-								animation-play-state: paused;
-							}
-						}
-					}
-					
-					&.line-left {
-						&::before {
-							left: 0;
-						}
-						
-						&::after {
-							left: 100%;
-						}
-						
-						&:nth-child(2) { 
-							&::before, &::after { 
-								animation: slideInfiniteLeft 20s linear infinite;
-								animation-delay: -2s;
-								animation-play-state: paused;
-							}
-						}
-						&:nth-child(4) { 
-							&::before, &::after { 
-								animation: slideInfiniteLeft 10s linear infinite;
-								animation-delay: -6s;
-								animation-play-state: paused;
-							}
-						}
-						&:nth-child(6) { 
-							&::before, &::after { 
-								animation: slideInfiniteLeft 24s linear infinite;
-								animation-delay: -1s;
-								animation-play-state: paused;
-							}
-						}
-					}
-				}
-			}
-			&:nth-child(1) {
-				.background .line {
-					&::before,
-					&::after {
-						background-image: url(/img/intro/contact.png);
-					}
-				}
-			}
-			
-			&:nth-child(2) {
-				.background .line {
-					&::before,
-					&::after {
-						background-image: url(/img/intro/dev-icon.png);
-					}
-				}
-			}
-			
-			&:nth-child(3) {
-				.background .line {
-					&::before,
-					&::after {
-						background-image: url(/img/intro/secure.png);
-					}
-				}
-			}
-			
-			&:nth-child(4) {
-				.background .line {
-					&::before,
-					&::after {
-						background-image: url(/img/intro/scalability.png);
-					}
-				}
-			}
-		}
-	}
-}
+
 
 .how-block {
 	margin-top: 200px;
@@ -1288,48 +1059,11 @@
   overflow: hidden;
   opacity: 0;
   animation: cosmicFadeIn 3s ease-out forwards;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              filter 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
   transform-origin: center center;
-  will-change: transform, filter;
+
   
-  // Добавляем дополнительные слои глубины
-  &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(ellipse 60% 40% at 30% 20%, 
-      rgba(var(--blue), 0.1) 0%, 
-      transparent 50%),
-      radial-gradient(ellipse 40% 60% at 70% 80%, 
-      rgba(var(--blue), 0.15) 0%, 
-      transparent 50%),
-      radial-gradient(ellipse 80% 30% at 50% 50%, 
-      rgba(var(--blue), 0.05) 0%, 
-      transparent 50%);
-    animation: backgroundShift 110s linear infinite;
-    z-index: -1;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 20% 30%, 
-      rgba(var(--blue), 0.03) 0%, 
-      transparent 40%),
-      radial-gradient(circle at 80% 70%, 
-      rgba(var(--blue), 0.05) 0%, 
-      transparent 40%);
-    animation: backgroundPulse 80s ease-in-out infinite;
-    z-index: -2;
-  }
+
 }
 
 .stars-container {
@@ -1341,70 +1075,7 @@
   z-index: 2;
 }
 
-.nebulas-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  transition: transform 0.5s ease-out;
-  
-  // Добавляем параллакс эффект
-  &.mouse-active {
-    transform: translateZ(0);
-  }
-}
 
-.nebula {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 1;
-  will-change: transform, filter, opacity;
-  z-index: 2;
-  background: radial-gradient(ellipse 150% 100% at 50% 50%, 
-    rgba(var(--blue), 0.6) 0%, 
-    rgba(var(--blue), 0.4) 20%, 
-    rgba(var(--blue), 0.2) 40%, 
-    rgba(var(--blue), 0.1) 60%, 
-    rgba(var(--blue), 0.05) 80%, 
-    transparent 100%);
-  
-  // Добавляем внутреннее свечение
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40%;
-    height: 40%;
-    background: radial-gradient(circle, 
-      rgba(255, 255, 255, 0.2) 0%, 
-      rgba(var(--blue), 0.3) 40%, 
-      transparent 70%);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(20px);
-    opacity: 0.8;
-    animation: innerGlow 12s ease-in-out infinite;
-  }
-}
-
-.nebula-left {
-  animation: 
-    nebulaFloatLeft 70s ease-in-out infinite,
-    nebulaBreathing 16s ease-in-out infinite,
-    nebulaShimmer 12s ease-in-out infinite;
-}
-
-.nebula-right {
-  animation: 
-    nebulaFloatRight 60s ease-in-out infinite,
-    nebulaBreathing 18s ease-in-out infinite reverse,
-    nebulaShimmer 14s ease-in-out infinite reverse;
-}
 
 .star {
   position: absolute;
@@ -1471,56 +1142,9 @@
   object-fit: contain;
 }
 
-@keyframes nebulaFloatLeft {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  20% { transform: translate(15vw, -12vh) rotate(72deg) scale(1.2); }
-  40% { transform: translate(-8vw, -18vh) rotate(144deg) scale(0.9); }
-  60% { transform: translate(20vw, -8vh) rotate(216deg) scale(1.4); }
-  80% { transform: translate(-5vw, 5vh) rotate(288deg) scale(1.1); }
-  100% { transform: translate(0, 0) rotate(360deg) scale(1); }
-}
 
-@keyframes nebulaFloatRight {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  25% { transform: translate(-18vw, 8vh) rotate(-90deg) scale(1.3); }
-  50% { transform: translate(10vw, -15vh) rotate(-180deg) scale(0.8); }
-  75% { transform: translate(-12vw, -10vh) rotate(-270deg) scale(1.5); }
-  100% { transform: translate(0, 0) rotate(-360deg) scale(1); }
-}
 
-// Дыхание туманности
-@keyframes nebulaBreathing {
-  0%, 100% { 
-    filter: blur(80px);
-    opacity: 0.4;
-  }
-  50% { 
-    filter: blur(120px);
-    opacity: 0.8;
-  }
-}
 
-// Мерцание
-@keyframes nebulaShimmer {
-  0%, 100% { 
-    box-shadow: 0 0 50px rgba(var(--blue), 0.2);
-  }
-  50% { 
-    box-shadow: 0 0 80px rgba(var(--blue), 0.4);
-  }
-}
-
-// Внутреннее свечение
-@keyframes innerGlow {
-  0%, 100% { 
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% { 
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.3);
-  }
-}
 
 @keyframes cosmicFadeIn {
   0% {
@@ -1531,26 +1155,9 @@
   }
 }
 
-// Медленное движение фоновых градиентов
-@keyframes backgroundShift {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(5%, -3%) rotate(90deg); }
-  50% { transform: translate(-3%, 7%) rotate(180deg); }
-  75% { transform: translate(8%, 2%) rotate(270deg); }
-  100% { transform: translate(0, 0) rotate(360deg); }
-}
 
-// Пульсация фоновых элементов
-@keyframes backgroundPulse {
-  0%, 100% { 
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 0.7;
-    transform: scale(1.1);
-  }
-}
+
+
 
 @keyframes premiumWordAppear {
   0% {

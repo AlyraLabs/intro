@@ -1,13 +1,5 @@
 <div class="cosmic-background">
-  <div class="nebulas-container">
-    <div *ngFor="let nebula of nebulas$ | async; trackBy: trackByNebula" 
-         class="nebula {{nebula.animationClass}}" 
-         [style.left.%]="nebula.initialX" 
-         [style.top.%]="nebula.initialY"
-         [style.width.rem]="nebula.width"
-         [style.height.rem]="nebula.height">
-    </div>
-  </div>
+
   
   <div class="stars-container">
     <div *ngFor="let star of stars$ | async; trackBy: trackByStar" class="star" 
@@ -291,79 +283,7 @@
 
 </div>
 
-<div class="principles-block">
-	<h1>Execution Principles</h1>
-	<div class="principles">
-		<div class="principle" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
-			<div class="title">
-				<p>Transparent</p>
-			</div>
-			<p>
-				Developers see what executes; users see what they sign. Execution logic becomes clear, testable, and trusted.
-			</p>
-			<div class="background">
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-			</div>
-		</div>
-		<div class="principle" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
-			<div class="title">
-				<p>Modular</p>
-			</div>
-			<p>
-				Drop Blackhole into any DeFi app — no rewrites. You run the front — we secure execution.
-			</p>
-			<div class="background">
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-			</div>
-		</div>
-		<div class="principle" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
-			<div class="title">
-				<p>Secure by default</p>
-			</div>
-			<p>
-				Every transaction is checked against known risk patterns, contract states, and routing rules before the user signs.
-			</p>
-			<div class="background">
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-			</div>
-		</div>
-		<div class="principle" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
-			<div class="title">
-				<p>Scalability</p>
-			</div>
-			<p>
-				Blackhole unifies execution across chains. One SDK secures EVM, Solana, and beyond.
-			</p>
-			<div class="background">
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-				<div class="line line-left"></div>
-				<div class="line line-right"></div>
-			</div>
-		</div>
-	</div>
-</div>
+
 
 <div class="how-block">
 	<div class="title">

@@ -192,66 +192,6 @@
 		}
 	}
 
-	.principles-block {
-		margin-top: 150px;
-		width: 1171px;
-		gap: 30px;
-		h1 {
-			font-size: 48px;
-		}
-		.principles {
-			gap: 10px;
-			.principle {
-				@include mouse-gradient-button(
-					$padding: 20px,
-					$height: 380px,
-					$border-radius: 13px,
-					$include-responsive: false
-				);
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: space-between;
-				
-				// 3D эффект
-				transform-style: preserve-3d;
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-				will-change: transform, box-shadow;
-				
-				.title {
-					padding: 8px 15px;
-					border-radius: 13px;
-					p{
-						font-size: 18px;
-					}
-				}
-				p {
-					font-size: 12px;
-				}
-				.background {
-					top: -40px;
-					left: -50px;
-					
-					.line {
-						width: 200%;
-						height: 30px;
-						margin-bottom: 10px;
-						
-						&:nth-child(even) {
-							margin-left: 30px;
-						}
-						
-						&::before,
-						&::after {
-							background-size: 30px 30px;
-						}
-					}
-				}
-			}
-		}
-	}
-
 	.how-block {
 		margin-top: 150px;
 		width: 1171px;
@@ -616,66 +556,6 @@
 		}
 	}
 
-	.principles-block {
-		margin-top: 150px;
-		width: 1171px;
-		gap: 30px;
-		h1 {
-			font-size: 48px;
-		}
-		.principles {
-			gap: 10px;
-			.principle {
-				@include mouse-gradient-button(
-					$padding: 20px,
-					$height: 380px,
-					$border-radius: 13px,
-					$include-responsive: false
-				);
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: space-between;
-				
-				// 3D эффект
-				transform-style: preserve-3d;
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-				will-change: transform, box-shadow;
-				
-				.title {
-					padding: 8px 15px;
-					border-radius: 13px;
-					p{
-						font-size: 18px;
-					}
-				}
-				p {
-					font-size: 12px;
-				}
-				.background {
-					top: -40px;
-					left: -50px;
-					
-					.line {
-						width: 200%;
-						height: 30px;
-						margin-bottom: 10px;
-						
-						&:nth-child(even) {
-							margin-left: 30px;
-						}
-						
-						&::before,
-						&::after {
-							background-size: 30px 30px;
-						}
-					}
-				}
-			}
-		}
-	}
-
 	.how-block {
 		margin-top: 150px;
 		width: 1171px;
@@ -1033,66 +913,6 @@
 				}
 				p {
 					font-size: 18px;
-				}
-			}
-		}
-	}
-
-	.principles-block {
-		margin-top: 150px;
-		width: 970px;
-		gap: 30px;
-		h1 {
-			font-size: 40px;
-		}
-		.principles {
-			gap: 10px;
-			.principle {
-				@include mouse-gradient-button(
-					$padding: 20px,
-					$height: 320px,
-					$border-radius: 13px,
-					$include-responsive: false
-				);
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: space-between;
-				
-				// 3D эффект
-				transform-style: preserve-3d;
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-				will-change: transform, box-shadow;
-				
-				.title {
-					padding: 8px 15px;
-					border-radius: 13px;
-					p{
-						font-size: 16px;
-					}
-				}
-				p {
-					font-size: 10px;
-				}
-				.background {
-					top: -40px;
-					left: -50px;
-					
-					.line {
-						width: 200%;
-						height: 30px;
-						margin-bottom: 10px;
-						
-						&:nth-child(even) {
-							margin-left: 30px;
-						}
-						
-						&::before,
-						&::after {
-							background-size: 30px 30px;
-						}
-					}
 				}
 			}
 		}
@@ -1614,72 +1434,6 @@
 		}
 	}
 
-	.principles-block {
-		margin-top: 100px;
-		width: 80%;
-		gap: 20px;
-		align-items: center;
-		h1 {
-			font-size: 36px;
-			text-align: center;
-		}
-		.principles {
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 10px;
-			.principle {
-				@include mouse-gradient-button(
-					$padding: 20px,
-					$height: 280px,
-					$border-radius: 13px,
-					$include-responsive: false
-				);
-				flex: auto;
-				min-width: 230px;
-				max-width: 230px;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: space-between;
-				
-				// 3D эффект
-				transform-style: preserve-3d;
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-				will-change: transform, box-shadow;
-				
-				.title {
-					padding: 8px 15px;
-					border-radius: 13px;
-					p{
-						font-size: 16px;
-					}
-				}
-				p {
-					font-size: 10px;
-				}
-				.background {
-					top: -40px;
-					left: -50px;
-					
-					.line {
-						width: 200%;
-						height: 30px;
-						margin-bottom: 10px;
-						
-						&:nth-child(even) {
-							margin-left: 30px;
-						}
-						
-						&::before,
-						&::after {
-							background-size: 30px 30px;
-						}
-					}
-				}
-			}
-		}
-	}
-
 	.how-block {
 		margin-top: 100px;
 		width: 80%;
@@ -2146,72 +1900,6 @@
 				}
 				p {
 					font-size: 14px;
-				}
-			}
-		}
-	}
-
-	.principles-block {
-		margin-top: 80px;
-		width: 100%;
-		gap: 20px;
-		align-items: center;
-		h1 {
-			font-size: 32px;
-			text-align: center;
-		}
-		.principles {
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 10px;
-			.principle {
-				@include mouse-gradient-button(
-					$padding: 20px,
-					$height: 400px,
-					$border-radius: 20px,
-					$include-responsive: false
-				);
-				flex: auto;
-				min-width: 350px;
-				max-width: 350px;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: space-between;
-				
-				// 3D эффект
-				transform-style: preserve-3d;
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-				will-change: transform, box-shadow;
-				
-				.title {
-					padding: 8px 15px;
-					border-radius: 13px;
-					p{
-						font-size: 16px;
-					}
-				}
-				p {
-					font-size: 16px;
-				}
-				.background {
-					top: -40px;
-					left: -50px;
-					
-					.line {
-						width: 200%;
-						height: 30px;
-						margin-bottom: 10px;
-						
-						&:nth-child(even) {
-							margin-left: 30px;
-						}
-						
-						&::before,
-						&::after {
-							background-size: 30px 30px;
-						}
-					}
 				}
 			}
 		}
