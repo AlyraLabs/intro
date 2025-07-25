@@ -1,65 +1,5 @@
 @import '../styles/mouse-gradient-button';
 
-.how-block,
-.devbridge-block {
-	opacity: 0.001;
-	filter: blur(8px);
-	transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
-				transform 0.8s cubic-bezier(0.23, 1, 0.32, 1),
-				filter 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-	
-	&.animate-in {
-		opacity: 1;
-		transform: translateY(0);
-		filter: blur(0px);
-		animation: slideUpFromBottom 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-	}
-}
-
-.how-block.animate-in {
-	animation: slideUpFromBottomFast 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-
-@keyframes slideUpFromBottom {
-	0% {
-		transform: translateY(80px);
-		opacity: 0.1;
-		filter: blur(8px);
-	}
-	100% {
-		transform: translateY(0);
-		opacity: 1;
-		filter: blur(0px);
-	}
-}
-
-@keyframes slideUpFromBottomSlow {
-	0% {
-		transform: translateY(100px);
-		opacity: 0.1;
-		filter: blur(10px);
-	}
-	100% {
-		transform: translateY(0);
-		opacity: 1;
-		filter: blur(0px);
-	}
-}
-
-@keyframes slideUpFromBottomFast {
-	0% {
-		transform: translateY(60px);
-		opacity: 0.1;
-		filter: blur(6px);
-	}
-	100% {
-		transform: translateY(0);
-		opacity: 1;
-		filter: blur(0px);
-	}
-}
-
 :host {
 	width: 100%;
 	display: flex;
@@ -141,14 +81,14 @@
 }
 
 .nav {
-	@include mouse-gradient-button(
-		$padding: 20px,
-		$height: auto,
-		$border-radius: 20px
-	);
+	background-color: rgba(var(--dark-bg), 0.1);
+	border: 1px solid rgba(var(--white), 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-radius: 20px;
 	position: fixed;
 	width: 920px;
-	height: 100px;
+	height: 97px;
 	bottom: 50px;
 	left: 50%;
 	transform: translateX(-50%);
@@ -163,40 +103,15 @@
 		height: 300px;
 	}
 	
-	&:hover {
-		transform: translateX(-50%);
-		background: radial-gradient(
-			circle 920px at var(--gradient-x, 50%) var(--gradient-y, 50%), 
-			rgba(255, 255, 255, 0.03) 0%, 
-			rgba(255, 255, 255, 0.01) 50%, 
-			transparent 100%
-		);
-		
-		&::after {
-			background: radial-gradient(
-				circle 920px at var(--gradient-x, 50%) var(--gradient-y, 50%), 
-				rgba(255, 255, 255, 0.4) 0%, 
-				rgba(255, 255, 255, 0.2) 20%, 
-				rgba(255, 255, 255, 0.1) 40%, 
-				rgba(255, 255, 255, 0.05) 60%, 
-				transparent 80%
-			);
-		}
-		
-		&::before {
-			background: radial-gradient(
-				circle 420px at var(--gradient-x, 50%) var(--gradient-y, 50%), 
-				rgba(255, 255, 255, 0.08) 0%, 
-				rgba(255, 255, 255, 0.02) 50%, 
-				transparent 100%
-			);
-		}
-	}
+
 
 	.nav-content {
+		display: flex;
+		left: 50%;
+		transform: translateX(-50%);
 		position: absolute;
 		bottom: 20px;
-		display: flex;
+		width: max-content;
 		.nav-item {
 			padding: 10px 25px;
 			border-radius: 13px;
@@ -253,26 +168,7 @@
 				}
 			}
 			
-			&.launch-app {
-				transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-				
-				&::before {
-					background: var(--gradient);
-					background-size: 200% 200%;
-					animation: gradientShift 6s ease-in-out infinite;
-					transform: scale(1) !important;
-				}
-				
-				&::after {
-					border: 1px solid rgba(var(--white), 0);
-					transform: scale(1) !important;
-				}
-				
-				&:hover {
-					cursor: pointer;
-					transform: scale(1.05);
-				}
-			}
+
 	
 			.icon {
 				width: 35px;
@@ -602,6 +498,10 @@
 							calc(var(--delay) + 2.4s),
 							calc(var(--delay) + 2.4s);
 					}
+					
+					&.muted {
+						color: rgba(var(--white), 0.4);
+					}
 				}
 			}
 		}
@@ -772,10 +672,158 @@
 	}
 }
 
-
-
 .how-block {
+	position: relative;
 	margin-top: 200px;
+	display: flex;
+	flex-direction: column;
+	width: 1600px;
+	.content {
+		.how-block-header {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 50px;
+			.title {
+				display: flex;
+				flex-direction: column;
+				h3 {
+					font-size: 42px;
+					font-weight: 500;
+					color: rgba(var(--white), 0.4);
+				}
+				h1 {
+					font-size: 62px;
+					font-weight: 500;
+					color: rgba(var(--white), 1);
+					span {
+						color: rgba(var(--white), 0.4);
+					}
+				}
+			}
+			.button {
+				@include mouse-gradient-button(
+					$padding: 10px 35px,
+					$height: 58px,
+					$border-radius: 13px
+				);
+				p {
+					font-size: 24px;
+					font-weight: 400;
+					color: rgba(var(--white), 1);
+				}
+			}
+		}
+		.how-block-content {
+			width: 100%;
+			display: flex;
+			gap: 50px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 35px 40px,
+					$height: 250px,
+					$border-radius: 28px,
+					$backdrop-blur: 20px
+				);
+				width: calc(50% - 25px);
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-start;
+				.card-header {
+					margin-bottom: 10px;
+					display: flex;
+					align-items: center;
+					gap: 10px;
+					.icon {
+						width: 35px;
+						height: 35px;
+						background-size: cover;
+						background-position: center;
+						background-repeat: no-repeat;
+						&.umbra {
+							background-image: url(/img/intro/dev-icon.png);
+						}
+						&.echo {
+							background-image: url(/img/intro/echo.png);
+						}
+						&.gravcore {
+							background-image: url(/img/intro/gravcore.png);
+						}
+						&.safe-switch {
+							background-image: url(/img/intro/safeswitch.png);
+						}
+					}
+					p {
+						font-size: 26px;
+						font-weight: 500;
+						color: rgba(var(--white), 1);
+					}
+				}
+				p {
+					font-size: 24px;
+					font-weight: 400;
+					color: rgba(var(--white), 0.4);
+				}
+			}
+		}
+	}
+	.how-block-content2 {
+		position: absolute;
+		z-index: 1000;
+		top: 370px;
+		left: 30px;
+		width: 100%;
+		display: flex;
+		gap: 50px;
+		.card {
+			@include mouse-gradient-button(
+				$padding: 35px 40px,
+				$height: auto,
+				$border-radius: 28px,
+				$backdrop-blur: 20px
+			);
+			width: calc(50% - 25px);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 10px;
+			.card-header {
+				margin-bottom: 10px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				.icon {
+					width: 35px;
+					height: 35px;
+					background-size: cover;
+					background-position: center;
+					background-repeat: no-repeat;
+					&.echo {
+						background-image: url(/img/intro/echo.png);
+					}
+					&.safeswitch {
+						background-image: url(/img/intro/safeswitch.png);
+					}
+				}
+				p {
+					font-size: 26px;
+					font-weight: 500;
+					color: rgba(var(--white), 1);
+				}
+			}
+			p {
+				font-size: 24px;
+				font-weight: 400;
+				color: rgba(var(--white), 0.4);
+			}
+		}
+	}
+}
+
+.architecture-block {
+	margin-top: 300px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -785,11 +833,12 @@
 		flex-direction: column;
 		h3 {
 			font-size: 42px;
+			font-weight: 500;
 			color: rgba(var(--white), 0.4);
 		}
 		h1 {
 			font-size: 62px;
-			font-weight: 700;
+			font-weight: 500;
 			color: rgba(var(--white), 1);
 			span {
 				color: rgba(var(--white), 0.4);
@@ -810,13 +859,157 @@
 	}
 }
 
+.build-block {
+	position: relative;
+	margin-top: 200px;
+	display: flex;
+	flex-direction: column;
+	width: 1600px;
+	.content {
+		.build-block-header {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 50px;
+			.title {
+				display: flex;
+				flex-direction: column;
+				h3 {
+					font-size: 42px;
+					font-weight: 500;
+					color: rgba(var(--white), 0.4);
+				}
+				h1 {
+					font-size: 62px;
+					font-weight: 500;
+					color: rgba(var(--white), 1);
+					span {
+						color: rgba(var(--white), 0.4);
+					}
+				}
+			}
+			.button {
+				@include mouse-gradient-button(
+					$padding: 10px 35px,
+					$height: 58px,
+					$border-radius: 13px
+				);
+				p {
+					font-size: 24px;
+					font-weight: 400;
+					color: rgba(var(--white), 1);
+				}
+			}
+		}
+		.build-block-content {
+			width: 100%;
+			display: flex;
+			gap: 50px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 35px 40px,
+					$height: 250px,
+					$border-radius: 28px,
+					$backdrop-blur: 20px
+				);
+				width: calc(50% - 25px);
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-start;
+				.card-header {
+					margin-bottom: 10px;
+					display: flex;
+					align-items: center;
+					gap: 10px;
+					.icon {
+						width: 35px;
+						height: 35px;
+						background-size: cover;
+						background-position: center;
+						background-repeat: no-repeat;
+						&.security {
+							background-image: url(/img/intro/dev-icon.png);
+						}
+						&.plug {
+							background-image: url(/img/intro/gravcore.png);
+						}
+					}
+					p {
+						font-size: 26px;
+						font-weight: 500;
+						color: rgba(var(--white), 1);
+					}
+				}
+				p {
+					font-size: 24px;
+					font-weight: 400;
+					color: rgba(var(--white), 0.4);
+				}
+			}
+		}
+	}
+	.build-block-content2 {
+		position: absolute;
+		z-index: 1000;
+		top: 370px;
+		left: 30px;
+		width: 100%;
+		display: flex;
+		gap: 50px;
+		.card {
+			@include mouse-gradient-button(
+				$padding: 35px 40px,
+				$height: auto,
+				$border-radius: 28px,
+				$backdrop-blur: 20px
+			);
+			width: calc(50% - 25px);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 10px;
+			.card-header {
+				margin-bottom: 10px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				.icon {
+					width: 35px;
+					height: 35px;
+					background-size: cover;
+					background-position: center;
+					background-repeat: no-repeat;
+					&.support {
+						background-image: url(/img/intro/echo.png);
+					}
+					&.built {
+						background-image: url(/img/intro/safeswitch.png);
+					}
+				}
+				p {
+					font-size: 26px;
+					font-weight: 500;
+					color: rgba(var(--white), 1);
+				}
+			}
+			p {
+				font-size: 24px;
+				font-weight: 400;
+				color: rgba(var(--white), 0.4);
+			}
+		}
+	}
+}
+
 .devbridge-block {
 	@include mouse-gradient-button(
 		$padding: 40px,
 		$height: auto,
 		$border-radius: 13px
 	);
-	margin-top: 200px;
+	margin-top: 300px;
 	width: 1600px;
 	display: flex;
 	flex-direction: column;
@@ -842,12 +1035,12 @@
 			flex-direction: column;
 			h3 {
 				font-size: 42px;
-				font-weight: 400;
+				font-weight: 500;
 				color: rgba(var(--white), 0.4);
 			}
 			h1 {
 				font-size: 62px;
-				font-weight: 700;
+				font-weight: 500;
 				color: rgba(var(--white), 1);
 			}
 		}
@@ -928,10 +1121,21 @@
 			}
 		}
 		.apply-btn {
-			background: var(--gradient);
+			background: rgba(var(--white), 1);
 			border: none;
 			background-size: 200% 200%;
 			animation: gradientShift 6s ease-in-out infinite;
+			.icon {
+				filter: invert(1);
+			}
+			p {
+				color: rgba(var(--black), 1);
+			}
+			&:hover {
+				cursor: pointer;
+				background-color: rgba(var(--white), 0.7);
+				transform: translateY(-5px);
+			}
 		}
 	}
 }

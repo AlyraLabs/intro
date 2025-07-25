@@ -50,7 +50,6 @@
       [class.community-expanded]="isNavExpanded"
       [class.ecosystem-expanded]="isEcosystemExpanded"
       [@navSlideUp]="navAnimationState"
-      (mousemove)="onMouseMove($event)" 
       (mouseleave)="onNavMouseLeave($event)">
 	<div class="nav-content">
 		<a class="nav-item" href="#"
@@ -63,7 +62,8 @@
 			<div class="icon ecosystem"></div>
 			<p>Ecosystem</p>
 		</a>
-		<a class="nav-item pytho-item" href="#"
+		<a class="nav-item pytho-item" href="https://pytho.trade/" 
+				target="_blank"
 				(mouseenter)="onOtherNavItemEnter()">
 			<div class="icon pytho"></div>
 			<p>Pytho</p>
@@ -191,12 +191,14 @@
 	<div class="heading">
 		<h1 class="premium-title" [@premiumTitleAppear]="titleAnimationState">
 			<span class="word" style="--delay: 0s">The</span>
-			<span class="word highlight" style="--delay: 0.2s">Modular Execution</span>
-			<span class="word" style="--delay: 0.4s">safety</span>
+			<span class="word" style="--delay: 0.2s">Modular</span>
+			<span class="word" style="--delay: 0.4s">Execution</span>
+			<span class="word muted" style="--delay: 0.6s">and</span>
+			<span class="word" style="--delay: 0.8s">Safety</span>
 			<br>
-			<span class="word" style="--delay: 0.6s">layer</span>
-			<span class="word" style="--delay: 0.8s">for</span>
-			<span class="word" style="--delay: 1s">DeFi</span>
+			<span class="word" style="--delay: 1s">Layer</span>
+			<span class="word muted" style="--delay: 1.2s">for</span>
+			<span class="word" style="--delay: 1.4s">DeFi</span>
 		</h1>
 		<p class="premium-subtitle" [@premiumSubtitleAppear]="subtitleAnimationState">
 			<span class="word" style="--delay: 0s">Plug-and-play</span>
@@ -204,10 +206,10 @@
 			<span class="word" style="--delay: 0.2s">Layer</span>
 			<span class="word" style="--delay: 0.3s">with</span>
 			<span class="word" style="--delay: 0.4s">pre-signature</span>
-			<span class="word" style="--delay: 0.5s">firewall,</span>
+			<span class="word" style="--delay: 0.5s">ML-Firewall,</span>
 			<span class="word" style="--delay: 0.6s">fallback</span>
 			<span class="word" style="--delay: 0.7s">routing,</span>
-			<span class="word" style="--delay: 0.8s">and</span>
+			<span class="word muted" style="--delay: 0.8s">and</span>
 			<span class="word" style="--delay: 0.9s">deterministic</span>
 			<span class="word" style="--delay: 1s">execution.</span>
 		</p>
@@ -283,16 +285,105 @@
 
 </div>
 
-
-
 <div class="how-block">
+	<div class="how-block-content2">
+		<div class="card umbra" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<div class="card-header">
+				<div class="icon echo"></div>
+				<p>Echo — Reputation Intelligence</p>
+			</div>
+			<p>Offchain threat intel, onchain impact. Evaluates contracts using exploit data, admin patterns & social signals. Modular, async, real-time updates.</p>
+		</div>
+		<div class="card gravcore" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<div class="card-header">
+				<div class="icon safeswitch"></div>
+				<p>SafeSwitch — Fallback Logic</p>
+			</div>
+			<p>Pre-signed fallback routes for every transaction. Auto-triggers on failure — no re-signing, no user loss. Failsafe by design.</p>
+		</div>
+	</div>
+	<div class="content">
+		<div class="how-block-header">
+			<div class="title">
+				<h3>How Does</h3>
+				<h1>Security Stack <span>Works</span></h1>
+			</div>
+			<a class="button" href="https://blackholelabs.gitbook.io/docs/blackhole/security-stack" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+				<p>Learn More</p>
+			</a>
+		</div>
+		<div class="how-block-content">
+			<div class="card umbra" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+				<div class="card-header">
+					<div class="icon umbra"></div>
+					<p>Umbra — Pre-Execution ML Firewall</p>
+				</div>
+				<p>Intercepts malicious transaction patterns pre-signature using a hybrid rules engine and ML-driven anomaly detection.</p>
+			</div>
+			<div class="card gravcore" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+				<div class="card-header">
+					<div class="icon gravcore"></div>
+					<p>GravCore — Smart Executor</p>
+				</div>
+				<p>Executes only pre-validated routes.Onchain checks at runtime. Deterministic, non-custodial, with built-in fallback logic.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="architecture-block">
 	<div class="title">
-		<h3>How Does</h3>
-		<h1>Security Stack <span>Works</span></h1>
+		<h1>Execution <span>Architecture</span></h1>
 	</div>
 	<a class="button" href="https://blackholelabs.gitbook.io/docs/blackhole/security-stack" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
 		<p>Learn More</p>
 	</a>
+</div>
+
+<div class="build-block">
+	<div class="build-block-content2">
+		<div class="card umbra" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<div class="card-header">
+				<div class="icon support"></div>
+				<p>Dedicated Ecosystem Support</p>
+			</div>
+			<p>Get hands-on support, security reviews, and exposure through the DevBridge partner program.</p>
+		</div>
+		<div class="card gravcore" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+			<div class="card-header">
+				<div class="icon built"></div>
+				<p>Built for Any Stack</p>
+			</div>
+			<p>Works across EVM, SVM, L2s, and rollups — no lock-in. Integrate only what you need. Any dApp. Any chain. Security by default.</p>
+		</div>
+	</div>
+	<div class="content">
+		<div class="build-block-header">
+			<div class="title">
+				<h1>Build Secure</h1>
+				<h3>with Blackhole</h3>
+			</div>
+			<a class="button" href="https://blackholelabs.gitbook.io/docs/blackhole/security-stack" target="_blank" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+				<p>Learn More</p>
+			</a>
+		</div>
+		<div class="build-block-content">
+			<div class="card umbra" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+				<div class="card-header">
+					<div class="icon security"></div>
+					<p>Security by Default</p>
+				</div>
+				<p>Pre-built safety stack with ML-powered threat detection, fallback execution, and reputation scoring — all modular, all automatic.</p>
+			</div>
+			<div class="card gravcore" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+				<div class="card-header">
+					<div class="icon plug"></div>
+					<p>Plug-and-Play Simplicity</p>
+				</div>
+				<p>Integrate in under an hour with a one-line SDK. No rewrites, no custom infra. Focus on your app — we’ll handle execution safety.</p>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div id="devbridge-block" class="devbridge-block" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">

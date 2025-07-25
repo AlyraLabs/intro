@@ -279,7 +279,6 @@ export class IntroComponent implements OnInit, OnDestroy {
   }
 
   onNavMouseLeave(event: MouseEvent) {
-    this.mouseGradientService.resetGradientPosition(event.currentTarget as HTMLElement);
     this.isNavExpanded = false;
     this.isEcosystemExpanded = false;
   }

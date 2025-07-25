@@ -43,20 +43,11 @@
 	}
 
 	.nav {
-		@include mouse-gradient-button(
-			$padding: 15px,
-			$height: auto,
-			$border-radius: 20px,
-			$include-responsive: false
-		);
+		border-radius: 20px;
 		position: fixed;
 		width: 665px;
 		height: 72px;
 		bottom: 30px;
-		left: 50%;
-		transform: translateX(-50%);
-		z-index: 9999;
-		transition: height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 
 		&.community-expanded {
 			height: 310px;
@@ -193,6 +184,29 @@
 	}
 
 	.how-block {
+		margin-top: 150px;
+		width: 1171px;
+		.title {
+			h3 {
+				font-size: 36px;
+			}
+			h1 {
+				font-size: 48px;
+			}
+		}
+		.button {
+			@include mouse-gradient-button(
+				$padding: 10px 15px,
+				$height: auto,
+				$border-radius: 10px,
+				$include-responsive: false
+			);
+			p {
+				font-size: 18px;
+			}
+		}
+	}
+	.architecture-block {
 		margin-top: 150px;
 		width: 1171px;
 		.title {
@@ -407,20 +421,10 @@
 	}
 
 	.nav {
-		@include mouse-gradient-button(
-			$padding: 15px,
-			$height: auto,
-			$border-radius: 20px,
-			$include-responsive: false
-		);
+		border-radius: 20px;
 		position: fixed;
 		width: 665px;
 		height: 72px;
-		bottom: 20px;
-		left: 50%;
-		transform: translateX(-50%);
-		z-index: 9999;
-		transition: height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 
 		&.community-expanded {
 			height: 310px;
@@ -557,6 +561,29 @@
 	}
 
 	.how-block {
+		margin-top: 150px;
+		width: 1171px;
+		.title {
+			h3 {
+				font-size: 36px;
+			}
+			h1 {
+				font-size: 48px;
+			}
+		}
+		.button {
+			@include mouse-gradient-button(
+				$padding: 10px 15px,
+				$height: auto,
+				$border-radius: 10px,
+				$include-responsive: false
+			);
+			p {
+				font-size: 18px;
+			}
+		}
+	}
+	.architecture-block {
 		margin-top: 150px;
 		width: 1171px;
 		.title {
@@ -771,20 +798,10 @@
 	}
 
 	.nav {
-		@include mouse-gradient-button(
-			$padding: 15px,
-			$height: auto,
-			$border-radius: 20px,
-			$include-responsive: false
-		);
-		position: fixed;
+		border-radius: 20px;
 		width: 665px;
 		height: 72px;
 		bottom: 20px;
-		left: 50%;
-		transform: translateX(-50%);
-		z-index: 9999;
-		transition: height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 
 		&.community-expanded {
 			height: 310px;
@@ -919,6 +936,29 @@
 	}
 
 	.how-block {
+		margin-top: 150px;
+		width: 970px;
+		.title {
+			h3 {
+				font-size: 32px;
+			}
+			h1 {
+				font-size: 40px;
+			}
+		}
+		.button {
+			@include mouse-gradient-button(
+				$padding: 10px 15px,
+				$height: auto,
+				$border-radius: 10px,
+				$include-responsive: false
+			);
+			p {
+				font-size: 16px;
+			}
+		}
+	}
+	.architecture-block {
 		margin-top: 150px;
 		width: 970px;
 		.title {
@@ -1464,6 +1504,36 @@
 			}
 		}
 	}
+	.architecture-block {
+		margin-top: 100px;
+		width: 80%;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 20px;
+		.title {
+			h3 {
+				font-size: 28px;
+				text-align: center;
+			}
+			h1 {
+				font-size: 36px;
+				text-align: center;
+			}
+		}
+		.button {
+			@include mouse-gradient-button(
+				$padding: 10px 15px,
+				$height: auto,
+				$border-radius: 10px,
+				$include-responsive: false
+			);
+			p {
+				font-size: 16px;
+			}
+		}
+	}
 
 	.devbridge-block {
 		@include mouse-gradient-button(
@@ -1906,6 +1976,40 @@
 	}
 
 	.how-block {
+		margin-top: 100px;
+		width: 100%;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 20px;
+		.title {
+			h3 {
+				font-size: 28px;
+				text-align: center;
+			}
+			h1 {
+				font-size: 36px;
+				text-align: center;
+			}
+		}
+		.button {
+			@include mouse-gradient-button(
+				$padding: 10px 15px,
+				$height: 50px,
+				$border-radius: 10px,
+				$include-responsive: false
+			);
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			p {
+				font-size: 14px;
+			}
+		}
+	}
+	.architecture-block {
 		margin-top: 100px;
 		width: 100%;
 		flex-direction: column;
