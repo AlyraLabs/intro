@@ -42,7 +42,6 @@
 		position: relative;
 		overflow: hidden;
 		
-		// Исключаем padding из CSS transition чтобы избежать конфликта с Angular анимацией
 		transition: background 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
 					transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
 					backdrop-filter 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
@@ -427,7 +426,6 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-end;
-	gap: 30px;
 	padding-bottom: 200px;
 	box-sizing: border-box;
 	z-index: 10;
@@ -436,7 +434,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 10px;
+		gap: 40px;
 		h1 {
 			font-size: 62px;
 			font-weight: 700;

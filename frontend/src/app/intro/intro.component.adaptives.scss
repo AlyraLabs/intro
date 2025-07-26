@@ -126,7 +126,7 @@
 
 	.main-block {
 		height: calc(100dvh - 75px);
-		padding-bottom: 160px;
+		padding-bottom: 140px;
 		.heading {
 			gap: 20px;
 			h1 {
@@ -186,28 +186,96 @@
 	.how-block {
 		margin-top: 150px;
 		width: 1171px;
-		.title {
-			h3 {
-				font-size: 36px;
+		.content {
+			.how-block-header {
+				margin-bottom: 30px;
+				.title {
+					h3 {
+						font-size: 36px;
+					}
+					h1 {
+						font-size: 48px;
+					}
+				}
+				.button {
+					@include mouse-gradient-button(
+						$padding: 10px 15px,
+						$height: auto,
+						$border-radius: 10px,
+						$include-responsive: false
+					);
+					p {
+						font-size: 18px;
+					}
+				}
 			}
-			h1 {
-				font-size: 48px;
+			.how-block-content {
+				gap: 30px;
+				.card {
+					@include mouse-gradient-button(
+						$padding: 25px 30px !important,
+						$height: 200px !important,
+						$border-radius: 18px !important,
+						$backdrop-blur: 20px !important
+					);
+					width: calc(50% - 25px);
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					.card-header {
+						margin-bottom: 10px;
+						gap: 10px;
+						.icon {
+							width: 28px;
+							height: 28px;
+						}
+						p {
+							font-size: 22px;
+						}
+					}
+					p {
+						font-size: 18px;
+					}
+				}
 			}
 		}
-		.button {
-			@include mouse-gradient-button(
-				$padding: 10px 15px,
-				$height: auto,
-				$border-radius: 10px,
-				$include-responsive: false
-			);
-			p {
-				font-size: 18px;
+		.how-block-content2 {
+			top: 300px;
+			left: 15px;
+			gap: 50px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 25px 30px !important,
+					$height: auto !important,
+					$border-radius: 18px !important,
+					$backdrop-blur: 20px !important
+				);
+				width: calc(50% - 25px);
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+				.card-header {
+					margin-bottom: 10px;
+					gap: 10px;
+					.icon {
+						width: 28px;
+						height: 28px;
+					}
+					p {
+						font-size: 22px;
+					}
+				}
+				p {
+					font-size: 18px;
+				}
 			}
 		}
 	}
+
 	.architecture-block {
-		margin-top: 150px;
+		margin-top: 250px;
 		width: 1171px;
 		.title {
 			h3 {
@@ -230,6 +298,97 @@
 		}
 	}
 
+	.build-block {
+		margin-top: 100px;
+		width: 1171px;
+		.content {
+			.build-block-header {
+				margin-bottom: 30px;
+				.title {
+					h3 {
+						font-size: 36px;
+					}
+					h1 {
+						font-size: 48px;
+					}
+				}
+				.button {
+					@include mouse-gradient-button(
+						$padding: 10px 15px !important,
+						$height: auto !important,
+						$border-radius: 10px !important,
+						$include-responsive: false
+					);
+					p {
+						font-size: 18px;
+					}
+				}
+			}
+			.build-block-content {
+				gap: 30px;
+				.card {
+					@include mouse-gradient-button(
+						$padding: 25px 30px !important,
+						$height: 200px !important,
+						$border-radius: 18px !important,
+						$backdrop-blur: 20px !important
+					);
+					width: calc(50% - 15px);
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: flex-start;
+					.card-header {
+						margin-bottom: 10px;
+						gap: 10px;
+						.icon {
+							width: 28px;
+							height: 28px;
+						}
+						p {
+							font-size: 22px;
+						}
+					}
+					p {
+						font-size: 18px;
+					}
+				}
+			}
+		}
+		.build-block-content2 {
+			top: 300px;
+			left: 15px;
+			gap: 30px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 25px 30px !important,
+					$height: auto !important,
+					$border-radius: 18px !important,
+					$backdrop-blur: 20px !important
+				);
+				width: calc(50% - 15px);
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+				.card-header {
+					margin-bottom: 10px;
+					gap: 10px;
+					.icon {
+						width: 28px;
+						height: 28px;
+					}
+					p {
+						font-size: 22px;
+					}
+				}
+				p {
+					font-size: 18px;
+				}
+			}
+		}
+	}
+
 	.devbridge-block {
 		@include mouse-gradient-button(
 			$padding: 30px,
@@ -237,7 +396,7 @@
 			$border-radius: 13px,
 			$include-responsive: false
 		);
-		margin-top: 150px;
+		margin-top: 250px;
 		width: 1171px;
 		display: flex;
 		flex-direction: column;
@@ -404,7 +563,6 @@
 			position: relative;
 			overflow: hidden;
 			
-			// Исключаем padding из CSS transition чтобы избежать конфликта с Angular анимацией
 			transition: background 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
 						transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
 						backdrop-filter 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
@@ -421,6 +579,7 @@
 	}
 
 	.nav {
+		bottom: 30px;
 		border-radius: 20px;
 		position: fixed;
 		width: 665px;
@@ -563,28 +722,96 @@
 	.how-block {
 		margin-top: 150px;
 		width: 1171px;
-		.title {
-			h3 {
-				font-size: 36px;
+		.content {
+			.how-block-header {
+				margin-bottom: 30px;
+				.title {
+					h3 {
+						font-size: 36px;
+					}
+					h1 {
+						font-size: 48px;
+					}
+				}
+				.button {
+					@include mouse-gradient-button(
+						$padding: 10px 15px,
+						$height: auto,
+						$border-radius: 10px,
+						$include-responsive: false
+					);
+					p {
+						font-size: 18px;
+					}
+				}
 			}
-			h1 {
-				font-size: 48px;
+			.how-block-content {
+				gap: 30px;
+				.card {
+					@include mouse-gradient-button(
+						$padding: 25px 30px !important,
+						$height: 200px !important,
+						$border-radius: 18px !important,
+						$backdrop-blur: 20px !important
+					);
+					width: calc(50% - 25px);
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					.card-header {
+						margin-bottom: 10px;
+						gap: 10px;
+						.icon {
+							width: 28px;
+							height: 28px;
+						}
+						p {
+							font-size: 22px;
+						}
+					}
+					p {
+						font-size: 18px;
+					}
+				}
 			}
 		}
-		.button {
-			@include mouse-gradient-button(
-				$padding: 10px 15px,
-				$height: auto,
-				$border-radius: 10px,
-				$include-responsive: false
-			);
-			p {
-				font-size: 18px;
+		.how-block-content2 {
+			top: 300px;
+			left: 15px;
+			gap: 50px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 25px 30px !important,
+					$height: auto !important,
+					$border-radius: 18px !important,
+					$backdrop-blur: 20px !important
+				);
+				width: calc(50% - 25px);
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+				.card-header {
+					margin-bottom: 10px;
+					gap: 10px;
+					.icon {
+						width: 28px;
+						height: 28px;
+					}
+					p {
+						font-size: 22px;
+					}
+				}
+				p {
+					font-size: 18px;
+				}
 			}
 		}
 	}
+
 	.architecture-block {
-		margin-top: 150px;
+		margin-top: 250px;
 		width: 1171px;
 		.title {
 			h3 {
@@ -607,6 +834,97 @@
 		}
 	}
 
+	.build-block {
+		margin-top: 100px;
+		width: 1171px;
+		.content {
+			.build-block-header {
+				margin-bottom: 30px;
+				.title {
+					h3 {
+						font-size: 36px;
+					}
+					h1 {
+						font-size: 48px;
+					}
+				}
+				.button {
+					@include mouse-gradient-button(
+						$padding: 10px 15px !important,
+						$height: auto !important,
+						$border-radius: 10px !important,
+						$include-responsive: false
+					);
+					p {
+						font-size: 18px;
+					}
+				}
+			}
+			.build-block-content {
+				gap: 30px;
+				.card {
+					@include mouse-gradient-button(
+						$padding: 25px 30px !important,
+						$height: 200px !important,
+						$border-radius: 18px !important,
+						$backdrop-blur: 20px !important
+					);
+					width: calc(50% - 15px);
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: flex-start;
+					.card-header {
+						margin-bottom: 10px;
+						gap: 10px;
+						.icon {
+							width: 28px;
+							height: 28px;
+						}
+						p {
+							font-size: 22px;
+						}
+					}
+					p {
+						font-size: 18px;
+					}
+				}
+			}
+		}
+		.build-block-content2 {
+			top: 300px;
+			left: 15px;
+			gap: 30px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 25px 30px !important,
+					$height: auto !important,
+					$border-radius: 18px !important,
+					$backdrop-blur: 20px !important
+				);
+				width: calc(50% - 15px);
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+				.card-header {
+					margin-bottom: 10px;
+					gap: 10px;
+					.icon {
+						width: 28px;
+						height: 28px;
+					}
+					p {
+						font-size: 22px;
+					}
+				}
+				p {
+					font-size: 18px;
+				}
+			}
+		}
+	}
+
 	.devbridge-block {
 		@include mouse-gradient-button(
 			$padding: 30px,
@@ -614,7 +932,7 @@
 			$border-radius: 13px,
 			$include-responsive: false
 		);
-		margin-top: 150px;
+		margin-top: 250px;
 		width: 1171px;
 		display: flex;
 		flex-direction: column;
@@ -880,18 +1198,20 @@
 
 	.main-block {
 		height: calc(100dvh - 65px);
-		gap: 20px;
-		padding-bottom: 140px;
-		h1 {
-			font-size: 48px;
-			&.premium-title {
-				perspective: 1000px;
+		padding-bottom: 120px;
+		.heading {
+			gap: 20px;
+			h1 {
+				font-size: 48px;
+				&.premium-title {
+					perspective: 1000px;
+				}
 			}
-		}
-		p {
-			font-size: 18px;
-			&.premium-subtitle {
-				perspective: 1000px;
+			p {
+				font-size: 18px;
+				&.premium-subtitle {
+					perspective: 1000px;
+				}
 			}
 		}
 	}
@@ -1406,6 +1726,7 @@
 			}
 			p {
 				font-size: 16px;
+				text-align: center;
 			}
 		}
 		.button {
@@ -1504,6 +1825,7 @@
 			}
 		}
 	}
+
 	.architecture-block {
 		margin-top: 100px;
 		width: 80%;
