@@ -887,6 +887,41 @@
 					span {
 						color: rgba(var(--white), 0.4);
 					}
+					
+					.changing-word {
+						display: inline-block;
+						background: linear-gradient(135deg, 
+							rgba(255, 255, 255, 1) 0%,
+							rgba(255, 255, 255, 0.8) 50%,
+							rgba(255, 255, 255, 1) 100%);
+						background-size: 200% 200%;
+						-webkit-background-clip: text;
+						background-clip: text;
+						-webkit-text-fill-color: transparent;
+						animation: gradientShift 4s ease-in-out infinite;
+						
+						transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+						transform-origin: center;
+						position: relative;
+						
+						&::after {
+							content: '';
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							width: 6px;
+							height: 6px;
+							background: radial-gradient(circle, 
+								rgba(255, 255, 255, 0.9) 0%, 
+								rgba(255, 255, 255, 0.4) 50%, 
+								transparent 100%);
+							border-radius: 50%;
+							transform: translate(-50%, -50%) scale(0);
+							opacity: 0;
+							pointer-events: none;
+							z-index: 1;
+						}
+					}
 				}
 			}
 			.button {
@@ -1420,5 +1455,20 @@
     opacity: 1;
     transform: translateY(0) rotateX(0deg) scale(1);
     filter: blur(0px);
+  }
+}
+
+@keyframes wordSpark {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(2) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(360deg);
   }
 }

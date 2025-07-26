@@ -129,8 +129,12 @@ export class IntroComponent implements OnInit, OnDestroy {
   infoTextAnimated = false;
   
   @ViewChild('infoBlock', { static: false }) infoBlock!: ElementRef;
+  @ViewChild('changingWord', { static: false }) changingWord!: ElementRef;
   
   private animationFrameId: number | null = null;
+  private wordChangeInterval: any = null;
+  private currentWordIndex = 0;
+  private words = ['Secure', 'Transparent', 'Modular', 'Scalable', 'Fast'];
 
   isNavExpanded = false;
   isEcosystemExpanded = false;
@@ -178,6 +182,37 @@ export class IntroComponent implements OnInit, OnDestroy {
 
     
           this.setupScrollAnimations();
+    this.startWordChangeAnimation();
+    }
+  
+  private startWordChangeAnimation() {
+
+    setTimeout(() => {
+      this.wordChangeInterval = setInterval(() => {
+        this.changeWord();
+      }, 2500); 
+    }, 3000);
+  }
+  
+  private changeWord() {
+    if (!this.changingWord) return;
+    
+    const element = this.changingWord.nativeElement;
+    
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(-20px) scale(0.8)';
+    element.style.filter = 'blur(10px)';
+    
+    setTimeout(() => {
+      this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
+      element.textContent = this.words[this.currentWordIndex];
+      
+      setTimeout(() => {
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0) scale(1)';
+        element.style.filter = 'blur(0px)';
+      }, 50);
+    }, 400);
     }
   
   private setupScrollAnimations() {
@@ -311,9 +346,12 @@ export class IntroComponent implements OnInit, OnDestroy {
     delete (window as any).getStarAnimation;
 
     
-    // Очищаем анимации
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
+    }
+    
+    if (this.wordChangeInterval) {
+      clearInterval(this.wordChangeInterval);
     }
   }
 
