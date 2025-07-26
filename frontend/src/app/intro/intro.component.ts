@@ -41,6 +41,72 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
         animate('0.4s cubic-bezier(0.4, 0, 0.2, 1)')
       ])
     ]),
+
+    trigger('blockSlideUp', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'translateY(120px) scale(0.85) rotateX(15deg)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateY(0) scale(1) rotateX(0deg)'
+      })),
+      transition('hidden => visible', [
+        animate('1.2s cubic-bezier(0.16, 1, 0.3, 1)')
+      ])
+    ]),
+    trigger('blockSlideFromLeft', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'translateX(-120px) rotateY(-15deg) scale(0.8)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateX(0) rotateY(0deg) scale(1)'
+      })),
+      transition('hidden => visible', [
+        animate('1.2s cubic-bezier(0.16, 1, 0.3, 1)')
+      ])
+    ]),
+    trigger('blockScaleUp', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'scale(0.6) translateY(80px) rotateZ(-3deg)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'scale(1) translateY(0) rotateZ(0deg)'
+      })),
+      transition('hidden => visible', [
+        animate('1.3s cubic-bezier(0.16, 1, 0.3, 1)')
+      ])
+    ]),
+    trigger('blockPerspective', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'perspective(1200px) rotateX(25deg) rotateY(10deg) translateY(100px) scale(0.7)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)'
+      })),
+      transition('hidden => visible', [
+        animate('1.4s cubic-bezier(0.16, 1, 0.3, 1)')
+      ])
+    ]),
+    trigger('blockFadeUp', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'translateY(60px) scale(0.9)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateY(0) scale(1)'
+      })),
+      transition('hidden => visible', [
+        animate('1.0s cubic-bezier(0.16, 1, 0.3, 1)')
+      ])
+    ]),
     trigger('navSlideUp', [
       state('hidden', style({
         transform: 'translateX(-50%) translateY(80px)',
@@ -127,6 +193,12 @@ export class IntroComponent implements OnInit, OnDestroy {
   titleAnimationState = 'hidden';
   subtitleAnimationState = 'hidden';
   infoTextAnimated = false;
+
+  howBlockState = 'hidden';
+  architectureBlockState = 'hidden';
+  buildBlockState = 'hidden';
+  devbridgeBlockState = 'hidden';
+  infoBlockState = 'hidden';
   
   @ViewChild('infoBlock', { static: false }) infoBlock!: ElementRef;
   @ViewChild('changingWord', { static: false }) changingWord!: ElementRef;
@@ -216,12 +288,27 @@ export class IntroComponent implements OnInit, OnDestroy {
     }
   
   private setupScrollAnimations() {
-    const observer = new IntersectionObserver((entries) => {
+    const blockObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const target = entry.target as HTMLElement;
         
-        if (entry.isIntersecting && !target.classList.contains('animate-in')) {
-          target.classList.add('animate-in');
+        if (entry.isIntersecting) {
+          if (target.classList.contains('how-block') && this.howBlockState === 'hidden') {
+            this.howBlockState = 'visible';
+          } else if (target.classList.contains('architecture-block') && this.architectureBlockState === 'hidden') {
+            this.architectureBlockState = 'visible';
+          } else if (target.classList.contains('build-block') && this.buildBlockState === 'hidden') {
+            this.buildBlockState = 'visible';
+          } else if (target.classList.contains('devbridge-block') && this.devbridgeBlockState === 'hidden') {
+            this.devbridgeBlockState = 'visible';
+            
+            const cards = target.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                (card as HTMLElement).classList.add('card-animate-in');
+              }, index * 150);
+            });
+          }
         }
       });
     }, {
@@ -229,27 +316,26 @@ export class IntroComponent implements OnInit, OnDestroy {
       rootMargin: '0px 0px -50px 0px'
     });
 
-
-
-          const infoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !this.infoTextAnimated) {
-            setTimeout(() => this.startInfoTextAnimation(), 300);
-          }
-        });
-      }, {
-        threshold: 0.3
+    const infoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.infoTextAnimated) {
+          this.infoBlockState = 'visible';
+          setTimeout(() => this.startInfoTextAnimation(), 300);
+        }
       });
+    }, {
+      threshold: 0.3
+    });
     
 
     setTimeout(() => {
-      const regularBlocks = ['.how-block', '.devbridge-block'];
+      const allBlocks = ['.how-block', '.architecture-block', '.build-block', '.devbridge-block'];
       const infoBlock = document.querySelector('.info-block');
       
-      regularBlocks.forEach(selector => {
+      allBlocks.forEach(selector => {
         const element = document.querySelector(selector);
         if (element) {
-          observer.observe(element);
+          blockObserver.observe(element);
         }
       });
       
@@ -262,13 +348,11 @@ export class IntroComponent implements OnInit, OnDestroy {
   private startInfoTextAnimation() {
     this.infoTextAnimated = true;
     
-    // Сначала показываем info-text блок
     const infoText = this.infoBlock.nativeElement.querySelector('.info-text');
     if (infoText) {
       infoText.classList.add('animate-in');
     }
     
-    // Затем запускаем анимацию слов
     const words = this.infoBlock.nativeElement.querySelectorAll('.word');
     words.forEach((word: HTMLElement) => {
       word.classList.add('animate');

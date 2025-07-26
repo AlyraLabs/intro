@@ -220,7 +220,7 @@
 	</div>
 </div>
 
-<div class="info-block" #infoBlock>
+<div class="info-block" [@blockFadeUp]="infoBlockState" #infoBlock>
 	<div class="buit-on">
 		<h6>Built on:</h6>
 		<div class="networks">
@@ -285,7 +285,7 @@
 
 </div>
 
-<div class="how-block">
+<div class="how-block" [@blockSlideUp]="howBlockState">
 	<div class="how-block-content2">
 		<div class="card umbra" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
 			<div class="card-header">
@@ -331,7 +331,7 @@
 	</div>
 </div>
 
-<div class="architecture-block">
+<div class="architecture-block" [@blockSlideFromLeft]="architectureBlockState">
 	<div class="title">
 		<h1>Execution <span>Architecture</span></h1>
 	</div>
@@ -340,7 +340,7 @@
 	</a>
 </div>
 
-<div class="build-block">
+<div class="build-block" [@blockScaleUp]="buildBlockState">
 	<div class="build-block-content2">
 		<div class="card umbra" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
 			<div class="card-header">
@@ -386,7 +386,7 @@
 	</div>
 </div>
 
-<div id="devbridge-block" class="devbridge-block" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+<div id="devbridge-block" class="devbridge-block" [@blockPerspective]="devbridgeBlockState" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
 	<div class="dev-bridge-header">
 		<div class="title">
 			<h3>DevBridge</h3>
