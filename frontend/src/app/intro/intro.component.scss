@@ -304,6 +304,26 @@
 				color: rgba(var(--white), 1);
 				transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 			}
+			
+			.link-arrow {
+				position: absolute;
+				right: 25px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 35px;
+				height: 35px;
+				background-image: url(/img/intro/linkarrow.png);
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				opacity: 0;
+				transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+			}
+			
+			&:hover .link-arrow {
+				opacity: 1;
+				transform: translateY(-50%) translateX(-20px);
+			}
 		}
 	}
 
@@ -415,6 +435,26 @@
 				font-weight: 400;
 				color: rgba(var(--white), 1);
 				transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+			}
+			
+			.link-arrow {
+				position: absolute;
+				right: 25px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 35px;
+				height: 35px;
+				background-image: url(/img/intro/linkarrow.png);
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				opacity: 0;
+				transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+			}
+			
+			&:hover .link-arrow {
+				opacity: 1;
+				transform: translateY(-50%) translateX(-20px);
 			}
 		}
 	}

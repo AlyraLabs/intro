@@ -43,7 +43,7 @@
 	}
 
 	.nav {
-		border-radius: 20px;
+		border-radius: 12px;
 		position: fixed;
 		width: 665px;
 		height: 72px;
@@ -61,8 +61,16 @@
 			bottom: 15px;
 			.nav-item {
 				padding: 8px 15px;
-				border-radius: 13px;
+				border-radius: 8px;
 				gap: 10px;
+
+				&::before {
+					border-radius: 8px;
+				}
+		
+				&::after {
+					border-radius: 8px;
+				}
 		
 				.icon {
 					width: 25px;
@@ -81,8 +89,16 @@
 			transform: translateY(-30px);
 			.community-item {
 				padding: 8px 15px;
-				border-radius: 13px;
+				border-radius: 8px;
 				gap: 10px;
+
+				&::before {
+					border-radius: 8px;
+				}
+		
+				&::after {
+					border-radius: 8px;
+				}
 
 			.icon {
 					width: 25px;
@@ -90,6 +106,12 @@
 				}
 				p {
 					font-size: 18px;
+				}
+
+				.link-arrow {
+					right: 15px;
+					width: 25px;
+					height: 25px;
 				}
 			}
 		}
@@ -102,15 +124,15 @@
 			
 			.ecosystem-item {
 				padding: 8px 15px;
-				border-radius: 13px;
+				border-radius: 8px;
 				gap: 10px;
 
 				&::before {
-					border-radius: 13px;
+					border-radius: 8px;
 				}
 		
 				&::after {
-					border-radius: 13px;
+					border-radius: 8px;
 				}
 
 				.icon {
@@ -119,6 +141,12 @@
 				}
 				p {
 					font-size: 18px;
+				}
+
+				.link-arrow {
+					right: 15px;
+					width: 25px;
+					height: 25px;
 				}
 			}
 		}
@@ -580,7 +608,7 @@
 
 	.nav {
 		bottom: 30px;
-		border-radius: 20px;
+		border-radius: 12px;
 		position: fixed;
 		width: 665px;
 		height: 72px;
@@ -597,8 +625,16 @@
 			bottom: 15px;
 			.nav-item {
 				padding: 8px 15px;
-				border-radius: 13px;
+				border-radius: 8px;
 				gap: 10px;
+
+				&::before {
+					border-radius: 8px;
+				}
+		
+				&::after {
+					border-radius: 8px;
+				}
 		
 				.icon {
 					width: 25px;
@@ -617,8 +653,16 @@
 			transform: translateY(-30px);
 			.community-item {
 				padding: 8px 15px;
-				border-radius: 13px;
+				border-radius: 8px;
 				gap: 10px;
+
+				&::before {
+					border-radius: 8px;
+				}
+		
+				&::after {
+					border-radius: 8px;
+				}
 
 			.icon {
 					width: 25px;
@@ -626,6 +670,12 @@
 				}
 				p {
 					font-size: 18px;
+				}
+
+				.link-arrow {
+					right: 15px;
+					width: 25px;
+					height: 25px;
 				}
 			}
 		}
@@ -638,15 +688,15 @@
 			
 			.ecosystem-item {
 				padding: 8px 15px;
-				border-radius: 13px;
+				border-radius: 8px;
 				gap: 10px;
 
 				&::before {
-					border-radius: 13px;
+					border-radius: 8px;
 				}
 		
 				&::after {
-					border-radius: 13px;
+					border-radius: 8px;
 				}
 
 				.icon {
@@ -655,6 +705,12 @@
 				}
 				p {
 					font-size: 18px;
+				}
+
+				.link-arrow {
+					right: 15px;
+					width: 25px;
+					height: 25px;
 				}
 			}
 		}
@@ -1116,7 +1172,7 @@
 	}
 
 	.nav {
-		border-radius: 20px;
+		border-radius: 12px;
 		width: 665px;
 		height: 72px;
 		bottom: 20px;
@@ -1133,8 +1189,16 @@
 			bottom: 15px;
 			.nav-item {
 				padding: 8px 15px;
-				border-radius: 13px;
+				border-radius: 8px;
 				gap: 10px;
+
+				&::before {
+					border-radius: 8px;
+				}
+		
+				&::after {
+					border-radius: 8px;
+				}
 		
 				.icon {
 					width: 25px;
@@ -1153,8 +1217,16 @@
 			transform: translateY(-30px);
 			.community-item {
 				padding: 8px 15px;
-				border-radius: 13px;
+				border-radius: 8px;
 				gap: 10px;
+
+				&::before {
+					border-radius: 8px;
+				}
+		
+				&::after {
+					border-radius: 8px;
+				}
 
 			.icon {
 					width: 25px;
@@ -1162,6 +1234,11 @@
 				}
 				p {
 					font-size: 18px;
+				}
+				.link-arrow {
+					right: 15px;
+					width: 25px;
+					height: 25px;
 				}
 			}
 		}
@@ -1174,15 +1251,15 @@
 			
 			.ecosystem-item {
 				padding: 8px 15px;
-				border-radius: 13px;
+				border-radius: 8px;
 				gap: 10px;
 
 				&::before {
-					border-radius: 13px;
+					border-radius: 8px;
 				}
 		
 				&::after {
-					border-radius: 13px;
+					border-radius: 8px;
 				}
 
 				.icon {
@@ -1191,6 +1268,12 @@
 				}
 				p {
 					font-size: 18px;
+				}
+
+				.link-arrow {
+					right: 15px;
+					width: 25px;
+					height: 25px;
 				}
 			}
 		}
@@ -1258,28 +1341,96 @@
 	.how-block {
 		margin-top: 150px;
 		width: 970px;
-		.title {
-			h3 {
-				font-size: 32px;
+		.content {
+			.how-block-header {
+				margin-bottom: 30px;
+				.title {
+					h3 {
+						font-size: 32px;
+					}
+					h1 {
+						font-size: 40px;
+					}
+				}
+				.button {
+					@include mouse-gradient-button(
+						$padding: 10px 15px,
+						$height: auto,
+						$border-radius: 10px,
+						$include-responsive: false
+					);
+					p {
+						font-size: 16px;
+					}
+				}
 			}
-			h1 {
-				font-size: 40px;
+			.how-block-content {
+				gap: 30px;
+				.card {
+					@include mouse-gradient-button(
+						$padding: 25px 30px !important,
+						$height: 200px !important,
+						$border-radius: 18px !important,
+						$backdrop-blur: 20px !important
+					);
+					width: calc(50% - 15px);
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					.card-header {
+						margin-bottom: 10px;
+						gap: 10px;
+						.icon {
+							width: 20px;
+							height: 20px;
+						}
+						p {
+							font-size: 18px;
+						}
+					}
+					p {
+						font-size: 16px;
+					}
+				}
 			}
 		}
-		.button {
-			@include mouse-gradient-button(
-				$padding: 10px 15px,
-				$height: auto,
-				$border-radius: 10px,
-				$include-responsive: false
-			);
-			p {
-				font-size: 16px;
+		.how-block-content2 {
+			top: 250px;
+			left: 15px;
+			gap: 30px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 25px 30px !important,
+					$height: auto !important,
+					$border-radius: 18px !important,
+					$backdrop-blur: 20px !important
+				);
+				width: calc(50% - 15px);
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 5px;
+				.card-header {
+					margin-bottom: 10px;
+					gap: 10px;
+					.icon {
+						width: 20px;
+						height: 20px;
+					}
+					p {
+						font-size: 18px;
+					}
+				}
+				p {
+					font-size: 16px;
+				}
 			}
 		}
 	}
+
 	.architecture-block {
-		margin-top: 150px;
+		margin-top: 200px;
 		width: 970px;
 		.title {
 			h3 {
@@ -1302,6 +1453,98 @@
 		}
 	}
 
+	.build-block {
+		margin-top: 150px;
+		width: 970px;
+		.content {
+			.build-block-header {
+				margin-bottom: 30px;
+				.title {
+					h3 {
+						font-size: 32px;
+					}
+					h1 {
+						font-size: 40px;
+					}
+				}
+				.button {
+					@include mouse-gradient-button(
+						$padding: 10px 15px,
+						$height: auto,
+						$border-radius: 10px,
+						$include-responsive: false
+					);
+					p {
+						font-size: 16px;
+					}
+				}
+			}
+			.build-block-content {
+				gap: 30px;
+				.card {
+					@include mouse-gradient-button(
+						$padding: 25px 30px !important,
+						$height: 200px !important,
+						$border-radius: 18px !important,
+						$backdrop-blur: 20px !important
+					);
+					width: calc(50% - 15px);
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					.card-header {
+						margin-bottom: 10px;
+						gap: 10px;
+						.icon {
+							width: 20px;
+							height: 20px;
+						}
+						p {
+							font-size: 18px;
+						}
+					}
+					p {
+						font-size: 16px;
+					}
+				}
+			}
+		}
+		.build-block-content2 {
+			top: 250px;
+			left: 15px;
+			gap: 30px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 25px 30px !important,
+					$height: auto !important,
+					$border-radius: 18px !important,
+					$backdrop-blur: 20px !important
+				);
+				width: calc(50% - 15px);
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: flex-start;
+				gap: 5px;
+				.card-header {
+					margin-bottom: 10px;
+					gap: 10px;
+					.icon {
+						width: 20px;
+						height: 20px;
+					}
+					p {
+						font-size: 18px;
+					}
+				}
+				p {
+					font-size: 16px;
+				}
+			}
+		}
+	}
+
 	.devbridge-block {
 		@include mouse-gradient-button(
 			$padding: 30px,
@@ -1309,7 +1552,7 @@
 			$border-radius: 13px,
 			$include-responsive: false
 		);
-		margin-top: 150px;
+		margin-top: 200px;
 		width: 970px;
 		display: flex;
 		flex-direction: column;
@@ -1796,7 +2039,105 @@
 	}
 
 	.how-block {
-		margin-top: 100px;
+		margin-top: 150px;
+		width: 80%;
+		.content {
+			.how-block-header {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 20px;
+				margin-bottom: 30px;
+				.title {
+					h3 {
+						font-size: 28px;
+					}
+					h1 {
+						font-size: 36px;
+					}
+				}
+				.button {
+					@include mouse-gradient-button(
+						$padding: 10px 15px,
+						$height: auto,
+						$border-radius: 10px,
+						$include-responsive: false
+					);
+					p {
+						font-size: 16px;
+					}
+				}
+			}
+			.how-block-content {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+				.card {
+					@include mouse-gradient-button(
+						$padding: 25px 30px !important,
+						$height: auto !important,
+						$border-radius: 18px !important,
+						$backdrop-blur: 20px !important
+					);
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					.card-header {
+						margin-bottom: 10px;
+						gap: 10px;
+						.icon {
+							width: 20px;
+							height: 20px;
+						}
+						p {
+							font-size: 14px;
+						}
+					}
+					p {
+						font-size: 12px;
+					}
+				}
+			}
+		}
+		.how-block-content2 {
+			top: 480px;
+			left: 0px;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 10px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 25px 30px !important,
+					$height: auto !important,
+					$border-radius: 18px !important,
+					$backdrop-blur: 20px !important
+				);
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 5px;
+				.card-header {
+					margin-bottom: 10px;
+					gap: 10px;
+					.icon {
+						width: 20px;
+						height: 20px;
+					}
+					p {
+						font-size: 14px;
+					}
+				}
+				p {
+					font-size: 12px;
+				}
+			}
+		}
+	}
+
+	.architecture-block {
+		margin-top: 350px;
 		width: 80%;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -1826,33 +2167,100 @@
 		}
 	}
 
-	.architecture-block {
+	.build-block {
 		margin-top: 100px;
 		width: 80%;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: center;
-		flex-wrap: wrap;
-		gap: 20px;
-		.title {
-			h3 {
-				font-size: 28px;
-				text-align: center;
+		.content {
+			.build-block-header {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 20px;
+				margin-bottom: 30px;
+				.title {
+					h3 {
+						font-size: 28px;
+					}
+					h1 {
+						font-size: 36px;
+					}
+				}
+				.button {
+					@include mouse-gradient-button(
+						$padding: 10px 15px,
+						$height: auto,
+						$border-radius: 10px,
+						$include-responsive: false
+					);
+					p {
+						font-size: 16px;
+					}
+				}
 			}
-			h1 {
-				font-size: 36px;
-				text-align: center;
+			.build-block-content {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+				.card {
+					@include mouse-gradient-button(
+						$padding: 25px 30px !important,
+						$height: auto !important,
+						$border-radius: 18px !important,
+						$backdrop-blur: 20px !important
+					);
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					.card-header {
+						margin-bottom: 10px;
+						gap: 10px;
+						.icon {
+							width: 20px;
+							height: 20px;
+						}
+						p {
+							font-size: 14px;
+						}
+					}
+					p {
+						font-size: 12px;
+					}
+				}
 			}
 		}
-		.button {
-			@include mouse-gradient-button(
-				$padding: 10px 15px,
-				$height: auto,
-				$border-radius: 10px,
-				$include-responsive: false
-			);
-			p {
-				font-size: 16px;
+		.build-block-content2 {
+			top: 435px;
+			left: 0px;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 10px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 25px 30px !important,
+					$height: auto !important,
+					$border-radius: 18px !important,
+					$backdrop-blur: 20px !important
+				);
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 5px;
+				.card-header {
+					margin-bottom: 10px;
+					gap: 10px;
+					.icon {
+						width: 20px;
+						height: 20px;
+					}
+					p {
+						font-size: 14px;
+					}
+				}
+				p {
+					font-size: 12px;
+				}
 			}
 		}
 	}
@@ -1864,7 +2272,7 @@
 			$border-radius: 13px,
 			$include-responsive: false
 		);
-		margin-top: 100px;
+		margin-top: 350px;
 		width: 80%;
 		display: flex;
 		flex-direction: column;
@@ -2300,39 +2708,103 @@
 	.how-block {
 		margin-top: 100px;
 		width: 100%;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: center;
-		flex-wrap: wrap;
-		gap: 20px;
-		.title {
-			h3 {
-				font-size: 28px;
-				text-align: center;
+		.content {
+			.how-block-header {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 20px;
+				margin-bottom: 30px;
+				.title {
+					h3 {
+						font-size: 28px;
+					}
+					h1 {
+						font-size: 36px;
+					}
+				}
+				.button {
+					@include mouse-gradient-button(
+						$padding: 10px 15px,
+						$height: auto,
+						$border-radius: 10px,
+						$include-responsive: false
+					);
+					p {
+						font-size: 14px;
+					}
+				}
 			}
-			h1 {
-				font-size: 36px;
-				text-align: center;
+			.how-block-content {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+				.card {
+					@include mouse-gradient-button(
+						$padding: 25px 30px !important,
+						$height: auto !important,
+						$border-radius: 18px !important,
+						$backdrop-blur: 20px !important
+					);
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					.card-header {
+						margin-bottom: 10px;
+						gap: 10px;
+						.icon {
+							width: 20px;
+							height: 20px;
+						}
+						p {
+							font-size: 14px;
+						}
+					}
+					p {
+						font-size: 12px;
+					}
+				}
 			}
 		}
-		.button {
-			@include mouse-gradient-button(
-				$padding: 10px 15px,
-				$height: 50px,
-				$border-radius: 10px,
-				$include-responsive: false
-			);
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			p {
-				font-size: 14px;
+		.how-block-content2 {
+			top: 480px;
+			left: 0px;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 10px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 25px 30px !important,
+					$height: auto !important,
+					$border-radius: 18px !important,
+					$backdrop-blur: 20px !important
+				);
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 5px;
+				.card-header {
+					margin-bottom: 10px;
+					gap: 10px;
+					.icon {
+						width: 20px;
+						height: 20px;
+					}
+					p {
+						font-size: 14px;
+					}
+				}
+				p {
+					font-size: 12px;
+				}
 			}
 		}
 	}
+
 	.architecture-block {
-		margin-top: 100px;
+		margin-top: 350px;
 		width: 100%;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -2366,6 +2838,104 @@
 		}
 	}
 
+	.build-block {
+		margin-top: 100px;
+		width: 100%;
+		.content {
+			.build-block-header {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 20px;
+				margin-bottom: 30px;
+				.title {
+					h3 {
+						font-size: 28px;
+					}
+					h1 {
+						font-size: 36px;
+					}
+				}
+				.button {
+					@include mouse-gradient-button(
+						$padding: 10px 15px,
+						$height: auto,
+						$border-radius: 10px,
+						$include-responsive: false
+					);
+					p {
+						font-size: 16px;
+					}
+				}
+			}
+			.build-block-content {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+				.card {
+					@include mouse-gradient-button(
+						$padding: 25px 30px !important,
+						$height: auto !important,
+						$border-radius: 18px !important,
+						$backdrop-blur: 20px !important
+					);
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					.card-header {
+						margin-bottom: 10px;
+						gap: 10px;
+						.icon {
+							width: 20px;
+							height: 20px;
+						}
+						p {
+							font-size: 14px;
+						}
+					}
+					p {
+						font-size: 12px;
+					}
+				}
+			}
+		}
+		.build-block-content2 {
+			top: 435px;
+			left: 0px;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 10px;
+			.card {
+				@include mouse-gradient-button(
+					$padding: 25px 30px !important,
+					$height: auto !important,
+					$border-radius: 18px !important,
+					$backdrop-blur: 20px !important
+				);
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 5px;
+				.card-header {
+					margin-bottom: 10px;
+					gap: 10px;
+					.icon {
+						width: 20px;
+						height: 20px;
+					}
+					p {
+						font-size: 14px;
+					}
+				}
+				p {
+					font-size: 12px;
+				}
+			}
+		}
+	}
+
 	.devbridge-block {
 		@include mouse-gradient-button(
 			$padding: 20px,
@@ -2373,7 +2943,7 @@
 			$border-radius: 13px,
 			$include-responsive: false
 		);
-		margin-top: 80px;
+		margin-top: 350px;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
