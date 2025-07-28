@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class LiquidGlassService {
 
   constructor() {
-    this.startGlobalListener();
+    // this.startGlobalListener();
   }
 
   private startGlobalListener() {
