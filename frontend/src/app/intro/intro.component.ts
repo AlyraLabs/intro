@@ -46,66 +46,66 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
     trigger('blockSlideUp', [
       state('hidden', style({
         opacity: 0,
-        transform: 'translateY(120px) scale(0.85) rotateX(15deg)'
-      })),
-      state('visible', style({
-        opacity: 1,
-        transform: 'translateY(0) scale(1) rotateX(0deg)'
-      })),
-      transition('hidden => visible', [
-        animate('1.2s cubic-bezier(0.16, 1, 0.3, 1)')
-      ])
-    ]),
-    trigger('blockSlideFromLeft', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'translateX(-120px) rotateY(-15deg) scale(0.8)'
-      })),
-      state('visible', style({
-        opacity: 1,
-        transform: 'translateX(0) rotateY(0deg) scale(1)'
-      })),
-      transition('hidden => visible', [
-        animate('1.2s cubic-bezier(0.16, 1, 0.3, 1)')
-      ])
-    ]),
-    trigger('blockScaleUp', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'scale(0.6) translateY(80px) rotateZ(-3deg)'
-      })),
-      state('visible', style({
-        opacity: 1,
-        transform: 'scale(1) translateY(0) rotateZ(0deg)'
-      })),
-      transition('hidden => visible', [
-        animate('1.3s cubic-bezier(0.16, 1, 0.3, 1)')
-      ])
-    ]),
-    trigger('blockPerspective', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'perspective(1200px) rotateX(25deg) rotateY(10deg) translateY(100px) scale(0.7)'
-      })),
-      state('visible', style({
-        opacity: 1,
-        transform: 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)'
-      })),
-      transition('hidden => visible', [
-        animate('1.4s cubic-bezier(0.16, 1, 0.3, 1)')
-      ])
-    ]),
-    trigger('blockFadeUp', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'translateY(60px) scale(0.9)'
+        transform: 'translateY(40px) scale(0.98)'
       })),
       state('visible', style({
         opacity: 1,
         transform: 'translateY(0) scale(1)'
       })),
       transition('hidden => visible', [
-        animate('1.0s cubic-bezier(0.16, 1, 0.3, 1)')
+        animate('0.6s cubic-bezier(0.4, 0, 0.2, 1)')
+      ])
+    ]),
+    trigger('blockSlideFromLeft', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'translateX(-30px) scale(0.98)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateX(0) scale(1)'
+      })),
+      transition('hidden => visible', [
+        animate('0.6s cubic-bezier(0.4, 0, 0.2, 1)')
+      ])
+    ]),
+    trigger('blockScaleUp', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'scale(0.96) translateY(20px)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'scale(1) translateY(0)'
+      })),
+      transition('hidden => visible', [
+        animate('0.6s cubic-bezier(0.4, 0, 0.2, 1)')
+      ])
+    ]),
+    trigger('blockPerspective', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'translateY(30px) scale(0.98)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateY(0) scale(1)'
+      })),
+      transition('hidden => visible', [
+        animate('0.6s cubic-bezier(0.4, 0, 0.2, 1)')
+      ])
+    ]),
+    trigger('blockFadeUp', [
+      state('hidden', style({
+        opacity: 0,
+        transform: 'translateY(30px) scale(0.98)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateY(0) scale(1)'
+      })),
+      transition('hidden => visible', [
+        animate('0.5s cubic-bezier(0.4, 0, 0.2, 1)')
       ])
     ]),
     trigger('navSlideUp', [
