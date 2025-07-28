@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, inject, HostListener, ElementRef, ViewChi
 import { CommonModule } from '@angular/common';
 import { MouseGradientService } from '../services/mouse-gradient.service';
 import { StarAnimationService, Star } from '../services/star-animation.service';
+import { LiquidGlassService } from '../services/liquid-glass.service';
 
 import { Observable } from 'rxjs';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
@@ -125,13 +126,11 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
     trigger('headerSlideDown', [
       state('hidden', style({
         transform: 'translateY(-80px)',
-        opacity: 0,
-        filter: 'blur(10px)'
+        opacity: 0
       })),
       state('visible', style({
         transform: 'translateY(0)',
-        opacity: 1,
-        filter: 'blur(0px)'
+        opacity: 1
       })),
       transition('hidden => visible', [
         animate('1.2s cubic-bezier(0.23, 1, 0.32, 1)')
@@ -207,17 +206,32 @@ export class IntroComponent implements OnInit, OnDestroy {
   private wordChangeInterval: any = null;
   private currentWordIndex = 0;
   private words = ['Secure', 'Transparent', 'Modular', 'Scalable', 'Fast'];
+  
+  // Glitch animation properties
+  private possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}:"<>?|';
+  private glitchChars = '!@#$%^&*()_+{}:"<>?|\\';
+  private cyberChars = '01010101110010101010101110101010';
+  private animationFrames = 25;
+  private animationSpeed = 30;
+  private animationTimeouts: { [key: string]: number } = {};
+  private isSafari: boolean = false;
 
   isNavExpanded = false;
   isEcosystemExpanded = false;
   
   isMobileMenuOpen = false;
   
+  // Glass indicator для nav
+  activeNavIndex = 3; // По умолчанию на Launch App
+  defaultNavIndex = 3;
+  previousNavIndex = 3;
+  
 
   
 
   constructor(
-    private mouseGradientService: MouseGradientService
+    private mouseGradientService: MouseGradientService,
+    private liquidGlassService: LiquidGlassService
   ) {
     this.stars$ = this.starAnimationService.stars;
   }
@@ -241,6 +255,15 @@ export class IntroComponent implements OnInit, OnDestroy {
     
     this.starAnimationService.initializeStars();
     
+    // Liquid glass работает автоматически через глобальный слушатель для всех элементов с миксином
+    
+    // Инициализируем позицию glass индикатора
+    setTimeout(() => {
+      this.updateNavGlassPosition();
+    }, 1000);
+    
+    // Проверяем Safari для glitch анимации
+    this.isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
     
     (window as any).setStarAnimation = (mode: 'high' | 'medium' | 'low' | 'disabled') => {
@@ -258,11 +281,10 @@ export class IntroComponent implements OnInit, OnDestroy {
     }
   
   private startWordChangeAnimation() {
-
     setTimeout(() => {
       this.wordChangeInterval = setInterval(() => {
         this.changeWord();
-      }, 2500); 
+      }, 3000); // Увеличил интервал для glitch анимации
     }, 3000);
   }
   
@@ -270,22 +292,98 @@ export class IntroComponent implements OnInit, OnDestroy {
     if (!this.changingWord) return;
     
     const element = this.changingWord.nativeElement;
+    this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
+    const newWord = this.words[this.currentWordIndex];
     
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(-20px) scale(0.8)';
-    element.style.filter = 'blur(10px)';
+    // Запускаем glitch-анимацию
+    this.animateText(element, newWord);
+  }
+  
+  private animateText(element: HTMLElement, finalText: string): void {
+    const elementId = 'changing-word';
     
-    setTimeout(() => {
-      this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
-      element.textContent = this.words[this.currentWordIndex];
-      
-      setTimeout(() => {
-        element.style.opacity = '1';
-        element.style.transform = 'translateY(0) scale(1)';
-        element.style.filter = 'blur(0px)';
-      }, 50);
-    }, 400);
+    if (this.animationTimeouts[elementId]) {
+      clearTimeout(this.animationTimeouts[elementId]);
     }
+
+    if (this.isSafari) {
+      // Для Safari просто меняем текст без анимации
+      element.textContent = finalText;
+      return;
+    }
+
+    let frame = 0;
+    const totalFrames = this.animationFrames;
+
+    const glitchStates = Array(finalText.length).fill(false);
+    const resolvedChars = Array(finalText.length).fill(false);
+
+    const animate = () => {
+      if (frame >= totalFrames) {
+        element.textContent = finalText;
+        delete this.animationTimeouts[elementId];
+        return;
+      }
+
+      let result = '';
+      const progress = frame / totalFrames;
+
+      // "Разрешаем" символы по очереди с задержкой
+      // Начинаем разрешать буквы с 20% анимации, заканчиваем к 90%
+      const startResolveFrame = Math.floor(totalFrames * 0.2);
+      const endResolveFrame = Math.floor(totalFrames * 0.9);
+      const resolveFrames = endResolveFrame - startResolveFrame;
+      
+      for (let i = 0; i < finalText.length; i++) {
+        // Равномерно распределяем буквы по времени
+        const letterStartFrame = startResolveFrame + Math.floor((resolveFrames * i) / (finalText.length - 1));
+        if (frame >= letterStartFrame && !resolvedChars[i]) {
+          resolvedChars[i] = true;
+        }
+      }
+
+      // Случайные глитч-состояния
+      if (frame % 3 === 0) {
+        for (let i = 0; i < finalText.length; i++) {
+          if (Math.random() < 0.15) {
+            glitchStates[i] = !glitchStates[i];
+          }
+        }
+      }
+
+      // Формируем результирующий текст
+      for (let i = 0; i < finalText.length; i++) {
+        if (resolvedChars[i]) {
+          // Символ "разрешен" - показываем правильную букву
+          result += finalText[i];
+        } else {
+          // Символ еще не "разрешен"
+          if (finalText[i] === ' ') {
+            result += ' ';
+          } else {
+            const rand = Math.random();
+            if (rand < 0.25) {
+              const glitchIndex = Math.floor(Math.random() * this.glitchChars.length);
+              result += this.glitchChars[glitchIndex];
+            } else if (rand < 0.5) {
+              const cyberIndex = Math.floor(Math.random() * this.cyberChars.length);
+              result += this.cyberChars[cyberIndex];
+            } else {
+              const randomIndex = Math.floor(Math.random() * this.possibleChars.length);
+              result += this.possibleChars[randomIndex];
+            }
+          }
+        }
+      }
+
+      element.textContent = result;
+      frame++;
+
+      this.animationTimeouts[elementId] = window.setTimeout(animate, this.animationSpeed);
+    };
+
+    animate();
+  }
   
   private setupScrollAnimations() {
     const blockObserver = new IntersectionObserver((entries) => {
@@ -362,12 +460,14 @@ export class IntroComponent implements OnInit, OnDestroy {
 
 
   onMouseMove(event: MouseEvent) {
-    this.mouseGradientService.onMouseMove(event);
+    const element = event.currentTarget as HTMLElement;
+    if (element) {
+      this.liquidGlassService.updateElementLighting(element, event.clientX, event.clientY);
+    }
   }
 
   onMouseLeave(event: MouseEvent) {
-    const element = event.currentTarget as HTMLElement;
-    this.mouseGradientService.resetGradientPosition(element);
+    // Эффект автоматически исчезнет когда мышь уйдет
   }
   
 
@@ -400,11 +500,78 @@ export class IntroComponent implements OnInit, OnDestroy {
   onNavMouseLeave(event: MouseEvent) {
     this.isNavExpanded = false;
     this.isEcosystemExpanded = false;
+    
+    // Возвращаем стекло к Launch App при полном выходе из .nav
+    this.previousNavIndex = this.activeNavIndex;
+    this.activeNavIndex = this.defaultNavIndex;
+    this.updateNavGlassPosition();
   }
 
   onOtherNavItemEnter() {
     this.isNavExpanded = false;
     this.isEcosystemExpanded = false;
+  }
+
+  onNavItemHover(index: number) {
+    this.previousNavIndex = this.activeNavIndex;
+    this.activeNavIndex = index;
+    this.updateNavGlassPosition();
+  }
+
+  onNavMouseLeaveItem() {
+    // НЕ возвращаемся сразу - ждем выхода из всего .nav контейнера
+    // Логика возврата будет в onNavMouseLeave
+  }
+
+  private updateNavGlassPosition() {
+    const indicator = document.querySelector('.nav-glass-indicator') as HTMLElement;
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    if (indicator && navItems.length > this.activeNavIndex) {
+      const activeItem = navItems[this.activeNavIndex] as HTMLElement;
+      const container = document.querySelector('.nav-content') as HTMLElement;
+      
+      if (activeItem && container) {
+        // Вычисляем реальную позицию элемента относительно контейнера
+        const itemRect = activeItem.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        const relativeX = itemRect.left - containerRect.left;
+        
+        // Определяем направление движения
+        const isMovingRight = this.activeNavIndex > this.previousNavIndex;
+        const isMovingLeft = this.activeNavIndex < this.previousNavIndex;
+        
+        // Устанавливаем transform-origin в зависимости от направления
+        if (isMovingRight) {
+          indicator.style.transformOrigin = 'left center';
+        } else if (isMovingLeft) {
+          indicator.style.transformOrigin = 'right center';
+        } else {
+          indicator.style.transformOrigin = 'center center';
+        }
+        
+        // Устанавливаем размеры и позицию
+        indicator.style.width = `${itemRect.width}px`;
+        indicator.style.height = `${itemRect.height}px`;
+        indicator.style.transform = `translateX(${relativeX}px)`;
+        
+        // Выбираем анимацию в зависимости от направления
+        let animationName = 'navGlassScale';
+        if (isMovingRight) {
+          animationName = 'navGlassScaleRight';
+        } else if (isMovingLeft) {
+          animationName = 'navGlassScaleLeft';
+        }
+        
+        indicator.style.animation = `${animationName} 440ms cubic-bezier(0.23, 1, 0.32, 1)`;
+        
+        // Убираем анимацию после завершения
+        setTimeout(() => {
+          indicator.style.animation = '';
+          indicator.style.transformOrigin = 'center center';
+        }, 440);
+      }
+    }
   }
 
   toggleMobileMenu() {
@@ -429,6 +596,8 @@ export class IntroComponent implements OnInit, OnDestroy {
     delete (window as any).setStarAnimation;
     delete (window as any).getStarAnimation;
 
+    // Очищаем liquid glass сервис
+    this.liquidGlassService.destroy();
     
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
@@ -437,6 +606,11 @@ export class IntroComponent implements OnInit, OnDestroy {
     if (this.wordChangeInterval) {
       clearInterval(this.wordChangeInterval);
     }
+    
+    // Очищаем glitch анимационные таймауты
+    Object.values(this.animationTimeouts).forEach((timeoutId) => {
+      clearTimeout(timeoutId);
+    });
   }
 
       @HostListener('mousemove', ['$event'])
@@ -450,5 +624,13 @@ export class IntroComponent implements OnInit, OnDestroy {
     return star.id;
   }
 
+  // Методы liquid glass теперь не нужны - всё обрабатывается сервисом
+  onLiquidGlassMouseMove(event: MouseEvent) {
+    // Логика теперь в LiquidGlassService
+  }
+
+  onLiquidGlassMouseLeave() {
+    // Логика теперь в LiquidGlassService
+  }
 
 } 

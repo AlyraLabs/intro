@@ -1,5 +1,5 @@
 @media screen and (min-width: 1601px) and (max-width: 1920px) {
-	@import '../styles/mouse-gradient-button';
+	@import '../styles/liquid-glass';
 
 	:host {
 		--button-expand-padding: 200px;
@@ -17,19 +17,8 @@
 			}
 		}
 		.header-btn {
-			@include mouse-gradient-button(
-				$padding: 10px,
-				$height: auto,
-				$border-radius: 13px
-			);
+			@include liquid-glass($border-radius: 10px);
 			gap: 15px;
-			position: relative;
-			overflow: hidden;
-			
-			// Исключаем padding из CSS transition чтобы избежать конфликта с Angular анимацией
-			transition: background 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
-						transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
-						backdrop-filter 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 			
 			.icon {
 				width: 25px;
@@ -43,8 +32,14 @@
 	}
 
 	.nav {
-		border-radius: 12px;
-		position: fixed;
+		@include liquid-glass(
+		$border-radius: 20px,
+		$hover-scale: 1.0,
+		$hover-scale-y: 1.0,
+		$active-scale: 1.0,
+		$active-scale-y: 1.0,
+		$hover-border-change: false
+	);
 		width: 665px;
 		height: 72px;
 		bottom: 30px;
@@ -194,11 +189,8 @@
 		.buttons {
 			gap: 20px;
 			.button {
-				@include mouse-gradient-button(
-					$padding: 10px 15px,
-					$height: auto,
-					$border-radius: 13px
-				);
+				@include liquid-glass($border-radius: 13px);
+				padding: 10px 15px;
 				gap: 10px;
 				.icon {
 					width: 25px;
@@ -226,12 +218,8 @@
 					}
 				}
 				.button {
-					@include mouse-gradient-button(
-						$padding: 10px 15px,
-						$height: auto,
-						$border-radius: 10px,
-						$include-responsive: false
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 10px 15px;
 					p {
 						font-size: 18px;
 					}
@@ -240,12 +228,16 @@
 			.how-block-content {
 				gap: 30px;
 				.card {
-					@include mouse-gradient-button(
-						$padding: 25px 30px !important,
-						$height: 200px !important,
-						$border-radius: 18px !important,
-						$backdrop-blur: 20px !important
-					);
+					@include liquid-glass(
+						$border-radius: 18px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
+						);
+					padding: 25px 30px;
+					height: 120px;
 					width: calc(50% - 25px);
 					display: flex;
 					flex-direction: column;
@@ -269,16 +261,20 @@
 			}
 		}
 		.how-block-content2 {
-			top: 300px;
-			left: 15px;
-			gap: 50px;
+			top: 280px;
+			left: 20px;
+			gap: 30px;
 			.card {
-				@include mouse-gradient-button(
-					$padding: 25px 30px !important,
-					$height: auto !important,
-					$border-radius: 18px !important,
-					$backdrop-blur: 20px !important
+				@include liquid-glass(
+					$border-radius: 18px,
+					$hover-scale: 1.0,
+					$hover-scale-y: 1.0,
+					$active-scale: 1.0,
+					$active-scale-y: 1.0,
+					$hover-border-change: false
 				);
+				padding: 25px 30px;
+				height: auto;
 				width: calc(50% - 25px);
 				display: flex;
 				flex-direction: column;
@@ -314,12 +310,8 @@
 			}
 		}
 		.button {
-			@include mouse-gradient-button(
-				$padding: 10px 15px,
-				$height: auto,
-				$border-radius: 10px,
-				$include-responsive: false
-			);
+			@include liquid-glass($border-radius: 10px);
+			padding: 10px 15px;
 			p {
 				font-size: 18px;
 			}
@@ -341,12 +333,8 @@
 					}
 				}
 				.button {
-					@include mouse-gradient-button(
-						$padding: 10px 15px !important,
-						$height: auto !important,
-						$border-radius: 10px !important,
-						$include-responsive: false
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 10px 15px;
 					p {
 						font-size: 18px;
 					}
@@ -355,12 +343,16 @@
 			.build-block-content {
 				gap: 30px;
 				.card {
-					@include mouse-gradient-button(
-						$padding: 25px 30px !important,
-						$height: 200px !important,
-						$border-radius: 18px !important,
-						$backdrop-blur: 20px !important
+					@include liquid-glass(
+						$border-radius: 18px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
 					);
+					padding: 25px 30px;
+					height: 120px;
 					width: calc(50% - 15px);
 					display: flex;
 					flex-direction: column;
@@ -384,16 +376,20 @@
 			}
 		}
 		.build-block-content2 {
-			top: 300px;
-			left: 15px;
+			top: 280px;
+			left: 20px;
 			gap: 30px;
 			.card {
-				@include mouse-gradient-button(
-					$padding: 25px 30px !important,
-					$height: auto !important,
-					$border-radius: 18px !important,
-					$backdrop-blur: 20px !important
+				@include liquid-glass(
+					$border-radius: 18px,
+					$hover-scale: 1.0,
+					$hover-scale-y: 1.0,
+					$active-scale: 1.0,
+					$active-scale-y: 1.0,
+					$hover-border-change: false
 				);
+				padding: 25px 30px;
+				height: auto;
 				width: calc(50% - 15px);
 				display: flex;
 				flex-direction: column;
@@ -418,12 +414,15 @@
 	}
 
 	.devbridge-block {
-		@include mouse-gradient-button(
-			$padding: 30px,
-			$height: auto,
+		@include liquid-glass(
 			$border-radius: 13px,
-			$include-responsive: false
+			$hover-scale: 1.0,
+			$hover-scale-y: 1.0,
+			$active-scale: 1.0,
+			$active-scale-y: 1.0,
+			$hover-border-change: false
 		);
+		padding: 30px;
 		margin-top: 250px;
 		width: 1171px;
 		display: flex;
@@ -486,85 +485,9 @@
 			}
 		}
 	}
-
-	@keyframes slideInItems {
-		0% {
-			opacity: 0;
-			transform: translateX(-20px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-
-	@keyframes communitySlideIn {
-		0% {
-			opacity: 0;
-			transform: translateY(-30px);
-			filter: blur(8px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-			filter: blur(0px);
-		}
-	}
-
-	@keyframes ecosystemSlideIn {
-		0% {
-			opacity: 0;
-			transform: translateY(-30px);
-			filter: blur(8px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-			filter: blur(0px);
-		}
-	}
-
-
-	@keyframes float {
-		0% {
-			transform: translate3d(
-				calc(0px + var(--push-x, 0px) * var(--weight, 1)), 
-				calc(0px + var(--push-y, 0px) * var(--weight, 1)), 
-				0
-			);
-		}
-		25% {
-			transform: translate3d(
-				calc(var(--offset-x1) + var(--push-x, 0px) * var(--weight, 1)), 
-				calc(var(--offset-y1) + var(--push-y, 0px) * var(--weight, 1)), 
-				0
-			);
-		}
-		50% {
-			transform: translate3d(
-				calc(var(--offset-x2) + var(--push-x, 0px) * var(--weight, 1)), 
-				calc(var(--offset-y2) + var(--push-y, 0px) * var(--weight, 1)), 
-				0
-			);
-		}
-		75% {
-			transform: translate3d(
-				calc(var(--offset-x3) + var(--push-x, 0px) * var(--weight, 1)), 
-				calc(var(--offset-y3) + var(--push-y, 0px) * var(--weight, 1)), 
-				0
-			);
-		}
-		100% {
-			transform: translate3d(
-				calc(0px + var(--push-x, 0px) * var(--weight, 1)), 
-				calc(0px + var(--push-y, 0px) * var(--weight, 1)), 
-				0
-			);
-		}
-	}
 }
 @media screen and (min-width: 1171px) and (max-width: 1600px) {
-	@import '../styles/mouse-gradient-button';
+	@import '../styles/liquid-glass';
 
 	:host {
 		--button-expand-padding: 200px;
@@ -582,18 +505,8 @@
 			}
 		}
 		.header-btn {
-			@include mouse-gradient-button(
-				$padding: 10px,
-				$height: auto,
-				$border-radius: 13px
-			);
+			@include liquid-glass($border-radius: 10px);
 			gap: 15px;
-			position: relative;
-			overflow: hidden;
-			
-			transition: background 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
-						transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
-						backdrop-filter 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 			
 			.icon {
 				width: 25px;
@@ -607,11 +520,17 @@
 	}
 
 	.nav {
-		bottom: 30px;
-		border-radius: 12px;
-		position: fixed;
+		@include liquid-glass(
+		$border-radius: 20px,
+		$hover-scale: 1.0,
+		$hover-scale-y: 1.0,
+		$active-scale: 1.0,
+		$active-scale-y: 1.0,
+		$hover-border-change: false
+	);
 		width: 665px;
 		height: 72px;
+		bottom: 30px;
 
 		&.community-expanded {
 			height: 310px;
@@ -717,7 +636,7 @@
 	}
 
 	.main-block {
-		height: calc(100dvh - 65px);
+		height: calc(100dvh - 75px);
 		padding-bottom: 140px;
 		.heading {
 			gap: 20px;
@@ -758,11 +677,8 @@
 		.buttons {
 			gap: 20px;
 			.button {
-				@include mouse-gradient-button(
-					$padding: 10px 15px,
-					$height: auto,
-					$border-radius: 13px
-				);
+				@include liquid-glass($border-radius: 13px);
+				padding: 10px 15px;
 				gap: 10px;
 				.icon {
 					width: 25px;
@@ -790,12 +706,8 @@
 					}
 				}
 				.button {
-					@include mouse-gradient-button(
-						$padding: 10px 15px,
-						$height: auto,
-						$border-radius: 10px,
-						$include-responsive: false
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 10px 15px;
 					p {
 						font-size: 18px;
 					}
@@ -804,12 +716,16 @@
 			.how-block-content {
 				gap: 30px;
 				.card {
-					@include mouse-gradient-button(
-						$padding: 25px 30px !important,
-						$height: 200px !important,
-						$border-radius: 18px !important,
-						$backdrop-blur: 20px !important
-					);
+					@include liquid-glass(
+						$border-radius: 18px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
+						);
+					padding: 25px 30px;
+					height: 120px;
 					width: calc(50% - 25px);
 					display: flex;
 					flex-direction: column;
@@ -833,16 +749,20 @@
 			}
 		}
 		.how-block-content2 {
-			top: 300px;
-			left: 15px;
-			gap: 50px;
+			top: 280px;
+			left: 20px;
+			gap: 30px;
 			.card {
-				@include mouse-gradient-button(
-					$padding: 25px 30px !important,
-					$height: auto !important,
-					$border-radius: 18px !important,
-					$backdrop-blur: 20px !important
+				@include liquid-glass(
+					$border-radius: 18px,
+					$hover-scale: 1.0,
+					$hover-scale-y: 1.0,
+					$active-scale: 1.0,
+					$active-scale-y: 1.0,
+					$hover-border-change: false
 				);
+				padding: 25px 30px;
+				height: auto;
 				width: calc(50% - 25px);
 				display: flex;
 				flex-direction: column;
@@ -878,12 +798,8 @@
 			}
 		}
 		.button {
-			@include mouse-gradient-button(
-				$padding: 10px 15px,
-				$height: auto,
-				$border-radius: 10px,
-				$include-responsive: false
-			);
+			@include liquid-glass($border-radius: 10px);
+			padding: 10px 15px;
 			p {
 				font-size: 18px;
 			}
@@ -905,12 +821,8 @@
 					}
 				}
 				.button {
-					@include mouse-gradient-button(
-						$padding: 10px 15px !important,
-						$height: auto !important,
-						$border-radius: 10px !important,
-						$include-responsive: false
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 10px 15px;
 					p {
 						font-size: 18px;
 					}
@@ -919,12 +831,16 @@
 			.build-block-content {
 				gap: 30px;
 				.card {
-					@include mouse-gradient-button(
-						$padding: 25px 30px !important,
-						$height: 200px !important,
-						$border-radius: 18px !important,
-						$backdrop-blur: 20px !important
+					@include liquid-glass(
+						$border-radius: 18px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
 					);
+					padding: 25px 30px;
+					height: 120px;
 					width: calc(50% - 15px);
 					display: flex;
 					flex-direction: column;
@@ -948,16 +864,20 @@
 			}
 		}
 		.build-block-content2 {
-			top: 300px;
-			left: 15px;
+			top: 280px;
+			left: 20px;
 			gap: 30px;
 			.card {
-				@include mouse-gradient-button(
-					$padding: 25px 30px !important,
-					$height: auto !important,
-					$border-radius: 18px !important,
-					$backdrop-blur: 20px !important
+				@include liquid-glass(
+					$border-radius: 18px,
+					$hover-scale: 1.0,
+					$hover-scale-y: 1.0,
+					$active-scale: 1.0,
+					$active-scale-y: 1.0,
+					$hover-border-change: false
 				);
+				padding: 25px 30px;
+				height: auto;
 				width: calc(50% - 15px);
 				display: flex;
 				flex-direction: column;
@@ -982,12 +902,15 @@
 	}
 
 	.devbridge-block {
-		@include mouse-gradient-button(
-			$padding: 30px,
-			$height: auto,
+		@include liquid-glass(
 			$border-radius: 13px,
-			$include-responsive: false
+			$hover-scale: 1.0,
+			$hover-scale-y: 1.0,
+			$active-scale: 1.0,
+			$active-scale-y: 1.0,
+			$hover-border-change: false
 		);
+		padding: 30px;
 		margin-top: 250px;
 		width: 1171px;
 		display: flex;
@@ -1050,85 +973,9 @@
 			}
 		}
 	}
-
-	@keyframes slideInItems {
-		0% {
-			opacity: 0;
-			transform: translateX(-20px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateX(0);
-		}
-	}
-
-	@keyframes communitySlideIn {
-		0% {
-			opacity: 0;
-			transform: translateY(-30px);
-			filter: blur(8px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-			filter: blur(0px);
-		}
-	}
-
-	@keyframes ecosystemSlideIn {
-		0% {
-			opacity: 0;
-			transform: translateY(-30px);
-			filter: blur(8px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-			filter: blur(0px);
-		}
-	}
-
-
-	@keyframes float {
-		0% {
-			transform: translate3d(
-				calc(0px + var(--push-x, 0px) * var(--weight, 1)), 
-				calc(0px + var(--push-y, 0px) * var(--weight, 1)), 
-				0
-			);
-		}
-		25% {
-			transform: translate3d(
-				calc(var(--offset-x1) + var(--push-x, 0px) * var(--weight, 1)), 
-				calc(var(--offset-y1) + var(--push-y, 0px) * var(--weight, 1)), 
-				0
-			);
-		}
-		50% {
-			transform: translate3d(
-				calc(var(--offset-x2) + var(--push-x, 0px) * var(--weight, 1)), 
-				calc(var(--offset-y2) + var(--push-y, 0px) * var(--weight, 1)), 
-				0
-			);
-		}
-		75% {
-			transform: translate3d(
-				calc(var(--offset-x3) + var(--push-x, 0px) * var(--weight, 1)), 
-				calc(var(--offset-y3) + var(--push-y, 0px) * var(--weight, 1)), 
-				0
-			);
-		}
-		100% {
-			transform: translate3d(
-				calc(0px + var(--push-x, 0px) * var(--weight, 1)), 
-				calc(0px + var(--push-y, 0px) * var(--weight, 1)), 
-				0
-			);
-		}
-	}
 }
 @media screen and (min-width: 971px) and (max-width: 1170px) {
-	@import '../styles/mouse-gradient-button';
+	@import '../styles/liquid-glass';
 
 	:host {
 		--button-expand-padding: 200px;
@@ -1146,20 +993,12 @@
 			}
 		}
 		.header-btn {
-			@include mouse-gradient-button(
-				$padding: 10px,
-				$height: auto,
-				$border-radius: 13px
-			);
+			@include liquid-glass($border-radius: 13px);
+			padding: 10px;
 			gap: 15px;
 			position: relative;
 			overflow: hidden;
-			
-			// Исключаем padding из CSS transition чтобы избежать конфликта с Angular анимацией
-			transition: background 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
-						transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
-						backdrop-filter 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-			
+
 			.icon {
 				width: 25px;
 				height: 25px;
@@ -1172,7 +1011,14 @@
 	}
 
 	.nav {
-		border-radius: 12px;
+		@include liquid-glass(
+			$border-radius: 20px,
+			$hover-scale: 1.0,
+			$hover-scale-y: 1.0,
+			$active-scale: 1.0,
+			$active-scale-y: 1.0,
+			$hover-border-change: false
+		);
 		width: 665px;
 		height: 72px;
 		bottom: 20px;
@@ -1321,11 +1167,8 @@
 		.buttons {
 			gap: 20px;
 			.button {
-				@include mouse-gradient-button(
-					$padding: 10px 15px,
-					$height: auto,
-					$border-radius: 13px
-				);
+				@include liquid-glass($border-radius: 13px);
+				padding: 10px 15px;
 				gap: 10px;
 				.icon {
 					width: 25px;
@@ -1353,12 +1196,8 @@
 					}
 				}
 				.button {
-					@include mouse-gradient-button(
-						$padding: 10px 15px,
-						$height: auto,
-						$border-radius: 10px,
-						$include-responsive: false
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 10px 15px;
 					p {
 						font-size: 16px;
 					}
@@ -1367,12 +1206,15 @@
 			.how-block-content {
 				gap: 30px;
 				.card {
-					@include mouse-gradient-button(
-						$padding: 25px 30px !important,
-						$height: 200px !important,
-						$border-radius: 18px !important,
-						$backdrop-blur: 20px !important
+					@include liquid-glass($border-radius: 18px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
 					);
+					padding: 25px 30px;
+					height: 120px;
 					width: calc(50% - 15px);
 					display: flex;
 					flex-direction: column;
@@ -1400,12 +1242,15 @@
 			left: 15px;
 			gap: 30px;
 			.card {
-				@include mouse-gradient-button(
-					$padding: 25px 30px !important,
-					$height: auto !important,
-					$border-radius: 18px !important,
-					$backdrop-blur: 20px !important
+				@include liquid-glass($border-radius: 18px,
+					$hover-scale: 1.0,
+					$hover-scale-y: 1.0,
+					$active-scale: 1.0,
+					$active-scale-y: 1.0,
+					$hover-border-change: false
 				);
+				padding: 25px 30px;
+				height: auto;
 				width: calc(50% - 15px);
 				display: flex;
 				flex-direction: column;
@@ -1441,12 +1286,8 @@
 			}
 		}
 		.button {
-			@include mouse-gradient-button(
-				$padding: 10px 15px,
-				$height: auto,
-				$border-radius: 10px,
-				$include-responsive: false
-			);
+			@include liquid-glass($border-radius: 10px);
+			padding: 10px 15px;
 			p {
 				font-size: 16px;
 			}
@@ -1468,12 +1309,8 @@
 					}
 				}
 				.button {
-					@include mouse-gradient-button(
-						$padding: 10px 15px,
-						$height: auto,
-						$border-radius: 10px,
-						$include-responsive: false
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 10px 15px;
 					p {
 						font-size: 16px;
 					}
@@ -1482,12 +1319,15 @@
 			.build-block-content {
 				gap: 30px;
 				.card {
-					@include mouse-gradient-button(
-						$padding: 25px 30px !important,
-						$height: 200px !important,
-						$border-radius: 18px !important,
-						$backdrop-blur: 20px !important
+					@include liquid-glass($border-radius: 18px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
 					);
+					padding: 25px 30px;
+					height: 120px;
 					width: calc(50% - 15px);
 					display: flex;
 					flex-direction: column;
@@ -1515,12 +1355,15 @@
 			left: 15px;
 			gap: 30px;
 			.card {
-				@include mouse-gradient-button(
-					$padding: 25px 30px !important,
-					$height: auto !important,
-					$border-radius: 18px !important,
-					$backdrop-blur: 20px !important
+				@include liquid-glass($border-radius: 18px,
+					$hover-scale: 1.0,
+					$hover-scale-y: 1.0,
+					$active-scale: 1.0,
+					$active-scale-y: 1.0,
+					$hover-border-change: false
 				);
+				padding: 25px 30px;
+				height: auto;
 				width: calc(50% - 15px);
 				display: flex;
 				flex-direction: column;
@@ -1546,12 +1389,14 @@
 	}
 
 	.devbridge-block {
-		@include mouse-gradient-button(
-			$padding: 30px,
-			$height: auto,
-			$border-radius: 13px,
-			$include-responsive: false
+		@include liquid-glass($border-radius: 13px,
+			$hover-scale: 1.0,
+			$hover-scale-y: 1.0,
+			$active-scale: 1.0,
+			$active-scale-y: 1.0,
+			$hover-border-change: false
 		);
+		padding: 30px;
 		margin-top: 200px;
 		width: 970px;
 		display: flex;
@@ -1692,7 +1537,7 @@
 	}
 }
 @media screen and (min-width: 480px) and (max-width: 970px) {
-	@import '../styles/mouse-gradient-button';
+	@import '../styles/liquid-glass';
 
 	:host {
 		--button-expand-padding: 200px;
@@ -1714,11 +1559,15 @@
 		}
 		
 		.mobile-menu-btn {
-			@include mouse-gradient-button(
-				$padding: 10px,
-				$height: 45px,
-				$border-radius: 13px
+			@include liquid-glass(
+				$border-radius: 13px,
+				$hover-scale: 1.0,
+				$hover-scale-y: 1.0,
+				$active-scale: 1.0,
+				$active-scale-y: 1.0,
+				$hover-border-change: false
 			);
+			padding: 15px;
 			position: fixed;
 			top: 0px;
 			right: 0px;
@@ -1908,11 +1757,8 @@
 				gap: 15px;
 				
 				.mobile-menu-btn {
-					@include mouse-gradient-button(
-						$padding: 15px,
-						$height: 50px,
-						$border-radius: 13px
-					);
+					@include liquid-glass($border-radius: 13px);
+					padding: 15px;
 					display: flex;
 					align-items: center;
 					justify-content: center;
@@ -1973,6 +1819,9 @@
 			}
 		}
 		.button {
+			@include liquid-glass(
+				$border-radius: 10px
+			);
 			position: absolute;
 			bottom: 30px;
 			display: inline-block;
@@ -1986,6 +1835,7 @@
 			background-color: rgba(var(--white), 0.05);
 			border: 1px solid rgba(var(--white), 0.1);
 			z-index: 1000;
+			cursor: pointer;
 			p {
 				font-size: 16px;
 				color: rgba(var(--white), 1);
@@ -2021,11 +1871,8 @@
 		.buttons {
 			gap: 10px;
 			.button {
-				@include mouse-gradient-button(
-					$padding: 10px,
-					$height: auto,
-					$border-radius: 13px
-				);
+				@include liquid-glass($border-radius: 13px);
+				padding: 10px;
 				gap: 10px;
 				.icon {
 					width: 20px;
@@ -2056,12 +1903,8 @@
 					}
 				}
 				.button {
-					@include mouse-gradient-button(
-						$padding: 10px 15px,
-						$height: auto,
-						$border-radius: 10px,
-						$include-responsive: false
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 10px 15px;
 					p {
 						font-size: 16px;
 					}
@@ -2072,13 +1915,17 @@
 				align-items: flex-start;
 				gap: 10px;
 				.card {
-					@include mouse-gradient-button(
-						$padding: 25px 30px !important,
-						$height: auto !important,
-						$border-radius: 18px !important,
-						$backdrop-blur: 20px !important
+					@include liquid-glass(
+						$border-radius: 18px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
 					);
-					width: 100%;
+					padding: 25px 30px;
+					height: auto;
+					width: 80%;
 					display: flex;
 					flex-direction: column;
 					align-items: flex-start;
@@ -2101,19 +1948,22 @@
 			}
 		}
 		.how-block-content2 {
-			top: 480px;
+			top: 500px;
 			left: 0px;
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 10px;
 			.card {
-				@include mouse-gradient-button(
-					$padding: 25px 30px !important,
-					$height: auto !important,
-					$border-radius: 18px !important,
-					$backdrop-blur: 20px !important
+				@include liquid-glass($border-radius: 18px,
+					$hover-scale: 1.0,
+					$hover-scale-y: 1.0,
+					$active-scale: 1.0,
+					$active-scale-y: 1.0,
+					$hover-border-change: false
 				);
-				width: 100%;
+				padding: 25px 30px;
+				height: auto;
+				width: 80%;
 				display: flex;
 				flex-direction: column;
 				align-items: flex-start;
@@ -2155,12 +2005,8 @@
 			}
 		}
 		.button {
-			@include mouse-gradient-button(
-				$padding: 10px 15px,
-				$height: auto,
-				$border-radius: 10px,
-				$include-responsive: false
-			);
+			@include liquid-glass($border-radius: 10px);
+			padding: 10px 15px;
 			p {
 				font-size: 16px;
 			}
@@ -2185,12 +2031,8 @@
 					}
 				}
 				.button {
-					@include mouse-gradient-button(
-						$padding: 10px 15px,
-						$height: auto,
-						$border-radius: 10px,
-						$include-responsive: false
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 10px 15px;
 					p {
 						font-size: 16px;
 					}
@@ -2201,13 +2043,16 @@
 				align-items: flex-start;
 				gap: 10px;
 				.card {
-					@include mouse-gradient-button(
-						$padding: 25px 30px !important,
-						$height: auto !important,
-						$border-radius: 18px !important,
-						$backdrop-blur: 20px !important
+					@include liquid-glass($border-radius: 18px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
 					);
-					width: 100%;
+					padding: 25px 30px;
+					height: auto;
+					width: 80%;
 					display: flex;
 					flex-direction: column;
 					align-items: flex-start;
@@ -2230,19 +2075,22 @@
 			}
 		}
 		.build-block-content2 {
-			top: 435px;
+			top: 440px;
 			left: 0px;
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 10px;
 			.card {
-				@include mouse-gradient-button(
-					$padding: 25px 30px !important,
-					$height: auto !important,
-					$border-radius: 18px !important,
-					$backdrop-blur: 20px !important
+				@include liquid-glass($border-radius: 18px,
+					$hover-scale: 1.0,
+					$hover-scale-y: 1.0,
+					$active-scale: 1.0,
+					$active-scale-y: 1.0,
+					$hover-border-change: false
 				);
-				width: 100%;
+				padding: 25px 30px;
+				height: auto;
+				width: 80%;
 				display: flex;
 				flex-direction: column;
 				align-items: flex-start;
@@ -2266,17 +2114,21 @@
 	}
 
 	.devbridge-block {
-		@include mouse-gradient-button(
-			$padding: 20px,
-			$height: auto,
+		@include liquid-glass(
 			$border-radius: 13px,
-			$include-responsive: false
+			$hover-scale: 1.0,
+			$hover-scale-y: 1.0,
+			$active-scale: 1.0,
+			$active-scale-y: 1.0,
+			$hover-border-change: false
 		);
+		padding: 20px;
 		margin-top: 350px;
 		width: 80%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		box-sizing: border-box;
 		gap: 20px;
 		
 		.dev-bridge-header {
@@ -2319,6 +2171,7 @@
 				padding: 8px 15px;
 				border-radius: 10px;
 				gap: 10px;
+				height: 30px;
 				.icon {
 					width: 25px;
 					height: 25px;
@@ -2346,7 +2199,7 @@
 }
 
 @media screen and (min-width: 360px) and (max-width: 479px) {
-	@import '../styles/mouse-gradient-button';
+	@import '../styles/liquid-glass';
 
 	:host {
 		--button-expand-padding: 220px;
@@ -2368,11 +2221,15 @@
 		}
 		
 		.mobile-menu-btn {
-			@include mouse-gradient-button(
-				$padding: 10px,
-				$height: 45px,
-				$border-radius: 13px
+			@include liquid-glass(
+				$border-radius: 13px,
+				$hover-scale: 1.0,
+				$hover-scale-y: 1.0,
+				$active-scale: 1.0,
+				$active-scale-y: 1.0,
+				$hover-border-change: false
 			);
+			padding: 15px;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -2559,11 +2416,8 @@
 				gap: 12px;
 				
 				.mobile-menu-btn {
-					@include mouse-gradient-button(
-						$padding: 12px,
-						$height: 45px,
-						$border-radius: 10px
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 12px;
 					display: flex;
 					align-items: center;
 					justify-content: center;
@@ -2635,15 +2489,22 @@
 		}
 		}
 		.button {
+			@include liquid-glass(
+				$border-radius: 10px,
+				$hover-scale: 1.0,
+				$hover-scale-y: 1.0,
+				$active-scale: 1.0,
+				$active-scale-y: 1.0,
+				$hover-border-change: false
+			);
 			position: absolute;
-			bottom: 30px;
+			bottom: 20px;
 			display: inline-block;
 			width: 80dvw;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			padding: 8px 15px;
-			border-radius: 10px;
 			gap: 10px;
 			background-color: rgba(var(--white), 0.05);
 			border: 1px solid rgba(var(--white), 0.1);
@@ -2687,11 +2548,8 @@
 			align-items: center;
 			gap: 15px;
 			.button {
-				@include mouse-gradient-button(
-					$padding: 10px,
-					$height: 50px,
-					$border-radius: 13px
-				);
+				@include liquid-glass($border-radius: 13px);
+				padding: 10px;
 				width: 100%;
 				gap: 10px;
 				.icon {
@@ -2723,33 +2581,33 @@
 					}
 				}
 				.button {
-					@include mouse-gradient-button(
-						$padding: 10px 15px,
-						$height: auto,
-						$border-radius: 10px,
-						$include-responsive: false
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 10px 15px;
 					p {
 						font-size: 14px;
 					}
 				}
 			}
 			.how-block-content {
+				width: 100%;
 				flex-direction: column;
 				align-items: flex-start;
 				gap: 10px;
 				.card {
-					@include mouse-gradient-button(
-						$padding: 25px 30px !important,
-						$height: auto !important,
-						$border-radius: 18px !important,
-						$backdrop-blur: 20px !important
+					@include liquid-glass($border-radius: 18px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
 					);
+					padding: 25px 30px;
 					width: 100%;
 					display: flex;
 					flex-direction: column;
 					align-items: flex-start;
 					justify-content: flex-start;
+					height: auto;
 					.card-header {
 						margin-bottom: 10px;
 						gap: 10px;
@@ -2768,18 +2626,20 @@
 			}
 		}
 		.how-block-content2 {
-			top: 480px;
+			top: 490px;
 			left: 0px;
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 10px;
 			.card {
-				@include mouse-gradient-button(
-					$padding: 25px 30px !important,
-					$height: auto !important,
-					$border-radius: 18px !important,
-					$backdrop-blur: 20px !important
+				@include liquid-glass($border-radius: 18px,
+					$hover-scale: 1.0,
+					$hover-scale-y: 1.0,
+					$active-scale: 1.0,
+					$active-scale-y: 1.0,
+					$hover-border-change: false
 				);
+				padding: 25px 30px;
 				width: 100%;
 				display: flex;
 				flex-direction: column;
@@ -2822,12 +2682,8 @@
 			}
 		}
 		.button {
-			@include mouse-gradient-button(
-				$padding: 10px 15px,
-				$height: 50px,
-				$border-radius: 10px,
-				$include-responsive: false
-			);
+			@include liquid-glass($border-radius: 10px);
+			padding: 10px 15px;
 			width: 100%;
 			display: flex;
 			justify-content: center;
@@ -2856,12 +2712,8 @@
 					}
 				}
 				.button {
-					@include mouse-gradient-button(
-						$padding: 10px 15px,
-						$height: auto,
-						$border-radius: 10px,
-						$include-responsive: false
-					);
+					@include liquid-glass($border-radius: 10px);
+					padding: 10px 15px;
 					p {
 						font-size: 16px;
 					}
@@ -2872,17 +2724,20 @@
 				align-items: flex-start;
 				gap: 10px;
 				.card {
-					@include mouse-gradient-button(
-						$padding: 25px 30px !important,
-						$height: auto !important,
-						$border-radius: 18px !important,
-						$backdrop-blur: 20px !important
+					@include liquid-glass($border-radius: 18px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
 					);
+					padding: 25px 30px;
 					width: 100%;
 					display: flex;
 					flex-direction: column;
 					align-items: flex-start;
 					justify-content: flex-start;
+					height: auto;
 					.card-header {
 						margin-bottom: 10px;
 						gap: 10px;
@@ -2901,18 +2756,20 @@
 			}
 		}
 		.build-block-content2 {
-			top: 435px;
+			top: 440px;
 			left: 0px;
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 10px;
 			.card {
-				@include mouse-gradient-button(
-					$padding: 25px 30px !important,
-					$height: auto !important,
-					$border-radius: 18px !important,
-					$backdrop-blur: 20px !important
+				@include liquid-glass($border-radius: 18px,
+					$hover-scale: 1.0,
+					$hover-scale-y: 1.0,
+					$active-scale: 1.0,
+					$active-scale-y: 1.0,
+					$hover-border-change: false
 				);
+				padding: 25px 30px;
 				width: 100%;
 				display: flex;
 				flex-direction: column;
@@ -2937,12 +2794,8 @@
 	}
 
 	.devbridge-block {
-		@include mouse-gradient-button(
-			$padding: 20px,
-			$height: auto,
-			$border-radius: 13px,
-			$include-responsive: false
-		);
+		@include liquid-glass($border-radius: 13px);
+		padding: 20px;
 		margin-top: 350px;
 		width: 100%;
 		display: flex;
