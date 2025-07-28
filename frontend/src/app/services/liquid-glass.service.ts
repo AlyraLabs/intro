@@ -18,9 +18,28 @@ export class LiquidGlassService {
       `.trim());
 
       liquidElements.forEach(element => {
-        this.updateElementLighting(element as HTMLElement, event.clientX, event.clientY);
+        const rect = element.getBoundingClientRect();
+        const isHovered = this.isPointInsideElement(event.clientX, event.clientY, rect);
+        
+        if (isHovered) {
+          this.updateElementLighting(element as HTMLElement, event.clientX, event.clientY);
+        } else {
+          this.resetElementLighting(element as HTMLElement);
+        }
       });
     });
+  }
+
+  private isPointInsideElement(x: number, y: number, rect: DOMRect): boolean {
+    return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+  }
+
+  private resetElementLighting(element: HTMLElement) {
+    // Возвращаем к дефолтным значениям
+    element.style.setProperty('--light-direction-x', '0.707');
+    element.style.setProperty('--light-direction-y', '0.707');
+    element.style.setProperty('--glass-reflex-light', '1');
+    element.style.setProperty('--glass-reflex-dark', '1');
   }
 
   updateElementLighting(element: HTMLElement, mouseX: number, mouseY: number) {
