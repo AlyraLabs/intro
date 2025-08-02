@@ -1014,7 +1014,7 @@
 	-webkit-backdrop-filter: blur(5px);
 	padding: 40px;
 	height: auto;
-	margin-top: 300px;
+	margin-top: 350px;
 	width: 1600px;
 	box-sizing: border-box;
 	display: flex;
@@ -1133,6 +1133,7 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
+	position: relative; // Для позиционирования bg-logo
 	.logo-img {
 		width: 35px;
 		height: 35px;
@@ -1158,6 +1159,23 @@
 				opacity: 1;
 			}
 		}
+	}
+	.bg-logo {
+		position: absolute;
+		bottom: 0px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100vw;
+		height: 60vh;
+		background-image: url(/img/intro/bg-logo.png);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		z-index: -1;
+		pointer-events: none;
+		
+		mask: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.1) 80%, transparent 100%);
+		-webkit-mask: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.1) 80%, transparent 100%);
 	}
 }
 
