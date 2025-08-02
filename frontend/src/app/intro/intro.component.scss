@@ -1,4 +1,3 @@
-@import '../styles/mouse-gradient-button';
 @import '../styles/liquid-glass';
 
 :host {
@@ -37,6 +36,7 @@
 		@include liquid-glass(
 			$border-radius: 13px,
 		);
+		-webkit-backdrop-filter: blur(5px);
 		padding: 10px 15px;
 		gap: 15px;
 		position: relative;
@@ -85,6 +85,7 @@
 		$active-scale-y: 1.0,
 		$hover-border-change: false
 	);
+	-webkit-backdrop-filter: blur(5px);
 	position: fixed;
 	width: 920px;
 	height: 102px;
@@ -593,6 +594,7 @@
 			@include liquid-glass(
 				$border-radius: 13px,
 			);
+			-webkit-backdrop-filter: blur(5px);
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -654,6 +656,7 @@
 				@include liquid-glass(
 					$border-radius: 13px,
 				);
+				-webkit-backdrop-filter: blur(5px);
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -678,6 +681,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(5px);
 				padding: 35px 40px;
 				height: 150px;
 				width: calc(50% - 25px);
@@ -740,6 +744,7 @@
 				$active-scale-y: 1.0,
 				$hover-border-change: false
 			);
+			-webkit-backdrop-filter: blur(5px);
 			padding: 35px 40px;
 			height: auto;
 			width: calc(50% - 25px);
@@ -807,6 +812,7 @@
 		@include liquid-glass(
 			$border-radius: 13px,
 		);
+		-webkit-backdrop-filter: blur(5px);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -859,6 +865,7 @@
 				@include liquid-glass(
 					$border-radius: 13px,
 				);
+				-webkit-backdrop-filter: blur(5px);
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -883,6 +890,7 @@
 				$active-scale-y: 1.0,
 				$hover-border-change: false
 			);
+				-webkit-backdrop-filter: blur(5px);
 				padding: 35px 40px;
 				height: 150px;
 				width: calc(50% - 25px);
@@ -939,6 +947,7 @@
 				$active-scale-y: 1.0,
 				$hover-border-change: false
 			);
+			-webkit-backdrop-filter: blur(5px);
 			padding: 35px 40px;
 			height: auto;
 			width: calc(50% - 25px);
@@ -988,6 +997,7 @@
 				$active-scale-y: 1.0,
 				$hover-border-change: false
 			);
+	-webkit-backdrop-filter: blur(5px);
 	padding: 40px;
 	height: auto;
 	margin-top: 300px;

@@ -18,6 +18,7 @@
 		}
 		.header-btn {
 			@include liquid-glass($border-radius: 10px);
+			-webkit-backdrop-filter: blur(10px);
 			gap: 15px;
 			
 			.icon {
@@ -40,6 +41,7 @@
 		$active-scale-y: 1.0,
 		$hover-border-change: false
 	);
+		-webkit-backdrop-filter: blur(10px);
 		width: 665px;
 		height: 72px;
 		bottom: 30px;
@@ -190,6 +192,7 @@
 			gap: 20px;
 			.button {
 				@include liquid-glass($border-radius: 13px);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 10px 15px;
 				gap: 10px;
 				.icon {
@@ -219,6 +222,7 @@
 				}
 				.button {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 10px 15px;
 					p {
 						font-size: 18px;
@@ -236,6 +240,7 @@
 						$active-scale-y: 1.0,
 						$hover-border-change: false
 						);
+						-webkit-backdrop-filter: blur(10px);
 					padding: 25px 30px;
 					height: 120px;
 					width: calc(50% - 25px);
@@ -273,6 +278,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 25px 30px;
 				height: auto;
 				width: calc(50% - 25px);
@@ -311,6 +317,7 @@
 		}
 		.button {
 			@include liquid-glass($border-radius: 10px);
+			-webkit-backdrop-filter: blur(10px);
 			padding: 10px 15px;
 			p {
 				font-size: 18px;
@@ -334,6 +341,7 @@
 				}
 				.button {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 10px 15px;
 					p {
 						font-size: 18px;
@@ -351,6 +359,7 @@
 						$active-scale-y: 1.0,
 						$hover-border-change: false
 					);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 25px 30px;
 					height: 120px;
 					width: calc(50% - 15px);
@@ -388,6 +397,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 25px 30px;
 				height: auto;
 				width: calc(50% - 15px);
@@ -422,6 +432,7 @@
 			$active-scale-y: 1.0,
 			$hover-border-change: false
 		);
+		-webkit-backdrop-filter: blur(10px);
 		padding: 30px;
 		margin-top: 250px;
 		width: 1171px;
@@ -506,6 +517,7 @@
 		}
 		.header-btn {
 			@include liquid-glass($border-radius: 10px);
+			-webkit-backdrop-filter: blur(10px);
 			gap: 15px;
 			
 			.icon {
@@ -528,6 +540,7 @@
 		$active-scale-y: 1.0,
 		$hover-border-change: false
 	);
+	-webkit-backdrop-filter: blur(10px);
 		width: 665px;
 		height: 72px;
 		bottom: 30px;
@@ -678,6 +691,7 @@
 			gap: 20px;
 			.button {
 				@include liquid-glass($border-radius: 13px);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 10px 15px;
 				gap: 10px;
 				.icon {
@@ -707,6 +721,7 @@
 				}
 				.button {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 10px 15px;
 					p {
 						font-size: 18px;
@@ -724,6 +739,7 @@
 						$active-scale-y: 1.0,
 						$hover-border-change: false
 						);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 25px 30px;
 					height: 120px;
 					width: calc(50% - 25px);
@@ -761,6 +777,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 25px 30px;
 				height: auto;
 				width: calc(50% - 25px);
@@ -799,6 +816,7 @@
 		}
 		.button {
 			@include liquid-glass($border-radius: 10px);
+			-webkit-backdrop-filter: blur(10px);
 			padding: 10px 15px;
 			p {
 				font-size: 18px;
@@ -822,6 +840,7 @@
 				}
 				.button {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 10px 15px;
 					p {
 						font-size: 18px;
@@ -839,6 +858,7 @@
 						$active-scale-y: 1.0,
 						$hover-border-change: false
 					);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 25px 30px;
 					height: 120px;
 					width: calc(50% - 15px);
@@ -876,6 +896,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 25px 30px;
 				height: auto;
 				width: calc(50% - 15px);
@@ -910,6 +931,7 @@
 			$active-scale-y: 1.0,
 			$hover-border-change: false
 		);
+		-webkit-backdrop-filter: blur(10px);
 		padding: 30px;
 		margin-top: 250px;
 		width: 1171px;
@@ -994,6 +1016,7 @@
 		}
 		.header-btn {
 			@include liquid-glass($border-radius: 13px);
+			-webkit-backdrop-filter: blur(10px);
 			padding: 10px;
 			gap: 15px;
 			position: relative;
@@ -1019,6 +1042,7 @@
 			$active-scale-y: 1.0,
 			$hover-border-change: false
 		);
+		-webkit-backdrop-filter: blur(10px);
 		width: 665px;
 		height: 72px;
 		bottom: 20px;
@@ -1168,6 +1192,7 @@
 			gap: 20px;
 			.button {
 				@include liquid-glass($border-radius: 13px);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 10px 15px;
 				gap: 10px;
 				.icon {
@@ -1197,6 +1222,7 @@
 				}
 				.button {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 10px 15px;
 					p {
 						font-size: 16px;
@@ -1213,6 +1239,7 @@
 						$active-scale-y: 1.0,
 						$hover-border-change: false
 					);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 25px 30px;
 					height: 120px;
 					width: calc(50% - 15px);
@@ -1249,6 +1276,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 25px 30px;
 				height: auto;
 				width: calc(50% - 15px);
@@ -1287,6 +1315,7 @@
 		}
 		.button {
 			@include liquid-glass($border-radius: 10px);
+			-webkit-backdrop-filter: blur(10px);
 			padding: 10px 15px;
 			p {
 				font-size: 16px;
@@ -1310,6 +1339,7 @@
 				}
 				.button {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 10px 15px;
 					p {
 						font-size: 16px;
@@ -1326,6 +1356,7 @@
 						$active-scale-y: 1.0,
 						$hover-border-change: false
 					);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 25px 30px;
 					height: 120px;
 					width: calc(50% - 15px);
@@ -1362,6 +1393,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 25px 30px;
 				height: auto;
 				width: calc(50% - 15px);
@@ -1396,6 +1428,7 @@
 			$active-scale-y: 1.0,
 			$hover-border-change: false
 		);
+		-webkit-backdrop-filter: blur(10px);
 		padding: 30px;
 		margin-top: 200px;
 		width: 970px;
@@ -1567,6 +1600,7 @@
 				$active-scale-y: 1.0,
 				$hover-border-change: false
 			);
+			-webkit-backdrop-filter: blur(10px);
 			padding: 15px;
 			position: fixed;
 			top: 0px;
@@ -1758,6 +1792,7 @@
 				
 				.mobile-menu-btn {
 					@include liquid-glass($border-radius: 13px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 15px;
 					display: flex;
 					align-items: center;
@@ -1822,6 +1857,7 @@
 			@include liquid-glass(
 				$border-radius: 10px
 			);
+			-webkit-backdrop-filter: blur(10px);
 			position: absolute;
 			bottom: 30px;
 			display: inline-block;
@@ -1872,6 +1908,7 @@
 			gap: 10px;
 			.button {
 				@include liquid-glass($border-radius: 13px);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 10px;
 				gap: 10px;
 				.icon {
@@ -1904,6 +1941,7 @@
 				}
 				.button {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 10px 15px;
 					p {
 						font-size: 16px;
@@ -1923,6 +1961,7 @@
 						$active-scale-y: 1.0,
 						$hover-border-change: false
 					);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 25px 30px;
 					height: auto;
 					width: 80%;
@@ -1961,6 +2000,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 25px 30px;
 				height: auto;
 				width: 80%;
@@ -2006,6 +2046,7 @@
 		}
 		.button {
 			@include liquid-glass($border-radius: 10px);
+			-webkit-backdrop-filter: blur(10px);
 			padding: 10px 15px;
 			p {
 				font-size: 16px;
@@ -2032,6 +2073,7 @@
 				}
 				.button {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 10px 15px;
 					p {
 						font-size: 16px;
@@ -2050,6 +2092,7 @@
 						$active-scale-y: 1.0,
 						$hover-border-change: false
 					);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 25px 30px;
 					height: auto;
 					width: 80%;
@@ -2088,6 +2131,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 25px 30px;
 				height: auto;
 				width: 80%;
@@ -2122,6 +2166,7 @@
 			$active-scale-y: 1.0,
 			$hover-border-change: false
 		);
+		-webkit-backdrop-filter: blur(10px);
 		padding: 20px;
 		margin-top: 350px;
 		width: 80%;
@@ -2229,6 +2274,7 @@
 				$active-scale-y: 1.0,
 				$hover-border-change: false
 			);
+			-webkit-backdrop-filter: blur(10px);
 			padding: 15px;
 			display: flex;
 			flex-direction: column;
@@ -2417,6 +2463,7 @@
 				
 				.mobile-menu-btn {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 12px;
 					display: flex;
 					align-items: center;
@@ -2497,6 +2544,7 @@
 				$active-scale-y: 1.0,
 				$hover-border-change: false
 			);
+			-webkit-backdrop-filter: blur(10px);
 			position: absolute;
 			bottom: 20px;
 			display: inline-block;
@@ -2549,6 +2597,7 @@
 			gap: 15px;
 			.button {
 				@include liquid-glass($border-radius: 13px);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 10px;
 				width: 100%;
 				gap: 10px;
@@ -2582,6 +2631,7 @@
 				}
 				.button {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 10px 15px;
 					p {
 						font-size: 14px;
@@ -2601,6 +2651,7 @@
 						$active-scale-y: 1.0,
 						$hover-border-change: false
 					);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 25px 30px;
 					width: 100%;
 					display: flex;
@@ -2639,6 +2690,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 25px 30px;
 				width: 100%;
 				display: flex;
@@ -2683,6 +2735,7 @@
 		}
 		.button {
 			@include liquid-glass($border-radius: 10px);
+			-webkit-backdrop-filter: blur(10px);
 			padding: 10px 15px;
 			width: 100%;
 			display: flex;
@@ -2713,6 +2766,7 @@
 				}
 				.button {
 					@include liquid-glass($border-radius: 10px);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 10px 15px;
 					p {
 						font-size: 16px;
@@ -2731,6 +2785,7 @@
 						$active-scale-y: 1.0,
 						$hover-border-change: false
 					);
+					-webkit-backdrop-filter: blur(10px);
 					padding: 25px 30px;
 					width: 100%;
 					display: flex;
@@ -2769,6 +2824,7 @@
 					$active-scale-y: 1.0,
 					$hover-border-change: false
 				);
+				-webkit-backdrop-filter: blur(10px);
 				padding: 25px 30px;
 				width: 100%;
 				display: flex;
@@ -2795,6 +2851,8 @@
 
 	.devbridge-block {
 		@include liquid-glass($border-radius: 13px);
+		-webkit-backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
 		padding: 20px;
 		margin-top: 350px;
 		width: 100%;

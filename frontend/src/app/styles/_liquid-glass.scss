@@ -13,7 +13,7 @@
   border: 1px solid rgba(var(--white), $border-opacity);
   border-radius: $border-radius;
   backdrop-filter: blur($backdrop-blur) url(#displacementFilter);
-  -webkit-backdrop-filter: blur($backdrop-blur);
+  // -webkit-backdrop-filter: blur($backdrop-blur); // Убираем - багует в Safari при вложенности
   
   transition: all 250ms cubic-bezier(0.25, 0.8, 0.25, 1),
               transform 200ms cubic-bezier(0.175, 0.885, 0.32, 1.075),
@@ -70,11 +70,11 @@
     transform: scale($hover-scale) scaleY($hover-scale-y);
     
     @if $hover-border-change {
-      border-radius: calc($border-radius + 6px) calc($border-radius + 2px) calc($border-radius + 6px) calc($border-radius + 2px);
+      border-radius: calc($border-radius + 4px);
     }
     
-    backdrop-filter: blur(calc($backdrop-blur + 5px)) url(#displacementFilter);
-    -webkit-backdrop-filter: blur(calc($backdrop-blur + 5px));
+    // Убираем backdrop-filter при hover - может конфликтовать с -webkit-backdrop-filter
+    // backdrop-filter: blur(calc($backdrop-blur + 5px)) url(#displacementFilter);
     
     box-shadow: 
       0px 3px 12px 0px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 15%), transparent),
@@ -84,7 +84,7 @@
       opacity: 0.95;
       
       @if $hover-border-change {
-        border-radius: calc($border-radius + 6px) calc($border-radius + 2px) calc($border-radius + 6px) calc($border-radius + 2px);
+        border-radius: calc($border-radius + 4px);
       }
     }
   }
@@ -93,14 +93,14 @@
     transform: scale($active-scale) scaleY($active-scale-y);
     
     @if $hover-border-change {
-      border-radius: calc($border-radius + 2px) calc($border-radius + 1px) calc($border-radius + 2px) calc($border-radius + 1px);
+      border-radius: calc($border-radius + 1px);
     }
     
     &::before {
       opacity: 0.85;
       
       @if $hover-border-change {
-        border-radius: calc($border-radius + 2px) calc($border-radius + 1px) calc($border-radius + 2px) calc($border-radius + 1px);
+        border-radius: calc($border-radius + 1px);
       }
     }
   }
@@ -122,7 +122,7 @@
   border: 1px solid rgba(var(--white), 0);
   border-radius: $border-radius;
   backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  // -webkit-backdrop-filter: none; // Убираем - багует в Safari
   
   transition: all 600ms cubic-bezier(0.25, 0.8, 0.25, 1),
               transform 450ms cubic-bezier(0.175, 0.885, 0.32, 1.075),
@@ -163,12 +163,12 @@
     background-color: rgba(var(--white), $background-opacity);
     border: 1px solid rgba(var(--white), $border-opacity);
     backdrop-filter: blur($backdrop-blur) url(#displacementFilter);
-    -webkit-backdrop-filter: blur($backdrop-blur);
+    // Не добавляем -webkit-backdrop-filter при hover для избежания конфликтов
     
     transform: scale($hover-scale) scaleY($hover-scale-y);
     
     @if $hover-border-change {
-      border-radius: calc($border-radius + 6px) calc($border-radius + 2px) calc($border-radius + 6px) calc($border-radius + 2px);
+      border-radius: calc($border-radius + 4px);
     }
     
     box-shadow: 
@@ -194,7 +194,7 @@
         inset calc(var(--light-direction-x) * 5px) calc(var(--light-direction-y) * 5px) 3px -1px color-mix(in srgb, var(--c-dark) calc(var(--glass-reflex-dark) * 10%), transparent);
       
       @if $hover-border-change {
-        border-radius: calc($border-radius + 6px) calc($border-radius + 2px) calc($border-radius + 6px) calc($border-radius + 2px);
+        border-radius: calc($border-radius + 4px);
       }
     }
   }
@@ -203,14 +203,14 @@
     transform: scale($active-scale) scaleY($active-scale-y);
     
     @if $hover-border-change {
-      border-radius: calc($border-radius + 2px) calc($border-radius + 1px) calc($border-radius + 2px) calc($border-radius + 1px);
+      border-radius: calc($border-radius + 1px);
     }
     
     &::before {
       opacity: 0.85;
       
       @if $hover-border-change {
-        border-radius: calc($border-radius + 2px) calc($border-radius + 1px) calc($border-radius + 2px) calc($border-radius + 1px);
+        border-radius: calc($border-radius + 1px);
       }
     }
   }
