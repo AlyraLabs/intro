@@ -358,13 +358,20 @@
 </div>
 
 <div class="architecture-block" [@blockSlideFromLeft]="architectureBlockState">
-	<div class="title">
-		<h1>Execution <span>Architecture</span></h1>
+	<div class="architecture-header">
+		<div class="title">
+			<h1>Execution <span>Architecture</span></h1>
+		</div>
+		<a data-liquid-glass class="button" href="https://blackholelabs.gitbook.io/docs/blackhole/security-stack" target="_blank">
+			<p>Learn More</p>
+		</a>
 	</div>
-	<a data-liquid-glass class="button" href="https://blackholelabs.gitbook.io/docs/blackhole/security-stack" target="_blank">
-		<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-		<p>Learn More</p>
-	</a>
+	<div class="architecture-animation">
+		<video #architectureVideo autoplay muted loop playsinline>
+			<source src="/img/animations/execution.webm" type="video/webm">
+		</video>
+	</div>
+	
 </div>
 
 <div class="build-block" [@blockScaleUp]="buildBlockState">

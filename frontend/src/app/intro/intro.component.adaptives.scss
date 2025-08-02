@@ -50,7 +50,7 @@
 	);
 		-webkit-backdrop-filter: blur(10px);
 		width: 665px;
-		height: 72px;
+		height: 74px;
 		bottom: 30px;
 
 		&.community-expanded {
@@ -62,7 +62,7 @@
 		}
 
 		.nav-content {
-			bottom: 15px;
+			bottom: 18px;
 			.nav-item {
 				padding: 8px 15px;
 				border-radius: 8px;
@@ -314,20 +314,22 @@
 	.architecture-block {
 		margin-top: 250px;
 		width: 1171px;
-		.title {
-			h3 {
-				font-size: 36px;
+		.architecture-header {
+			.title {
+				h3 {
+					font-size: 36px;
+				}
+				h1 {
+					font-size: 48px;
+				}
 			}
-			h1 {
-				font-size: 48px;
-			}
-		}
-		.button {
-			@include liquid-glass($border-radius: 10px);
-			-webkit-backdrop-filter: blur(10px);
-			padding: 10px 15px;
-			p {
-				font-size: 18px;
+			.button {
+				@include liquid-glass($border-radius: 10px);
+				-webkit-backdrop-filter: blur(10px);
+				padding: 10px 15px;
+				p {
+					font-size: 18px;
+				}
 			}
 		}
 	}
@@ -556,7 +558,7 @@
 	);
 	-webkit-backdrop-filter: blur(10px);
 		width: 665px;
-		height: 72px;
+		height: 74px;
 		bottom: 30px;
 
 		&.community-expanded {
@@ -568,7 +570,7 @@
 		}
 
 		.nav-content {
-			bottom: 15px;
+			bottom: 18px;
 			.nav-item {
 				padding: 8px 15px;
 				border-radius: 8px;
@@ -820,20 +822,22 @@
 	.architecture-block {
 		margin-top: 250px;
 		width: 1171px;
-		.title {
-			h3 {
-				font-size: 36px;
+		.architecture-header {
+			.title {
+				h3 {
+					font-size: 36px;
+				}
+				h1 {
+					font-size: 48px;
+				}
 			}
-			h1 {
-				font-size: 48px;
-			}
-		}
-		.button {
-			@include liquid-glass($border-radius: 10px);
-			-webkit-backdrop-filter: blur(10px);
-			padding: 10px 15px;
-			p {
-				font-size: 18px;
+			.button {
+				@include liquid-glass($border-radius: 10px);
+				-webkit-backdrop-filter: blur(10px);
+				padding: 10px 15px;
+				p {
+					font-size: 18px;
+				}
 			}
 		}
 	}
@@ -1330,20 +1334,22 @@
 	.architecture-block {
 		margin-top: 200px;
 		width: 970px;
-		.title {
-			h3 {
-				font-size: 32px;
+		.architecture-header {
+			.title {
+				h3 {
+					font-size: 32px;
+				}
+				h1 {
+					font-size: 40px;
+				}
 			}
-			h1 {
-				font-size: 40px;
-			}
-		}
-		.button {
-			@include liquid-glass($border-radius: 10px);
-			-webkit-backdrop-filter: blur(10px);
-			padding: 10px 15px;
-			p {
-				font-size: 16px;
+			.button {
+				@include liquid-glass($border-radius: 10px);
+				-webkit-backdrop-filter: blur(10px);
+				padding: 10px 15px;
+				p {
+					font-size: 16px;
+				}
 			}
 		}
 	}
@@ -2059,26 +2065,32 @@
 		margin-top: 350px;
 		width: 80%;
 		flex-direction: column;
-		justify-content: flex-start;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: 20px;
-		.title {
-			h3 {
-				font-size: 28px;
-				text-align: center;
+		gap: 30px;
+		.architecture-header {
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 20px;
+			.title {
+				h3 {
+					font-size: 28px;
+					text-align: center;
+				}
+				h1 {
+					font-size: 36px;
+					text-align: center;
+				}
 			}
-			h1 {
-				font-size: 36px;
-				text-align: center;
-			}
-		}
-		.button {
-			@include liquid-glass($border-radius: 10px);
-			-webkit-backdrop-filter: blur(10px);
-			padding: 10px 15px;
-			p {
-				font-size: 16px;
+			.button {
+				@include liquid-glass($border-radius: 10px);
+				-webkit-backdrop-filter: blur(10px);
+				padding: 10px 15px;
+				p {
+					font-size: 16px;
+				}
 			}
 		}
 	}
@@ -2755,27 +2767,34 @@
 		justify-content: flex-start;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: 20px;
-		.title {
-			h3 {
-				font-size: 28px;
-				text-align: center;
-			}
-			h1 {
-				font-size: 36px;
-				text-align: center;
-			}
-		}
-		.button {
-			@include liquid-glass($border-radius: 10px);
-			-webkit-backdrop-filter: blur(10px);
-			padding: 10px 15px;
-			width: 100%;
-			display: flex;
-			justify-content: center;
+		gap: 30px;
+		.architecture-header {
+			flex-direction: column;
+			justify-content: flex-start;
 			align-items: center;
-			p {
-				font-size: 14px;
+			flex-wrap: wrap;
+			gap: 20px;
+			.title {
+				h3 {
+					font-size: 28px;
+					text-align: center;
+				}
+				h1 {
+					font-size: 36px;
+					text-align: center;
+				}
+			}
+			.button {
+				@include liquid-glass($border-radius: 10px);
+				-webkit-backdrop-filter: blur(10px);
+				padding: 10px 15px;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				p {
+					font-size: 14px;
+				}
 			}
 		}
 	}

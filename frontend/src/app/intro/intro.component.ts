@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, inject, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MouseGradientService } from '../services/mouse-gradient.service';
 import { StarAnimationService, Star } from '../services/star-animation.service';
@@ -188,7 +188,7 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 
   ]
 })
-export class IntroComponent implements OnInit, OnDestroy {
+export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
 
   
   private starAnimationService = inject(StarAnimationService);
@@ -209,6 +209,7 @@ export class IntroComponent implements OnInit, OnDestroy {
   
   @ViewChild('infoBlock', { static: false }) infoBlock!: ElementRef;
   @ViewChild('changingWord', { static: false }) changingWord!: ElementRef;
+  @ViewChild('architectureVideo', { static: false }) architectureVideo!: ElementRef<HTMLVideoElement>;
   
   private animationFrameId: number | null = null;
   private wordChangeInterval: any = null;
@@ -287,6 +288,32 @@ export class IntroComponent implements OnInit, OnDestroy {
           this.setupScrollAnimations();
     this.startWordChangeAnimation();
     }
+
+  ngAfterViewInit() {
+    // Принудительно запускаем видео после загрузки компонента
+    if (this.architectureVideo && this.architectureVideo.nativeElement) {
+      const video = this.architectureVideo.nativeElement;
+      
+      // Пытаемся запустить видео
+      const playPromise = video.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log('Автовоспроизведение заблокировано браузером:', error);
+          
+          // Если автовоспроизведение заблокировано, запускаем при первом клике пользователя
+          const startVideoOnInteraction = () => {
+            video.play().catch(e => console.log('Ошибка запуска видео:', e));
+            document.removeEventListener('click', startVideoOnInteraction);
+            document.removeEventListener('touchstart', startVideoOnInteraction);
+          };
+          
+          document.addEventListener('click', startVideoOnInteraction);
+          document.addEventListener('touchstart', startVideoOnInteraction);
+        });
+      }
+    }
+  }
   
   private startWordChangeAnimation() {
     setTimeout(() => {
