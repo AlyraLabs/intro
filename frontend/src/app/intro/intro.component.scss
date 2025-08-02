@@ -35,6 +35,11 @@
 	.header-btn {
 		@include liquid-glass(
 			$border-radius: 13px,
+			$hover-scale: 1.0,
+			$hover-scale-y: 1.0,
+			$active-scale: 1.0,
+			$active-scale-y: 1.0,
+			$hover-border-change: false
 		);
 		-webkit-backdrop-filter: blur(5px);
 		padding: 10px 15px;
@@ -43,6 +48,13 @@
 		overflow: hidden;
 		cursor: pointer;
 		
+		// Отключаем CSS transitions для Safari - конфликтуют с Angular анимациями
+		transition: none !important;
+		
+		&::before {
+			transition: none !important;
+		}
+		
 		.icon {
 			width: 35px;
 			height: 35px;
@@ -50,6 +62,7 @@
 			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
+			pointer-events: none; // Не перехватываем mouse события
 		}
 		p {
 			position: absolute;
@@ -60,6 +73,7 @@
 			font-weight: 400;
 			color: rgba(var(--white), 1);
 			white-space: nowrap;
+			pointer-events: none; // Не перехватываем mouse события
 		}
 	}
 	

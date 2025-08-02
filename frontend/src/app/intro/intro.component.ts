@@ -25,21 +25,29 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
       state('expanded', style({
         paddingRight: 'var(--button-expand-padding)'
       })),
-      transition('collapsed <=> expanded', [
+      transition('collapsed => expanded', [
+        animate('0.6s cubic-bezier(0.23, 1, 0.32, 1)')
+      ]),
+      transition('expanded => collapsed', [
         animate('0.4s cubic-bezier(0.4, 0, 0.2, 1)')
       ])
     ]),
     trigger('textFade', [
       state('hidden', style({
         opacity: 0,
-        transform: 'translateY(-50%) translateX(-15px)'
+        transform: 'translateY(-50%) translateX(-30px)',
+        filter: 'blur(8px)'
       })),
       state('visible', style({
         opacity: 1,
-        transform: 'translateY(-50%) translateX(0)'
+        transform: 'translateY(-50%) translateX(0)',
+        filter: 'blur(0px)'
       })),
-      transition('hidden <=> visible', [
-        animate('0.4s cubic-bezier(0.4, 0, 0.2, 1)')
+      transition('hidden => visible', [
+        animate('0.8s cubic-bezier(0.23, 1, 0.32, 1)')
+      ]),
+      transition('visible => hidden', [
+        animate('0.3s cubic-bezier(0.4, 0, 0.2, 1)')
       ])
     ]),
 
@@ -472,12 +480,27 @@ export class IntroComponent implements OnInit, OnDestroy {
   
 
 
+  private buttonHoverTimeout: any = null;
+
   onButtonMouseEnter() {
-    this.isButtonHovered = true;
+    // Очищаем предыдущий timeout если есть
+    if (this.buttonHoverTimeout) {
+      clearTimeout(this.buttonHoverTimeout);
+      this.buttonHoverTimeout = null;
+    }
+    
+    // Устанавливаем состояние только если оно изменилось
+    if (!this.isButtonHovered) {
+      this.isButtonHovered = true;
+    }
   }
 
   onButtonMouseLeave() {
-    this.isButtonHovered = false;
+    // Добавляем небольшую задержку для предотвращения мерцания в Safari
+    this.buttonHoverTimeout = setTimeout(() => {
+      this.isButtonHovered = false;
+      this.buttonHoverTimeout = null;
+    }, 50);
   }
 
   reloadPage() {
@@ -611,6 +634,12 @@ export class IntroComponent implements OnInit, OnDestroy {
     Object.values(this.animationTimeouts).forEach((timeoutId) => {
       clearTimeout(timeoutId);
     });
+    
+    // Очищаем timeout кнопки
+    if (this.buttonHoverTimeout) {
+      clearTimeout(this.buttonHoverTimeout);
+      this.buttonHoverTimeout = null;
+    }
   }
 
       @HostListener('mousemove', ['$event'])

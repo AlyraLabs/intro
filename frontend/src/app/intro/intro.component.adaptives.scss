@@ -17,7 +17,14 @@
 			}
 		}
 		.header-btn {
-			@include liquid-glass($border-radius: 10px);
+			@include liquid-glass(
+				$border-radius: 10px,
+				$hover-scale: 1.0,
+				$hover-scale-y: 1.0,
+				$active-scale: 1.0,
+				$active-scale-y: 1.0,
+				$hover-border-change: false
+			);
 			-webkit-backdrop-filter: blur(10px);
 			gap: 15px;
 			
@@ -516,7 +523,14 @@
 			}
 		}
 		.header-btn {
-			@include liquid-glass($border-radius: 10px);
+			@include liquid-glass(
+				$border-radius: 10px,
+				$hover-scale: 1.0,
+				$hover-scale-y: 1.0,
+				$active-scale: 1.0,
+				$active-scale-y: 1.0,
+				$hover-border-change: false
+			);
 			-webkit-backdrop-filter: blur(10px);
 			gap: 15px;
 			
@@ -1015,7 +1029,14 @@
 			}
 		}
 		.header-btn {
-			@include liquid-glass($border-radius: 13px);
+			@include liquid-glass(
+				$border-radius: 13px,
+				$hover-scale: 1.0,
+				$hover-scale-y: 1.0,
+				$active-scale: 1.0,
+				$active-scale-y: 1.0,
+				$hover-border-change: false
+			);
 			-webkit-backdrop-filter: blur(10px);
 			padding: 10px;
 			gap: 15px;
