@@ -802,6 +802,15 @@
 		}
 	}
 }
+.card.no-displacement {
+	backdrop-filter: blur(15px) !important;
+	-webkit-backdrop-filter: blur(15px) !important;
+	
+	&:hover {
+		backdrop-filter: blur(15px) !important;
+		-webkit-backdrop-filter: blur(15px) !important;
+	}
+}
 
 .architecture-block {
 	margin-top: 300px;
