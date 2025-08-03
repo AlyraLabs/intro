@@ -290,33 +290,20 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
   ngAfterViewInit() {
-    // Принудительно запускаем видео после загрузки компонента
     if (this.architectureVideo && this.architectureVideo.nativeElement) {
       const video = this.architectureVideo.nativeElement;
       
-      // Для Safari принудительно заменяем на MP4
+      // Для Safari используем MP4
       if (this.isSafari) {
-        console.log('Safari detected - switching to MP4');
-        video.pause();
         video.innerHTML = '<source src="/img/animations/execution.mp4" type="video/mp4">';
         video.load();
-        
-        // Принудительное зацикливание для Safari
-        video.addEventListener('ended', () => {
-          video.currentTime = 0;
-          video.play();
-        });
       }
       
-      // Пытаемся запустить видео
       setTimeout(() => {
-        const playPromise = video.play();
-        
-        if (playPromise !== undefined) {
-          playPromise.catch(error => {
-            console.log('Автовоспроизведение заблокировано браузером:', error);
-          });
-        }
+        video.play().catch(() => {
+          // Fallback при блокировке автовоспроизведения
+          document.addEventListener('click', () => video.play(), { once: true });
+        });
       }, 100);
     }
   }
