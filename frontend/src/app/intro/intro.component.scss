@@ -703,6 +703,8 @@
 				flex-direction: column;
 				justify-content: flex-start;
 				align-items: flex-start;
+				position: relative;
+				box-sizing: border-box;
 				.card-header {
 					margin-bottom: 10px;
 					display: flex;
@@ -766,6 +768,8 @@
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 10px;
+			position: relative;
+			box-sizing: border-box;
 			.card-header {
 				margin-bottom: 10px;
 				display: flex;
@@ -836,6 +840,8 @@
 			align-items: center;
 			justify-content: center;
 			padding: 10px 35px;
+			position: relative;
+			box-sizing: border-box;
 			p {
 				font-size: 24px;
 				font-weight: 400;
@@ -931,6 +937,8 @@
 				flex-direction: column;
 				justify-content: flex-start;
 				align-items: flex-start;
+				position: relative;
+				box-sizing: border-box;
 				.card-header {
 					margin-bottom: 10px;
 					display: flex;
@@ -988,6 +996,8 @@
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 10px;
+			position: relative;
+			box-sizing: border-box;
 			.card-header {
 				margin-bottom: 10px;
 				display: flex;
