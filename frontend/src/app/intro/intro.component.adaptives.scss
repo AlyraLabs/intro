@@ -1781,17 +1781,27 @@
 					gap: 15px;
 					
 					a {
+						@include liquid-glass(
+							$border-radius: 13px,
+							$hover-scale: 1.0,
+							$hover-scale-y: 1.0,
+							$active-scale: 1.0,
+							$active-scale-y: 1.0,
+							$hover-border-change: false
+						);
 						display: flex;
 						align-items: center;
 						gap: 15px;
-						padding: 12px 15px;
-						background-color: rgba(var(--white), 0.1);
-						border-radius: 10px;
+						padding: 10px 25px;
+						border-radius: 13px;
 						text-decoration: none;
+						background: transparent;
 						transition: all 0.3s ease;
 						
-						&:hover {
-							background-color: rgba(var(--white), 0.1);
+						&.disabled {
+							opacity: 0.5;
+							pointer-events: none;
+							cursor: not-allowed;
 						}
 						
 						.icon {
@@ -1826,22 +1836,28 @@
 				gap: 15px;
 				
 				.mobile-menu-btn {
-					@include liquid-glass($border-radius: 13px);
-					-webkit-backdrop-filter: blur(10px);
-					padding: 15px;
+					@include liquid-glass(
+						$border-radius: 13px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
+					);
+					padding: 10px 25px;
 					display: flex;
 					align-items: center;
 					justify-content: center;
 					gap: 10px;
 					cursor: pointer;
 					text-decoration: none;
+					background: transparent;
 					
 					-webkit-appearance: none;
 					-moz-appearance: none;
 					appearance: none;
 					border: none;
 					outline: none;
-					background-color: rgba(255, 255, 255, 0.05) !important;
 					
 					.icon {
 						width: 20px;
@@ -1855,16 +1871,6 @@
 						font-size: 16px;
 						color: rgba(var(--white), 1);
 						font-weight: 500;
-					}
-					
-					&.main-btn {
-						background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
-						border: 2px solid #007bff;
-						
-						&:hover {
-							background: linear-gradient(135deg, #0056b3 0%, #004085 100%) !important;
-							border-color: #0056b3;
-						}
 					}
 				}
 			}
@@ -2385,6 +2391,11 @@
 		background-color: rgba(var(--white), 0.01);
 		backdrop-filter: blur(20px);
 		-webkit-backdrop-filter: blur(20px);
+		z-index: 10000;
+		display: flex;
+		flex-direction: column;
+		transform: translateX(100%);
+		overflow-y: auto;
 		
 		a {
 			-webkit-appearance: none;
@@ -2400,17 +2411,12 @@
 			-ms-user-select: none;
 			user-select: none;
 		}
-		z-index: 10000;
-		display: flex;
-		flex-direction: column;
-		transform: translateX(100%);
-		overflow-y: auto;
 		
 		.mobile-menu-header {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			padding: 20px 25px;
+			padding: 20px 30px 0 30px;
 			
 			.logo {
 				display: flex;
@@ -2418,21 +2424,21 @@
 				gap: 10px;
 				
 				.logo-img {
-					width: 30px;
-					height: 30px;
+					width: 35px;
+					height: 35px;
 					background: url('/img/header/logo.png') no-repeat center;
 					background-size: contain;
 				}
 				
 				p {
 					font-size: 16px;
-					font-weight: 600;
+					font-weight: 400;
 					color: rgba(var(--white), 1);
 				}
 			}
 			
 			.close-btn {
-				font-size: 28px;
+				font-size: 32px;
 				color: rgba(var(--white), 1);
 				cursor: pointer;
 				line-height: 1;
@@ -2446,41 +2452,51 @@
 		
 		.mobile-menu-content {
 			flex: 1;
-			padding: 25px;
+			padding: 30px;
 			display: flex;
 			flex-direction: column;
-			gap: 25px;
+			gap: 15px;
 			
 			.mobile-nav-section {
 				h3 {
-					font-size: 18px;
-					font-weight: 600;
+					font-size: 16px;
+					font-weight: 500;
 					color: rgba(var(--white), 1);
-					margin-bottom: 12px;
+					margin-bottom: 15px;
 				}
 				
 				.mobile-nav-items {
 					display: flex;
 					flex-direction: column;
-					gap: 12px;
+					gap: 10px;
 					
 					a {
+						@include liquid-glass(
+							$border-radius: 13px,
+							$hover-scale: 1.0,
+							$hover-scale-y: 1.0,
+							$active-scale: 1.0,
+							$active-scale-y: 1.0,
+							$hover-border-change: false
+						);
 						display: flex;
 						align-items: center;
-						gap: 12px;
-						padding: 10px 12px;
-						background-color: rgba(var(--white), 0.1);
-						border-radius: 8px;
+						gap: 15px;
+						padding: 10px 25px;
+						border-radius: 13px;
 						text-decoration: none;
+						background: transparent;
 						transition: all 0.3s ease;
 						
-						&:hover {
-							background-color: rgba(var(--white), 0.1);
+						&.disabled {
+							opacity: 0.5;
+							pointer-events: none;
+							cursor: not-allowed;
 						}
 						
 						.icon {
-							width: 20px;
-							height: 20px;
+							width: 24px;
+							height: 24px;
 							
 							&.twitter { background: url('/img/header/popup-menu/twitter.png') no-repeat center; background-size: contain; }
 							&.medium { background: url('/img/header/popup-menu/medium.png') no-repeat center; background-size: contain; }
@@ -2495,7 +2511,7 @@
 						}
 						
 						p {
-							font-size: 14px;
+							font-size: 16px;
 							color: rgba(var(--white), 1);
 							font-weight: 500;
 						}
@@ -2507,49 +2523,44 @@
 				margin-top: auto;
 				display: flex;
 				flex-direction: column;
-				gap: 12px;
+				gap: 15px;
 				
 				.mobile-menu-btn {
-					@include liquid-glass($border-radius: 10px);
-					-webkit-backdrop-filter: blur(10px);
-					padding: 12px;
+					@include liquid-glass(
+						$border-radius: 13px,
+						$hover-scale: 1.0,
+						$hover-scale-y: 1.0,
+						$active-scale: 1.0,
+						$active-scale-y: 1.0,
+						$hover-border-change: false
+					);
+					padding: 10px 25px;
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					background: rgba(var(--white), 0.05);
-					border: 1px solid rgba(var(--white), 0.1);
-					gap: 8px;
+					gap: 10px;
 					cursor: pointer;
 					text-decoration: none;
+					background: transparent;
 					
 					-webkit-appearance: none;
 					-moz-appearance: none;
 					appearance: none;
+					border: none;
 					outline: none;
-					background-color: rgba(255, 255, 255, 0.05) !important;
 					
 					.icon {
-						width: 18px;
-						height: 18px;
+						width: 20px;
+						height: 20px;
 						
 						&.pytho { background: url('/img/intro/pytho-logo.png') no-repeat center; background-size: contain; }
 						&.launch { background: url('/img/intro/launch.png') no-repeat center; background-size: contain; }
 					}
 					
 					p {
-						font-size: 14px;
+						font-size: 16px;
 						color: rgba(var(--white), 1);
 						font-weight: 500;
-					}
-					
-					&.main-btn {
-						background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
-						border: 2px solid #007bff;
-						
-						&:hover {
-							background: linear-gradient(135deg, #0056b3 0%, #004085 100%) !important;
-							border-color: #0056b3;
-						}
 					}
 				}
 			}
