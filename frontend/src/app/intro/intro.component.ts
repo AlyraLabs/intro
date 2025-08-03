@@ -294,24 +294,30 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.architectureVideo && this.architectureVideo.nativeElement) {
       const video = this.architectureVideo.nativeElement;
       
-      // Пытаемся запустить видео
-      const playPromise = video.play();
-      
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log('Автовоспроизведение заблокировано браузером:', error);
-          
-          // Если автовоспроизведение заблокировано, запускаем при первом клике пользователя
-          const startVideoOnInteraction = () => {
-            video.play().catch(e => console.log('Ошибка запуска видео:', e));
-            document.removeEventListener('click', startVideoOnInteraction);
-            document.removeEventListener('touchstart', startVideoOnInteraction);
-          };
-          
-          document.addEventListener('click', startVideoOnInteraction);
-          document.addEventListener('touchstart', startVideoOnInteraction);
+      // Для Safari принудительно заменяем на MP4
+      if (this.isSafari) {
+        console.log('Safari detected - switching to MP4');
+        video.pause();
+        video.innerHTML = '<source src="/img/animations/execution.mp4" type="video/mp4">';
+        video.load();
+        
+        // Принудительное зацикливание для Safari
+        video.addEventListener('ended', () => {
+          video.currentTime = 0;
+          video.play();
         });
       }
+      
+      // Пытаемся запустить видео
+      setTimeout(() => {
+        const playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log('Автовоспроизведение заблокировано браузером:', error);
+          });
+        }
+      }, 100);
     }
   }
   
@@ -341,11 +347,11 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
       clearTimeout(this.animationTimeouts[elementId]);
     }
 
-    if (this.isSafari) {
-      // Для Safari просто меняем текст без анимации
-      element.textContent = finalText;
-      return;
-    }
+    // Убираем специальную обработку Safari - пусть использует полную анимацию
+    // if (this.isSafari) {
+    //   this.animateTextSafari(element, finalText);
+    //   return;
+    // }
 
     let frame = 0;
     const totalFrames = this.animationFrames;
@@ -418,6 +424,17 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
     };
 
     animate();
+  }
+
+  private animateTextSafari(element: HTMLElement, finalText: string): void {
+    // Упрощенная анимация для Safari с fade эффектом
+    element.style.transition = 'opacity 0.2s ease-out';
+    element.style.opacity = '0';
+    
+    setTimeout(() => {
+      element.textContent = finalText;
+      element.style.opacity = '1';
+    }, 200);
   }
   
   private setupScrollAnimations() {
