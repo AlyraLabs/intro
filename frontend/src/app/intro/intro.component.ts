@@ -290,21 +290,40 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
   ngAfterViewInit() {
+    // Видео настроено, но не запускается автоматически
+    // Запуск произойдет когда пользователь доскроллит до блока
+  }
+  
+  private playArchitectureVideo() {
     if (this.architectureVideo && this.architectureVideo.nativeElement) {
       const video = this.architectureVideo.nativeElement;
       
-      // Для Safari используем MP4
-      if (this.isSafari) {
-        video.innerHTML = '<source src="/img/animations/execution.mp4" type="video/mp4">';
-        video.load();
-      }
+      // Принудительно загружаем и запускаем
+      video.load();
       
-      setTimeout(() => {
-        video.play().catch(() => {
-          // Fallback при блокировке автовоспроизведения
-          document.addEventListener('click', () => video.play(), { once: true });
-        });
-      }, 100);
+      const tryPlay = () => {
+        const playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            console.log('Video started on scroll!');
+          }).catch((error) => {
+            console.log('Autoplay blocked, trying again...', error);
+            // Несколько попыток с разными задержками
+            setTimeout(() => {
+              video.play().catch(() => {
+                console.log('Still blocked, will start on user interaction');
+                document.addEventListener('click', () => video.play(), { once: true });
+              });
+            }, 500);
+          });
+        }
+      };
+      
+      // Пробуем запустить несколько раз
+      tryPlay();
+      setTimeout(tryPlay, 100);
+      setTimeout(tryPlay, 300);
     }
   }
   
@@ -434,6 +453,11 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
             this.howBlockState = 'visible';
           } else if (target.classList.contains('architecture-block') && this.architectureBlockState === 'hidden') {
             this.architectureBlockState = 'visible';
+            
+            // Запускаем видео когда блок становится видимым
+            setTimeout(() => {
+              this.playArchitectureVideo();
+            }, 300);
           } else if (target.classList.contains('build-block') && this.buildBlockState === 'hidden') {
             this.buildBlockState = 'visible';
           } else if (target.classList.contains('devbridge-block') && this.devbridgeBlockState === 'hidden') {
