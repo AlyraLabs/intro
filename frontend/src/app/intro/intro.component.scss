@@ -553,6 +553,45 @@
 				&.sui {
 					background-image: url(/img/intro/sui.png);
 				}
+				&.btc {
+					background-image: url(/img/intro/btc.png);
+				}
+				&.optimism {
+					background-image: url(/img/intro/optimism.png);
+				}
+				&.avax {
+					background-image: url(/img/intro/avax.png);
+				}
+				&.hyper {
+					background-image: url(/img/intro/hyper.png);
+				}
+				&.linea {
+					background-image: url(/img/intro/linea.png);
+				}
+				&.unichain {
+					background-image: url(/img/intro/unichain.png);
+				}
+				&.soneium {
+					background-image: url(/img/intro/soneium.png);
+				}
+				&.abstract {
+					background-image: url(/img/intro/abstract.png);
+				}
+				&.berachain {
+					background-image: url(/img/intro/berachain.png);
+				}
+				&.scroll {
+					background-image: url(/img/intro/scroll.png);
+				}
+				&.celo {
+					background-image: url(/img/intro/celo.png);
+				}
+				&.sei {
+					background-image: url(/img/intro/sei.png);
+				}
+				&.zk {
+					background-image: url(/img/intro/zk.png);
+				}
 			}
 		}
 	}
@@ -1161,6 +1200,9 @@
 				color: rgba(var(--black), 1);
 			}
 		}
+	}
+	.learn {
+		padding: 8px 15px;
 	}
 }
 

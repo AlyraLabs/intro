@@ -75,16 +75,16 @@
 			<div class="icon ecosystem"></div>
 			<p>Ecosystem</p>
 		</a>
-		<a class="nav-item pytho-item" href="https://pytho.trade/" data-nav-index="2"
+		<a class="nav-item pytho-item" href="https://app.alyra.finance/" data-nav-index="2"
 				target="_blank"
 				(mouseenter)="onNavItemHover(2); onOtherNavItemEnter()" (mouseleave)="onNavMouseLeaveItem()">
 			<div class="icon pytho"></div>
-			<p>Pytho</p>
+			<p>Alyra</p>
 		</a>
-		<a class="nav-item launch-app" href="https://app.alyra.finance/" data-nav-index="3"
+		<a class="nav-item launch-app" target="_blank" href="https://blackholelabs.gitbook.io/docs/build-on-blackhole/what-is-devbridge" data-nav-index="3"
 				(mouseenter)="onNavItemHover(3); onOtherNavItemEnter()" (mouseleave)="onNavMouseLeaveItem()">
 			<div class="icon launch"></div>
-			<p>Launch App</p>
+			<p>Start Building</p>
 		</a>
 	</div>
 	<div class="community-content"
@@ -200,9 +200,9 @@
 				<div class="icon pytho"></div>
 				<p>Pytho</p>
 			</a> -->
-			<a href="https://app.alyra.finance/" class="mobile-menu-btn main-btn" (click)="closeMobileMenu()">
+			<a href="https://blackholelabs.gitbook.io/docs/build-on-blackhole/what-is-devbridge" class="mobile-menu-btn main-btn" (click)="closeMobileMenu()">
 				<div class="icon launch"></div>
-				<p>Launch App</p>
+				<p>Start Building</p>
 			</a>
 		</div>
 	</div>
@@ -211,26 +211,26 @@
 <div class="main-block">
 	<div class="heading">
 		<h1 class="premium-title" [@premiumTitleAppear]="titleAnimationState">
-			<span class="word" style="--delay: 0s">Modular</span>
-			<span class="word muted" style="--delay: 0.2s">Infrastructure</span>
-			<span class="word muted" style="--delay: 0.4s">for</span>
-			<span class="word" style="--delay: 0.6s">Secure</span>
+			<span class="word" style="--delay: 0s">Secure</span>
+			<span class="word muted" style="--delay: 0.2s">execution</span>
+			<span class="word muted" style="--delay: 0.4s">layer</span>
+			<span class="word" style="--delay: 0.6s">for</span>
 			<br>
-			<span class="word" style="--delay: 0.8s">DeFi</span>
-			<span class="word" style="--delay: 1s">Execution</span>
+			<span class="word" style="--delay: 0.8s">onchain</span>
+			<span class="word" style="--delay: 1s">apps</span>
 		</h1>
 		<p class="premium-subtitle" [@premiumSubtitleAppear]="subtitleAnimationState">
-			<span class="word" style="--delay: 0s">Plug-and-play</span>
-			<span class="word" style="--delay: 0.1s">Execution</span>
-			<span class="word" style="--delay: 0.2s">Layer</span>
+			<span class="word" style="--delay: 0s">Power</span>
+			<span class="word" style="--delay: 0.1s">your</span>
+			<span class="word" style="--delay: 0.2s">dApp</span>
 			<span class="word" style="--delay: 0.3s">with</span>
-			<span class="word" style="--delay: 0.4s">pre-signature</span>
-			<span class="word" style="--delay: 0.5s">ML-Firewall,</span>
-			<span class="word" style="--delay: 0.6s">fallback</span>
-			<span class="word" style="--delay: 0.7s">routing,</span>
+			<span class="word" style="--delay: 0.4s">Blackhole API</span>
+			<span class="word" style="--delay: 0.5s">— unified liquidity,</span>
+			<span class="word" style="--delay: 0.6s">seamless</span>
+			<span class="word" style="--delay: 0.7s">swaps,</span>
 			<span class="word muted" style="--delay: 0.8s">and</span>
-			<span class="word" style="--delay: 0.9s">deterministic</span>
-			<span class="word" style="--delay: 1s">execution.</span>
+			<span class="word" style="--delay: 0.9s">cross-chain</span>
+			<span class="word" style="--delay: 1s">bridges.</span>
 		</p>
 	</div>
 	<div class="button" (click)="scrollToDevbridge()">
@@ -251,6 +251,20 @@
 			<div class="network polygon"></div>
 			<div class="network mantle"></div>
 			<div class="network sui"></div>
+			<div class="network btc"></div>
+			<div class="network optimism"></div>
+			<div class="network avax"></div>
+			<div class="network hyper"></div>
+			<div class="network linea"></div>
+			<div class="network unichain"></div>
+			<div class="network soneium"></div>
+			<div class="network abstract"></div>
+			<div class="network berachain"></div>
+			<div class="network scroll"></div>
+			<div class="network celo"></div>
+			<div class="network sei"></div>
+			<div class="network zk"></div>
+
 		</div>
 	</div>
 
@@ -318,7 +332,7 @@
 			<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
 			<div class="card-header">
 				<div class="icon safeswitch"></div>
-				<p>SafeSwitch — Fallback Logic</p>
+				<p>Fallback Logic</p>
 			</div>
 			<p>Pre-signed fallback routes for every transaction. Auto-triggers on failure — no re-signing, no user loss. Failsafe by design.</p>
 		</div>
@@ -347,7 +361,7 @@
 				<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
 				<div class="card-header">
 					<div class="icon gravcore"></div>
-					<p>GravCore — Smart Executor</p>
+					<p>Blackhole Diamond — Smart Executor</p>
 				</div>
 				<p>Executes only pre-validated routes.Onchain checks at runtime. Deterministic, non-custodial, with built-in fallback logic.</p>
 			</div>
