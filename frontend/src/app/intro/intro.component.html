@@ -8,42 +8,39 @@
 </svg>
 
 
-<div class="cosmic-background">
+<div class="header">
 
-  
-  <div class="stars-container">
-    <div *ngFor="let star of stars$ | async; trackBy: trackByStar" class="star" 
-      [style.left.%]="star.initialX" 
-      [style.top.%]="star.initialY"
-      [style.--offset-x1]="star.offsetX1"
-      [style.--offset-y1]="star.offsetY1"
-      [style.--offset-x2]="star.offsetX2"
-      [style.--offset-y2]="star.offsetY2"
-      [style.--offset-x3]="star.offsetX3"
-      [style.--offset-y3]="star.offsetY3"
-      [style.--duration]="star.duration"
-      [style.--delay]="star.delay"
-      [style.--weight]="star.weight"
-      [style.--target-opacity]="star.opacity"
-      [style.--appear-delay]="star.appearDelay">
-      <img src="/img/header/star.png" alt="star">
-    </div>
-  </div>
-</div>
-
-<div class="header" 
-     [@headerSlideDown]="headerAnimationState">
 	<div class="logo" (click)="reloadPage()">
 		<div class="logo-img"></div>
 		<p>Blackhole Labs</p>
 	</div>
-	<div data-liquid-glass class="header-btn" 
-		 [@buttonExpand]="isButtonHovered ? 'expanded' : 'collapsed'"
-		 (mouseenter)="onButtonMouseEnter()"
-		 (mouseleave)="onButtonMouseLeave()"
-		 (click)="scrollToDevbridge()">
-		<div class="icon"></div>
-		<p [@textFade]="isButtonHovered ? 'visible' : 'hidden'">Build on Blackhole</p>
+
+	<div class="header-nav">
+		<a href="#" class="link">Developers</a>
+		<a href="#" class="link">Products</a>
+		<a href="#" class="link">Documentation</a>
+		<a href="#" class="link">bhSecurity</a>
+	</div>
+
+	<div class="header-ecosystem-container">
+		<div data-liquid-glass class="button" (click)="toggleHeaderEcosystem()" [class.expanded]="isHeaderEcosystemOpen">
+			<p>Ecosystem</p>
+			<div class="icon" [class.rotated]="isHeaderEcosystemOpen"></div>
+		</div>
+		<div class="header-ecosystem-dropdown" [@dropdownExpand]="isHeaderEcosystemOpen ? 'expanded' : 'collapsed'">
+			<div class="dropdown-item">
+				<div class="item-icon ecosystem-icon"></div>
+				<p>Partners</p>
+			</div>
+			<div class="dropdown-item">
+				<div class="item-icon community-icon"></div>
+				<p>Hub</p>
+			</div>
+			<div class="dropdown-item">
+				<div class="item-icon developers-icon"></div>
+				<p>Resources</p>
+			</div>
+		</div>
 	</div>
 	
 	<div class="mobile-menu-btn" 
@@ -208,275 +205,341 @@
 	</div>
 </div>
 
-<div class="main-block">
-	<div class="heading">
-		<h1 class="premium-title" [@premiumTitleAppear]="titleAnimationState">
-			<span class="word" style="--delay: 0s">Secure</span>
-			<span class="word muted" style="--delay: 0.2s">execution</span>
-			<span class="word muted" style="--delay: 0.4s">layer</span>
-			<span class="word" style="--delay: 0.6s">for</span>
-			<br>
-			<span class="word" style="--delay: 0.8s">onchain</span>
-			<span class="word" style="--delay: 1s">apps</span>
-		</h1>
-		<p class="premium-subtitle" [@premiumSubtitleAppear]="subtitleAnimationState">
-			<span class="word" style="--delay: 0s">Power</span>
-			<span class="word" style="--delay: 0.1s">your</span>
-			<span class="word" style="--delay: 0.2s">dApp</span>
-			<span class="word" style="--delay: 0.3s">with</span>
-			<span class="word" style="--delay: 0.4s">Blackhole API</span>
-			<span class="word" style="--delay: 0.5s">— unified liquidity,</span>
-			<span class="word" style="--delay: 0.6s">seamless</span>
-			<span class="word" style="--delay: 0.7s">swaps,</span>
-			<span class="word muted" style="--delay: 0.8s">and</span>
-			<span class="word" style="--delay: 0.9s">cross-chain</span>
-			<span class="word" style="--delay: 1s">bridges.</span>
+
+<div class="main">
+	<div class="background-ellipses">
+		<div class="ellipse ellipse-1"></div>
+		<div class="ellipse ellipse-2"></div>
+		<div class="ellipse ellipse-3"></div>
+	</div>
+	<div class="info">
+		<div class="indicator">
+			<div class="indicator-circle">
+			</div>
+			<p>Live on 25 networks</p>
+		</div>
+		<h1>Secure execution infrastructure <br>
+			for every on-chain app</h1>
+		<p class="description">
+			One plug-in layer that makes your dApp liquid, reliable, and ready to scale.
 		</p>
 	</div>
-	<div class="button" (click)="scrollToDevbridge()">
+	<div class="buttons">
+		<div class="button main-btn">
+			<div class="indicator-circle">
+			</div>
+			<p>Start Building</p>
+			<div class="icon"></div>
+		</div>
+		<div class="button">
+			<div class="indicator-circle">
+			</div>
+			<p>Contact us</p>
+			<div class="icon"></div>
+		</div>
+	</div>
+	<div class="partners-container">
+		<div class="partners-marquee">
+			<div class="partners">
+				<div class="partner ethereum"></div>
+				<div class="partner solana"></div>
+				<div class="partner base"></div>
+				<div class="partner arbitrum"></div>
+				<div class="partner bsc"></div>
+				<div class="partner polygon"></div>
+				<div class="partner mantle"></div>
+				<div class="partner sui"></div>
+				<div class="partner btc"></div>
+				<div class="partner optimism"></div>
+				<div class="partner avax"></div>
+				<div class="partner hyper"></div>
+				<div class="partner linea"></div>
+				<div class="partner unichain"></div>
+				<div class="partner soneium"></div>
+				<div class="partner abstract"></div>
+				<div class="partner berachain"></div>
+				<div class="partner scroll"></div>
+				<div class="partner celo"></div>
+				<div class="partner sei"></div>
+				<div class="partner zk"></div>
+			</div>
+			<div class="partners">
+				<div class="partner ethereum"></div>
+				<div class="partner solana"></div>
+				<div class="partner base"></div>
+				<div class="partner arbitrum"></div>
+				<div class="partner bsc"></div>
+				<div class="partner polygon"></div>
+				<div class="partner mantle"></div>
+				<div class="partner sui"></div>
+				<div class="partner btc"></div>
+				<div class="partner optimism"></div>
+				<div class="partner avax"></div>
+				<div class="partner hyper"></div>
+				<div class="partner linea"></div>
+				<div class="partner unichain"></div>
+				<div class="partner soneium"></div>
+				<div class="partner abstract"></div>
+				<div class="partner berachain"></div>
+				<div class="partner scroll"></div>
+				<div class="partner celo"></div>
+				<div class="partner sei"></div>
+				<div class="partner zk"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="power">
+	<div class="background-ellipses">
+		<div class="ellipse ellipse-2"></div>
+		<div class="ellipse ellipse-3"></div>
+	</div>
+	<div class="info">
+		<h1>Power your dApp with <br>
+			multichain liquidity</h1>
+		<p class="description">
+			Trade millions of tokens seamlessly, powered by <br> 
+			the deepest aggregated liquidity.
+		</p>
+		<div class="button">
+			<div class="indicator-circle">
+			</div>
+			<p>Start Building</p>
+			<div class="icon"></div>
+		</div>
+	</div>
+	<div class="widget"></div>
+</div>
+
+<div class="build">
+	<div class="info">
+		<h1>Build with trust</h1>
+		<p class="description">
+			Blackhole is the only execution layer that makes <br>
+			every DeFi transaction secure before it’s signed.
+		</p>
+	</div>
+	<div class="execution-demo"></div>
+</div>
+
+<div class="analyze">
+	<div class="background-ellipses">
+		<div class="ellipse ellipse-2"></div>
+		<div class="ellipse ellipse-3"></div>
+	</div>
+	<div class="info">
+		<h1>Analyze what matters <br>
+			Monetize what you build</h1>
+		<p class="description">
+			Blackhole lets you set custom fees, track usage, <br>
+			and turn execution into revenue.
+		</p>
+	</div>
+	<div class="analitics-demo"></div>
+</div>
+
+<div class="plans">
+	<div class="background-ellipses">
+		<div class="ellipse ellipse-1"></div>
+		<div class="ellipse ellipse-2"></div>
+		<div class="ellipse ellipse-3"></div>
+	</div>
+	<div class="info">
+		<h1>Our plans are simple</h1>
+		<p class="description">
+			Make your app trade-ready.
+		</p>
+		<div class="button">
+			<div class="indicator-circle">
+			</div>
+			<p>Start Building</p>
+			<div class="icon"></div>
+		</div>
+	</div>
+	<div class="plan-cards">
+		<div class="plan">
+			<div class="heading">
+				<h2>Starter Plan</h2>
+				<p class="description">Best for growing teams</p>
+			</div>
+			<div class="plan-description">
+				<div class="devider">
+					<p>What's included</p>
+					<hr>
+				</div>
+				<div class="benefits">
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>250 requests per minute</p>
+					</div>
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>Set custom fees to unlock revenue</p>
+					</div>
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>Technical & Account Support </p>
+					</div>
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>Regular updates & new integrations</p>
+					</div>
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>Real-time trade analytics</p>
+					</div>
+				</div>
+			</div>
+			<div class="plan-button">
+				<p>Get started for free</p>
+				<div class="icon"></div>
+			</div>
+		</div>
+		<div class="plan">
+			<div class="heading">
+				<h2>Enterprise</h2>
+				<p class="description">Customizable solutions</p>
+			</div>
+			<div class="plan-description">
+				<div class="devider">
+					<p>What's included</p>
+					<hr>
+				</div>
+				<div class="benefits">
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>All Standard plan benefits</p>
+					</div>
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>Volume based fee discounts</p>
+					</div>
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>Customizable request limits</p>
+					</div>
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>Priority support</p>
+					</div>
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>AI-powered security stack</p>
+					</div>
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>Access to Blackhole beta products.</p>
+					</div>
+					<div class="benefit">
+						<div class="icon"></div>
+						<p>Direct line to the Blackhole core team</p>
+					</div>
+				</div>
+			</div>
+			<div class="plan-button">
+				<p>Contact sales</p>
+				<div class="icon"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="why">
+	<div class="background-ellipses">
+		<div class="ellipse ellipse-2"></div>
+		<div class="ellipse ellipse-3"></div>
+	</div>
+	<h1>Why Teams Choose Blackhole?</h1>
+	<div class="why-cards">
+		<div class="why-card">
+			<h3>Security-First Protocol</h3>
+			<p class="description">
+				AI firewall, reputation scoring & safe contracts. <br>
+				Transactions validated before signature
+			</p>
+		</div>
+		<div class="why-card">
+			<h3>Always up to date</h3>
+			<p class="description">
+				Fastest integration of new chains, bridges & DEXes
+			</p>
+		</div>
+		<div class="why-card">
+			<h3>Built-In Monetization & Analytics</h3>
+			<p class="description">
+				Custom fees, volume tracking & deep insights built in
+			</p>
+		</div>
+		<div class="why-card">
+			<h3>Premium Partner Support</h3>
+			<p class="description">
+				Direct access to our team for integration & scaling
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="powered">
+	<h1>Powered by Blackhole</h1>
+	<div class="alyra">
+		<div class="description-card">
+			<div class="desc-header">
+				<div class="logo">
+					<div class="logo-img"></div>
+					<p>Alyra.finance</p>
+				</div>
+				<div class="button main-btn">
+					<p>Launch App</p>
+					<div class="icon"></div>
+				</div>
+			</div>
+		<p>Alyra is Blackhole’s showcase dApp — a powerful multi-chain exchange that finally breaks the limits of liquidity fragmentation.</p>
+		</div>
+		<div class="alyra-screenshot"></div>
+	</div>
+</div>
+
+<div class="faq">
+	<h1>Got Questions? We've Got Answers</h1>
+	<div class="questions">
+		<div class="question-container" *ngFor="let faq of faqData; let i = index">
+			<div class="question" (click)="toggleFaq(i)" [class.expanded]="isFaqExpanded(i)">
+				<p>{{ faq.question }}</p>
+				<div class="icon" [class.rotated]="isFaqExpanded(i)"></div>
+			</div>
+			<div class="answer" [@faqExpand]="isFaqExpanded(i) ? 'expanded' : 'collapsed'">
+				<p>{{ faq.answer }}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="ready">
+	<h1>Ready to turn your app <br>
+		into a trading platform?</h1>
+	<div class="button">
+		<div class="indicator-circle">
+		</div>
+		<p>Start Building</p>
 		<div class="icon"></div>
-		<p>Build on Blackhole</p>
 	</div>
+	<div class="diagonal-lines"></div>
 </div>
 
-<div class="info-block" [@blockFadeUp]="infoBlockState" #infoBlock>
-	<div class="buit-on">
-		<h6>Built on:</h6>
-		<div class="networks">
-			<div class="network ethereum"></div>
-			<div class="network solana"></div>
-			<div class="network base"></div>
-			<div class="network arbitrum"></div>
-			<div class="network bsc"></div>
-			<div class="network polygon"></div>
-			<div class="network mantle"></div>
-			<div class="network sui"></div>
-			<div class="network btc"></div>
-			<div class="network optimism"></div>
-			<div class="network avax"></div>
-			<div class="network hyper"></div>
-			<div class="network linea"></div>
-			<div class="network unichain"></div>
-			<div class="network soneium"></div>
-			<div class="network abstract"></div>
-			<div class="network berachain"></div>
-			<div class="network scroll"></div>
-			<div class="network celo"></div>
-			<div class="network sei"></div>
-			<div class="network zk"></div>
-
-		</div>
-	</div>
-
-	<p class="info-text">
-		<span class="word" style="--delay: 0s"><span>Blackhole</span></span>
-		<span class="word" style="--delay: 0.1s">is</span>
-		<span class="word" style="--delay: 0.2s">the</span>
-		<span class="word" style="--delay: 0.3s"><span>modular execution layer,</span></span>
-		<span class="word" style="--delay: 0.4s">ensuring</span>
-		<span class="word" style="--delay: 0.5s">that</span>
-		<span class="word" style="--delay: 0.6s"><span>every transaction</span></span>
-		<span class="word" style="--delay: 0.7s">is</span>
-		<span class="word" style="--delay: 0.8s"><span>secure</span></span>
-		<span class="word" style="--delay: 0.9s">—</span>
-		<span class="word" style="--delay: 1s">before</span>
-		<span class="word" style="--delay: 1.1s">it's</span>
-		<span class="word" style="--delay: 1.2s">signed.</span>
-		<span class="word" style="--delay: 1.3s">Unlike</span>
-		<span class="word" style="--delay: 1.4s">traditional</span>
-		<span class="word" style="--delay: 1.5s">SDKs</span>
-		<span class="word" style="--delay: 1.6s">or</span>
-		<span class="word" style="--delay: 1.7s">routers,</span>
-		<span class="word" style="--delay: 1.8s"><span>Blackhole</span></span>
-		<span class="word" style="--delay: 1.9s">provides</span>
-		<span class="word" style="--delay: 2s">deterministic</span>
-		<span class="word" style="--delay: 2.1s">execution,</span>
-		<span class="word" style="--delay: 2.2s">runtime</span>
-		<span class="word" style="--delay: 2.3s">validation,</span>
-		<span class="word" style="--delay: 2.4s">and</span>
-		<span class="word" style="--delay: 2.5s">automatic</span>
-		<span class="word" style="--delay: 2.6s">fallback</span>
-		<span class="word" style="--delay: 2.7s">logic</span>
-		<span class="word" style="--delay: 2.8s">to</span>
-		<span class="word" style="--delay: 2.9s"><span>protect users</span></span>
-		<span class="word" style="--delay: 3s">and</span>
-		<span class="word" style="--delay: 3.1s"><span>developers by default</span></span>.
-	</p>
-
-	<div class="buttons">
-		<a data-liquid-glass class="button" href="https://blackholelabs.gitbook.io/docs" target="_blank">
-			<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-			<div class="icon learn"></div>
-			<p>Learn More</p>
-		</a>
-		<a data-liquid-glass class="button" href="https://t.me/whoiscapella" target="_blank">
-			<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-			<div class="icon contact"></div>
-			<p>Contact Us</p>
-		</a>
-	</div>
-
-</div>
-
-<div class="how-block" [@blockSlideUp]="howBlockState">
-	<div class="how-block-content2">
-		<div data-liquid-glass class="card umbra no-displacement">
-			<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-			<div class="card-header">
-				<div class="icon echo"></div>
-				<p>Echo — Reputation Intelligence</p>
-			</div>
-			<p>Offchain threat intel, onchain impact. Evaluates contracts using exploit data, admin patterns & social signals. Modular, async, real-time updates.</p>
-		</div>
-		<div data-liquid-glass class="card gravcore no-displacement">
-			<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-			<div class="card-header">
-				<div class="icon safeswitch"></div>
-				<p>Fallback Logic</p>
-			</div>
-			<p>Pre-signed fallback routes for every transaction. Auto-triggers on failure — no re-signing, no user loss. Failsafe by design.</p>
-		</div>
-	</div>
-	<div class="content">
-		<div class="how-block-header">
-			<div class="title">
-				<h3>How Does</h3>
-				<h1>Security Stack <span>Works</span></h1>
-			</div>
-			<a data-liquid-glass class="button" href="https://blackholelabs.gitbook.io/docs/blackhole/security-stack" target="_blank">
-				<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-				<p>Learn More</p>
-			</a>
-		</div>
-		<div class="how-block-content">
-			<div data-liquid-glass class="card umbra">
-				<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-				<div class="card-header">
-					<div class="icon umbra"></div>
-					<p>Umbra — Pre-Execution ML Firewall</p>
-				</div>
-				<p>Intercepts malicious transaction patterns pre-signature using a hybrid rules engine and ML-driven anomaly detection.</p>
-			</div>
-			<div data-liquid-glass class="card gravcore">
-				<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-				<div class="card-header">
-					<div class="icon gravcore"></div>
-					<p>Blackhole Diamond — Smart Executor</p>
-				</div>
-				<p>Executes only pre-validated routes.Onchain checks at runtime. Deterministic, non-custodial, with built-in fallback logic.</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="architecture-block" [@blockSlideFromLeft]="architectureBlockState">
-	<div class="architecture-header">
-		<div class="title">
-			<h1>Execution <span>Architecture</span></h1>
-		</div>
-		<a data-liquid-glass class="button" href="https://blackholelabs.gitbook.io/docs/blackhole/security-stack" target="_blank">
-			<p>Learn More</p>
-		</a>
-	</div>
-	<div class="architecture-animation">
-		<video #architectureVideo autoplay muted loop playsinline preload="auto">
-			<source src="/img/animations/execution.mp4" type="video/mp4">
-		</video>
-	</div>
-	
-</div>
-
-<div class="build-block" [@blockScaleUp]="buildBlockState">
-	<div class="build-block-content2">
-		<div data-liquid-glass class="card umbra no-displacement">
-			<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-			<div class="card-header">
-				<div class="icon support"></div>
-				<p>Dedicated Ecosystem Support</p>
-			</div>
-			<p>Get hands-on support, security reviews, and exposure through the DevBridge partner program.</p>
-		</div>
-		<div data-liquid-glass class="card gravcore no-displacement">
-			<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-			<div class="card-header">
-				<div class="icon built"></div>
-				<p>Built for Any Stack</p>
-			</div>
-			<p>Works across EVM, SVM, L2s, and rollups — no lock-in. Integrate only what you need. Any dApp. Any chain. Security by default.</p>
-		</div>
-	</div>
-	<div class="content">
-		<div class="build-block-header">
-			<div class="title">
-				<h1>Build <span class="changing-word" #changingWord>Secure</span></h1>
-				<h3>with Blackhole</h3>
-			</div>
-			<a data-liquid-glass class="button" href="https://blackholelabs.gitbook.io/docs/blackhole/security-stack" target="_blank">
-				<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-				<p>Learn More</p>
-			</a>
-		</div>
-		<div class="build-block-content">
-			<div data-liquid-glass class="card umbra">
-				<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-				<div class="card-header">
-					<div class="icon security"></div>
-					<p>Security by Default</p>
-				</div>
-				<p>Pre-built safety stack with ML-powered threat detection, fallback execution, and reputation scoring — all modular, all automatic.</p>
-			</div>
-			<div data-liquid-glass class="card gravcore">
-				<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-				<div class="card-header">
-					<div class="icon plug"></div>
-					<p>Plug-and-Play Simplicity</p>
-				</div>
-				<p>Integrate in under an hour with a one-line SDK. No rewrites, no custom infra. Focus on your app — we’ll handle execution safety.</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div id="devbridge-block" class="devbridge-block" [@blockPerspective]="devbridgeBlockState" data-liquid-glass>
-	<div class="dev-bridge-header">
-		<div class="title">
-			<h3>DevBridge</h3>
-			<h1>Launch your secure dApp</h1>
-		</div>
-		<a class="learn" href="https://blackholelabs.gitbook.io/docs/build-on-blackhole/what-is-devbridge" target="_blank"
-		   data-liquid-glass>
-			<div class="icon docs"></div>
-			<p>Learn More</p>
-		</a>
-	</div>
-	<p>
-		DevBridge is Blackhole’s <span>developer track</span> — built to 
-		<span>help engineers transition</span> from traditional backends to 
-		<span>secure, intent-aware execution onchain</span>.
-	</p>
-	<div class="buttons">
-		<a data-liquid-glass class="button apply-btn" href="https://form.typeform.com/to/QTolFTK8" target="_blank">
-			<div class="icon apply"></div>
-			<p>Apply for Early Access</p>
-		</a>
-		<a data-liquid-glass class="button" href="https://t.me/whoiscapella" target="_blank">
-			<div class="icon contact-ask"></div>
-			<p>Contact Us</p>
-		</a>
-	</div>
-</div>
 
 <div class="footer">
-	<div class="logo-img"></div>
+	<div class="logo">
+		<div class="logo-img"></div>
+		<p class="link">2025 Blackhole Labs | All Rights Reserved</p>
+	</div>
 	<div class="info">
-		<a href="https://app.alyra.finance/documentation/termsofuse" target="_blank">
-			<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-			Terms of Use
+		<a class="link icon twitter" href="https://x.com/Blackhole_Labs" target="_blank">
 		</a>
-		<a href="https://app.alyra.finance/documentation/privacypolicy" target="_blank">
-			<!-- (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)" -->
-			Privacy Policy
+		<a class="link icon linkedin" href="https://www.linkedin.com/company/blackholelabs/" target="_blank">
+		</a>
+		<a class="link" href="mailto:team@blackhole.foundation" target="_blank">
+			team&#64;blackhole.foundation
 		</a>
 	</div>
-	<div class="bg-logo"></div>
 </div>

@@ -1,11 +1,7 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, inject, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MouseGradientService } from '../services/mouse-gradient.service';
-import { StarAnimationService, Star } from '../services/star-animation.service';
-import { LiquidGlassService } from '../services/liquid-glass.service';
 
-import { Observable } from 'rxjs';
-import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-intro',
@@ -18,104 +14,7 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 		'./intro.component.adaptives.scss'
 	],
   animations: [
-    trigger('buttonExpand', [
-      state('collapsed', style({
-        paddingRight: '15px'
-      })),
-      state('expanded', style({
-        paddingRight: 'var(--button-expand-padding)'
-      })),
-      transition('collapsed => expanded', [
-        animate('0.6s cubic-bezier(0.23, 1, 0.32, 1)')
-      ]),
-      transition('expanded => collapsed', [
-        animate('0.4s cubic-bezier(0.4, 0, 0.2, 1)')
-      ])
-    ]),
-    trigger('textFade', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'translateY(-50%) translateX(-30px)',
-        filter: 'blur(8px)'
-      })),
-      state('visible', style({
-        opacity: 1,
-        transform: 'translateY(-50%) translateX(0)',
-        filter: 'blur(0px)'
-      })),
-      transition('hidden => visible', [
-        animate('0.8s cubic-bezier(0.23, 1, 0.32, 1)')
-      ]),
-      transition('visible => hidden', [
-        animate('0.3s cubic-bezier(0.4, 0, 0.2, 1)')
-      ])
-    ]),
-
-    trigger('blockSlideUp', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'translateY(40px) scale(0.98)'
-      })),
-      state('visible', style({
-        opacity: 1,
-        transform: 'translateY(0) scale(1)'
-      })),
-      transition('hidden => visible', [
-        animate('0.6s cubic-bezier(0.4, 0, 0.2, 1)')
-      ])
-    ]),
-    trigger('blockSlideFromLeft', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'translateX(-30px) scale(0.98)'
-      })),
-      state('visible', style({
-        opacity: 1,
-        transform: 'translateX(0) scale(1)'
-      })),
-      transition('hidden => visible', [
-        animate('0.6s cubic-bezier(0.4, 0, 0.2, 1)')
-      ])
-    ]),
-    trigger('blockScaleUp', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'scale(0.96) translateY(20px)'
-      })),
-      state('visible', style({
-        opacity: 1,
-        transform: 'scale(1) translateY(0)'
-      })),
-      transition('hidden => visible', [
-        animate('0.6s cubic-bezier(0.4, 0, 0.2, 1)')
-      ])
-    ]),
-    trigger('blockPerspective', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'translateY(30px) scale(0.98)'
-      })),
-      state('visible', style({
-        opacity: 1,
-        transform: 'translateY(0) scale(1)'
-      })),
-      transition('hidden => visible', [
-        animate('0.6s cubic-bezier(0.4, 0, 0.2, 1)')
-      ])
-    ]),
-    trigger('blockFadeUp', [
-      state('hidden', style({
-        opacity: 0,
-        transform: 'translateY(30px) scale(0.98)'
-      })),
-      state('visible', style({
-        opacity: 1,
-        transform: 'translateY(0) scale(1)'
-      })),
-      transition('hidden => visible', [
-        animate('0.5s cubic-bezier(0.4, 0, 0.2, 1)')
-      ])
-    ]),
+    
     trigger('navSlideUp', [
       state('hidden', style({
         transform: 'translateX(-50%) translateY(80px)',
@@ -144,28 +43,6 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
         animate('1.2s cubic-bezier(0.23, 1, 0.32, 1)')
       ])
     ]),
-    trigger('premiumTitleAppear', [
-      state('hidden', style({
-        opacity: 0
-      })),
-      state('visible', style({
-        opacity: 1
-      })),
-      transition('hidden => visible', [
-        animate('0.1s ease-out')
-      ])
-    ]),
-    trigger('premiumSubtitleAppear', [
-      state('hidden', style({
-        opacity: 0
-      })),
-      state('visible', style({
-        opacity: 1
-      })),
-      transition('hidden => visible', [
-        animate('0.1s ease-out')
-      ])
-    ]),
 
     trigger('mobileMenuSlide', [
       state('closed', style({
@@ -186,372 +63,124 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
       ])
     ]),
 
+    trigger('faqExpand', [
+      state('collapsed', style({
+        maxHeight: '0px',
+        opacity: 0,
+        overflow: 'hidden',
+        paddingTop: '0px',
+        paddingBottom: '0px'
+      })),
+      state('expanded', style({
+        maxHeight: '200px',
+        opacity: 1,
+        overflow: 'hidden',
+        paddingTop: '20px',
+        paddingBottom: '30px'
+      })),
+      transition('collapsed => expanded', [
+        animate('0.35s cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ]),
+      transition('expanded => collapsed', [
+        animate('0.3s cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ])
+    ]),
+
+    trigger('dropdownExpand', [
+      state('collapsed', style({
+        maxHeight: '0px',
+        opacity: 0,
+        overflow: 'hidden'
+      })),
+      state('expanded', style({
+        maxHeight: '200px',
+        opacity: 1,
+        overflow: 'hidden'
+      })),
+      transition('collapsed => expanded', [
+        animate('0.35s cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ]),
+      transition('expanded => collapsed', [
+        animate('0.3s cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ])
+    ]),
+
   ]
 })
-export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
+export class IntroComponent implements OnInit {
 
-  
-  private starAnimationService = inject(StarAnimationService);
-  stars$: Observable<Star[]>;
-  
+
   isButtonHovered = false;
-  navAnimationState = 'hidden';
-  headerAnimationState = 'hidden';
-  titleAnimationState = 'hidden';
-  subtitleAnimationState = 'hidden';
-  infoTextAnimated = false;
-
-  howBlockState = 'hidden';
-  architectureBlockState = 'hidden';
-  buildBlockState = 'hidden';
-  devbridgeBlockState = 'hidden';
-  infoBlockState = 'hidden';
-  
-  @ViewChild('infoBlock', { static: false }) infoBlock!: ElementRef;
-  @ViewChild('changingWord', { static: false }) changingWord!: ElementRef;
-  @ViewChild('architectureVideo', { static: false }) architectureVideo!: ElementRef<HTMLVideoElement>;
-  
-  private animationFrameId: number | null = null;
-  private wordChangeInterval: any = null;
-  private currentWordIndex = 0;
-  private words = ['Secure', 'Transparent', 'Modular', 'Scalable', 'Fast'];
-  
-  // Glitch animation properties
-  private possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}:"<>?|';
-  private glitchChars = '!@#$%^&*()_+{}:"<>?|\\';
-  private cyberChars = '01010101110010101010101110101010';
-  private animationFrames = 25;
-  private animationSpeed = 30;
-  private animationTimeouts: { [key: string]: number } = {};
-  private isSafari: boolean = false;
+  navAnimationState = 'visible';
+  headerAnimationState = 'visible';
+  titleAnimationState = 'visible';
+  subtitleAnimationState = 'visible';
+  infoTextAnimated = true;
 
   isNavExpanded = false;
   isEcosystemExpanded = false;
   
   isMobileMenuOpen = false;
   
-  // Glass indicator для nav
-  activeNavIndex = 3; // По умолчанию на Launch App
+  // FAQ state
+  expandedFaqIndex: number | null = null;
+  
+  // Header Ecosystem dropdown
+  isHeaderEcosystemOpen = false;
+  
+  faqData = [
+    {
+      question: "How do I get started?",
+      answer: "Getting started with Blackhole is easy! Simply integrate our SDK into your application, and you'll have access to multi-chain liquidity aggregation. Check out our documentation for step-by-step integration guides."
+    },
+    {
+      question: "How can I monetize with Blackhole?",
+      answer: "Blackhole offers multiple monetization opportunities including fee sharing, liquidity provision rewards, and partner incentives. You can earn revenue from every trade that flows through your application."
+    },
+    {
+      question: "What is the Blackhole fee?",
+      answer: "Blackhole charges competitive fees that vary by chain and trade size. Our fee structure is transparent and designed to provide maximum value while ensuring sustainable operations. Fees typically range from 0.1% to 0.3%."
+    },
+    {
+      question: "Which tokens and chains are supported?",
+      answer: "Blackhole supports major chains including Ethereum, Polygon, Arbitrum, Optimism, Base, Avalanche, BSC, and many more. We support thousands of tokens across these networks with continuous expansion."
+    },
+    {
+      question: "How is Blackhole different?",
+      answer: "Blackhole breaks liquidity fragmentation by aggregating liquidity across multiple chains and DEXs. Unlike traditional solutions, we provide unified access to deep liquidity with optimal routing and execution."
+    },
+    {
+      question: "What's the maximum throughput?",
+      answer: "Blackhole can handle thousands of transactions per second across multiple chains simultaneously. Our infrastructure is built for scale and can accommodate high-volume trading applications."
+    }
+  ];
+  
+  activeNavIndex = 3;
   defaultNavIndex = 3;
   previousNavIndex = 3;
   
 
-  
-
-  constructor(
-    private mouseGradientService: MouseGradientService,
-    private liquidGlassService: LiquidGlassService
-  ) {
-    this.stars$ = this.starAnimationService.stars;
-  }
+  constructor() {}
 
   ngOnInit() {
-    setTimeout(() => {
-      this.headerAnimationState = 'visible';
-    }, 400);
-    
-    setTimeout(() => {
-      this.titleAnimationState = 'visible';
-    }, 1200);
-    
-    setTimeout(() => {
-      this.subtitleAnimationState = 'visible';
-    }, 2800);
-    
-    setTimeout(() => {
-      this.navAnimationState = 'visible';
-    }, 800);
-    
-    this.starAnimationService.initializeStars();
-    
-    // Liquid glass работает автоматически через глобальный слушатель для всех элементов с миксином
-    
-    // Инициализируем позицию glass индикатора
-    setTimeout(() => {
-      this.updateNavGlassPosition();
-    }, 1000);
-    
-    // Проверяем Safari для glitch анимации
-    this.isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-    
-    (window as any).setStarAnimation = (mode: 'high' | 'medium' | 'low' | 'disabled') => {
-      this.starAnimationService.setPerformanceMode(mode);
-    };
-    
-    (window as any).getStarAnimation = () => {
-      return this.starAnimationService.getPerformanceMode();
-    };
-    
-
-    
-          this.setupScrollAnimations();
-    this.startWordChangeAnimation();
-    }
-
-  ngAfterViewInit() {
-    // Видео настроено, но не запускается автоматически
-    // Запуск произойдет когда пользователь доскроллит до блока
+    this.updateNavGlassPosition();
   }
-  
-  private playArchitectureVideo() {
-    if (this.architectureVideo && this.architectureVideo.nativeElement) {
-      const video = this.architectureVideo.nativeElement;
-      
-      // Принудительно загружаем и запускаем
-      video.load();
-      
-      const tryPlay = () => {
-        const playPromise = video.play();
-        
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            console.log('Video started on scroll!');
-          }).catch((error) => {
-            console.log('Autoplay blocked, trying again...', error);
-            // Несколько попыток с разными задержками
-            setTimeout(() => {
-              video.play().catch(() => {
-                console.log('Still blocked, will start on user interaction');
-                document.addEventListener('click', () => video.play(), { once: true });
-              });
-            }, 500);
-          });
-        }
-      };
-      
-      // Пробуем запустить несколько раз
-      tryPlay();
-      setTimeout(tryPlay, 100);
-      setTimeout(tryPlay, 300);
-    }
-  }
-  
-  private startWordChangeAnimation() {
-    setTimeout(() => {
-      this.wordChangeInterval = setInterval(() => {
-        this.changeWord();
-      }, 3000); // Увеличил интервал для glitch анимации
-    }, 3000);
-  }
-  
-  private changeWord() {
-    if (!this.changingWord) return;
-    
-    const element = this.changingWord.nativeElement;
-    this.currentWordIndex = (this.currentWordIndex + 1) % this.words.length;
-    const newWord = this.words[this.currentWordIndex];
-    
-    // Запускаем glitch-анимацию
-    this.animateText(element, newWord);
-  }
-  
-  private animateText(element: HTMLElement, finalText: string): void {
-    const elementId = 'changing-word';
-    
-    if (this.animationTimeouts[elementId]) {
-      clearTimeout(this.animationTimeouts[elementId]);
-    }
-
-    // Убираем специальную обработку Safari - пусть использует полную анимацию
-    // if (this.isSafari) {
-    //   this.animateTextSafari(element, finalText);
-    //   return;
-    // }
-
-    let frame = 0;
-    const totalFrames = this.animationFrames;
-
-    const glitchStates = Array(finalText.length).fill(false);
-    const resolvedChars = Array(finalText.length).fill(false);
-
-    const animate = () => {
-      if (frame >= totalFrames) {
-        element.textContent = finalText;
-        delete this.animationTimeouts[elementId];
-        return;
-      }
-
-      let result = '';
-      const progress = frame / totalFrames;
-
-      // "Разрешаем" символы по очереди с задержкой
-      // Начинаем разрешать буквы с 20% анимации, заканчиваем к 90%
-      const startResolveFrame = Math.floor(totalFrames * 0.2);
-      const endResolveFrame = Math.floor(totalFrames * 0.9);
-      const resolveFrames = endResolveFrame - startResolveFrame;
-      
-      for (let i = 0; i < finalText.length; i++) {
-        // Равномерно распределяем буквы по времени
-        const letterStartFrame = startResolveFrame + Math.floor((resolveFrames * i) / (finalText.length - 1));
-        if (frame >= letterStartFrame && !resolvedChars[i]) {
-          resolvedChars[i] = true;
-        }
-      }
-
-      // Случайные глитч-состояния
-      if (frame % 3 === 0) {
-        for (let i = 0; i < finalText.length; i++) {
-          if (Math.random() < 0.15) {
-            glitchStates[i] = !glitchStates[i];
-          }
-        }
-      }
-
-      // Формируем результирующий текст
-      for (let i = 0; i < finalText.length; i++) {
-        if (resolvedChars[i]) {
-          // Символ "разрешен" - показываем правильную букву
-          result += finalText[i];
-        } else {
-          // Символ еще не "разрешен"
-          if (finalText[i] === ' ') {
-            result += ' ';
-          } else {
-            const rand = Math.random();
-            if (rand < 0.25) {
-              const glitchIndex = Math.floor(Math.random() * this.glitchChars.length);
-              result += this.glitchChars[glitchIndex];
-            } else if (rand < 0.5) {
-              const cyberIndex = Math.floor(Math.random() * this.cyberChars.length);
-              result += this.cyberChars[cyberIndex];
-            } else {
-              const randomIndex = Math.floor(Math.random() * this.possibleChars.length);
-              result += this.possibleChars[randomIndex];
-            }
-          }
-        }
-      }
-
-      element.textContent = result;
-      frame++;
-
-      this.animationTimeouts[elementId] = window.setTimeout(animate, this.animationSpeed);
-    };
-
-    animate();
-  }
-
-  private animateTextSafari(element: HTMLElement, finalText: string): void {
-    // Упрощенная анимация для Safari с fade эффектом
-    element.style.transition = 'opacity 0.2s ease-out';
-    element.style.opacity = '0';
-    
-    setTimeout(() => {
-      element.textContent = finalText;
-      element.style.opacity = '1';
-    }, 200);
-  }
-  
-  private setupScrollAnimations() {
-    const blockObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const target = entry.target as HTMLElement;
-        
-        if (entry.isIntersecting) {
-          if (target.classList.contains('how-block') && this.howBlockState === 'hidden') {
-            this.howBlockState = 'visible';
-          } else if (target.classList.contains('architecture-block') && this.architectureBlockState === 'hidden') {
-            this.architectureBlockState = 'visible';
-            
-            // Запускаем видео когда блок становится видимым
-            setTimeout(() => {
-              this.playArchitectureVideo();
-            }, 300);
-          } else if (target.classList.contains('build-block') && this.buildBlockState === 'hidden') {
-            this.buildBlockState = 'visible';
-          } else if (target.classList.contains('devbridge-block') && this.devbridgeBlockState === 'hidden') {
-            this.devbridgeBlockState = 'visible';
-            
-            const cards = target.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-              setTimeout(() => {
-                (card as HTMLElement).classList.add('card-animate-in');
-              }, index * 150);
-            });
-          }
-        }
-      });
-    }, {
-      threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    const infoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.infoTextAnimated) {
-          this.infoBlockState = 'visible';
-          setTimeout(() => this.startInfoTextAnimation(), 300);
-        }
-      });
-    }, {
-      threshold: 0.3
-    });
-    
-
-    setTimeout(() => {
-      const allBlocks = ['.how-block', '.architecture-block', '.build-block', '.devbridge-block'];
-      const infoBlock = document.querySelector('.info-block');
-      
-      allBlocks.forEach(selector => {
-        const element = document.querySelector(selector);
-        if (element) {
-          blockObserver.observe(element);
-        }
-      });
-      
-      if (infoBlock) {
-        infoObserver.observe(infoBlock);
-      }
-    }, 100);
-  }
-  
-  private startInfoTextAnimation() {
-    this.infoTextAnimated = true;
-    
-    const infoText = this.infoBlock.nativeElement.querySelector('.info-text');
-    if (infoText) {
-      infoText.classList.add('animate-in');
-    }
-    
-    const words = this.infoBlock.nativeElement.querySelectorAll('.word');
-    words.forEach((word: HTMLElement) => {
-      word.classList.add('animate');
-    });
-  }
-
-
-
-  onMouseMove(event: MouseEvent) {
-    const element = event.currentTarget as HTMLElement;
-    if (element) {
-      this.liquidGlassService.updateElementLighting(element, event.clientX, event.clientY);
-    }
-  }
-
-  onMouseLeave(event: MouseEvent) {
-    // Эффект автоматически исчезнет когда мышь уйдет
-  }
-  
-
 
   private buttonHoverTimeout: any = null;
 
   onButtonMouseEnter() {
-    // Очищаем предыдущий timeout если есть
     if (this.buttonHoverTimeout) {
       clearTimeout(this.buttonHoverTimeout);
       this.buttonHoverTimeout = null;
     }
     
-    // Устанавливаем состояние только если оно изменилось
     if (!this.isButtonHovered) {
       this.isButtonHovered = true;
     }
   }
 
   onButtonMouseLeave() {
-    // Добавляем небольшую задержку для предотвращения мерцания в Safari
+    
     this.buttonHoverTimeout = setTimeout(() => {
       this.isButtonHovered = false;
       this.buttonHoverTimeout = null;
@@ -579,7 +208,7 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
     this.isNavExpanded = false;
     this.isEcosystemExpanded = false;
     
-    // Возвращаем стекло к Launch App при полном выходе из .nav
+    
     this.previousNavIndex = this.activeNavIndex;
     this.activeNavIndex = this.defaultNavIndex;
     this.updateNavGlassPosition();
@@ -597,8 +226,8 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onNavMouseLeaveItem() {
-    // НЕ возвращаемся сразу - ждем выхода из всего .nav контейнера
-    // Логика возврата будет в onNavMouseLeave
+    
+    
   }
 
   private updateNavGlassPosition() {
@@ -610,16 +239,16 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
       const container = document.querySelector('.nav-content') as HTMLElement;
       
       if (activeItem && container) {
-        // Вычисляем реальную позицию элемента относительно контейнера
+        
         const itemRect = activeItem.getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
         const relativeX = itemRect.left - containerRect.left;
         
-        // Определяем направление движения
+        
         const isMovingRight = this.activeNavIndex > this.previousNavIndex;
         const isMovingLeft = this.activeNavIndex < this.previousNavIndex;
         
-        // Устанавливаем transform-origin в зависимости от направления
+        
         if (isMovingRight) {
           indicator.style.transformOrigin = 'left center';
         } else if (isMovingLeft) {
@@ -628,12 +257,12 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
           indicator.style.transformOrigin = 'center center';
         }
         
-        // Устанавливаем размеры и позицию
+        
         indicator.style.width = `${itemRect.width}px`;
         indicator.style.height = `${itemRect.height}px`;
         indicator.style.transform = `translateX(${relativeX}px)`;
         
-        // Выбираем анимацию в зависимости от направления
+        
         let animationName = 'navGlassScale';
         if (isMovingRight) {
           animationName = 'navGlassScaleRight';
@@ -643,7 +272,7 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
         
         indicator.style.animation = `${animationName} 440ms cubic-bezier(0.23, 1, 0.32, 1)`;
         
-        // Убираем анимацию после завершения
+        
         setTimeout(() => {
           indicator.style.animation = '';
           indicator.style.transformOrigin = 'center center';
@@ -660,61 +289,46 @@ export class IntroComponent implements OnInit, OnDestroy, AfterViewInit {
     this.isMobileMenuOpen = false;
   }
 
-  scrollToDevbridge() {
-    const element = document.getElementById('devbridge-block');
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'center'
-      });
+  toggleFaq(index: number) {
+    if (this.expandedFaqIndex === index) {
+      this.expandedFaqIndex = null;
+    } else {
+      // Плавная смена - сначала закрываем текущий, потом открываем новый
+      if (this.expandedFaqIndex !== null) {
+        const previousIndex = this.expandedFaqIndex;
+        this.expandedFaqIndex = null;
+        setTimeout(() => {
+          this.expandedFaqIndex = index;
+        }, 150); // Половина времени анимации
+      } else {
+        this.expandedFaqIndex = index;
+      }
     }
   }
 
-  ngOnDestroy() {
-    delete (window as any).setStarAnimation;
-    delete (window as any).getStarAnimation;
-
-    // Очищаем liquid glass сервис
-    this.liquidGlassService.destroy();
-    
-    if (this.animationFrameId) {
-      cancelAnimationFrame(this.animationFrameId);
-    }
-    
-    if (this.wordChangeInterval) {
-      clearInterval(this.wordChangeInterval);
-    }
-    
-    // Очищаем glitch анимационные таймауты
-    Object.values(this.animationTimeouts).forEach((timeoutId) => {
-      clearTimeout(timeoutId);
-    });
-    
-    // Очищаем timeout кнопки
-    if (this.buttonHoverTimeout) {
-      clearTimeout(this.buttonHoverTimeout);
-      this.buttonHoverTimeout = null;
-    }
+  isFaqExpanded(index: number): boolean {
+    return this.expandedFaqIndex === index;
   }
 
-      @HostListener('mousemove', ['$event'])
-    onMouseMoveGlobal(event: MouseEvent) {
-      this.starAnimationService.onMouseMove(event);
+  toggleHeaderEcosystem() {
+    this.isHeaderEcosystemOpen = !this.isHeaderEcosystemOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+    const ecosystemContainer = target.closest('.header-ecosystem-container');
+    const faqContainer = target.closest('.faq');
+    
+    // Если клик не внутри контейнера ecosystem dropdown, закрываем его
+    if (!ecosystemContainer && this.isHeaderEcosystemOpen) {
+      this.isHeaderEcosystemOpen = false;
     }
     
-
-
-  trackByStar(index: number, star: Star): number {
-    return star.id;
-  }
-
-  // Методы liquid glass теперь не нужны - всё обрабатывается сервисом
-  onLiquidGlassMouseMove(event: MouseEvent) {
-    // Логика теперь в LiquidGlassService
-  }
-
-  onLiquidGlassMouseLeave() {
-    // Логика теперь в LiquidGlassService
+    // Если клик не внутри FAQ секции, закрываем все открытые FAQ
+    if (!faqContainer && this.expandedFaqIndex !== null) {
+      this.expandedFaqIndex = null;
+    }
   }
 
 } 
