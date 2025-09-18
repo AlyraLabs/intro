@@ -144,7 +144,13 @@
 			<div class="logo-img"></div>
 			<p>Blackhole Labs</p>
 		</div>
-		<div class="close-btn" (click)="closeMobileMenu()">×</div>
+		<div class="close-btn" 
+		     [class.active]="isMobileMenuOpen"
+		     (click)="closeMobileMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
 	</div>
 	
 	<div class="mobile-menu-content">
