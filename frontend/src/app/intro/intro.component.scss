@@ -211,6 +211,12 @@ span{
 	font-weight: 300;
 	color: rgba(var(--white), 1);
 }
+pre{
+	font-family: "Geist Mono", sans-serif;
+	font-size: 18px;
+	font-weight: 300;
+	color: rgba(var(--white), 1);
+}
 
 
 
@@ -337,6 +343,7 @@ header{
 		display: flex;
 		align-items: center;
 		gap: 5px;
+		cursor: pointer;
 		p{
 			font-size: 22px;
 			font-weight: 400;
