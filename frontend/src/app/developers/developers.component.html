@@ -1,0 +1,266 @@
+<div class="page-container">
+
+	<div class="main">
+		<header>
+			<div class="logo" routerLink="/">
+				<div class="logo-img"></div>
+				<p>Alyra</p>
+			</div>
+			<div class="menu">
+				<a href="#" target="_blank">DOCS</a>
+				<div class="devider"></div>
+				<a href="#" target="_blank">SCAN</a>
+				<div class="devider"></div>
+				<a href="#" target="_blank">ECOSYSTEM</a>
+				<div class="devider"></div>
+				<a routerLink="/developers">DEVELOPERS</a>
+				<div class="devider"></div>
+				<a href="#" target="_blank">BLOG</a>
+				<div class="devider"></div>
+				<a routerLink="/community">RESOURCES</a>
+			</div>
+			<button class="hamburger" (click)="toggleMobileMenu()">
+				<img *ngIf="!isMobileMenuOpen" src="/img/icons/hamburger.png" alt="Menu">
+				<img *ngIf="isMobileMenuOpen" src="/img/icons/close.png" alt="Close">
+			</button>
+		</header>
+
+	<div class="mobile-menu" [class.active]="isMobileMenuOpen">
+		<div class="mobile-header">
+			<div class="logo" routerLink="/" (click)="toggleMobileMenu()">
+				<div class="logo-img"></div>
+				<p>Alyra</p>
+			</div>
+			<button class="mobile-close" (click)="toggleMobileMenu()">
+				<img src="/img/icons/close.png" alt="Close">
+			</button>
+		</div>
+
+		<nav class="mobile-nav">
+				<a href="#" target="_blank" (click)="toggleMobileMenu()">DOCS</a>
+				<hr>
+				<a href="#" target="_blank" (click)="toggleMobileMenu()">SCAN</a>
+				<hr>
+				<a href="#" target="_blank" (click)="toggleMobileMenu()">ECOSYSTEM</a>
+				<hr>
+				<a routerLink="/developers" (click)="toggleMobileMenu()">DEVELOPERS</a>
+				<hr>
+				<a href="#" target="_blank" (click)="toggleMobileMenu()">BLOG</a>
+				<hr>
+				<a routerLink="/community" (click)="toggleMobileMenu()">RESOURCES</a>
+			</nav>
+
+			<div class="button main-button">
+				<p>Start Building</p>
+				<div class="icon arrow"></div>
+			</div>
+		</div>
+
+		<div class="text">
+			<p class="tag">[ Developers ]</p>
+			<h1 class="hero-title">
+				<span>Engineered by builders</span> <br>
+				for builders.
+			</h1>
+			<p class="pre">Alyra lets developers build secure, reliable cross-chain execution.</p>
+			<div class="icon scroll-down"></div>
+			<div class="post">
+				<p>Build Fast.</p>
+				<p>&nbsp;&nbsp;Ship Anywhere.</p>
+			</div>
+		</div>
+		<div class="background"></div>
+	</div>
+
+	<div class="developers">
+		<div class="text-dev">
+			<h1>
+				<span>Build Anything</span> <br>
+				with Alyra.
+			</h1>
+			<div class="button">
+				<p>How it works</p>
+				<div class="icon arrow"></div>
+			</div>
+		</div>
+		<div class="developers-container">
+			<div class="developer">
+				<h3>Introduction</h3>
+				<p>
+					Guides and quick integration tutorials.
+				</p>
+				<div class="links">
+					<a href="#" target="_blank">Overview</a>
+					<a href="#" target="_blank">Why Alyra</a>
+					<a href="#" target="_blank">Principles</a>
+				</div>
+			</div>
+			<div class="developer">
+				<h3>Smart contracts</h3>
+				<p>
+					Core contracts and ready-to-use examples.
+				</p>
+				<div class="links">
+					<a href="#" target="_blank">Contracts Addresses</a>
+					<a href="#" target="_blank">Architecture</a>
+					<a href="#" target="_blank">Helper Contracts</a>
+				</div>
+			</div>
+			<div class="developer">
+				<h3>SDK & API</h3>
+				<p>
+					Integrate, manage routes, and monitor usage.
+				</p>
+				<div class="links">
+					<a href="#" target="_blank">API Overview</a>
+					<a href="#" target="_blank">SDK Overview</a>
+					<a href="#" target="_blank">Rate Limits</a>
+				</div>
+			</div>
+			<div class="developer">
+				<h3>Supported Chains</h3>
+				<p>
+					All networks connected to Alyra.
+				</p>
+				<div class="links">
+					<a href="#" target="_blank">Overview</a>
+					<a href="#" target="_blank">EVM Providers</a>
+					<a href="#" target="_blank">Solana Providers</a>
+				</div>
+			</div>
+			<div class="developer">
+				<h3>Dev Community</h3>
+				<p>
+					Join the chat and stay connected.
+				</p>
+				<div class="links">
+					<a href="#" target="_blank">X / Twitter</a>
+					<a href="#" target="_blank">Telegram</a>
+					<a href="#" target="_blank">Developer Assistance</a>
+				</div>
+			</div>
+			<div class="developer">
+				<h3>Tools</h3>
+				<p>
+					Partner and dev utilities.
+				</p>
+				<div class="links">
+					<a href="#" target="_blank">Partner Portal</a>
+					<a href="#" target="_blank">Status</a>
+					<a href="#" target="_blank">Media kit</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<div class="head-links-container">
+			<div class="head-link">
+				<p>Resourses</p>
+			</div>
+			<div class="head-link">
+				<p>Social Media</p>
+			</div>
+			<div class="head-link">
+				<p>Developers</p>
+			</div>
+			<!-- <div class="head-link">
+				<p>Tools</p>
+			</div> -->
+			<div class="head-link">
+				<p>Ecosystem</p>
+			</div>
+			<div class="head-link">
+				<p>Careers</p>
+			</div>
+		</div>
+		<div class="bottom-links-container">
+			<div class="bottom-links">
+				<a class="bottom-link">Documentation</a>
+				<a class="bottom-link">MediaKit</a>
+				<a class="bottom-link">Terms of Use</a>
+				<a class="bottom-link">Privacy Policy</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">Twitter / X</a>
+				<a class="bottom-link">Telegram</a>
+				<a class="bottom-link" href="https://medium.com/@alyrafinance" target="_blank">Medium</a>
+				<!-- <a class="bottom-link">Discord</a> -->
+				<a class="bottom-link" href="https://www.linkedin.com/company/alyrafi" target="_blank">LinkedIn</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link">API</a>
+				<a class="bottom-link">Architecture</a>
+				<a class="bottom-link">SDK & Libraries</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Dev Support</a>
+				<!-- <a class="bottom-link">Dev Community</a> -->
+				<a class="bottom-link" href="https://github.com/AlyraLabs" target="_blank">GitHub</a>
+			</div>
+			<!-- <div class="bottom-links">
+				<a class="bottom-link">Status</a>
+				<a class="bottom-link">Partner Portal</a>
+			</div> -->
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">News</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Become a partner</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://alyralabs.xyz/" target="_blank">Jobs</a>
+			</div>
+		</div>
+
+		<div class="mobile-links-container">
+			<div class="mobile-link">
+				<p class="mobile-link-title">Resourses</p>
+				<hr>
+				<a class="bottom-link">Documentation</a>
+				<a class="bottom-link">MediaKit</a>
+				<a class="bottom-link">Terms of Use</a>
+				<a class="bottom-link">Privacy Policy</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Social Media</p>
+				<hr>
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">Twitter / X</a>
+				<a class="bottom-link">Telegram</a>
+				<a class="bottom-link" href="https://medium.com/@alyrafinance" target="_blank">Medium</a>
+				<!-- <a class="bottom-link">Discord</a> -->
+				<a class="bottom-link" href="https://www.linkedin.com/company/alyrafi" target="_blank">LinkedIn</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Developers</p>
+				<hr>
+				<a class="bottom-link">API</a>
+				<a class="bottom-link">Architecture</a>
+				<a class="bottom-link">SDK & Libraries</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Dev Support</a>
+				<!-- <a class="bottom-link">Dev Community</a> -->
+				<a class="bottom-link" href="https://github.com/AlyraLabs" target="_blank">GitHub</a>
+			</div>
+			<!-- <div class="mobile-link">
+				<p class="mobile-link-title">Tools</p>
+				<hr>
+				<a class="bottom-link">Status</a>
+				<a class="bottom-link">Partner Portal</a>
+			</div> -->
+			<div class="mobile-link">
+				<p class="mobile-link-title">Ecosystem</p>
+				<hr>
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">News</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Become a partner</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Careers</p>
+				<hr>
+				<a class="bottom-link" href="https://alyralabs.xyz/" target="_blank">Jobs</a>
+			</div>
+		</div>
+
+
+		<div class="bottom-text">
+			<div class="logo-img"></div>
+			<p>© 2025 Alyra. All rights reserved.</p>
+		</div>
+		<div class="background"></div>
+	</footer>
+</div>

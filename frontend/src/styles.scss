@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
 
 :root {
 	--white: 255, 255, 255;
@@ -62,4 +60,31 @@ html {
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(var(--white), 0.3) rgba(var(--black), 1);
+}
+
+/* Стили для курсора в текстовых блоках с анимацией печати */
+.typewriter-text .cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  margin-left: 2px;
+  border-radius: 2px;
+  background: rgba(var(--white), 1);
+  box-shadow: 0 0 8px rgba(255,255,255,.25);
+  vertical-align: bottom;
+}
+
+/* Временный курсор во время печати не мигает */
+.typewriter-text .temp-cursor {
+  animation: none !important;
+}
+
+/* Постоянный курсор мигает только если не временный */
+.typewriter-text .cursor:not(.temp-cursor) {
+  animation: blink 0.9s ease-in-out infinite;
+}
+
+@keyframes blink { 
+  0%, 100% { opacity: 1 } 
+  50% { opacity: 0 } 
 }
