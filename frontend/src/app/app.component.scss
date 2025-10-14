@@ -3,35 +3,31 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 50px;
+	padding: 50px 0 50px 0;
 }
 
-@media screen and (min-width: 1601px) and (max-width: 1920px) {
+@media screen and (min-width: 1601px) and (max-width: 1920px){
 	:host {
-		padding: 30px;
+		padding: 30px 0 30px 0;
 	}
 }
-
-@media screen and (min-width: 1171px) and (max-width: 1600px) {
+@media screen and (min-width: 1171px) and (max-width: 1600px){
 	:host {
-		padding: 20px;
+		padding: 30px 0 30px 0;
 	}
 }
-
-@media screen and (min-width: 971px) and (max-width: 1170px) {
+@media screen and (min-width: 971px) and (max-width: 1170px){
 	:host {
-		padding: 20px;
+		padding: 20px 0 20px 0;
 	}
 }
-
-@media screen and (min-width: 480px) and (max-width: 970px) {
+@media screen and (min-width: 481px) and (max-width: 970px){
 	:host {
-		padding: 30px;
+		padding: 20px 0 20px 0;
 	}
 }
-
-@media screen and (min-width: 360px) and (max-width: 479px) {
+@media screen and (min-width: 360px) and (max-width: 480px){
 	:host {
-		padding: 30px;
+		padding: 20px 0 20px 0;
 	}
 }

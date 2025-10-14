@@ -1,0 +1,311 @@
+<div class="page-container">
+
+	<div class="main">
+		<header>
+			<div class="logo" routerLink="/">
+				<div class="logo-img"></div>
+				<p>Alyra</p>
+			</div>
+			<div class="menu">
+				<a href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank">DOCS</a>
+				<div class="devider"></div>
+				<!-- <a href="#" target="_blank">SCAN</a>
+				<div class="devider"></div>
+				<a href="#" target="_blank">ECOSYSTEM</a>
+				<div class="devider"></div> -->
+				<a routerLink="/developers">DEVELOPERS</a>
+				<div class="devider"></div>
+				<a href="https://medium.com/@alyrafinance" target="_blank">BLOG</a>
+				<div class="devider"></div>
+				<a routerLink="/community">COMMUNITY</a>
+			</div>
+			<button class="hamburger" (click)="toggleMobileMenu()">
+				<img *ngIf="!isMobileMenuOpen" src="/img/icons/hamburger.png" alt="Menu">
+				<img *ngIf="isMobileMenuOpen" src="/img/icons/close.png" alt="Close">
+			</button>
+		</header>
+
+		<div class="mobile-menu" [class.active]="isMobileMenuOpen">
+			<div class="mobile-header">
+				<div class="logo">
+					<div class="logo-img"></div>
+					<p>Alyra</p>
+				</div>
+				<button class="mobile-close" (click)="toggleMobileMenu()">
+					<img src="/img/icons/close.png" alt="Close">
+				</button>
+			</div>
+
+			<nav class="mobile-nav">
+					<a href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank" (click)="toggleMobileMenu()">DOCS</a>
+					<hr>
+					<!-- <a href="#" target="_blank" (click)="toggleMobileMenu()">SCAN</a>
+					<hr>
+					<a href="#" target="_blank" (click)="toggleMobileMenu()">ECOSYSTEM</a> 
+					<hr> -->
+					<a routerLink="/developers" (click)="toggleMobileMenu()">DEVELOPERS</a>
+					<hr>
+					<a href="https://medium.com/@alyrafinance" target="_blank" (click)="toggleMobileMenu()">BLOG</a>
+					<hr>
+					<a routerLink="/community" (click)="toggleMobileMenu()">COMMUNITY</a>
+				</nav>
+
+				<a class="button main-button" href="/developers" target="_blank">
+					<p>Start Building</p>
+					<div class="icon arrow"></div>
+				</a>
+		</div>
+
+		<div class="text">
+			<p class="tag">[ Media Kit ]</p>
+			<h1 class="hero-title">
+				Media Kit
+			</h1>
+		<p class="pre">Download the official Alyra logo in all available styles, ready for both light and dark backgrounds. <br>
+			Please use the assets as they are provided — do not alter, adjust, or modify them in any way.</p>
+		<a class="button main-button" href="/Alyra Media Kit.zip" download>
+			<p>Download</p>
+			<div class="icon download"></div>
+		</a>
+		<div class="icon scroll-down"></div>
+		</div>
+		<div class="background"></div>
+	</div>
+
+	<div class="versions">
+		<h1>Logo <span>Versions</span></h1>
+		<div class="content">
+			<p class="pre absolute">*primary</p>
+			<div class="item logo"></div>
+			<div class="text-item logo-with-text"></div>
+			<div class="text">
+				<div class="icon success"></div>
+				<p class="pre">
+					The main and preferred version of the Alyra logo. <br>
+					Always use this variant when possible, as it <br>
+					provides the highest readability and stays true <br>
+					to Alyra’s core visual identity.
+				</p>
+			</div>
+		</div>
+		<div class="content">
+			<div class="item color-logo"></div>
+			<div class="text-item color-logo-with-text"></div>
+			<div class="text">
+				<div class="icon attention"></div>
+				<p class="pre">
+					Primary usage is the white logo on black. Gradient <br>
+					and black-on-white versions are allowed only as <br>
+					alternatives when the primary cannot be used.
+				</p>
+			</div>
+		</div>
+		<div class="content">
+			<div class="item black-logo"></div>
+			<div class="text-item black-logo-with-text"></div>
+			<div class="text-item color-white-logo-with-text"></div>
+		</div>
+	</div>
+
+	<div class="usage">
+		<h1>Suggested <span>Usage</span></h1>
+		<div class="content">
+			<div class="card">
+				<div class="text-item logo-with-text"></div>
+				<p class="description">Use only the official Alyra logo.</p>
+			</div>
+			<div class="card">
+				<div class="text-item logo-with-text-spacing"></div>
+				<p class="description">Ensure proper spacing around the logo.</p>
+			</div>
+			<div class="card">
+				<div class="text-item logo-wide"></div>
+				<p class="description">Use the emblem alone only when recognition is clear.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="improper">
+		<h1>Improper <br> <span>Logo Usage</span></h1>
+		<div class="content">
+			<div class="card">
+				<div class="card-item color"></div>
+				<h3>Color</h3>
+				<p class="pre">
+					Do not alter the official 
+					logo colors. Use only approved palettes.
+				</p>
+			</div>
+			<div class="card">
+				<div class="card-item proportions"></div>
+				<h3>Proportions</h3>
+				<p class="pre">
+					Do not stretch, skew, or distort the logo.
+				</p>
+			</div>
+			<div class="card">
+				<div class="card-item cropping"></div>
+				<h3>Cropping</h3>
+				<p class="pre">
+					Do not crop the logo — it must always remain fully visible.
+				</p>
+			</div>
+			<div class="card">
+				<div class="card-item blur"></div>
+				<h3>Blur</h3>
+				<p class="pre">
+					Do not apply blur or low-quality effects to the logo.
+				</p>
+			</div>
+			<div class="card">
+				<div class="card-item shadow"></div>
+				<h3>Shadow</h3>
+				<p class="pre">
+					Do not add shadows, glows, or extra effects.
+				</p>
+			</div>
+			<div class="card">
+				<div class="card-item format"></div>
+				<h3>Format Change</h3>
+				<p class="pre">
+					Do not change the official font in the Alyra wordmark.
+				</p>
+			</div>
+			<div class="card">
+				<div class="card-item position"></div>
+				<h3>Position</h3>
+				<p class="pre">
+					Do not rearrange or swap the positions of the logo text and symbol.
+				</p>
+			</div>
+			<div class="card">
+				<div class="card-item gradient"></div>
+				<h3>Gradient</h3>
+				<p class="pre">
+					Do not place the logo on gradient backgrounds.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="download-block">
+		<h1>Download</h1>
+	<p class="pre">Download the official Alyra logo in all available styles, ready for both light and dark backgrounds. <br>
+		Please use the assets as they are provided — do not alter, adjust, or modify them in any way.</p>
+	<a class="button main-button" href="/Alyra Media Kit.zip" download>
+		<p>Download</p>
+		<div class="icon download"></div>
+	</a>
+	</div>
+
+	<footer>
+		<div class="head-links-container">
+			<div class="head-link">
+				<p>Resourses</p>
+			</div>
+			<div class="head-link">
+				<p>Social Media</p>
+			</div>
+			<div class="head-link">
+				<p>Developers</p>
+			</div>
+			<!-- <div class="head-link">
+				<p>Tools</p>
+			</div> -->
+			<div class="head-link">
+				<p>Ecosystem</p>
+			</div>
+			<div class="head-link">
+				<p>Careers</p>
+			</div>
+		</div>
+		<div class="bottom-links-container">
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank">Documentation</a>
+				<a class="bottom-link" href="/mediakit">MediaKit</a>
+				<a class="bottom-link">Terms of Use</a>
+				<a class="bottom-link">Privacy Policy</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">Twitter / X</a>
+				<a class="bottom-link" href="https://t.me/alyrafinance" target="_blank">Telegram</a>
+				<a class="bottom-link" href="https://medium.com/@alyrafinance" target="_blank">Medium</a>
+				<!-- <a class="bottom-link">Discord</a> -->
+				<a class="bottom-link" href="https://www.linkedin.com/company/alyrafi" target="_blank">LinkedIn</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="/developers" target="_blank">API</a>
+				<a class="bottom-link" href="/developers" target="_blank">Architecture</a>
+				<a class="bottom-link" href="/developers" target="_blank">SDK & Libraries</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Dev Support</a>
+				<!-- <a class="bottom-link">Dev Community</a> -->
+				<a class="bottom-link" href="https://github.com/AlyraLabs" target="_blank">GitHub</a>
+			</div>
+			<!-- <div class="bottom-links">
+				<a class="bottom-link">Status</a>
+				<a class="bottom-link">Partner Portal</a>
+			</div> -->
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">News</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Become a partner</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://alyralabs.xyz/" target="_blank">Jobs</a>
+			</div>
+		</div>
+
+		<div class="mobile-links-container">
+			<div class="mobile-link">
+				<p class="mobile-link-title">Resourses</p>
+				<hr>
+				<a class="bottom-link" href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank">Documentation</a>
+				<a class="bottom-link" href="/mediakit">MediaKit</a>
+				<a class="bottom-link">Terms of Use</a>
+				<a class="bottom-link">Privacy Policy</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Social Media</p>
+				<hr>
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">Twitter / X</a>
+				<a class="bottom-link" href="https://t.me/alyrafinance" target="_blank">Telegram</a>
+				<a class="bottom-link" href="https://medium.com/@alyrafinance" target="_blank">Medium</a>
+				<!-- <a class="bottom-link">Discord</a> -->
+				<a class="bottom-link" href="https://www.linkedin.com/company/alyrafi" target="_blank">LinkedIn</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Developers</p>
+				<hr>
+				<a class="bottom-link" href="/developers" target="_blank">API</a>
+				<a class="bottom-link" href="/developers" target="_blank">Architecture</a>
+				<a class="bottom-link" href="/developers" target="_blank">SDK & Libraries</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Dev Support</a>
+				<!-- <a class="bottom-link">Dev Community</a> -->
+				<a class="bottom-link" href="https://github.com/AlyraLabs" target="_blank">GitHub</a>
+			</div>
+			<!-- <div class="mobile-link">
+				<p class="mobile-link-title">Tools</p>
+				<hr>
+				<a class="bottom-link">Status</a>
+				<a class="bottom-link">Partner Portal</a>
+			</div> -->
+			<div class="mobile-link">
+				<p class="mobile-link-title">Ecosystem</p>
+				<hr>
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">News</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Become a partner</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Careers</p>
+				<hr>
+				<a class="bottom-link" href="https://alyralabs.xyz/" target="_blank">Jobs</a>
+			</div>
+		</div>
+
+
+		<div class="bottom-text">
+			<div class="logo-img"></div>
+			<p>© 2025 Alyra. All rights reserved.</p>
+		</div>
+		<div class="background"></div>
+	</footer>
+</div>
