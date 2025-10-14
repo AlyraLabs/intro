@@ -38,6 +38,11 @@ html {
 	overflow-x: hidden;
 	scroll-behavior: smooth;
 	overscroll-behavior: none;
+	touch-action: pan-y;
+}
+
+body{
+	touch-action: pan-y;
 }
 
 ::-webkit-scrollbar {
