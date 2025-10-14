@@ -20,8 +20,12 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
 	@ViewChild('description2') description2El!: ElementRef<HTMLElement>;
 	@ViewChild('description3') description3El!: ElementRef<HTMLElement>;
 
-  private intersectionObserver?: IntersectionObserver;
   isMobileMenuOpen = false;
+  
+  private isDragging = false;
+  private startX = 0;
+  private scrollLeft = 0;
+  private performanceObserver?: IntersectionObserver;
 
   constructor(
     private renderer: Renderer2,
@@ -53,92 +57,142 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
       this.renderer
     );
 
-    // Инициализация анимации тегов при скролле
-    this.initializeScrollAnimations();
+    // Инициализация drag-to-scroll для чейнов
+    this.initializeChainsScroll();
+    
+    // Инициализация анимации счетчика для статистики
+    this.initializePerformanceCounter();
   }
 
-  private initializeScrollAnimations(): void {
-    const tags = document.querySelectorAll('.tag');
-    const buttons = document.querySelectorAll('.button');
-    const postTexts = document.querySelectorAll('.post p');
-    // Исключаем главный заголовок из общей анимации
-    const headings = document.querySelectorAll('h1:not(.hero-title), h2, h3');
-    const principleParagraphs = document.querySelectorAll('.principle p');
-    const principleHeadings = document.querySelectorAll('.principle h3');
-    const developerParagraphs = document.querySelectorAll('.developer p');
-    const developerHeadings = document.querySelectorAll('.developer h3');
+  private initializeChainsScroll(): void {
+    const chainsTrack = document.querySelector('.chains-track') as HTMLElement;
+    if (!chainsTrack) return;
     
-    this.intersectionObserver = new IntersectionObserver(
+    let currentPosition = 0;
+    let animationId: number | null = null;
+
+    const animate = () => {
+      currentPosition -= 1.5; // Скорость анимации (пикселей за кадр)
+      
+      // Бесконечный цикл: когда доходим до конца, возвращаемся в начало
+      const totalDistance = (400 + 40) * 27;
+      if (currentPosition <= -totalDistance) {
+        currentPosition = 0;
+      }
+      
+      chainsTrack.style.transform = `translateX(${currentPosition}px)`;
+      animationId = requestAnimationFrame(animate);
+    };
+    
+    // Запускаем анимацию
+    animate();
+
+    chainsTrack.addEventListener('mousedown', (e) => {
+      this.isDragging = true;
+      chainsTrack.classList.add('dragging');
+      this.startX = e.pageX;
+      this.scrollLeft = currentPosition;
+      
+      // Останавливаем анимацию
+      if (animationId !== null) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!this.isDragging) return;
+      e.preventDefault();
+      const x = e.pageX;
+      const walk = (x - this.startX) * 0.8;
+      currentPosition = this.scrollLeft + walk;
+      chainsTrack.style.transform = `translateX(${currentPosition}px)`;
+    });
+
+    const endDrag = () => {
+      if (this.isDragging) {
+        this.isDragging = false;
+        chainsTrack.classList.remove('dragging');
+        
+        // Возобновляем анимацию с текущей позиции
+        animate();
+      }
+    };
+
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('mouseleave', endDrag);
+  }
+
+  private initializePerformanceCounter(): void {
+    const performanceSection = document.querySelector('.perfomance');
+    if (!performanceSection) return;
+
+    this.performanceObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target.classList.contains('tag')) {
-              entry.target.classList.add('tag-visible');
-            } else if (entry.target.classList.contains('button')) {
-              entry.target.classList.add('button-visible');
-            } else if (entry.target.parentElement?.classList.contains('post')) {
-              entry.target.classList.add('post-text-visible');
-            } else if (entry.target.parentElement?.classList.contains('principle') && entry.target.matches('p')) {
-              entry.target.classList.add('paragraph-visible');
-            } else if (entry.target.parentElement?.classList.contains('principle') && entry.target.matches('h3')) {
-              entry.target.classList.add('heading-visible');
-            } else if (entry.target.parentElement?.classList.contains('developer') && entry.target.matches('p')) {
-              entry.target.classList.add('paragraph-visible');
-            } else if (entry.target.parentElement?.classList.contains('developer') && entry.target.matches('h3')) {
-              entry.target.classList.add('heading-visible');
-            } else if (entry.target.matches('h1, h2, h3')) {
-              entry.target.classList.add('heading-visible');
-            }
-            // Отключаем наблюдение после появления
-            this.intersectionObserver?.unobserve(entry.target);
+            // Запускаем анимацию счетчика
+            this.animateCounter('.perfomance-container .perfomance-item:nth-child(1) h1', 25, 0);
+            this.animateCounter('.perfomance-container .perfomance-item:nth-child(2) h1', 300, 0, '<', 'ms');
+            this.animateCounter('.perfomance-container .perfomance-item:nth-child(3) h1', 30, 0);
+            this.animateCounter('.perfomance-container .perfomance-item:nth-child(4) h1', 99.9, 0, '', '%', true);
+            
+            // Отключаем наблюдение после запуска
+            this.performanceObserver?.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.2, // Анимация начнется когда 20% элемента видны
-        rootMargin: '0px 0px -50px 0px' // Небольшой отступ снизу
+        threshold: 0.3
       }
     );
 
-    tags.forEach((tag) => {
-      this.intersectionObserver?.observe(tag);
-    });
+    this.performanceObserver.observe(performanceSection);
+  }
 
-    buttons.forEach((button) => {
-      this.intersectionObserver?.observe(button);
-    });
+  private animateCounter(
+    selector: string, 
+    target: number, 
+    start: number = 0, 
+    prefix: string = '', 
+    suffix: string = '',
+    isDecimal: boolean = false
+  ): void {
+    const element = document.querySelector(selector) as HTMLElement;
+    if (!element) return;
 
-    postTexts.forEach((text) => {
-      this.intersectionObserver?.observe(text);
-    });
+    const duration = 2000; // 2 секунды
+    const startTime = performance.now();
 
-    headings.forEach((heading) => {
-      this.intersectionObserver?.observe(heading);
-    });
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function для плавности (easeOutQuart)
+      const easeProgress = 1 - Math.pow(1 - progress, 4);
+      
+      const current = start + (target - start) * easeProgress;
+      
+      if (isDecimal) {
+        element.textContent = prefix + current.toFixed(1) + suffix;
+      } else {
+        element.textContent = prefix + Math.floor(current) + suffix;
+      }
 
-    principleParagraphs.forEach((paragraph) => {
-      this.intersectionObserver?.observe(paragraph);
-    });
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
 
-    principleHeadings.forEach((heading) => {
-      this.intersectionObserver?.observe(heading);
-    });
-
-    developerParagraphs.forEach((paragraph) => {
-      this.intersectionObserver?.observe(paragraph);
-    });
-
-    developerHeadings.forEach((heading) => {
-      this.intersectionObserver?.observe(heading);
-    });
+    requestAnimationFrame(animate);
   }
 
   ngOnDestroy(): void {
     this.typingAnimation.destroy();
     
-    // Отключаем наблюдателя при уничтожении компонента
-    if (this.intersectionObserver) {
-      this.intersectionObserver.disconnect();
+    // Отключаем наблюдателя performance
+    if (this.performanceObserver) {
+      this.performanceObserver.disconnect();
     }
     
     // Восстанавливаем скролл

@@ -20,7 +20,6 @@ export class DevelopersComponent implements AfterViewInit, OnDestroy {
 	@ViewChild('description2') description2El!: ElementRef<HTMLElement>;
 	@ViewChild('description3') description3El!: ElementRef<HTMLElement>;
 
-  private intersectionObserver?: IntersectionObserver;
   isMobileMenuOpen = false;
 
   constructor(
@@ -52,94 +51,10 @@ export class DevelopersComponent implements AfterViewInit, OnDestroy {
       [this.descriptionEl, this.description2El, this.description3El],
       this.renderer
     );
-
-    // Инициализация анимации тегов при скролле
-    this.initializeScrollAnimations();
-  }
-
-  private initializeScrollAnimations(): void {
-    const tags = document.querySelectorAll('.tag');
-    const buttons = document.querySelectorAll('.button');
-    const postTexts = document.querySelectorAll('.post p');
-    // Исключаем главный заголовок из общей анимации
-    const headings = document.querySelectorAll('h1:not(.hero-title), h2, h3');
-    const principleParagraphs = document.querySelectorAll('.principle p');
-    const principleHeadings = document.querySelectorAll('.principle h3');
-    const developerParagraphs = document.querySelectorAll('.developer p');
-    const developerHeadings = document.querySelectorAll('.developer h3');
-    
-    this.intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (entry.target.classList.contains('tag')) {
-              entry.target.classList.add('tag-visible');
-            } else if (entry.target.classList.contains('button')) {
-              entry.target.classList.add('button-visible');
-            } else if (entry.target.parentElement?.classList.contains('post')) {
-              entry.target.classList.add('post-text-visible');
-            } else if (entry.target.parentElement?.classList.contains('principle') && entry.target.matches('p')) {
-              entry.target.classList.add('paragraph-visible');
-            } else if (entry.target.parentElement?.classList.contains('principle') && entry.target.matches('h3')) {
-              entry.target.classList.add('heading-visible');
-            } else if (entry.target.parentElement?.classList.contains('developer') && entry.target.matches('p')) {
-              entry.target.classList.add('paragraph-visible');
-            } else if (entry.target.parentElement?.classList.contains('developer') && entry.target.matches('h3')) {
-              entry.target.classList.add('heading-visible');
-            } else if (entry.target.matches('h1, h2, h3')) {
-              entry.target.classList.add('heading-visible');
-            }
-            // Отключаем наблюдение после появления
-            this.intersectionObserver?.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.2, // Анимация начнется когда 20% элемента видны
-        rootMargin: '0px 0px -50px 0px' // Небольшой отступ снизу
-      }
-    );
-
-    tags.forEach((tag) => {
-      this.intersectionObserver?.observe(tag);
-    });
-
-    buttons.forEach((button) => {
-      this.intersectionObserver?.observe(button);
-    });
-
-    postTexts.forEach((text) => {
-      this.intersectionObserver?.observe(text);
-    });
-
-    headings.forEach((heading) => {
-      this.intersectionObserver?.observe(heading);
-    });
-
-    principleParagraphs.forEach((paragraph) => {
-      this.intersectionObserver?.observe(paragraph);
-    });
-
-    principleHeadings.forEach((heading) => {
-      this.intersectionObserver?.observe(heading);
-    });
-
-    developerParagraphs.forEach((paragraph) => {
-      this.intersectionObserver?.observe(paragraph);
-    });
-
-    developerHeadings.forEach((heading) => {
-      this.intersectionObserver?.observe(heading);
-    });
   }
 
   ngOnDestroy(): void {
     this.typingAnimation.destroy();
-    
-    // Отключаем наблюдателя при уничтожении компонента
-    if (this.intersectionObserver) {
-      this.intersectionObserver.disconnect();
-    }
     
     // Восстанавливаем скролл
     document.body.style.overflow = '';
