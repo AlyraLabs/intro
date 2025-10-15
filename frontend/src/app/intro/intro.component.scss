@@ -60,14 +60,12 @@
 	}
 }
 a {
+	font-family: "Geist Mono", sans-serif;
 	font-size: 20px;
-	font-weight: 400;
+	font-weight: 300;
 	color: rgba(var(--white), 1);
 	text-decoration: none;
-	transition: all 0.3s ease;
-	&:hover {
-		color: rgba(var(--white), 0.3);
-	}
+	width: fit-content;
 }
 .devider{
 	width: 1px;
@@ -156,16 +154,6 @@ p{
 	font-weight: 300;
 	color: rgba(var(--white), 0.3);
 	transition: all 0.3s ease;
-}
-a{
-	font-family: "Geist Mono", sans-serif;
-	font-size: 20px;
-	font-weight: 300;
-	color: rgba(var(--white), 1);
-	transition: all 0.3s ease;
-}
-a:hover{
-	cursor: pointer;
 }
 span{
 	color: rgba(var(--white), 0.3);
