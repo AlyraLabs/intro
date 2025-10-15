@@ -176,7 +176,7 @@ span{
 }
 .pre{
 	font-family: "Geist Mono", sans-serif;
-	font-size: 18px;
+	font-size: 24px;
 	font-weight: 300;
 	color: rgba(var(--white), 1);
 }
@@ -831,7 +831,8 @@ header{
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		overflow: hidden;
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
 	.tag{
 		position: absolute;
