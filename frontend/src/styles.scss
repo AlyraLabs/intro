@@ -68,7 +68,6 @@ html {
   scrollbar-color: rgba(var(--white), 0.3) rgba(var(--black), 1);
 }
 
-/* Стили для курсора в текстовых блоках с анимацией печати */
 .typewriter-text .cursor {
   display: inline-block;
   width: 8px;
@@ -80,12 +79,10 @@ html {
   vertical-align: bottom;
 }
 
-/* Временный курсор во время печати не мигает */
 .typewriter-text .temp-cursor {
   animation: none !important;
 }
 
-/* Постоянный курсор мигает только если не временный */
 .typewriter-text .cursor:not(.temp-cursor) {
   animation: blink 0.9s ease-in-out infinite;
 }

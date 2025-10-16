@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, Renderer2 }
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TypingAnimationService } from '../services/typing-animation.service';
+import { TitleAnimationService } from '../services/title-animation.service';
 
 @Component({
   selector: 'app-intro',
@@ -26,10 +27,13 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
   private startX = 0;
   private scrollLeft = 0;
   private performanceObserver?: IntersectionObserver;
+  private menuItems: { element: HTMLElement; originalText: string }[] = [];
+  private activeAnimations: Set<HTMLElement> = new Set();
 
   constructor(
     private renderer: Renderer2,
-    private typingAnimation: TypingAnimationService
+    private typingAnimation: TypingAnimationService,
+    private titleAnimationService: TitleAnimationService
   ) {}
 
   toggleMobileMenu(): void {
@@ -52,16 +56,16 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.typingAnimation.initialize(
-      undefined, // Не передаем основной элемент для печати AlyraLabs
+      undefined,
       [this.descriptionEl, this.description2El, this.description3El],
       this.renderer
     );
 
-    // Инициализация drag-to-scroll для чейнов
     this.initializeChainsScroll();
     
-    // Инициализация анимации счетчика для статистики
     this.initializePerformanceCounter();
+    
+    this.initializeMenuAnimation();
   }
 
   private initializeChainsScroll(): void {
@@ -72,9 +76,8 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
     let animationId: number | null = null;
 
     const animate = () => {
-      currentPosition -= 1.5; // Скорость анимации (пикселей за кадр)
+      currentPosition -= 1.5;
       
-      // Бесконечный цикл: когда доходим до конца, возвращаемся в начало
       const totalDistance = (400 + 40) * 27;
       if (currentPosition <= -totalDistance) {
         currentPosition = 0;
@@ -84,7 +87,7 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
       animationId = requestAnimationFrame(animate);
     };
     
-    // Запускаем анимацию
+    
     animate();
 
     chainsTrack.addEventListener('mousedown', (e) => {
@@ -93,7 +96,6 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
       this.startX = e.pageX;
       this.scrollLeft = currentPosition;
       
-      // Останавливаем анимацию
       if (animationId !== null) {
         cancelAnimationFrame(animationId);
         animationId = null;
@@ -114,7 +116,6 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
         this.isDragging = false;
         chainsTrack.classList.remove('dragging');
         
-        // Возобновляем анимацию с текущей позиции
         animate();
       }
     };
@@ -131,13 +132,12 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Запускаем анимацию счетчика
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(1) h1', 25, 0);
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(2) h1', 300, 0, '<', 'ms');
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(3) h1', 30, 0);
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(4) h1', 99.9, 0, '', '%', true);
             
-            // Отключаем наблюдение после запуска
+            
             this.performanceObserver?.unobserve(entry.target);
           }
         });
@@ -161,14 +161,14 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
     const element = document.querySelector(selector) as HTMLElement;
     if (!element) return;
 
-    const duration = 2000; // 2 секунды
+    const duration = 2000; 
     const startTime = performance.now();
 
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Easing function для плавности (easeOutQuart)
+      
       const easeProgress = 1 - Math.pow(1 - progress, 4);
       
       const current = start + (target - start) * easeProgress;
@@ -187,15 +187,235 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
     requestAnimationFrame(animate);
   }
 
+  private initializeMenuAnimation(): void {
+    
+    const menuLinks = document.querySelectorAll('.menu a');
+    
+    menuLinks.forEach((link) => {
+      const element = link as HTMLElement;
+      const originalText = element.textContent || '';
+      
+      
+      this.menuItems.push({ element, originalText });
+      
+      
+      element.addEventListener('mouseenter', () => {
+        
+        this.titleAnimationService.clearAnimationForElement(element);
+        
+        
+        element.textContent = originalText;
+        
+        
+        this.activeAnimations.add(element);
+        this.titleAnimationService.startTitleAnimation(
+          element,
+          originalText,
+          {
+            animationFrames: 30,
+            animationSpeed: 25,
+            glitchChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+            cyberChars: '01',
+            possibleChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+          }
+        );
+      });
+      
+      
+      element.addEventListener('mouseleave', () => {
+        
+        
+      });
+    });
+
+    
+    const tagElements = document.querySelectorAll('.tag');
+    
+    tagElements.forEach((tag) => {
+      const element = tag as HTMLElement;
+      const originalText = element.textContent || '';
+      
+      
+      this.menuItems.push({ element, originalText });
+      
+      
+      element.addEventListener('mouseenter', () => {
+        
+        this.titleAnimationService.clearAnimationForElement(element);
+        
+        
+        element.textContent = originalText;
+        
+        
+        this.activeAnimations.add(element);
+        this.titleAnimationService.startTitleAnimation(
+          element,
+          originalText,
+          {
+            animationFrames: 30,
+            animationSpeed: 25,
+            glitchChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+            cyberChars: '01',
+            possibleChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+          }
+        );
+      });
+      
+      
+      element.addEventListener('mouseleave', () => {
+        
+        
+      });
+    });
+
+    
+    const postElements = document.querySelectorAll('.post p');
+    
+    postElements.forEach((postElement) => {
+      const element = postElement as HTMLElement;
+      const originalText = element.textContent || '';
+      
+      
+      this.menuItems.push({ element, originalText });
+      
+      
+      element.addEventListener('mouseenter', () => {
+        
+        this.titleAnimationService.clearAnimationForElement(element);
+        
+        
+        element.textContent = originalText;
+        
+        
+        this.activeAnimations.add(element);
+        this.titleAnimationService.startTitleAnimation(
+          element,
+          originalText,
+          {
+            animationFrames: 30,
+            animationSpeed: 25,
+            glitchChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+            cyberChars: '01',
+            possibleChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+          }
+        );
+      });
+      
+      
+      element.addEventListener('mouseleave', () => {
+        
+        
+      });
+    });
+
+    
+    const bottomLinkElements = document.querySelectorAll('.bottom-link');
+    
+    bottomLinkElements.forEach((bottomLink) => {
+      const element = bottomLink as HTMLElement;
+      const originalText = element.textContent || '';
+      
+      
+      this.menuItems.push({ element, originalText });
+      
+      
+      element.addEventListener('mouseenter', () => {
+        
+        this.titleAnimationService.clearAnimationForElement(element);
+        
+        
+        element.textContent = originalText;
+        
+        
+        this.activeAnimations.add(element);
+        this.titleAnimationService.startTitleAnimation(
+          element,
+          originalText,
+          {
+            animationFrames: 30,
+            animationSpeed: 25,
+            glitchChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+            cyberChars: '01',
+            possibleChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+          }
+        );
+      });
+      
+      
+      element.addEventListener('mouseleave', () => {
+        
+        
+      });
+    });
+
+    
+    const buttonElements = document.querySelectorAll('.button');
+    
+    buttonElements.forEach((button) => {
+      const buttonElement = button as HTMLElement;
+      const textElement = buttonElement.querySelector('p') as HTMLElement;
+      
+      if (textElement) {
+        const originalText = textElement.textContent || '';
+        
+        
+        this.menuItems.push({ element: textElement, originalText });
+        
+        
+        buttonElement.addEventListener('mouseenter', () => {
+          
+          this.titleAnimationService.clearAnimationForElement(textElement);
+          
+          
+          textElement.textContent = originalText;
+          
+          
+          this.activeAnimations.add(textElement);
+          this.titleAnimationService.startTitleAnimation(
+            textElement,
+            originalText,
+            {
+              animationFrames: 30,
+              animationSpeed: 25,
+              glitchChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+              cyberChars: '01',
+              possibleChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+            }
+          );
+        });
+        
+        
+        buttonElement.addEventListener('mouseleave', () => {
+          
+          
+        });
+      }
+    });
+  }
+
+  private stopAllAnimations(): void {
+    
+    this.titleAnimationService.clearAnimation();
+    
+    
+    this.menuItems.forEach(({ element, originalText }) => {
+      element.textContent = originalText;
+    });
+    
+    
+    this.activeAnimations.clear();
+  }
+
   ngOnDestroy(): void {
     this.typingAnimation.destroy();
+    this.stopAllAnimations();
     
-    // Отключаем наблюдателя performance
+    
     if (this.performanceObserver) {
       this.performanceObserver.disconnect();
     }
     
-    // Восстанавливаем скролл
+    
     document.body.style.overflow = '';
     const pageContainer = document.querySelector('.page-container') as HTMLElement;
     if (pageContainer) {

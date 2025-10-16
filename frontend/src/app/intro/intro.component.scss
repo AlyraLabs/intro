@@ -38,13 +38,9 @@
 		font-weight: 400;
 		color: rgba(var(--white), 1);
 		text-transform: uppercase;
-		transition: transform 0.3s ease;
 	}
 	&:hover{
 		cursor: pointer;
-		p {
-			transform: translateX(5px);
-		}
 		.icon{
 			transform: rotate(45deg);
 		}
@@ -60,14 +56,12 @@
 	}
 }
 a {
+	font-family: "Geist Mono", sans-serif;
 	font-size: 20px;
-	font-weight: 400;
+	font-weight: 300;
 	color: rgba(var(--white), 1);
 	text-decoration: none;
-	transition: all 0.3s ease;
-	&:hover {
-		color: rgba(var(--white), 0.3);
-	}
+	width: fit-content;
 }
 .devider{
 	width: 1px;
@@ -157,16 +151,6 @@ p{
 	color: rgba(var(--white), 0.3);
 	transition: all 0.3s ease;
 }
-a{
-	font-family: "Geist Mono", sans-serif;
-	font-size: 20px;
-	font-weight: 300;
-	color: rgba(var(--white), 1);
-	transition: all 0.3s ease;
-}
-a:hover{
-	cursor: pointer;
-}
 span{
 	color: rgba(var(--white), 0.3);
 }
@@ -176,7 +160,7 @@ span{
 }
 .pre{
 	font-family: "Geist Mono", sans-serif;
-	font-size: 18px;
+	font-size: 24px;
 	font-weight: 300;
 	color: rgba(var(--white), 1);
 }
@@ -831,7 +815,8 @@ header{
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-		overflow: hidden;
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
 	.tag{
 		position: absolute;
