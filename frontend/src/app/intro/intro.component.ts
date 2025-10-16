@@ -56,18 +56,15 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.typingAnimation.initialize(
-      undefined, // Не передаем основной элемент для печати AlyraLabs
+      undefined,
       [this.descriptionEl, this.description2El, this.description3El],
       this.renderer
     );
 
-    // Инициализация drag-to-scroll для чейнов
     this.initializeChainsScroll();
     
-    // Инициализация анимации счетчика для статистики
     this.initializePerformanceCounter();
     
-    // Инициализация анимации меню
     this.initializeMenuAnimation();
   }
 
@@ -79,9 +76,8 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
     let animationId: number | null = null;
 
     const animate = () => {
-      currentPosition -= 1.5; // Скорость анимации (пикселей за кадр)
+      currentPosition -= 1.5;
       
-      // Бесконечный цикл: когда доходим до конца, возвращаемся в начало
       const totalDistance = (400 + 40) * 27;
       if (currentPosition <= -totalDistance) {
         currentPosition = 0;
@@ -91,7 +87,7 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
       animationId = requestAnimationFrame(animate);
     };
     
-    // Запускаем анимацию
+    
     animate();
 
     chainsTrack.addEventListener('mousedown', (e) => {
@@ -100,7 +96,6 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
       this.startX = e.pageX;
       this.scrollLeft = currentPosition;
       
-      // Останавливаем анимацию
       if (animationId !== null) {
         cancelAnimationFrame(animationId);
         animationId = null;
@@ -121,7 +116,6 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
         this.isDragging = false;
         chainsTrack.classList.remove('dragging');
         
-        // Возобновляем анимацию с текущей позиции
         animate();
       }
     };
@@ -138,13 +132,12 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Запускаем анимацию счетчика
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(1) h1', 25, 0);
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(2) h1', 300, 0, '<', 'ms');
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(3) h1', 30, 0);
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(4) h1', 99.9, 0, '', '%', true);
             
-            // Отключаем наблюдение после запуска
+            
             this.performanceObserver?.unobserve(entry.target);
           }
         });
@@ -168,14 +161,14 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
     const element = document.querySelector(selector) as HTMLElement;
     if (!element) return;
 
-    const duration = 2000; // 2 секунды
+    const duration = 2000; 
     const startTime = performance.now();
 
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Easing function для плавности (easeOutQuart)
+      
       const easeProgress = 1 - Math.pow(1 - progress, 4);
       
       const current = start + (target - start) * easeProgress;
@@ -195,25 +188,25 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
   }
 
   private initializeMenuAnimation(): void {
-    // Анимация для пунктов меню
+    
     const menuLinks = document.querySelectorAll('.menu a');
     
     menuLinks.forEach((link) => {
       const element = link as HTMLElement;
       const originalText = element.textContent || '';
       
-      // Сохраняем оригинальный текст
+      
       this.menuItems.push({ element, originalText });
       
-      // Добавляем обработчик наведения
+      
       element.addEventListener('mouseenter', () => {
-        // Останавливаем только анимацию для текущего элемента
+        
         this.titleAnimationService.clearAnimationForElement(element);
         
-        // Устанавливаем оригинальный текст для текущего элемента
+        
         element.textContent = originalText;
         
-        // Запускаем новую анимацию
+        
         this.activeAnimations.add(element);
         this.titleAnimationService.startTitleAnimation(
           element,
@@ -228,32 +221,32 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
         );
       });
       
-      // Добавляем обработчик ухода мыши
+      
       element.addEventListener('mouseleave', () => {
-        // Не останавливаем анимацию сразу, даем ей доиграть до конца
-        // Анимация сама вернет оригинальный текст в конце
+        
+        
       });
     });
 
-    // Анимация для тегов
+    
     const tagElements = document.querySelectorAll('.tag');
     
     tagElements.forEach((tag) => {
       const element = tag as HTMLElement;
       const originalText = element.textContent || '';
       
-      // Сохраняем оригинальный текст
+      
       this.menuItems.push({ element, originalText });
       
-      // Добавляем обработчик наведения
+      
       element.addEventListener('mouseenter', () => {
-        // Останавливаем только анимацию для текущего элемента
+        
         this.titleAnimationService.clearAnimationForElement(element);
         
-        // Устанавливаем оригинальный текст для текущего элемента
+        
         element.textContent = originalText;
         
-        // Запускаем новую анимацию
+        
         this.activeAnimations.add(element);
         this.titleAnimationService.startTitleAnimation(
           element,
@@ -268,32 +261,32 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
         );
       });
       
-      // Добавляем обработчик ухода мыши
+      
       element.addEventListener('mouseleave', () => {
-        // Не останавливаем анимацию сразу, даем ей доиграть до конца
-        // Анимация сама вернет оригинальный текст в конце
+        
+        
       });
     });
 
-    // Анимация для текста в блоке .post
+    
     const postElements = document.querySelectorAll('.post p');
     
     postElements.forEach((postElement) => {
       const element = postElement as HTMLElement;
       const originalText = element.textContent || '';
       
-      // Сохраняем оригинальный текст
+      
       this.menuItems.push({ element, originalText });
       
-      // Добавляем обработчик наведения
+      
       element.addEventListener('mouseenter', () => {
-        // Останавливаем только анимацию для текущего элемента
+        
         this.titleAnimationService.clearAnimationForElement(element);
         
-        // Устанавливаем оригинальный текст для текущего элемента
+        
         element.textContent = originalText;
         
-        // Запускаем новую анимацию
+        
         this.activeAnimations.add(element);
         this.titleAnimationService.startTitleAnimation(
           element,
@@ -308,32 +301,32 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
         );
       });
       
-      // Добавляем обработчик ухода мыши
+      
       element.addEventListener('mouseleave', () => {
-        // Не останавливаем анимацию сразу, даем ей доиграть до конца
-        // Анимация сама вернет оригинальный текст в конце
+        
+        
       });
     });
 
-    // Анимация для ссылок в блоке .bottom-links
+    
     const bottomLinkElements = document.querySelectorAll('.bottom-link');
     
     bottomLinkElements.forEach((bottomLink) => {
       const element = bottomLink as HTMLElement;
       const originalText = element.textContent || '';
       
-      // Сохраняем оригинальный текст
+      
       this.menuItems.push({ element, originalText });
       
-      // Добавляем обработчик наведения
+      
       element.addEventListener('mouseenter', () => {
-        // Останавливаем только анимацию для текущего элемента
+        
         this.titleAnimationService.clearAnimationForElement(element);
         
-        // Устанавливаем оригинальный текст для текущего элемента
+        
         element.textContent = originalText;
         
-        // Запускаем новую анимацию
+        
         this.activeAnimations.add(element);
         this.titleAnimationService.startTitleAnimation(
           element,
@@ -348,14 +341,14 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
         );
       });
       
-      // Добавляем обработчик ухода мыши
+      
       element.addEventListener('mouseleave', () => {
-        // Не останавливаем анимацию сразу, даем ей доиграть до конца
-        // Анимация сама вернет оригинальный текст в конце
+        
+        
       });
     });
 
-    // Анимация для текстов в кнопках
+    
     const buttonElements = document.querySelectorAll('.button');
     
     buttonElements.forEach((button) => {
@@ -365,18 +358,18 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
       if (textElement) {
         const originalText = textElement.textContent || '';
         
-        // Сохраняем оригинальный текст
+        
         this.menuItems.push({ element: textElement, originalText });
         
-        // Добавляем обработчик наведения на кнопку
+        
         buttonElement.addEventListener('mouseenter', () => {
-          // Останавливаем только анимацию для текущего элемента
+          
           this.titleAnimationService.clearAnimationForElement(textElement);
           
-          // Устанавливаем оригинальный текст для текущего элемента
+          
           textElement.textContent = originalText;
           
-          // Запускаем новую анимацию
+          
           this.activeAnimations.add(textElement);
           this.titleAnimationService.startTitleAnimation(
             textElement,
@@ -391,25 +384,25 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
           );
         });
         
-        // Добавляем обработчик ухода мыши с кнопки
+        
         buttonElement.addEventListener('mouseleave', () => {
-          // Не останавливаем анимацию сразу, даем ей доиграть до конца
-          // Анимация сама вернет оригинальный текст в конце
+          
+          
         });
       }
     });
   }
 
   private stopAllAnimations(): void {
-    // Останавливаем все активные анимации
+    
     this.titleAnimationService.clearAnimation();
     
-    // Возвращаем оригинальные тексты для всех элементов
+    
     this.menuItems.forEach(({ element, originalText }) => {
       element.textContent = originalText;
     });
     
-    // Очищаем список активных анимаций
+    
     this.activeAnimations.clear();
   }
 
@@ -417,12 +410,12 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
     this.typingAnimation.destroy();
     this.stopAllAnimations();
     
-    // Отключаем наблюдателя performance
+    
     if (this.performanceObserver) {
       this.performanceObserver.disconnect();
     }
     
-    // Восстанавливаем скролл
+    
     document.body.style.overflow = '';
     const pageContainer = document.querySelector('.page-container') as HTMLElement;
     if (pageContainer) {

@@ -29,7 +29,6 @@ export class TypingAnimationService {
     this.saveOriginalTexts();
     this.startHeaderLogoTyping();
     
-    // Запускаем печать AlyraLabs только если передан основной элемент
     if (this.typedEl) {
       this.startPreBlinkThenType();
     }
@@ -134,13 +133,11 @@ export class TypingAnimationService {
     const typeNext = () => {
       if (currentIndex < visibleChars.length) {
         const currentText = this.buildTextUpToIndex(fullText, currentIndex);
-        // Добавляем временный курсор на время печати
         element.innerHTML = `${currentText}<span class="cursor temp-cursor"></span>`;
         currentIndex++;
         const delay = this.fastMinDelay + Math.random() * (this.fastMaxDelay - this.fastMinDelay);
         setTimeout(typeNext, delay);
       } else {
-        // Печать завершена → удаляем временный курсор
         const tempCursor = element.querySelector('.temp-cursor');
         if (tempCursor && tempCursor.parentElement) {
           tempCursor.parentElement.removeChild(tempCursor);

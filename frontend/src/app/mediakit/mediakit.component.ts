@@ -51,35 +51,35 @@ export class MediakitComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.typingAnimation.initialize(
-      undefined, // Не передаем основной элемент для печати AlyraLabs
+      undefined, 
       [this.descriptionEl, this.description2El, this.description3El],
       this.renderer
     );
     
-    // Инициализация анимации меню
+    
     this.initializeMenuAnimation();
   }
 
   private initializeMenuAnimation(): void {
-    // Анимация для пунктов меню
+    
     const menuLinks = document.querySelectorAll('.menu a');
     
     menuLinks.forEach((link) => {
       const element = link as HTMLElement;
       const originalText = element.textContent || '';
       
-      // Сохраняем оригинальный текст
+      
       this.menuItems.push({ element, originalText });
       
-      // Добавляем обработчик наведения
+      
       element.addEventListener('mouseenter', () => {
-        // Останавливаем только анимацию для текущего элемента
+        
         this.titleAnimationService.clearAnimationForElement(element);
         
-        // Устанавливаем оригинальный текст для текущего элемента
+        
         element.textContent = originalText;
         
-        // Запускаем новую анимацию
+        
         this.activeAnimations.add(element);
         this.titleAnimationService.startTitleAnimation(
           element,
@@ -94,32 +94,32 @@ export class MediakitComponent implements AfterViewInit, OnDestroy {
         );
       });
       
-      // Добавляем обработчик ухода мыши
+      
       element.addEventListener('mouseleave', () => {
-        // Не останавливаем анимацию сразу, даем ей доиграть до конца
-        // Анимация сама вернет оригинальный текст в конце
+        
+        
       });
     });
 
-    // Анимация для тегов
+    
     const tagElements = document.querySelectorAll('.tag');
     
     tagElements.forEach((tag) => {
       const element = tag as HTMLElement;
       const originalText = element.textContent || '';
       
-      // Сохраняем оригинальный текст
+      
       this.menuItems.push({ element, originalText });
       
-      // Добавляем обработчик наведения
+      
       element.addEventListener('mouseenter', () => {
-        // Останавливаем только анимацию для текущего элемента
+        
         this.titleAnimationService.clearAnimationForElement(element);
         
-        // Устанавливаем оригинальный текст для текущего элемента
+        
         element.textContent = originalText;
         
-        // Запускаем новую анимацию
+        
         this.activeAnimations.add(element);
         this.titleAnimationService.startTitleAnimation(
           element,
@@ -134,32 +134,32 @@ export class MediakitComponent implements AfterViewInit, OnDestroy {
         );
       });
       
-      // Добавляем обработчик ухода мыши
+      
       element.addEventListener('mouseleave', () => {
-        // Не останавливаем анимацию сразу, даем ей доиграть до конца
-        // Анимация сама вернет оригинальный текст в конце
+        
+        
       });
     });
 
-    // Анимация для ссылок в блоке .bottom-links
+    
     const bottomLinkElements = document.querySelectorAll('.bottom-link');
     
     bottomLinkElements.forEach((bottomLink) => {
       const element = bottomLink as HTMLElement;
       const originalText = element.textContent || '';
       
-      // Сохраняем оригинальный текст
+      
       this.menuItems.push({ element, originalText });
       
-      // Добавляем обработчик наведения
+      
       element.addEventListener('mouseenter', () => {
-        // Останавливаем только анимацию для текущего элемента
+        
         this.titleAnimationService.clearAnimationForElement(element);
         
-        // Устанавливаем оригинальный текст для текущего элемента
+        
         element.textContent = originalText;
         
-        // Запускаем новую анимацию
+        
         this.activeAnimations.add(element);
         this.titleAnimationService.startTitleAnimation(
           element,
@@ -174,14 +174,14 @@ export class MediakitComponent implements AfterViewInit, OnDestroy {
         );
       });
       
-      // Добавляем обработчик ухода мыши
+      
       element.addEventListener('mouseleave', () => {
-        // Не останавливаем анимацию сразу, даем ей доиграть до конца
-        // Анимация сама вернет оригинальный текст в конце
+        
+        
       });
     });
 
-    // Анимация для текстов в кнопках
+    
     const buttonElements = document.querySelectorAll('.button');
     
     buttonElements.forEach((button) => {
@@ -191,18 +191,18 @@ export class MediakitComponent implements AfterViewInit, OnDestroy {
       if (textElement) {
         const originalText = textElement.textContent || '';
         
-        // Сохраняем оригинальный текст
+        
         this.menuItems.push({ element: textElement, originalText });
         
-        // Добавляем обработчик наведения на кнопку
+        
         buttonElement.addEventListener('mouseenter', () => {
-          // Останавливаем только анимацию для текущего элемента
+          
           this.titleAnimationService.clearAnimationForElement(textElement);
           
-          // Устанавливаем оригинальный текст для текущего элемента
+          
           textElement.textContent = originalText;
           
-          // Запускаем новую анимацию
+          
           this.activeAnimations.add(textElement);
           this.titleAnimationService.startTitleAnimation(
             textElement,
@@ -217,25 +217,25 @@ export class MediakitComponent implements AfterViewInit, OnDestroy {
           );
         });
         
-        // Добавляем обработчик ухода мыши с кнопки
+        
         buttonElement.addEventListener('mouseleave', () => {
-          // Не останавливаем анимацию сразу, даем ей доиграть до конца
-          // Анимация сама вернет оригинальный текст в конце
+          
+          
         });
       }
     });
   }
 
   private stopAllAnimations(): void {
-    // Останавливаем все активные анимации
+    
     this.titleAnimationService.clearAnimation();
     
-    // Возвращаем оригинальные тексты для всех элементов
+    
     this.menuItems.forEach(({ element, originalText }) => {
       element.textContent = originalText;
     });
     
-    // Очищаем список активных анимаций
+    
     this.activeAnimations.clear();
   }
 
@@ -243,7 +243,7 @@ export class MediakitComponent implements AfterViewInit, OnDestroy {
     this.typingAnimation.destroy();
     this.stopAllAnimations();
     
-    // Восстанавливаем скролл
+    
     document.body.style.overflow = '';
     const pageContainer = document.querySelector('.page-container') as HTMLElement;
     if (pageContainer) {

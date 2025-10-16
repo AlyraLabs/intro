@@ -171,7 +171,6 @@
 				<div class="chain lisk"></div>
 				<div class="chain unichain"></div>
 				
-				<!-- Дубликат для бесконечной прокрутки -->
 				<div class="chain ethereum"></div>
 				<div class="chain arbitrum"></div>
 				<div class="chain optimism"></div>
@@ -310,15 +309,15 @@
 		<span>integrator</span>: client.<span>integratorString</span>,
 	&#125;);
 
-	const quoteResponse = await fetch(
-		"https://api.blackhole.build/v1/quotes" + params.toString(),
+	<span>const</span> quoteResponse = await <span>fetch</span>(
+		"https://api.alyra.finance/v1/quotes" + params.toString(),
 		&#123;
 			headers,
 		&#125;
 	);
 
-	const quote = await quoteResponse.json();
-	console.log("Quote to swap 1000 USDC for WETH: ", quote);
+	<span>const</span> quote = await <span>quoteResponse</span>.<span>json</span>();
+	<span>console</span>.<span>log</span>("Quote to swap 1000 USDC for WETH: ", <span>quote</span>);
 	&#125;
 	main();
 			</code></pre>
