@@ -42,9 +42,6 @@
 	}
 	&:hover{
 		cursor: pointer;
-		p {
-			transform: translateX(5px);
-		}
 		.icon{
 			transform: rotate(45deg);
 		}
@@ -462,9 +459,6 @@ header{
 		.button{
 			&:hover{
 				cursor: pointer;
-				p {
-					transform: translateX(5px);
-				}
 				.icon{
 					transform: none;
 					scale: 1.1;
@@ -614,9 +608,6 @@ header{
 	.button{
 		&:hover{
 			cursor: pointer;
-			p {
-				transform: translateX(5px);
-			}
 			.icon{
 				transform: none;
 				scale: 1.1;

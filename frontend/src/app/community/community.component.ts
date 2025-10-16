@@ -180,6 +180,50 @@ export class CommunityComponent implements AfterViewInit, OnDestroy {
         // Анимация сама вернет оригинальный текст в конце
       });
     });
+
+    // Анимация для текстов в кнопках
+    const buttonElements = document.querySelectorAll('.button');
+    
+    buttonElements.forEach((button) => {
+      const buttonElement = button as HTMLElement;
+      const textElement = buttonElement.querySelector('p') as HTMLElement;
+      
+      if (textElement) {
+        const originalText = textElement.textContent || '';
+        
+        // Сохраняем оригинальный текст
+        this.menuItems.push({ element: textElement, originalText });
+        
+        // Добавляем обработчик наведения на кнопку
+        buttonElement.addEventListener('mouseenter', () => {
+          // Останавливаем только анимацию для текущего элемента
+          this.titleAnimationService.clearAnimationForElement(textElement);
+          
+          // Устанавливаем оригинальный текст для текущего элемента
+          textElement.textContent = originalText;
+          
+          // Запускаем новую анимацию
+          this.activeAnimations.add(textElement);
+          this.titleAnimationService.startTitleAnimation(
+            textElement,
+            originalText,
+            {
+              animationFrames: 30,
+              animationSpeed: 25,
+              glitchChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+              cyberChars: '01',
+              possibleChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+            }
+          );
+        });
+        
+        // Добавляем обработчик ухода мыши с кнопки
+        buttonElement.addEventListener('mouseleave', () => {
+          // Не останавливаем анимацию сразу, даем ей доиграть до конца
+          // Анимация сама вернет оригинальный текст в конце
+        });
+      }
+    });
   }
 
   private stopAllAnimations(): void {
