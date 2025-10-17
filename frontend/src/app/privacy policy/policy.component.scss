@@ -460,6 +460,12 @@ header{
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
+	position: relative;
+	.number{
+		position: absolute;
+		top: 35px;
+		left: -30px;
+	}
 	.heading{
 		display: flex;
 		gap: 20px;
@@ -468,6 +474,7 @@ header{
 			position: absolute;
 			top: 5px;
 			left: -20px;
+			text-align: justify;
 		}
 	}
 }
