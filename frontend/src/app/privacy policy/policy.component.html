@@ -1,0 +1,354 @@
+<div class="page-container">
+
+	<div class="main">
+		<header>
+			<div class="logo" routerLink="/">
+				<div class="logo-img"></div>
+				<p>Alyra</p>
+			</div>
+			<div class="menu">
+				<a href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank">DOCS</a>
+				<div class="devider"></div>
+				<!-- <a href="#" target="_blank">SCAN</a>
+				<div class="devider"></div>
+				<a href="#" target="_blank">ECOSYSTEM</a>
+				<div class="devider"></div> -->
+				<a routerLink="/developers">DEVELOPERS</a>
+				<div class="devider"></div>
+				<a href="https://medium.com/@alyrafinance" target="_blank">BLOG</a>
+				<div class="devider"></div>
+				<a routerLink="/community">COMMUNITY</a>
+			</div>
+			<button class="hamburger" (click)="toggleMobileMenu()">
+				<img *ngIf="!isMobileMenuOpen" src="/img/icons/hamburger.png" alt="Menu">
+				<img *ngIf="isMobileMenuOpen" src="/img/icons/close.png" alt="Close">
+			</button>
+		</header>
+
+		<div class="mobile-menu" [class.active]="isMobileMenuOpen">
+			<div class="mobile-header">
+				<div class="logo">
+					<div class="logo-img"></div>
+					<p>Alyra</p>
+				</div>
+				<button class="mobile-close" (click)="toggleMobileMenu()">
+					<img src="/img/icons/close.png" alt="Close">
+				</button>
+			</div>
+
+			<nav class="mobile-nav">
+					<a href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank" (click)="toggleMobileMenu()">DOCS</a>
+					<hr>
+					<!-- <a href="#" target="_blank" (click)="toggleMobileMenu()">SCAN</a>
+					<hr>
+					<a href="#" target="_blank" (click)="toggleMobileMenu()">ECOSYSTEM</a> 
+					<hr> -->
+					<a routerLink="/developers" (click)="toggleMobileMenu()">DEVELOPERS</a>
+					<hr>
+					<a href="https://medium.com/@alyrafinance" target="_blank" (click)="toggleMobileMenu()">BLOG</a>
+					<hr>
+					<a routerLink="/community" (click)="toggleMobileMenu()">COMMUNITY</a>
+				</nav>
+
+				<a class="button main-button" href="/developers" target="_blank">
+					<p>Start Building</p>
+					<div class="icon arrow"></div>
+				</a>
+		</div>
+
+		<div class="text">
+			<p class="tag">[ Privacy Policy ]</p>
+			<h1 class="hero-title">
+				Privacy Policy
+			</h1>
+			<div class="icon scroll-down"></div>
+			<div class="post">
+				<p>EFFECTIVE: OCT 15, 2025</p>
+			</div>
+		</div>
+		<div class="background"></div>
+	</div>
+
+	<div class="block first-block">
+		<div class="heading">
+			<p>1/</p>
+			<h2>General Information</h2>
+		</div>
+		<p class="description">
+			Alyra Labs (hereinafter referred to as “Alyra,” “we,” or “us”) takes the protection of your personal data very seriously.
+			<br><br>
+			We treat personal data with the utmost confidentiality and ensure that it is processed in full compliance with the applicable data protection laws, including Regulation (EU) 2016/679 (General Data Protection Regulation, "GDPR") and other relevant legal provisions.
+			<br><br>
+			Please note: Alyra Labs is currently not a legally registered entity but operates in full compliance with the laws of the European Union, including GDPR and other applicable data protection regulations.
+			<br><br>
+			This Privacy Policy is intended to inform you (the "data subject" or "you") about how we process your personal data, the purposes of such processing, and the legal bases for processing when you visit our websites (hereinafter “Websites”) or contact us directly.
+			<br><br>
+			Unless otherwise stated, terms used in this Privacy Policy have the meanings defined in the GDPR.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>2/</p>
+			<h2>Data Controller</h2>
+		</div>
+		<p class="description">
+			Alyra Labs acts as the data controller for your personal data processed in connection with the use of our Websites or any communication with us.
+			<br><br>
+			If you have any questions about this Privacy Policy or the processing of your personal data, you can contact us at the following contact details:<br>
+			E-mail:<a class="link" href="mailto:team@alyra.finance">team&#64;alyra.finance</a>
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>3/</p>
+			<h2>Categories, Purposes, and Legal Bases for Processing Personal Data</h2>
+		</div>
+		<p class="description">
+			We process different categories of your personal data for various purposes. Below, we detail which personal data we process, the purposes of processing, and the legal bases for processing this data:
+			<br><br>
+			3.1. Visiting our Websites
+			When you visit our Websites for informational purposes (i.e., simply viewing content), certain personal data is automatically collected each time the Websites are visited and stored in server log files/databases. This data includes:
+			<br>
+			- Browser type and version
+			<br>
+			- Operating system used
+			<br>
+			- Hostname of the accessing device
+			<br>
+			- Date and time of access
+			<br>
+			- IP address of the requesting device
+			<br><br>
+			This data is not merged with other data sources and is not evaluated for marketing purposes.
+			Legal Basis: The legal basis for temporarily storing and processing such personal data is Article 6(1)(f) GDPR. Our legitimate interest here is to provide you with a technically functional, user-friendly, and secure Website.
+			<br><br>
+			Duration of Storage: This personal data will be deleted as soon as it is no longer necessary for the purpose it was collected for, unless legal retention obligations require continued storage.
+			<br><br>
+			3.2. Contacting UsIf you contact us via e-mail or contact form, we collect and process certain information related to your specific request, such as your name, e-mail address, and any other data you voluntarily provide (hereinafter “Contact Data”).
+			Legal Basis: If you contact us as part of an existing contractual relationship or to request information about our services, your Contact Data will be processed to fulfill a contract or take steps prior to entering into a contract (Article 6(1)(b) GDPR). If you contact us outside a contractual context, your Contact Data is processed based on our legitimate interest in responding to inquiries (Article 6(1)(f) GDPR).
+			<br><br>
+			Duration of Storage: We will delete Contact Data once the purpose for processing no longer applies (e.g., after processing your request). However, we may be legally required to store certain data for retention purposes.
+			<br><br>
+			3.3. Newsletter With your consent, we may process your personal data to send you a newsletter via e-mail containing information about our products and services. To send the newsletter, we require your e-mail address.
+			<br><br>
+			Our newsletters may contain tracking links that allow us to analyze the behavior of newsletter recipients. We may collect personal data such as the time the newsletter was opened, selected links, and other information about the accessing device, such as IP address, browser type, and operating system ("Tracking Data"). This helps us analyze the success or failure of our marketing campaigns.
+			<br><br>
+			Legal Basis: Processing for sending newsletters and tracking is based on your explicit consent (Article 6(1)(a) GDPR). You can revoke your consent at any time by clicking the unsubscribe link in our emails. Withdrawal of consent does not affect the lawfulness of processing before the withdrawal.
+			<br><br>
+			Duration of Storage: We will delete your personal data once the purpose for storing and processing it no longer applies. Your e-mail address will be retained as long as your subscription to the newsletter is active, unless we are required to retain it for legal purposes.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>4/</p>
+			<h2>Social Media and Professional Networks</h2>
+		</div>
+		<p class="description">
+			We use social and professional platforms (LinkedIn, X (formerly Twitter), Telegram, Github, Discord, Medium) to engage with you and provide information about our services.
+			<br><br>
+			You can access these platforms by clicking on the relevant icon on our Websites, which contains a hyperlink. By clicking on the hyperlink, you will be redirected to the external platform in a new browser window. No personal data is transferred before activation.
+			<br><br>
+			4.1. Visiting Our Page on Social Media and Professional Networks Each platform is responsible for processing personal data when you visit our company page.
+			Please avoid contacting us via these platforms if you do not wish to share personal data with them.
+			<br><br>
+			4.2. Communication via Social Media and Professional Networks We process the personal information you share with us via our company page, such as your name, e-mail address, job title, company, and any other data you provide voluntarily.
+			Legal Basis: The legal basis for processing this data is Article 6(1)(b) GDPR, if part of an existing contract or inquiry. Otherwise, processing is based on Article 6(1)(f) GDPR, where our legitimate interest is to respond to inquiries.
+			<br><br>
+			Duration of Storage: Your personal data will be deleted once the purpose for processing no longer applies.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>5/</p>
+			<h2>Data Recipients</h2>
+		</div>
+		<p class="description">
+			We may transfer your personal data to third-party recipients if required to fulfill our contractual or legal obligations.
+			<br><br>
+			In some cases, we transfer data to legal or tax consultants, who are responsible for data protection independently. These recipients are also bound by GDPR compliance and confidentiality.
+			<br><br>
+			Additionally, we use third-party service providers (“Data Processors”) who process data on our behalf. We have concluded Data Processing Agreements with each of them, ensuring they process data only according to our instructions.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>6/</p>
+			<h2>Data Transfers to Third Countries</h2>
+		</div>
+		<p class="description">
+			Your personal data is generally processed within the European Economic Area (EEA). However, it may be necessary to transfer personal data outside the EEA (e.g., to the USA). If necessary, we will ensure that such transfers comply with GDPR, using EU Standard Contractual Clauses or confirming that the recipient country provides adequate protection.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>7/</p>
+			<h2>Your Rights</h2>
+		</div>
+		<p class="description">
+			As a data subject, you have the following rights under GDPR:
+			<br>
+			- Right of Revocation: You can withdraw your consent to processing at any time (Article 7(3) GDPR).
+			<br>
+			- Right of Access: You can request confirmation of whether we process your personal data (Article 15 GDPR).
+			<br>
+			- Right to Rectification: You can request corrections to inaccurate or incomplete personal data (Article 16 GDPR).
+			<br>
+			- Right to Erasure: You can request deletion of your personal data (Article 17 GDPR).
+			<br>
+			- Right to Restrict Processing: You can request restriction of data processing (Article 18 GDPR).
+			<br>
+			- Right to Data Portability: You can request a transfer of your personal data to another provider (Article 20 GDPR).
+			<br>
+			- Right to Object: You can object to the processing of your personal data (Article 21 GDPR).
+			<br>
+			- Right to Complain: You can lodge a complaint with a competent supervisory authority (Article 77 GDPR).
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>8/</p>
+			<h2>Obligation to Provide Data</h2>
+		</div>
+		<p class="description">
+			While visiting our Websites, you may be required to provide certain personal data as described in this Privacy Policy. However, you are under no obligation to provide us with personal data. Failure to provide data may limit your ability to contact us or receive responses to inquiries.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>9/</p>
+			<h2>Automated Decisions/Profiling</h2>
+		</div>
+		<p class="description">
+			We do not use automated decision-making processes that have a significant impact on you.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>10/</p>
+			<h2>Changes to This Privacy Policy</h2>
+		</div>
+		<p class="description">
+			We review this Privacy Policy regularly and may update it at any time. Changes will be reflected by updating the date of the last revision. Please check this Privacy Policy periodically to stay informed about any updates.
+		</p>
+	</div>
+
+	<footer>
+		<div class="head-links-container">
+			<div class="head-link">
+				<p>Resourses</p>
+			</div>
+			<div class="head-link">
+				<p>Social Media</p>
+			</div>
+			<div class="head-link">
+				<p>Developers</p>
+			</div>
+			<!-- <div class="head-link">
+				<p>Tools</p>
+			</div> -->
+			<div class="head-link">
+				<p>Ecosystem</p>
+			</div>
+			<div class="head-link">
+				<p>Careers</p>
+			</div>
+		</div>
+		<div class="bottom-links-container">
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank">Documentation</a>
+				<a class="bottom-link" href="/mediakit">MediaKit</a>
+				<a class="bottom-link" href="/terms" target="_blank">Terms of Use</a>
+				<a class="bottom-link" href="/policy" target="_blank">Privacy Policy</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">Twitter / X</a>
+				<a class="bottom-link" href="https://t.me/alyrafinance" target="_blank">Telegram</a>
+				<a class="bottom-link" href="https://medium.com/@alyrafinance" target="_blank">Medium</a>
+				<!-- <a class="bottom-link">Discord</a> -->
+				<a class="bottom-link" href="https://www.linkedin.com/company/alyrafi" target="_blank">LinkedIn</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="/developers" target="_blank">API</a>
+				<a class="bottom-link" href="/developers" target="_blank">Architecture</a>
+				<a class="bottom-link" href="/developers" target="_blank">SDK & Libraries</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Dev Support</a>
+				<!-- <a class="bottom-link">Dev Community</a> -->
+				<a class="bottom-link" href="https://github.com/AlyraLabs" target="_blank">GitHub</a>
+			</div>
+			<!-- <div class="bottom-links">
+				<a class="bottom-link">Status</a>
+				<a class="bottom-link">Partner Portal</a>
+			</div> -->
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">News</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Become a partner</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://alyralabs.xyz/" target="_blank">Jobs</a>
+			</div>
+		</div>
+
+		<div class="mobile-links-container">
+			<div class="mobile-link">
+				<p class="mobile-link-title">Resourses</p>
+				<hr>
+				<a class="bottom-link" href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank">Documentation</a>
+				<a class="bottom-link" href="/mediakit">MediaKit</a>
+				<a class="bottom-link" href="/terms-of-use" target="_blank">Terms of Use</a>
+				<a class="bottom-link" href="/privacy-policy" target="_blank">Privacy Policy</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Social Media</p>
+				<hr>
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">Twitter / X</a>
+				<a class="bottom-link" href="https://t.me/alyrafinance" target="_blank">Telegram</a>
+				<a class="bottom-link" href="https://medium.com/@alyrafinance" target="_blank">Medium</a>
+				<!-- <a class="bottom-link">Discord</a> -->
+				<a class="bottom-link" href="https://www.linkedin.com/company/alyrafi" target="_blank">LinkedIn</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Developers</p>
+				<hr>
+				<a class="bottom-link" href="/developers" target="_blank">API</a>
+				<a class="bottom-link" href="/developers" target="_blank">Architecture</a>
+				<a class="bottom-link" href="/developers" target="_blank">SDK & Libraries</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Dev Support</a>
+				<!-- <a class="bottom-link">Dev Community</a> -->
+				<a class="bottom-link" href="https://github.com/AlyraLabs" target="_blank">GitHub</a>
+			</div>
+			<!-- <div class="mobile-link">
+				<p class="mobile-link-title">Tools</p>
+				<hr>
+				<a class="bottom-link">Status</a>
+				<a class="bottom-link">Partner Portal</a>
+			</div> -->
+			<div class="mobile-link">
+				<p class="mobile-link-title">Ecosystem</p>
+				<hr>
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">News</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Become a partner</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Careers</p>
+				<hr>
+				<a class="bottom-link" href="https://alyralabs.xyz/" target="_blank">Jobs</a>
+			</div>
+		</div>
+
+
+		<div class="bottom-text">
+			<div class="logo-img"></div>
+			<p>© 2025 Alyra. All rights reserved.</p>
+		</div>
+		<div class="background"></div>
+	</footer>
+</div>
