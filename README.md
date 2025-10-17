@@ -1,2 +1,2 @@
-# black-hole-intro
-Introduction page for Blackhole
+# alyra-intro
+Introduction page for Alyra
