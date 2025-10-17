@@ -1,0 +1,328 @@
+<div class="page-container">
+
+	<div class="main">
+		<header>
+			<div class="logo" routerLink="/">
+				<div class="logo-img"></div>
+				<p>Alyra</p>
+			</div>
+			<div class="menu">
+				<a href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank">DOCS</a>
+				<div class="devider"></div>
+				<!-- <a href="#" target="_blank">SCAN</a>
+				<div class="devider"></div>
+				<a href="#" target="_blank">ECOSYSTEM</a>
+				<div class="devider"></div> -->
+				<a routerLink="/developers">DEVELOPERS</a>
+				<div class="devider"></div>
+				<a href="https://medium.com/@alyrafinance" target="_blank">BLOG</a>
+				<div class="devider"></div>
+				<a routerLink="/community">COMMUNITY</a>
+			</div>
+			<button class="hamburger" (click)="toggleMobileMenu()">
+				<img *ngIf="!isMobileMenuOpen" src="/img/icons/hamburger.png" alt="Menu">
+				<img *ngIf="isMobileMenuOpen" src="/img/icons/close.png" alt="Close">
+			</button>
+		</header>
+
+		<div class="mobile-menu" [class.active]="isMobileMenuOpen">
+			<div class="mobile-header">
+				<div class="logo">
+					<div class="logo-img"></div>
+					<p>Alyra</p>
+				</div>
+				<button class="mobile-close" (click)="toggleMobileMenu()">
+					<img src="/img/icons/close.png" alt="Close">
+				</button>
+			</div>
+
+			<nav class="mobile-nav">
+					<a href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank" (click)="toggleMobileMenu()">DOCS</a>
+					<hr>
+					<!-- <a href="#" target="_blank" (click)="toggleMobileMenu()">SCAN</a>
+					<hr>
+					<a href="#" target="_blank" (click)="toggleMobileMenu()">ECOSYSTEM</a> 
+					<hr> -->
+					<a routerLink="/developers" (click)="toggleMobileMenu()">DEVELOPERS</a>
+					<hr>
+					<a href="https://medium.com/@alyrafinance" target="_blank" (click)="toggleMobileMenu()">BLOG</a>
+					<hr>
+					<a routerLink="/community" (click)="toggleMobileMenu()">COMMUNITY</a>
+				</nav>
+
+				<a class="button main-button" href="/developers" target="_blank">
+					<p>Start Building</p>
+					<div class="icon arrow"></div>
+				</a>
+		</div>
+
+		<div class="text">
+			<p class="tag">[ Terms Of Use ]</p>
+			<h1 class="hero-title">
+				Terms of Use
+			</h1>
+			<div class="icon scroll-down"></div>
+			<div class="post">
+				<p>EFFECTIVE: OCT 15, 2025</p>
+			</div>
+		</div>
+		<div class="background"></div>
+	</div>
+
+	<div class="block first-block">
+		<div class="heading">
+			<p>1/</p>
+			<h2>General Provisions and Scope of Application</h2>
+		</div>
+		<p class="description">
+			These General Terms and Conditions ("Terms") govern access to the website <a class="link" href="https://alyra.finance" target="_blank">https://alyra.finance</a> 
+			("Alyra Website") and the use of software provided by Alyra Labs, including SDK and widgets ("Alyra 
+			Software").
+			<br><br>
+			Alyra Labs has developed the Alyra protocol, a set of publicly available, non-custodial smart contracts 
+			("Alyra Smart Contracts") that provide access to third-party services such as bridges, swaps, and 
+			messaging ("Third-Party Contracts") between different blockchains. Alyra Labs does not control or 
+			operate any version of the Alyra Smart Contracts on any blockchain network. Alyra Labs has open-sourced 
+			the underlying software for these smart contracts to the developer community, allowing any third-party 
+			developer to deploy or modify these contracts on compatible public blockchains. If Alyra Smart Contracts 
+			are deployed by any third party, Alyra Labs is not, and does not become, a custodian or counterparty to 
+			any transactions executed via these smart contracts.
+			<br><br>
+			To facilitate access to and third-party integration of Alyra Smart Contracts, Alyra Labs provides a 
+			software development kit ("SDK") and pre-built UI components ("Widget", collectively referred to as 
+			"Alyra Software"). Alyra Software is provided free of charge for commercial use, subject to open-source 
+			license terms. Alyra Software is distinct from Alyra Smart Contracts and is not the only means of accessing 
+			these smart contracts.
+			<br><br>
+			Alyra Smart Contracts operate on a non-custodial basis, meaning that the entity deploying Alyra Smart 
+			Contracts does not assume custody, ownership, or control over the user's digital assets or cryptographic 
+			keys at any time. The user is fully responsible for safeguarding their digital assets and cryptographic 
+			keys and should never share wallet credentials or seed phrases with any unauthorized third parties. 
+			Alyra Labs cannot be held liable for the loss of the user's digital assets or cryptographic keys.
+			<br><br>
+			The user acknowledges that Alyra Smart Contracts forward transactions to Third-Party Contracts, such as 
+			bridges, decentralized trading, or lending protocols, the availability, reliability, and operability of 
+			which Alyra Labs cannot guarantee. Alyra Labs disclaims any responsibility for such Third-Party Contracts. 
+			All transactions executed via Third-Party Contracts are considered unsolicited by Alyra Labs, meaning 
+			they are exclusively initiated by the user. Alyra Labs does not provide investment advice related to 
+			these Third-Party Contracts and does not conduct a suitability review of these transactions for the user.
+			<br><br>
+			Alyra Labs reserves the right to modify, enhance, or update Alyra Software, including its functionality 
+			and design, at any time.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>2/</p>
+			<h2>User Obligations and Warranties</h2>
+		</div>
+		<p class="description">
+			By using Alyra Software and/or Alyra Smart Contracts, you understand that you are not buying or selling 
+			digital assets directly from Alyra Labs.
+			<br><br>
+			If you integrate Alyra Software into your website or application and make it accessible to third-party users, 
+			you agree to take sufficient measures to inform such users that (i) the integration is done independently by you 
+			and has no association with Alyra Labs, (ii) Alyra Smart Contracts or any contracts based on them are 
+			non-custodial, (iii) the smart contracts forward transactions to Third-Party Contracts that execute 
+			transactions initiated by third-party users, and (iv) Alyra Labs does not guarantee the availability, 
+			reliability, and operability of such third-party services.
+			<br><br>
+			When using Alyra Software, you are fully responsible for the successful implementation, configuration, and 
+			integration of Alyra Software, taking into account the specific requirements, limitations, and objectives 
+			of your business. Integration of Alyra Software into your website or application and its use by third-party 
+			users does not create a contractual relationship between those third parties and Alyra Labs.
+			<br><br>
+			You acknowledge and agree that the integration, maintenance, and operation of any integration of Alyra 
+			Software are beyond the control of Alyra Labs. You are solely responsible for ensuring that any such integration 
+			complies with all applicable laws and regulations and does not infringe on the rights, particularly 
+			intellectual property rights, of any third party.
+			<br><br>
+			You warrant that you are not (i) subject to any economic or trade sanctions imposed by any government 
+			agency or listed on any prohibited or restricted party list, or (ii) a citizen, resident, or organization 
+			located in a jurisdiction subject to comprehensive economic sanctions, including but not limited to the 
+			United Nations, the European Union, the United States (specifically OFAC), and the United Kingdom.
+			<br><br>	
+			You further warrant that you are not a United States citizen, permanent resident alien, entity organized 
+			under the laws of the United States, or any jurisdiction within the United States (including foreign branches), 
+			or any person in the United States.
+			<br><br>
+			You confirm that your use of Alyra Software and Alyra Smart Contracts will fully comply with all applicable 
+			laws and regulations, and you will not use these services to conduct, promote, or facilitate any illegal 
+			activities.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>3/</p>
+			<h2>Limitation of Liability</h2>
+		</div>
+		<p class="description">
+			Alyra Labs provides Alyra Software and Alyra Smart Contracts free of charge and is therefore only liable in 
+			cases of intent, gross negligence, or fraudulent concealment of a potential material or legal defect. Alyra Labs 
+			disclaims liability for any modifications of Alyra Software by the user.
+			<br><br>
+			The limitation of liability does not apply to (i) damages resulting from injury to life, body, or health, (ii) 
+			if Alyra Labs has assumed a guarantee, (iii) claims by the user under the Product Liability Act, or (iv) claims 
+			by the user under applicable data protection laws.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>4/</p>
+			<h2>Indemnification</h2>
+		</div>
+		<p class="description">
+			You agree to indemnify Alyra Labs from any claim, demand, loss, costs, and expenses 
+			(including reasonable attorneys’ fees) arising out of or in connection with the use of Alyra 
+			Software by the user.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>5/</p>
+			<h2>Confidentiality</h2>
+		</div>
+		<p class="description">
+			The parties agree to maintain strict confidentiality regarding all confidential information, 
+			including know-how and company and business secrets of the other party, obtained during the 
+			performance of this agreement, and not to disclose or use this information for any purpose other 
+			than performing the agreement.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>6/</p>
+			<h2>Data Protection</h2>
+		</div>
+		<p class="description">
+			Alyra Labs informs the user about the processing of personal data in accordance with its Privacy Policy.
+		</p>
+	</div>
+
+	<div class="block">
+		<div class="heading">
+			<p>7/</p>
+			<h2>Changes to the Terms</h2>
+		</div>
+		<p class="description">
+			Alyra Labs reserves the right to modify these Terms at any time. Any changes will take effect 
+			after users have been notified.
+		</p>
+	</div>
+
+	<footer>
+		<div class="head-links-container">
+			<div class="head-link">
+				<p>Resourses</p>
+			</div>
+			<div class="head-link">
+				<p>Social Media</p>
+			</div>
+			<div class="head-link">
+				<p>Developers</p>
+			</div>
+			<!-- <div class="head-link">
+				<p>Tools</p>
+			</div> -->
+			<div class="head-link">
+				<p>Ecosystem</p>
+			</div>
+			<div class="head-link">
+				<p>Careers</p>
+			</div>
+		</div>
+		<div class="bottom-links-container">
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank">Documentation</a>
+				<a class="bottom-link" href="/mediakit">MediaKit</a>
+				<a class="bottom-link" href="/terms" target="_blank">Terms of Use</a>
+				<a class="bottom-link" href="/policy" target="_blank">Privacy Policy</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">Twitter / X</a>
+				<a class="bottom-link" href="https://t.me/alyrafinance" target="_blank">Telegram</a>
+				<a class="bottom-link" href="https://medium.com/@alyrafinance" target="_blank">Medium</a>
+				<!-- <a class="bottom-link">Discord</a> -->
+				<a class="bottom-link" href="https://www.linkedin.com/company/alyrafi" target="_blank">LinkedIn</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="/developers" target="_blank">API</a>
+				<a class="bottom-link" href="/developers" target="_blank">Architecture</a>
+				<a class="bottom-link" href="/developers" target="_blank">SDK & Libraries</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Dev Support</a>
+				<!-- <a class="bottom-link">Dev Community</a> -->
+				<a class="bottom-link" href="https://github.com/AlyraLabs" target="_blank">GitHub</a>
+			</div>
+			<!-- <div class="bottom-links">
+				<a class="bottom-link">Status</a>
+				<a class="bottom-link">Partner Portal</a>
+			</div> -->
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">News</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Become a partner</a>
+			</div>
+			<div class="bottom-links">
+				<a class="bottom-link" href="https://alyralabs.xyz/" target="_blank">Jobs</a>
+			</div>
+		</div>
+
+		<div class="mobile-links-container">
+			<div class="mobile-link">
+				<p class="mobile-link-title">Resourses</p>
+				<hr>
+				<a class="bottom-link" href="https://alyrafinance.gitbook.io/alyrafinance-docs/" target="_blank">Documentation</a>
+				<a class="bottom-link" href="/mediakit">MediaKit</a>
+				<a class="bottom-link" href="/terms-of-use" target="_blank">Terms of Use</a>
+				<a class="bottom-link" href="/privacy-policy" target="_blank">Privacy Policy</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Social Media</p>
+				<hr>
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">Twitter / X</a>
+				<a class="bottom-link" href="https://t.me/alyrafinance" target="_blank">Telegram</a>
+				<a class="bottom-link" href="https://medium.com/@alyrafinance" target="_blank">Medium</a>
+				<!-- <a class="bottom-link">Discord</a> -->
+				<a class="bottom-link" href="https://www.linkedin.com/company/alyrafi" target="_blank">LinkedIn</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Developers</p>
+				<hr>
+				<a class="bottom-link" href="/developers" target="_blank">API</a>
+				<a class="bottom-link" href="/developers" target="_blank">Architecture</a>
+				<a class="bottom-link" href="/developers" target="_blank">SDK & Libraries</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Dev Support</a>
+				<!-- <a class="bottom-link">Dev Community</a> -->
+				<a class="bottom-link" href="https://github.com/AlyraLabs" target="_blank">GitHub</a>
+			</div>
+			<!-- <div class="mobile-link">
+				<p class="mobile-link-title">Tools</p>
+				<hr>
+				<a class="bottom-link">Status</a>
+				<a class="bottom-link">Partner Portal</a>
+			</div> -->
+			<div class="mobile-link">
+				<p class="mobile-link-title">Ecosystem</p>
+				<hr>
+				<a class="bottom-link" href="https://x.com/alyrafinance" target="_blank">News</a>
+				<a class="bottom-link" href="https://t.me/whoisfedelya" target="_blank">Become a partner</a>
+			</div>
+			<div class="mobile-link">
+				<p class="mobile-link-title">Careers</p>
+				<hr>
+				<a class="bottom-link" href="https://alyralabs.xyz/" target="_blank">Jobs</a>
+			</div>
+		</div>
+
+
+		<div class="bottom-text">
+			<div class="logo-img"></div>
+			<p>© 2025 Alyra. All rights reserved.</p>
+		</div>
+		<div class="background"></div>
+	</footer>
+</div>

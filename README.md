@@ -1,2 +1,2 @@
 # alyra-intro
-Introduction page for Alyra
+Introduction page for Alyra Finance
