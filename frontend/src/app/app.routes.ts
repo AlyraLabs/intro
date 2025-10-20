@@ -14,6 +14,6 @@ export const routes: Routes = [
 	{ path: 'mediakit', component: MediakitComponent },
 	{ path: 'terms', component: TermsComponent },
 	{ path: 'policy', component: PolicyComponent },
-	{ path: 'how', component: HowComponent },
+	{ path: 'execution', component: HowComponent },
   { path: '**', redirectTo: '' }
 ];
