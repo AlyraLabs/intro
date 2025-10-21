@@ -8,12 +8,12 @@ import { PolicyComponent } from './privacy policy/policy.component';
 import { HowComponent } from './how it works/how.component';
 
 export const routes: Routes = [
-  { path: '', component: IntroComponent },
-  { path: 'developers', component: DevelopersComponent },
-  { path: 'community', component: CommunityComponent },
-	{ path: 'mediakit', component: MediakitComponent },
-	{ path: 'terms', component: TermsComponent },
-	{ path: 'policy', component: PolicyComponent },
-	{ path: 'execution', component: HowComponent },
+  { path: '', component: IntroComponent, title: 'Home | Alyra' },
+  { path: 'developers', component: DevelopersComponent, title: 'Developers | Alyra' },
+  { path: 'community', component: CommunityComponent, title: 'Community | Alyra' },
+	{ path: 'mediakit', component: MediakitComponent, title: 'Media Kit | Alyra' },
+	{ path: 'terms', component: TermsComponent, title: 'Terms of Use | Alyra' },
+	{ path: 'policy', component: PolicyComponent, title: 'Privacy Policy | Alyra' },
+	{ path: 'execution', component: HowComponent, title: 'How it works | Alyra' },
   { path: '**', redirectTo: '' }
 ];
