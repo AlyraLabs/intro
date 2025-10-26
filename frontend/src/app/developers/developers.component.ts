@@ -222,6 +222,46 @@ export class DevelopersComponent implements AfterViewInit, OnDestroy {
     });
 
     
+    const developerLinkElements = document.querySelectorAll('.developer .links a');
+    
+    developerLinkElements.forEach((developerLink) => {
+      const element = developerLink as HTMLElement;
+      const originalText = element.textContent || '';
+      
+      
+      this.menuItems.push({ element, originalText });
+      
+      
+      element.addEventListener('mouseenter', () => {
+        
+        this.titleAnimationService.clearAnimationForElement(element);
+        
+        
+        element.textContent = originalText;
+        
+        
+        this.activeAnimations.add(element);
+        this.titleAnimationService.startTitleAnimation(
+          element,
+          originalText,
+          {
+            animationFrames: 30,
+            animationSpeed: 25,
+            glitchChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+            cyberChars: '01',
+            possibleChars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+          }
+        );
+      });
+      
+      
+      element.addEventListener('mouseleave', () => {
+        
+        
+      });
+    });
+
+    
     const buttonElements = document.querySelectorAll('.button');
     
     buttonElements.forEach((button) => {
