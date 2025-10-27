@@ -491,6 +491,11 @@ header{
 				margin-top: auto;
 				a{
 					font-family: "Geist", sans-serif;
+					color: rgba(var(--white), 0.7);
+					transition: opacity 0.3s ease;
+					&:hover{
+						color: rgba(var(--white), 1);
+					}
 				}
 			}
 			
