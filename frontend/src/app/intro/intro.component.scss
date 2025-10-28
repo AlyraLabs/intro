@@ -522,6 +522,9 @@ header{
 		span{
 			color: rgba(var(--white), 1);
 		}
+		.hero-title span {
+  			color: rgba(var(--white), 1);
+		}
 		.buttons{
 			display: flex;
 			gap: 20px;
