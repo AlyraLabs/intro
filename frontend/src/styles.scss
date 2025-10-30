@@ -44,6 +44,11 @@ html {
 	touch-action: pan-y;
 }
 
+html:not(.app-ready) * {
+  transition-duration: 0s !important;
+  animation-duration: 0s !important;
+}
+
 body{
 	touch-action: pan-y;
 }
