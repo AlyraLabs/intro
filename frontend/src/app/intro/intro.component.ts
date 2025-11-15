@@ -132,7 +132,7 @@ export class IntroComponent implements AfterViewInit, OnDestroy {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            this.animateCounter('.perfomance-container .perfomance-item:nth-child(1) h1', 25, 0);
+            this.animateCounter('.perfomance-container .perfomance-item:nth-child(1) h1', 35, 0);
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(2) h1', 300, 0, '<', 'ms');
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(3) h1', 30, 0);
             this.animateCounter('.perfomance-container .perfomance-item:nth-child(4) h1', 99.9, 0, '', '%', true);
