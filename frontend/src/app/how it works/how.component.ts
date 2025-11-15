@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TypingAnimationService } from '../services/typing-animation.service';
 import { TitleAnimationService } from '../services/title-animation.service';
+import { HeaderComponent } from '../shared/header/header.component';
 
 @Component({
   selector: 'app-how',
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink
+    RouterLink,
+    HeaderComponent
   ],
   templateUrl: './how.component.html',
   styleUrls: ['./how.component.scss',
@@ -17,8 +19,6 @@ import { TitleAnimationService } from '../services/title-animation.service';
 	],
 })
 export class HowComponent implements AfterViewInit, OnDestroy {
-  isMobileMenuOpen = false;
-  
   private performanceObserver?: IntersectionObserver;
   private demoObserver?: IntersectionObserver;
   private menuItems: { element: HTMLElement; originalText: string }[] = [];
@@ -31,24 +31,6 @@ export class HowComponent implements AfterViewInit, OnDestroy {
     private typingAnimation: TypingAnimationService,
     private titleAnimationService: TitleAnimationService
   ) {}
-
-  toggleMobileMenu(): void {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    const pageContainer = document.querySelector('.page-container') as HTMLElement;
-    if (this.isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      if (pageContainer) {
-        pageContainer.style.overflow = 'hidden';
-        pageContainer.style.height = 'calc(100dvh - 40px)';
-      }
-    } else {
-      document.body.style.overflow = '';
-      if (pageContainer) {
-        pageContainer.style.overflow = '';
-        pageContainer.style.height = '';
-      }
-    }
-  }
 
   ngAfterViewInit(): void {
     

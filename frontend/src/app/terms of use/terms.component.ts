@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TypingAnimationService } from '../services/typing-animation.service';
 import { TitleAnimationService } from '../services/title-animation.service';
+import { HeaderComponent } from '../shared/header/header.component';
 
 @Component({
   selector: 'app-terms',
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink
+    RouterLink,
+    HeaderComponent
   ],
   templateUrl: './terms.component.html',
   styleUrls: ['./terms.component.scss',
@@ -21,8 +23,6 @@ export class TermsComponent implements AfterViewInit, OnDestroy {
 	@ViewChild('description2') description2El!: ElementRef<HTMLElement>;
 	@ViewChild('description3') description3El!: ElementRef<HTMLElement>;
 
-  isMobileMenuOpen = false;
-  
   private isDragging = false;
   private startX = 0;
   private scrollLeft = 0;
@@ -35,24 +35,6 @@ export class TermsComponent implements AfterViewInit, OnDestroy {
     private typingAnimation: TypingAnimationService,
     private titleAnimationService: TitleAnimationService
   ) {}
-
-  toggleMobileMenu(): void {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    const pageContainer = document.querySelector('.page-container') as HTMLElement;
-    if (this.isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      if (pageContainer) {
-        pageContainer.style.overflow = 'hidden';
-        pageContainer.style.height = 'calc(100dvh - 40px)';
-      }
-    } else {
-      document.body.style.overflow = '';
-      if (pageContainer) {
-        pageContainer.style.overflow = '';
-        pageContainer.style.height = '';
-      }
-    }
-  }
 
   ngAfterViewInit(): void {
     this.typingAnimation.initialize(
